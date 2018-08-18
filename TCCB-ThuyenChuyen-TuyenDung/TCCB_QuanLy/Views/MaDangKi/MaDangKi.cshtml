@@ -1,0 +1,133 @@
+﻿
+@{
+    ViewBag.Title = "Mã Đăng Kí";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+    <ol class="breadcrumb">
+        <li>
+            <a href="#">
+                <em class="fa fa-home"></em>
+            </a>
+        </li>
+        <li class="active">Mã Đăng Kí</li>
+    </ol>
+</div><!--/.row-->
+<div class="row">
+    <div class="col-lg-12">
+        <h1 class="page-header">Mã Đăng Kí</h1>
+    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <ul class="pull-right panel-settings panel-button-tab-right">
+            <li class="dropdown">
+                <a class="pull-right dropdown-toggle" data-toggle="dropdown" href="#">
+                    <em class="fa fa-cogs"></em>
+                </a>
+                <ul class="dropdown-menu dropdown-menu-right">
+                    <li>
+                        <ul class="dropdown-settings">
+                            <li>
+                                <a href="#" data-toggle="modal" data-target="#myModal">
+                                    <em class="fa fa-cog"></em> Cập nhật
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+    <div class="panel-body">
+        <div class="container bill-print">
+            <div class="row">
+                <div class="col-sm-8 col-xs-8">
+                    <p>SỞ GIÁO DỤC VÀ ĐÀO TẠO TP.HỒ CHÍ MINH</p>
+                    <p><i>66-68 Lê Thánh Tôn Phường Bến Nghé Quận 1 TP.HCM</i></p>
+                </div><div class="col-sm-4 col-xs-4">
+                    <h4>Mã hồ sơ: <b>001</b></h4>
+                </div>
+            </div><h3 class="text-center bill"><b>BIÊN LAI THU TIỀN</b></h3>
+            <p class="text-center"><i>Ngày 30 tháng 7 năm 2018</i></p>
+            <div class="bill col-sm-8 col-sm-offset-2 col-xs-8 col-xs-offset-2">
+                <p>Họ, tên người nộp: <b>Nguyễn Văn A</b></p><p>Số CMND: <b>123456789</b></p>
+                <p>Nội dung nộp: <b>Lệ phí dự tuyển viên chức 2018</b></p><p>
+                    Số tiền thu: <b>
+                        30000
+                    </b> (Viết bằng chữ): Ba mươi ngàn đồng<b></b>
+                </p>
+            </div><div class="row">
+                <div class="bill col-sm-6 col-xs-6">
+                    <p class="text-center"><b>Người nộp tiền</b></p>
+                    <p class="text-center"><i>(Ký và ghi rõ họ tên)</i></p>
+                </div>
+                <div class="bill col-sm-6 col-xs-6">
+                    <p class="text-center">
+                        <b>Người thu tiền</b>
+                    </p><p class="text-center"><i>(Ký và ghi rõ họ tên)</i></p>
+                </div>
+            </div><div class="warning-box">
+                <p><b>Lưu ý: </b></p><ul>
+                    <li>Ứng viên vui lòng truy cập vào <b>http://tuyendung/hosoungtuyen</b> để cập nhập hồ sơ ứng tuyển</li>
+                    <li>Ứng viên vui lòng đến <b>SỞ GIÁO DỤC VÀ ĐÀO TẠO TP.HỒ CHÍ MINH</b> vào ngày <b>22/7/2018</b> để rà xoát hồ sơ (<i>Mục đích là để đối chiếu hồ sơ với bản khai. Vui lòng tới đúng giờ</i>)</li>
+                    <li>Khi đi ứng viên vui lòng in hố sơ ứng tuyển thành <b>2 bản</b>, sau khi đã hoàn tất cập nhật hồ sơ ứng tuyển</li>
+                    <li>Đề nghị ứng viên theo dõi thông báo trên website của nơi đăng kí ứng tuyển (phòng TCCB đối với Sở GD&DT TP.HCM )</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Cập nhật mã đăng kí</h4>
+            </div>
+            <div class="modal-body">
+                <form class="form-horizontal" action="" method="post">
+                    <fieldset>
+                        <!-- Name input-->
+                        <div class="form-group">
+                            <label class="col-md-3 control-label" for="name">Nội dung thu tiền</label>
+                            <div class="col-md-9">
+                                <input id="name" name="name" type="text" class="form-control">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-3 control-label" for="name">Số tiền bằng số</label>
+                            <div class="col-md-3">
+                                <input id="name" name="name" type="number" class="form-control">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-3 control-label" for="name">Số tiền bằng chữ</label>
+                            <div class="col-md-9">
+                                <input id="name" name="name" type="text" class="form-control">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-3 control-label" for="name">Địa điểm rà xoát</label>
+                            <div class="col-md-9">
+                                <input id="name" name="name" type="text" class="form-control">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-3 control-label" for="name">Ngày ra soát</label>
+                            <div class="col-md-3">
+                                <input id="name" name="name" type="text" class="form-control">
+                            </div>
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
+                <button type="button" class="btn btn-primary">Cập nhật</button>
+            </div>
+        </div>
+    </div>
+</div>

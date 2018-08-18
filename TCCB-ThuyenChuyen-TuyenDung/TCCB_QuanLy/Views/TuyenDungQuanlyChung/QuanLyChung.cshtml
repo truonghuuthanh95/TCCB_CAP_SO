@@ -1,0 +1,162 @@
+﻿
+@{
+    ViewBag.Title = "Quản Lý Chung Tuyển Dụng";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+    <ol class="breadcrumb">
+        <li>
+            <a href="#">
+                <em class="fa fa-home"></em>
+            </a>
+        </li>
+        <li class="active">Quản Lý Chung Tuyển Dụng</li>
+
+    </ol>
+</div><!--/.row-->
+<div class="row">
+    <div class="col-lg-12">
+        <h1 class="page-header">Quản Lý Chung Tuyển Dụng</h1>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        Ngày hết hạn sửa thông tin ứng tuyển <b>22-12-2018</b>
+        <ul class="pull-right panel-settings panel-button-tab-right">
+            <li class="dropdown">
+                <a class="pull-right dropdown-toggle" data-toggle="dropdown" href="#">
+                    <em class="fa fa-cogs"></em>
+                </a>
+                <ul class="dropdown-menu dropdown-menu-right">
+                    <li>
+                        <ul class="dropdown-settings">
+                            <li>
+                                <a href="#" data-toggle="modal" data-target="#myModal">
+                                    <em class="fa fa-cog"></em> Cập nhật
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading">
+        Trang thái đăng kí
+    </div>
+    <div class="panel-body">
+        <div class="panel panel-container">
+            <div class="row">
+                <div class="col-xs-6 col-md-3 col-lg-3 no-padding">
+                    <a href="/tuyendung/quanlychung/danhsachdangki">
+                        <div class="panel panel-teal panel-widget border-right">
+                            <div class="row no-padding">
+                                <em class="fa fa-xl fa-pencil-square-o color-blue"></em>
+                                <div class="large">120</div>
+                                <div class="text-muted">Đăng Kí</div>
+
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-xs-6 col-md-3 col-lg-3 no-padding">
+                    <a href="/tuyendung/quanlychung/danhsachhoanthanh">
+                        <div class="panel panel-blue panel-widget border-right">
+                            <div class="row no-padding">
+                                <em class="fa fa-xl fa-check-square-o color-teal"></em>
+                                <div class="large">52</div>
+                                <div class="text-muted">Hoàn Thành</div>
+
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-xs-6 col-md-3 col-lg-3 no-padding">
+                    <a href="/tuyendung/quanlychung/danhsachchuahoanthanh">
+                        <div class="panel panel-orange panel-widget border-right">
+                            <div class="row no-padding">
+                                <em class="fa fa-xl fa-ban color-red"></em>
+                                <div class="large">24</div>
+                                <div class="text-muted">Chưa Cập Nhật</div>
+
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-xs-6 col-md-3 col-lg-3 no-padding">
+                    <a href="/tuyendung/quanlychung/danhsachhosohople">
+                        <div class="panel panel-red panel-widget ">
+                            <div class="row no-padding">
+                                <em class="fa fa-xl fa-check color-teal"></em>
+                                <div class="large">25.2k</div>
+                                <div class="text-muted">Hợp Lệ</div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div><!--/.row-->
+        </div>
+    </div>
+</div>
+<div class="row text-right"><button class="btn btn-primary" data-toggle="modal" data-target="#lammoituyendung">Tạo lại đợt tuyển dụng mới</button></div>
+
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Cập nhật ngày hết hạn sử thông tin ứng tuyển</h4>
+            </div>
+            <div class="modal-body">
+                <form class="form-horizontal" action="" method="post">
+                    <fieldset>
+                        <!-- Name input-->
+                        <div class="form-group">
+                            <label class="col-md-3 control-label" for="name">Ngày hết hạn</label>
+                            <div class="col-md-9">
+                                <input id="name" name="name" type="text" class="form-control">
+                            </div>
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
+                <button type="button" class="btn btn-primary">Cập nhật</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="lammoituyendung" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Tạo lại đợt tuyển dụng mới</h4>
+            </div>
+            <div class="modal-body">
+                <p>Tất cả dữ liệu của đợt tuyển dụng cũ sẽ chuyển sang lưu trữ. Bạn có muốn làm mới?</p>
+                <form class="form-horizontal" action="" method="post">
+                    <fieldset>
+                        <!-- Name input-->
+                        <div class="form-group">
+                            <label class="col-md-3 control-label" for="name">Mã tạo mới</label>
+                            <div class="col-md-9">
+                                <input id="name" name="name" type="text" class="form-control">
+                            </div>
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
+                <button type="button" class="btn btn-success">Làm mới</button>
+            </div>
+        </div>
+    </div>
+</div>
