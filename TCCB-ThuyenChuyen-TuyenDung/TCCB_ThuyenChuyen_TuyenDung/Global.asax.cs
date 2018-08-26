@@ -1,10 +1,12 @@
-﻿using System;
+﻿using AutoMapper;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
+using TCCB_ThuyenChuyen_TuyenDung.App_Start;
 
 namespace TCCB_ThuyenChuyen_TuyenDung
 {
@@ -16,6 +18,8 @@ namespace TCCB_ThuyenChuyen_TuyenDung
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+            IocConfigration.ConfigrationIocContainer();
+            Mapper.Initialize(s => s.AddProfile<MappingProfile>());
         }
     }
 }

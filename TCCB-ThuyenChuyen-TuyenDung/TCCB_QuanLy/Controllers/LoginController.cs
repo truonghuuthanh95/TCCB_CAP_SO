@@ -9,11 +9,16 @@ namespace TCCB_QuanLy.Controllers
     public class LoginController : Controller
     {
         // GET: Login
-        [Route("login")]
+        [Route("login", Name = "login")]
         public ActionResult Login()
         {
-
             return View();
+        }
+        [Route("logout")]
+        public ActionResult Logout()
+        {
+            Session.RemoveAll();
+            return RedirectToRoute("login");
         }
     }
 }

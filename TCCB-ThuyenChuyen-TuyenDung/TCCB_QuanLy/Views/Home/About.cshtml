@@ -1,7 +1,10 @@
-﻿@{
+﻿@model  IEnumerable<TCCB_ThuyenChuyen_TuyenDung.Models.DAO.TrinhDoTinHoc>
+@{
     ViewBag.Title = "About";
 }
-<h2>@ViewBag.Title.</h2>
-<h3>@ViewBag.Message</h3>
-
-<p>Use this area to provide additional information.</p>
+@{
+    foreach (var item in Model)
+    {
+        <h1>@item.Name</h1>
+    }
+}

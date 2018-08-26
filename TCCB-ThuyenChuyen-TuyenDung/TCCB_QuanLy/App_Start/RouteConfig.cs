@@ -14,9 +14,10 @@ namespace TCCB_QuanLy
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
             routes.MapMvcAttributeRoutes();
             routes.MapRoute(
-                name: "Default",
+                name: "TCCB_QuanLy",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
+                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional },
+                namespaces: new[] { "TCCB_QuanLy.Controllers" }
             );
         }
     }

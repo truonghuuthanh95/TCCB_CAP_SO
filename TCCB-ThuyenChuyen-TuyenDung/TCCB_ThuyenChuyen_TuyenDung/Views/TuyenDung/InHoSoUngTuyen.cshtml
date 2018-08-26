@@ -1,0 +1,308 @@
+﻿@model DataAccessAndBussinessLayer.Models.DAO.RegistrationInterview
+@{
+    ViewBag.Title = "In hồ sơ ứng tuyển";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+    <p class="text-center">
+        <button class="btn btn-primary" onclick="printDocuemntRegistration();">
+            <span class="glyphicon glyphicon-print"></span> IN HỒ SƠ
+        </button>
+    </p>
+    <div class="col-sm-10 col-sm-offset-1 document-print a4-style" id="printContent">
+        <h4 class="text-right">
+            <b>
+                Mã hồ sơ:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@Model.Id
+            </b><br />
+            <i style="font-size: 15px">(Do cán bộ rà xoát hồ sơ ghi)</i>
+        </h4>
+        <h4 class="text-center header-a4">
+            <b>PHIẾU THÔNG TIN ĐĂNG KÝ DỰ TUYỂN</b>
+        </h4>
+        <div class="row">
+
+            <div class="col-xs-6 col-sm-6">
+                <p>
+                    Họ và tên:
+                    <b>
+                        @Model.LastName @Model.FirstName
+                    </b>
+                </p>
+                <p>
+                    Ngày sinh:
+                    <b>@Model.DOB.Value.ToString("dd/MM/yyyy")</b>
+                </p>
+            </div>
+
+            <div class="col-xs-6 col-sm-6">
+                <p>
+                    Số CMND: <b>@Model.IdentifyCard</b>
+                </p>
+            </div>
+        </div>
+        <p>
+            Nơi ở hiện nay:<b>
+                @Model.NOHNSoNhaTenDuong, @Model.Ward.Type @Model.Ward.Name, @Model.Ward.District.Type @Model.Ward.District.Name, @Model.Ward.District.Province.Type @Model.Ward.District.Province.Name
+            </b>
+        </p>
+        <p>
+            Hộ khẩu thường trú:<b>
+                @Model.HKTTSoNhaTenDuong, @Model.Ward1.Type @Model.Ward1.Name, @Model.Ward1.District.Type @Model.Ward1.District.Name, @Model.Ward1.District.Province.Type @Model.Ward1.District.Province.Name
+            </b>
+        </p>
+        <div class="row">
+            <div class="col-xs-6 col-sm-6">
+                <p>
+                    Điện thoại: <b>@Model.SDT</b>
+                </p>
+            </div>
+            <div class="col-xs-6 col-sm-6">
+                <p>
+                    Email: <b>@Model.Email</b>
+                </p>
+            </div>
+        </div>
+
+        <p>
+            Trường Đào tạo: <b>@Model.TenTruongDaiHoc</b>
+        </p>
+        <div class="row">
+            <div class="col-xs-6 col-sm-6">
+                <p>
+                    Tốt nghiệp:
+                    <b>@Model.BangTotNghiep.Name</b>
+                </p>
+            </div>
+            <div class="col-xs-6 col-sm-6">
+                <p>
+                    Hệ đào tạo: <b>@Model.HinhThucDaoTao.Name</b>
+                </p>
+            </div>
+            <div class="col-xs-6 col-sm-6">
+                <p>
+                    Năm tốt nghiệp: <b>@Model.NamTotNghiep</b>
+                </p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-6 col-sm-6">
+                <p>
+                    Kiểu đào tạo:
+                    @{
+                    if (Model.IsNienChe == true)
+                    {
+                        <b> Niên chế</b>
+                }
+                else
+                {
+                    <b> Tín chỉ</b>
+            }
+
+                    }
+
+                </p>
+            </div>
+            <div class="col-xs-6 col-sm-6">
+                <p>
+                    Xếp loại tốt nghiệp:
+                    <b>@Model.XepLoaiHocLuc.Name</b>
+                </p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-6 col-sm-6">
+                <p>
+                    Điểm TB các môn học: <b>@Model.GPA</b>
+                </p>
+            </div>
+            @{
+            if (Model.IsNienChe == true)
+            {
+                <div class="col-xs-6 col-sm-6">
+                    <p>
+                        Điểm TB luận văn:
+                        <b>
+                            @Model.DiemLuanVan
+                        </b>
+                    </p>
+
+
+                </div>
+        }
+            }
+
+        </div>
+        <p>
+            Trình độ cao nhất:
+            <b>@Model.TrinhDoCaoNhat.Name</b>
+        </p>
+
+        <p>
+            Chứng chỉ Nghiệp vụ sư phạm:
+            @{
+            if (@Model.IsHadNghiepVuSupham == true)
+            {
+                <b>Đã có</b>
+        }
+        else
+        {
+            <b>Chưa có</b>
+    }
+            }
+
+
+        </p>
+        <div class="row">
+            <div class="col-sm-9 col-xs-9">
+                <p>
+                    Nơi đăng ký dự tuyển:<b>
+                        SỞ GIÁO DỤC VÀ ĐAO TẠO TP.HỒ CHÍ MINH
+                    </b>
+                </p>
+            </div>
+            <div class="col-xs-3 col-sm-3">
+                <p>
+                    Bậc: <b>THPT</b>
+                </p>
+            </div>
+        </div>
+
+        <p>
+            Môn đăng kí dự tuyển:
+            <b>
+                @Model.MonDuTuyen.Name
+            </b>
+        </p>
+        <div class="row">
+            <div class="col-xs-4 col-sm-4">
+                <p>
+                    Nguyện vọng 1:<b>
+                        @Model.District.Type @Model.District.Name
+                    </b>
+                </p>
+            </div>
+            <div class="col-xs-4 col-sm-4">
+                <p>
+                    Nguyện vọng 2:<b>
+                        @Model.District1.Type @Model.District1.Name
+                    </b>
+                </p>
+            </div>
+            <div class="col-xs-4 col-sm-4">
+                <p>
+                    Nguyện vọng 3:<b>
+                        @Model.District2.Type @Model.District2.Name
+                    </b>
+                </p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-6 col-sm-6">
+                <p>
+                    Chứng chỉ Tin học:<b>
+                        @Model.TrinhDoTinHoc.Name
+                    </b>
+                </p>
+            </div>
+            <div class="col-xs-6 col-sm-6">
+                <p>
+                    Chứng chỉ Ngoại ngữ:<b>
+                        @Model.TrinhDoNgoaiNgu.Name
+                    </b>
+                </p>
+            </div>
+        </div>
+        <p>
+            Công tác trong ngành giáo dục:
+            <b>@Model.LamViecTrongNganh.Name</b>
+        </p>
+        <p>
+            <i>
+                Thông tin lương (dành cho ứng viên có công tác và tham gia Bảo hiểm
+                XH)
+            </i>
+        </p>
+        <div class="row">
+            <div class="col-xs-4 col-sm-4">
+                <p>
+                    Năm vào ngành: <b>@Model.NamVaoNghanh</b>
+                </p>
+            </div>
+            <div class="col-xs-4 col-sm-4">
+                <p>
+                    Mã ngạch: <b>@Model.MaNgach</b>
+                </p>
+            </div>
+            <div class="col-xs-4 col-sm-4">
+                <p>
+                    Hệ số lương: <b>@Model.HeSoLuong</b>
+                </p>
+            </div>
+        </div>
+        <p>
+            Mốc nâng lương lần sau:
+            <b>@Model.MocNangLuongLansau</b>
+        </p>
+        <p>
+            <i>
+                Tôi cam đoan những thông tin trên hoàn toàn đúng sự thật và chịu
+                trách nhiệm về những thông tin đã đăng ký!
+            </i>
+        </p>
+        <div class="row signature">
+            <p class="text-center">Ngày&nbsp;&nbsp;&nbsp;&nbsp;tháng&nbsp;&nbsp;&nbsp;&nbsp;năm <b>@DateTime.Now.Year</b></p>
+            <div class="col-xs-6 col-sm-6">
+                <p class="text-center">
+                    <b>Cán bộ kiểm tra</b><br />
+
+                    <i>(Ký và ghi rõ họ tên)</i>
+
+                </p>
+
+            </div>
+            <div class="col-xs-6 col-sm-6">
+                <p class="text-center">
+                    <b>Người đăng ký</b><br />
+                    <i>(Ký và ghi rõ họ tên)</i>
+                </p>
+
+            </div>
+        </div>
+        <p>
+            <i>
+                <b>Người dự tuyển cần lưu ý</b>
+            </i>
+        </p>
+        <ul>
+            <li>
+                <i>
+                    In phiếu này ra giấy ( 02 bản: 1 bản nộp cho cán bộ rà soát dữ
+                    liệu ứng viên)
+                </i>
+            </li>
+            <li>
+                <i>
+                    Khi tham dự rà soát hồ sơ ứng viên mang 1 bộ hồ sơ hoàn chỉnh theo
+                    Kế hoạch tuyển dụng; hồ sơ phải được sao y chứng thực hoặc mang
+                    theo bản chính để đối chứng.
+                </i>
+            </li>
+            <li>
+                <i>
+                    Đề nghị ứng viên thường xuyên theo dõi thông tin, thông báo trên
+                    website của sở giáo dục hoặc website nơi đăng kí hồ sơ
+                </i>
+            </li>
+        </ul>
+
+    </div>
+    <p class="text-center"><button class="btn btn-primary" onclick="printDocuemntRegistration();"><span class="glyphicon glyphicon-print"></span> IN HỒ SƠ</button></p>
+    <script>
+        function printDocuemntRegistration() {
+            $('#printContent').printThis();
+        }
+    </script>
+    <hr>
+
+</div>

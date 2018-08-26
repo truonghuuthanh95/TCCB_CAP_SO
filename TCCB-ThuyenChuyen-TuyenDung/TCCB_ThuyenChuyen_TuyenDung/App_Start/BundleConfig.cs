@@ -23,7 +23,8 @@ namespace TCCB_ThuyenChuyen_TuyenDung
                       "~/Scripts/bootstrap.js",
                       "~/Scripts/respond.js",
                        "~/Scripts/printThis.js",
-                       "~/Scripts/bootstrap-datepicker.js"));
+                       "~/Scripts/bootstrap-datepicker.js",
+                        "~/Scripts/moment.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
