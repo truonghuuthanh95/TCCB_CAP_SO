@@ -30,7 +30,11 @@ namespace TCCB_QuanLy.App_Start
             container.RegisterType<ITrinhDoTinHocRepository, TrinhDoTinHocRepository>(new HierarchicalLifetimeManager());
             container.RegisterType<ITrinhDoCaoNhatRepository, TrinhDoCaoNhatRepository>(new HierarchicalLifetimeManager());
             container.RegisterType<IBangTotNghiepRepository, BangTotNghiepRepository>(new HierarchicalLifetimeManager());
-            container.RegisterType<ILamViecTrongNganhRepository, LamViecTrongNganhRepository>(new HierarchicalLifetimeManager());           
+            container.RegisterType<ILamViecTrongNganhRepository, LamViecTrongNganhRepository>(new HierarchicalLifetimeManager());
+            container.RegisterType<IUserPermissionRepository, UserPermissionRepository>(new HierarchicalLifetimeManager());
+            container.RegisterType<IPermissionRepository, PermissionRepository>(new HierarchicalLifetimeManager());
+            container.RegisterType<IGroupPermissionRepository, GroupPermissionRepository>(new HierarchicalLifetimeManager());
+            container.RegisterType<IAccountRepository, AccountRepository>(new HierarchicalLifetimeManager());
 
         }
     }

@@ -3,6 +3,7 @@ using System.Linq;
 using DataAccessAndBussinessLayer.Repositories.Interfaces;
 using DataAccessAndBussinessLayer.Models.DAO;
 using System.Data.Entity;
+using System.Collections.Generic;
 
 namespace DataAccessAndBussinessLayer.Repositories.Implements
 {
@@ -75,6 +76,69 @@ namespace DataAccessAndBussinessLayer.Repositories.Implements
             }
            
             return registrationInterview;
+        }
+
+        public RegistrationInterview TaoMoiUngVien(RegistrationInterview registrationInterview)
+        {           
+            _db.RegistrationInterviews.Add(registrationInterview);
+            _db.SaveChanges();
+            return registrationInterview;
+            
+
+        }
+
+        public List<RegistrationInterview> GetRegistrationInterviewsByCmnd(string cmnd)
+        {
+            List<RegistrationInterview> registrationInterviews = _db.RegistrationInterviews.Where(s => s.IdentifyCard.Trim() == cmnd.Trim()).OrderByDescending(s => s.CreatedAt).ToList();
+            return registrationInterviews;
+        }
+
+        public int GetRegistrationInterviewsDaDangkiSoLuong()
+        {
+            int count = _db.RegistrationInterviews.Where(s => s.CreatedAt.Value.Year == DateTime.Now.Year && (s.IsActive == true || s.IsActive == null)).Count();
+            return count;
+        }
+
+        public List<RegistrationInterview> GetRegistrationInterviewsDaDangKi()
+        {
+            List<RegistrationInterview> registrationInterviews = _db.RegistrationInterviews.Where(s => s.CreatedAt.Value.Year == DateTime.Now.Year && (s.IsActive == true || s.IsActive == null)).ToList();
+            return registrationInterviews;
+        }
+
+        public List<RegistrationInterview> GetRegistrationInterviewsChuaCapNhat()
+        {
+            List<RegistrationInterview> registrationInterviews = _db.RegistrationInterviews.Where(s => s.CreatedAt.Value.Year == DateTime.Now.Year && (s.IsActive == true || s.IsActive == null) && s.UpdatedAt == null).ToList();
+            return registrationInterviews;
+        }
+
+        public List<RegistrationInterview> GetRegistrationInterviewsDaHoanThanh()
+        {
+            List<RegistrationInterview> registrationInterviews = _db.RegistrationInterviews.Where(s => s.CreatedAt.Value.Year == DateTime.Now.Year && (s.IsActive == true || s.IsActive == null) && s.UpdatedAt != null).ToList();
+            return registrationInterviews;
+        }
+
+        public int GetRegistrationInterviewsChuaCapNhatSoLuong()
+        {
+            int count = _db.RegistrationInterviews.Where(s => s.CreatedAt.Value.Year == DateTime.Now.Year && (s.IsActive == true || s.IsActive == null) && s.UpdatedAt == null).Count();
+            return count;
+        }
+
+        public int GetRegistrationInterviewsDaHoanThanhSoLuong()
+        {
+            int count = _db.RegistrationInterviews.Where(s => s.CreatedAt.Value.Year == DateTime.Now.Year && (s.IsActive == true || s.IsActive == null) && s.UpdatedAt != null).Count();
+            return count;
+        }
+
+        public int GetRegistrationInterviewsHopLeSoLuong()
+        {
+            int count = _db.RegistrationInterviews.Where(s => s.CreatedAt.Value.Year == DateTime.Now.Year && s.NguoiRaSoat != null && (s.IsActive == true || s.IsActive == null)).Count();
+            return count;
+        }
+
+        public List<RegistrationInterview> GetRegistrationInterviewsHopLe()
+        {
+            List<RegistrationInterview> registrationInterviews = _db.RegistrationInterviews.Where(s => s.CreatedAt.Value.Year == DateTime.Now.Year && s.NguoiRaSoat != null && (s.IsActive == true || s.IsActive == null)).ToList();
+            return registrationInterviews;
         }
     }
 }

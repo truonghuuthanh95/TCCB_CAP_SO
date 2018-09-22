@@ -25,12 +25,13 @@ namespace TCCB_QuanLy
                       "~/Scripts/bootstrap-datepicker.js",
                       "~/Scripts/custom.js",
                       "~/Scripts/dataTables.min.js",
-                      "~/Scripts/dataTables.bootstrap.min.js"
+                      "~/Scripts/dataTables.bootstrap.min.js",
+                      "~/Scripts/printThis.js"
                       ));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
-                      "~/Content/site.css",
+                      "~/Content/Site.css",
                       "~/Content/font-awesome.min.css",
                       "~/Content/datepicker3.css",
                       "~/Content/styles.css",

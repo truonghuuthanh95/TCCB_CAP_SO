@@ -1,12 +1,12 @@
 body {
   background: #f1f4f7;
-  padding-top: 60px;
+  /*padding-top: 60px;*/
   font-size: 14px;
   color: #444444;
-  font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif; }
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; }
 
 p {
-  color: #777; }
+  color: #444444; }
 
 a, a:hover, a:focus {
   color: #30a5ff; }

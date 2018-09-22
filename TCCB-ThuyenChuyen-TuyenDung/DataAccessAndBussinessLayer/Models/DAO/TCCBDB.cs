@@ -19,6 +19,7 @@ namespace DataAccessAndBussinessLayer.Models.DAO
         public virtual DbSet<CapTruong> CapTruongs { get; set; }
         public virtual DbSet<ChuyenNganhDaoTao> ChuyenNganhDaoTaos { get; set; }
         public virtual DbSet<District> Districts { get; set; }
+        public virtual DbSet<GroupPermission> GroupPermissions { get; set; }
         public virtual DbSet<HinhThucDaoTao> HinhThucDaoTaos { get; set; }
         public virtual DbSet<HoaDon> HoaDons { get; set; }
         public virtual DbSet<LamViecTrongNganh> LamViecTrongNganhs { get; set; }

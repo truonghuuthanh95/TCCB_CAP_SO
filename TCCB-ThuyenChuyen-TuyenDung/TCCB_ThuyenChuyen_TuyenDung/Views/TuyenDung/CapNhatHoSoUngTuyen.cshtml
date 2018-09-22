@@ -386,7 +386,7 @@
                                 <label for="formControlsSelect" class="control-label">16.Năm tốt nghiệp</label>
                                 <select name="namtotnghiep" id="namtotnghiep" class="form-control">
                                     @{
-                        for (int i = DateTime.Now.Year - 50; i < DateTime.Now.Year - 20; i++)
+                        for (int i = DateTime.Now.Year - 50; i <= DateTime.Now.Year; i++)
                         {
                             if (i == Model.RegistrationInterview.NamTotNghiep)
                             {
@@ -811,6 +811,7 @@
                 $(element).parent().removeClass("has-error");
             },
             submitHandler: function (form) {
+                
                 $('#submit').hide();
                 $('#loader').show();
                 $.post('/tuyendung/submitcapnhat', {
