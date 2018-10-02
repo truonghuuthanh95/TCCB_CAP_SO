@@ -11,7 +11,7 @@ namespace TCCB_ThuyenChuyen_TuyenDung.Controllers
         // GET: LienHe
         [Route("lienhe")]
         [HttpGet]
-        public ActionResult KienHe()
+        public ActionResult LienHe()
         {
             return View();
         }

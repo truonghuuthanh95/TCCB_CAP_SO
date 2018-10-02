@@ -186,6 +186,7 @@
     <Compile Include="Controllers\DiaChiController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LienHeController.cs" />
+    <Compile Include="Controllers\ThuyenChuyenController.cs" />
     <Compile Include="Controllers\TuyenDungController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -253,10 +254,11 @@
     <Content Include="Views\TuyenDung\CapNhatHoSoUngTuyen.cshtml" />
     <Content Include="Views\TuyenDung\KiemTraMaDangKi.cshtml" />
     <Content Include="Views\TuyenDung\InHoSoUngTuyen.cshtml" />
-    <Content Include="Views\LienHe\KienHe.cshtml" />
+    <Content Include="Views\LienHe\LienHe.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\ThuyenChuyen\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

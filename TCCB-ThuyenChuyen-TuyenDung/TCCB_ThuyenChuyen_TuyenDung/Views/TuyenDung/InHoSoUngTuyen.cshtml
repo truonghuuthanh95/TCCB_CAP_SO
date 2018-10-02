@@ -141,7 +141,7 @@
         <p>
             Chứng chỉ Nghiệp vụ sư phạm:
             @{
-            if (@Model.IsHadNghiepVuSupham == true)
+            if (Model.IsHadNghiepVuSupham == true)
             {
                 <b>Đã có</b>
         }
@@ -171,7 +171,7 @@
         <p>
             Môn đăng kí dự tuyển:
             <b>
-                @Model.MonDuTuyen.Name
+                @Model.MonDuTuyen.ViTriUngTuyen.Name @Model.MonDuTuyen.Name
             </b>
         </p>
         <div class="row">
