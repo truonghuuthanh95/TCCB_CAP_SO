@@ -1,4 +1,4 @@
-﻿using DataAccessAndBussinessLayer.Models.DAO;
+﻿using TCCB_QuanLy.Models.DAO;
 using System.Collections.Generic;
 
 namespace TCCB_QuanLy.Models.DTO

@@ -223,11 +223,5 @@ C:\Users\thanhthse61493\Desktop\ASP.NET MVC\Git\TCCB_CAP_SO\TCCB-ThuyenChuyen-Tu
 C:\Users\thanhthse61493\Desktop\ASP.NET MVC\Git\TCCB_CAP_SO\TCCB-ThuyenChuyen-TuyenDung\TCCB_QuanLy\obj\Debug\TCCB_QuanLy.pdb
 C:\Users\thanhthse61493\Desktop\ASP.NET MVC\Git\TCCB_CAP_SO\TCCB-ThuyenChuyen-TuyenDung\TCCB_QuanLy\bin\EntityFramework.dll
 C:\Users\thanhthse61493\Desktop\ASP.NET MVC\Git\TCCB_CAP_SO\TCCB-ThuyenChuyen-TuyenDung\TCCB_QuanLy\bin\EntityFramework.SqlServer.dll
-C:\Users\thanhthse61493\Desktop\ASP.NET MVC\Git\TCCB_CAP_SO\TCCB-ThuyenChuyen-TuyenDung\TCCB_QuanLy\bin\TCCB_ThuyenChuyen_TuyenDung.dll
-C:\Users\thanhthse61493\Desktop\ASP.NET MVC\Git\TCCB_CAP_SO\TCCB-ThuyenChuyen-TuyenDung\TCCB_QuanLy\bin\TCCB_ThuyenChuyen_TuyenDung.pdb
-C:\Users\thanhthse61493\Desktop\ASP.NET MVC\Git\TCCB_CAP_SO\TCCB-ThuyenChuyen-TuyenDung\TCCB_QuanLy\bin\TCCB_ThuyenChuyen_TuyenDung.dll.config
 C:\Users\thanhthse61493\Desktop\ASP.NET MVC\Git\TCCB_CAP_SO\TCCB-ThuyenChuyen-TuyenDung\TCCB_QuanLy\bin\EntityFramework.xml
 C:\Users\thanhthse61493\Desktop\ASP.NET MVC\Git\TCCB_CAP_SO\TCCB-ThuyenChuyen-TuyenDung\TCCB_QuanLy\bin\EntityFramework.SqlServer.xml
-C:\Users\thanhthse61493\Desktop\ASP.NET MVC\Git\TCCB_CAP_SO\TCCB-ThuyenChuyen-TuyenDung\TCCB_QuanLy\bin\DataAccessAndBussinessLayer.dll
-C:\Users\thanhthse61493\Desktop\ASP.NET MVC\Git\TCCB_CAP_SO\TCCB-ThuyenChuyen-TuyenDung\TCCB_QuanLy\bin\DataAccessAndBussinessLayer.pdb
-C:\Users\thanhthse61493\Desktop\ASP.NET MVC\Git\TCCB_CAP_SO\TCCB-ThuyenChuyen-TuyenDung\TCCB_QuanLy\bin\DataAccessAndBussinessLayer.dll.config

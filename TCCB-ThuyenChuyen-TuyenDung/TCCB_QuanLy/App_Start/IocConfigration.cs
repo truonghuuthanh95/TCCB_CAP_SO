@@ -1,5 +1,5 @@
-﻿using DataAccessAndBussinessLayer.Repositories.Implements;
-using DataAccessAndBussinessLayer.Repositories.Interfaces;
+﻿using TCCB_QuanLy.Repositories.Implements;
+using TCCB_QuanLy.Repositories.Interfaces;
 using System.Web.Mvc;
 using Unity;
 using Unity.Lifetime;
@@ -35,6 +35,7 @@ namespace TCCB_QuanLy.App_Start
             container.RegisterType<IPermissionRepository, PermissionRepository>(new HierarchicalLifetimeManager());
             container.RegisterType<IGroupPermissionRepository, GroupPermissionRepository>(new HierarchicalLifetimeManager());
             container.RegisterType<IAccountRepository, AccountRepository>(new HierarchicalLifetimeManager());
+            container.RegisterType<ICapTruongRepository, CapTruongRepository>(new HierarchicalLifetimeManager());
 
         }
     }
