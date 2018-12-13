@@ -71,10 +71,8 @@ namespace TCCB_QuanLy.Repositories.Implements
             }
             catch (Exception)
             {
-
                 return null;
-            }
-           
+            }          
             return registrationInterview;
         }
 

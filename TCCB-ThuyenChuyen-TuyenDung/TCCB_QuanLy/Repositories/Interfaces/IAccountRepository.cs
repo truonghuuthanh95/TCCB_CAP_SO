@@ -8,6 +8,7 @@ namespace TCCB_QuanLy.Repositories.Interfaces
 {
     public interface IAccountRepository
     {
-        List<Account> GetAccounts();
+        IQueryable<Account> GetAccounts();
+        Account GetAccountByUsernameAndPassword(string username, string password);
     }
 }

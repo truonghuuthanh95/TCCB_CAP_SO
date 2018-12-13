@@ -1,0 +1,78 @@
+﻿
+@{
+    ViewBag.Title = "Trạng thái hồ sơ";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+    <ol class="breadcrumb">
+        <li>
+            <a href="#">
+                <em class="fa fa-home"></em>
+            </a>
+        </li>
+        <li class="active">Thuyên Chuyên</li>
+        <li class="active">Trạng Thái Hồ Sơ</li>
+    </ol>
+</div><!--/.row-->
+<div class="row">
+    <div class="col-lg-12">
+        <h1 class="page-header">Trạng Thái Hồ Sơ</h1>
+    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading form-group">
+        <form class="form-inline">
+            <label style="font-size: 16px;">Danh sách hồ sơ</label>
+
+            <div class="form-group">
+                <select class="form-control" id="trangthai" onchange="location = this.value;">
+                    <option value="/thuyenchuyen/trangthaihoso/1" class="form-control">Đã tiếp nhận</option>
+                    <option value="/thuyenchuyen/trangthaihoso/2" class="form-control">Đã Trình</option>
+                    <option value="/thuyenchuyen/trangthaihoso/100" class="form-control">Tất cả</option>
+                </select>
+            </div>
+        </form>
+    </div>
+    <div class="panel-body table-responsive">
+        <table class="table table-condensed" id="danhsachthuyenchuyen">
+            <thead>
+                <tr>
+                    <th>Mã hồ sơ</th>
+                    <th>Hộ tên</th>
+                    <th>Số CMND</th>
+                    <th>Đang công tác</th>
+                    <th>Xin chuyễn đến</th>
+                    <th>Trạng thái</th>
+                    <th>Thao Tác</th>
+                </tr>
+            </thead>
+            <tbody>
+                @{
+                    foreach (var item in ViewBag.ThuyenChuyens)
+                    {
+                        <tr>
+                            <td>@item.Id</td>
+                            <td>@item.HoTen</td>
+                            <td>@item.CMND</td>
+                            <td>@item.School.TenTruong</td>
+                            <td>@item.School1.TenTruong</td>
+                            <td>@item.StatusThuyenChuyen.Name</td>
+                            <td><a href="/thuyenchuyen/chitiethoso/@item.Id" role="button" class="btn btn-sm btn-info"><span class="glyphicon glyphicon-eye-open"></span> Chi tiết</a><button class="btn btn-sm btn-success"><span class="glyphicon glyphicon-edit"></span> Cập nhật</button></td>
+                        </tr>
+                    }
+                }
+
+            </tbody>
+        </table>
+    </div>
+</div>
+<input hidden value="/thuyenchuyen/trangthaihoso/@ViewBag.StatusId" id="trangthaitmp"/>
+<script>
+    $(document).ready(function () {
+        $('#danhsachthuyenchuyen').DataTable();
+        $("#trangthai").val($('#trangthaitmp').val());
+    });
+    
+
+</script>

@@ -12,9 +12,10 @@ namespace TCCB_QuanLy.Models.DAO
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public CapTruong()
         {
-            Truongs = new HashSet<Truong>();
+            Schools = new HashSet<School>();
         }
 
+        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int Id { get; set; }
 
         [StringLength(50)]
@@ -22,10 +23,10 @@ namespace TCCB_QuanLy.Models.DAO
 
         public bool? IsActive { get; set; }
 
-        [StringLength(10)]
+        [StringLength(50)]
         public string Notation { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Truong> Truongs { get; set; }
+        public virtual ICollection<School> Schools { get; set; }
     }
 }

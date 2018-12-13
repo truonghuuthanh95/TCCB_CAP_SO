@@ -16,9 +16,15 @@ namespace TCCB_QuanLy.Repositories.Implements
             _db = db;
         }
 
-        public List<Account> GetAccounts()
+        public Account GetAccountByUsernameAndPassword(string username, string password)
         {
-            List<Account> accounts = _db.Accounts.ToList();
+            Account account = _db.Accounts.Where(s => s.Username == username.Trim() && s.Password == password.Trim()).SingleOrDefault();
+            return account;
+        }
+
+        public IQueryable<Account> GetAccounts()
+        {
+            IQueryable<Account> accounts = _db.Accounts;
             return accounts;
         }
     }

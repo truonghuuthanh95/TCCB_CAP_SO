@@ -1,0 +1,289 @@
+﻿
+@{
+    ViewBag.Title = "ChiTietHoSo";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="row">
+    <ol class="breadcrumb">
+        <li>
+            <a href="#">
+                <em class="fa fa-home"></em>
+            </a>
+        </li>
+        <li>
+            <a href="/thuyen/quanlychung">
+                Quản Lý Chung Thuyên Chuyển
+            </a>
+        </li>
+        <li>
+            <a href="/thuyen/tiepnhanhoso">
+                Tiếp Nhận Hồ Sơ
+            </a>
+        </li>
+        <li class="active">Chi tiết hồ sơ</li>
+    </ol>
+</div>
+<div class="row">
+    <div class="col-lg-12">
+        <h1 class="page-header">Chi tiết hồ sơ mã hồ sơ @ViewBag.ThuyenChuyen.Id</h1>
+    </div>
+</div>
+<div id="thuyenchuyendetail">
+    <div class="col-sm-12">
+        <div class="row">
+            <div class="col-sm-5">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        Đơn vị đang công tác
+                    </div>
+                    <div class="panel-body">
+                        <form class="form-horizontal">
+                            <div class="form-group">
+                                <label for="inputEmail3" class="col-sm-4 control-label">Tên trường</label>
+                                <div class="col-sm-6">
+                                    <p class="form-control-static" id="tentruongdct">@ViewBag.ThuyenChuyen.School.TenTruong</p>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputEmail3" class="col-sm-4 control-label">Cấp trường</label>
+                                <div class="col-sm-6">
+                                    <p class="form-control-static" id="captruongdct">@ViewBag.ThuyenChuyen.CapDayDVDCT</p>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputEmail3" class="col-sm-4 control-label">Môn dạy</label>
+                                <div class="col-sm-6">
+                                    <p class="form-control-static" id="mondaydct">@ViewBag.ThuyenChuyen.MonDuTuyen.Name</p>
+                                </div>
+                            </div>
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-2">
+                <h5 class="text-center text-danger" style="padding-top: 45%">CHUYỂN ĐẾN</h5>
+                <div class="text-danger text-center" style="font-size: 30px;"><span class="glyphicon glyphicon-arrow-right"></span></div>
+            </div>
+            <div class="col-sm-5">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        Đơn vị xin chuyển đến
+                    </div>
+                    <div class="panel-body">
+                        <form class="form-horizontal">
+                            <div class="form-group">
+                                <label for="inputEmail3" class="col-sm-4 control-label">Tên trường</label>
+                                <div class="col-sm-6">
+                                    <p class="form-control-static" id="tentruongcd">@ViewBag.ThuyenChuyen.School1.TenTruong</p>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputEmail3" class="col-sm-4 control-label">Cấp trường</label>
+                                <div class="col-sm-6">
+                                    <p class="form-control-static" id="captruongcd">@ViewBag.ThuyenChuyen.CapDayDVCD</p>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="col-sm-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                Thông tin cá nhân
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <form class="form-horizontal">
+                            <div class="form-group">
+                                <label for="inputEmail3" class="col-sm-4 control-label">Họ và tên</label>
+                                <div class="col-sm-6">
+                                    <p class="form-control-static" id="hovaten">@ViewBag.ThuyenChuyen.HoTen</p>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputEmail3" class="col-sm-4 control-label">Số CMND</label>
+                                <div class="col-sm-6">
+                                    <p class="form-control-static" id="cmnd">@ViewBag.ThuyenChuyen.CMND</p>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputEmail3" class="col-sm-4 control-label">Giới tính</label>
+                                <div class="col-sm-6">
+                                    @{
+                                        if (@ViewBag.ThuyenChuyen.IsMale == true)
+                                        {
+                                            <p class="form-control-static" id="gioitinh">Nam</p>
+                                        }
+                                        else
+                                        {
+                                            <p class="form-control-static" id="gioitinh">nữ</p>
+                                        }
+                                    }
+
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputEmail3" class="col-sm-4 control-label">Năm sinh</label>
+                                <div class="col-sm-6">
+                                    <p class="form-control-static" id="namsinh">@ViewBag.ThuyenChuyen.NamSinh.ToString("dd-MM-yyyy")</p>
+                                </div>
+                            </div>
+
+                        </form>
+                    </div>
+                    <div class="col-sm-6">
+                        <form class="form-horizontal">
+                            <div class="form-group">
+                                <label for="inputEmail3" class="col-sm-4 control-label">Nơi sinh</label>
+                                <div class="col-sm-6">
+                                    <p class="form-control-static" id="noisinh">@ViewBag.ThuyenChuyen.Ward.Type @ViewBag.ThuyenChuyen.Ward.Name, @ViewBag.ThuyenChuyen.Ward.District.Type @ViewBag.ThuyenChuyen.Ward.District.Name, @ViewBag.ThuyenChuyen.Ward.District.Province.Type @ViewBag.ThuyenChuyen.Ward.District.Province.Name</p>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputEmail3" class="col-sm-4 control-label">Hộ khẩu thường trú</label>
+                                <div class="col-sm-6">
+                                    <p class="form-control-static" id="hokhauthuongtru">@ViewBag.ThuyenChuyen.SoNhaTenDuong, @ViewBag.ThuyenChuyen.Ward1.Type @ViewBag.ThuyenChuyen.Ward1.Name, @ViewBag.ThuyenChuyen.Ward1.District.Type @ViewBag.ThuyenChuyen.Ward1.District.Name, @ViewBag.ThuyenChuyen.Ward1.District.Province.Type @ViewBag.ThuyenChuyen.Ward1.District.Province.Name</p>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputEmail3" class="col-sm-4 control-label">Số điên thoại</label>
+                                <div class="col-sm-6">
+                                    <p class="form-control-static" id="sodienthoai">@ViewBag.ThuyenChuyen.SDT</p>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputEmail3" class="col-sm-4 control-label">Email</label>
+                                <div class="col-sm-6">
+                                    <p class="form-control-static" id="email">@ViewBag.ThuyenChuyen.Email</p>
+                                </div>
+                            </div>
+
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                Trình độ học vấn
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <form class="form-horizontal">
+                            <div class="form-group">
+                                <label for="inputEmail3" class="col-sm-4 control-label">Hệ đào tạo</label>
+                                <div class="col-sm-6">
+                                    <p class="form-control-static" id="hedaotao">@ViewBag.ThuyenChuyen.BangTotNghiep.Name</p>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputEmail3" class="col-sm-4 control-label">Ngành đào tạo</label>
+                                <div class="col-sm-6">
+                                    <p class="form-control-static" id="nganhdaotao">@ViewBag.ThuyenChuyen.ChuyenNganhDaoTao.Name</p>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="col-sm-6">
+                        <form class="form-horizontal">
+                            <div class="form-group">
+                                <label for="inputEmail3" class="col-sm-4 control-label">Hình thức đào tạo</label>
+                                <div class="col-sm-6">
+                                    <p class="form-control-static" id="hinhthucdaotao">@ViewBag.ThuyenChuyen.HinhThucDaoTao.Name</p>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputEmail3" class="col-sm-4 control-label">Xếp loại tốt nghiệp</label>
+                                <div class="col-sm-6">
+                                    <p class="form-control-static" id="xeploaitotnghiep">@ViewBag.ThuyenChuyen.XepLoaiHocLuc.Name</p>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <form class="form-horizontal">
+                            <div class="form-group">
+                                <label for="inputEmail3" class="col-sm-4 control-label">Trình độ cao nhất</label>
+                                <div class="col-sm-6">
+                                    <p class="form-control-static" id="hedaotao">@ViewBag.ThuyenChuyen.TrinhDoCaoNhat.Name</p>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                Thông tin về lương
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <form class="form-horizontal">
+                            <div class="form-group">
+                                <label for="inputEmail3" class="col-sm-4 control-label">Mã ngạch</label>
+                                <div class="col-sm-6">
+                                    <p class="form-control-static" id="mangach">@ViewBag.ThuyenChuyen.MaNghach</p>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputEmail3" class="col-sm-4 control-label">Mốc thời gian nâng lương</label>
+                                <div class="col-sm-6">
+                                    <p class="form-control-static" id="mocnangluong">@ViewBag.ThuyenChuyen.MocNangLuong.ToString("dd/MM/yyyy")</p>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="col-sm-6">
+                        <form class="form-horizontal">
+                            <div class="form-group">
+                                <label for="inputEmail3" class="col-sm-4 control-label">Hệ số</label>
+                                <div class="col-sm-6">
+                                    <p class="form-control-static" id="heso">@ViewBag.ThuyenChuyen.HeSo</p>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputEmail3" class="col-sm-4 control-label">Bậc lương</label>
+                                <div class="col-sm-6">
+                                    <p class="form-control-static" id="bacluong">@ViewBag.ThuyenChuyen.BacLuong</p>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">Thông tin quan hệ gia đình</div>
+            <div class="panel-body">
+                <p id="thongtinquanhegiadinh">@ViewBag.ThuyenChuyen.ThongTinQuanHeGiaDinh</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">Thông tin quá trình bản thân</div>
+            <div class="panel-body">
+                <p id="thongtinquatrinhbanthan">@ViewBag.ThuyenChuyen.ThongTinQuanHeBanThan</p>
+            </div>
+        </div>
+    </div>
+</div>

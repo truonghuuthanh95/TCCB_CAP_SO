@@ -123,7 +123,6 @@ namespace TCCB_QuanLy.Controllers
                 }
                 return Json(new ReturnResult(200, "success", registrationInterviewAfterUpdated.Id));
             }
-
             return Json(new ReturnResult(400, "failed", null));
         }
         [Route("inhosoungtuyen/{madangki}")]

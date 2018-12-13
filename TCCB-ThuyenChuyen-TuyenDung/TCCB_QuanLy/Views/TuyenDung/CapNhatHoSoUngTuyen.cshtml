@@ -825,50 +825,50 @@
                     $('#submit').hide();
                     $('#loader').show();
                     $.post('/tuyendung/submitcapnhat', {
-                    Id: @Model.RegistrationInterview.Id,
-                    FirstName: $('#ten').val(),
-                    LastName: $('#hovatenlot').val(),
-                    DOB: moment($('#ngaysinh').val(), 'DD-MM-YYYY').format('YYYY-MM-DD'),
-                    SDT: $('#sdt').val(),
-                    NV01Quan: $('#nguyenvong1').val(),
-                    NV02Quan: $('#nguyenvong2').val(),
-                    NV03Quan: $('#nguyenvong3').val(),
-                    Email: $('#email').val(),
-                    MonDuTuyenId: $('#mondutuyen').val(),
-                    TrinhDoNgoaiNguId: $('#trinhdongoaingu').val(),
-                    TrinhDoTinHocId: $('#trinhdotinhoc').val(),
-                    IsMale: $('#IsMale').val(),
-                    XepLoaiHocLucId: $('#xeploaihocluc').val(),
-                    NamTotNghiep: $('#namtotnghiep').val(),
-                    ChuyenNganhDaoTaoId: $('#chuyennganhdaotao').val(),
-                    IsNienChe: $('#IsNienChe').val(),
-                    GPA: $('#GPA').val(),
-                    DiemLuanVan: $('#diemluanvan').val(),
-                    HinhThucDaoTaoId: $('#hinhthucdaotao').val(),
-                    TrinhDaoCaoNhatId: $('#trinhdocaonhat').val(),
-                    DaiHocDiaDiem: $('#diadiemdaihoc').val(),
-                    TenTruongDaiHoc: $('#tentruongdaotao').val(),
-                    BangTotNghiepId: $('#bangtotnghiep').val(),
-                    IsHadNghiepVuSupham: $('#ishadnghiepvusupham').val(),
-                    LamViecTrongNganhId: $('#congtachtrongnganh').val(),
-                    NamVaoNghanh: $('#namvaonganh').val(),
-                    MaNgach: $('#mangach').val(),
-                    HeSoLuong: $('#hesoluong').val(),
-                    MocNangLuongLansau: $('#mocnangluonglansau').val(),
-                    NOHNWardId: $('#nohnphuongxa').val(),
-                    NOHNSoNhaTenDuong: $('#nohnsonhatenduong').val(),
-                    HKTTWardId: $('#hkttphuongxa').val(),
-                    HKTTSoNhaTenDuong: $('#hkttsonhatenduong').val(),
-                    __RequestVerificationToken: $("input[name=__RequestVerificationToken]").val(),
+                        Id: @Model.RegistrationInterview.Id,
+                        FirstName: $('#ten').val(),
+                        LastName: $('#hovatenlot').val(),
+                        DOB: moment($('#ngaysinh').val(), 'DD-MM-YYYY').format('YYYY-MM-DD'),
+                        SDT: $('#sdt').val(),
+                        NV01Quan: $('#nguyenvong1').val(),
+                        NV02Quan: $('#nguyenvong2').val(),
+                        NV03Quan: $('#nguyenvong3').val(),
+                        Email: $('#email').val(),
+                        MonDuTuyenId: $('#mondutuyen').val(),
+                        TrinhDoNgoaiNguId: $('#trinhdongoaingu').val(),
+                        TrinhDoTinHocId: $('#trinhdotinhoc').val(),
+                        IsMale: $('#IsMale').val(),
+                        XepLoaiHocLucId: $('#xeploaihocluc').val(),
+                        NamTotNghiep: $('#namtotnghiep').val(),
+                        ChuyenNganhDaoTaoId: $('#chuyennganhdaotao').val(),
+                        IsNienChe: $('#IsNienChe').val(),
+                        GPA: $('#GPA').val(),
+                        DiemLuanVan: $('#diemluanvan').val(),
+                        HinhThucDaoTaoId: $('#hinhthucdaotao').val(),
+                        TrinhDaoCaoNhatId: $('#trinhdocaonhat').val(),
+                        DaiHocDiaDiem: $('#diadiemdaihoc').val(),
+                        TenTruongDaiHoc: $('#tentruongdaotao').val(),
+                        BangTotNghiepId: $('#bangtotnghiep').val(),
+                        IsHadNghiepVuSupham: $('#ishadnghiepvusupham').val(),
+                        LamViecTrongNganhId: $('#congtachtrongnganh').val(),
+                        NamVaoNghanh: $('#namvaonganh').val(),
+                        MaNgach: $('#mangach').val(),
+                        HeSoLuong: $('#hesoluong').val(),
+                        MocNangLuongLansau: $('#mocnangluonglansau').val(),
+                        NOHNWardId: $('#nohnphuongxa').val(),
+                        NOHNSoNhaTenDuong: $('#nohnsonhatenduong').val(),
+                        HKTTWardId: $('#hkttphuongxa').val(),
+                        HKTTSoNhaTenDuong: $('#hkttsonhatenduong').val(),
+                        __RequestVerificationToken: $("input[name=__RequestVerificationToken]").val(),
                     }, function (data, status) {
                         debugger;
-                    if (data.StatusCode == 200) {
-                        window.location.replace('/tuyendung/inhosoungtuyen/' + data.Results)
-                    }
-                })
+                        if (data.StatusCode == 200) {
+                            window.location.replace('/tuyendung/inhosoungtuyen/' + data.Results)
+                        }
+                    })
                 }
             }
 
-        })
+        });
     });
 </script>

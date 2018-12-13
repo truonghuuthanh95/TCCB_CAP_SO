@@ -28,7 +28,7 @@ namespace TCCB_QuanLy.Controllers
         {
             List<Permission> permissions = permissionRepository.GetPermissions();
             List<GroupPermission> groupPermissions = groupPermissionRepository.GetGroupPermissions();
-            List<Account> accounts = accountRepository.GetAccounts();
+            IQueryable<Account> accounts = accountRepository.GetAccounts();
             ViewBag.Permissions = permissions;
             ViewBag.GroupPermissions = groupPermissions;
             ViewBag.Accounts = accounts;

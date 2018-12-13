@@ -8,31 +8,37 @@ namespace TCCB_QuanLy.Models.DAO
     public partial class TCCBDB : DbContext
     {
         public TCCBDB()
-            : base("name=TCCBDB2")
+            : base("name=TCCBDB12")
         {
             this.Configuration.LazyLoadingEnabled = false;
             this.Configuration.ProxyCreationEnabled = false;
         }
 
         public virtual DbSet<Account> Accounts { get; set; }
+        public virtual DbSet<BacLuong> BacLuongs { get; set; }
         public virtual DbSet<BangTotNghiep> BangTotNghieps { get; set; }
         public virtual DbSet<CapTruong> CapTruongs { get; set; }
         public virtual DbSet<ChuyenNganhDaoTao> ChuyenNganhDaoTaos { get; set; }
         public virtual DbSet<District> Districts { get; set; }
+        public virtual DbSet<DVQL> DVQLs { get; set; }
         public virtual DbSet<GroupPermission> GroupPermissions { get; set; }
         public virtual DbSet<HinhThucDaoTao> HinhThucDaoTaos { get; set; }
         public virtual DbSet<HoaDon> HoaDons { get; set; }
         public virtual DbSet<LamViecTrongNganh> LamViecTrongNganhs { get; set; }
+        public virtual DbSet<LoaiHinh> LoaiHinhs { get; set; }
+        public virtual DbSet<MaNgach> MaNgaches { get; set; }
         public virtual DbSet<MonDuTuyen> MonDuTuyens { get; set; }
         public virtual DbSet<NgayHetHanSuaThongTin> NgayHetHanSuaThongTins { get; set; }
         public virtual DbSet<Permission> Permissions { get; set; }
         public virtual DbSet<Province> Provinces { get; set; }
         public virtual DbSet<RegistrationInterview> RegistrationInterviews { get; set; }
         public virtual DbSet<Role> Roles { get; set; }
+        public virtual DbSet<School> Schools { get; set; }
+        public virtual DbSet<StatusThuyenChuyen> StatusThuyenChuyens { get; set; }
+        public virtual DbSet<ThuyenChuyen> ThuyenChuyens { get; set; }
         public virtual DbSet<TrinhDoCaoNhat> TrinhDoCaoNhats { get; set; }
         public virtual DbSet<TrinhDoNgoaiNgu> TrinhDoNgoaiNgus { get; set; }
         public virtual DbSet<TrinhDoTinHoc> TrinhDoTinHocs { get; set; }
-        public virtual DbSet<Truong> Truongs { get; set; }
         public virtual DbSet<UserPermission> UserPermissions { get; set; }
         public virtual DbSet<ViTriUngTuyen> ViTriUngTuyens { get; set; }
         public virtual DbSet<Ward> Wards { get; set; }
@@ -54,10 +60,13 @@ namespace TCCB_QuanLy.Models.DAO
                 .WithOptional(e => e.Account1)
                 .HasForeignKey(e => e.NguoiRaSoat);
 
-            modelBuilder.Entity<CapTruong>()
-                .HasMany(e => e.Truongs)
-                .WithOptional(e => e.CapTruong)
-                .HasForeignKey(e => e.SchoolDegreeId);
+            modelBuilder.Entity<BacLuong>()
+                .Property(e => e.Loai)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<BacLuong>()
+                .Property(e => e.Nhom)
+                .IsUnicode(false);
 
             modelBuilder.Entity<District>()
                 .HasMany(e => e.RegistrationInterviews)
@@ -79,10 +88,28 @@ namespace TCCB_QuanLy.Models.DAO
                 .WithRequired(e => e.District)
                 .WillCascadeOnDelete(false);
 
+            modelBuilder.Entity<LoaiHinh>()
+                .HasMany(e => e.Schools)
+                .WithOptional(e => e.LoaiHinh1)
+                .HasForeignKey(e => e.LoaiHinh);
+
+            modelBuilder.Entity<MaNgach>()
+                .Property(e => e.Loai)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<MaNgach>()
+                .Property(e => e.Nhom)
+                .IsUnicode(false);
+
             modelBuilder.Entity<MonDuTuyen>()
                 .Property(e => e.Code)
                 .IsFixedLength()
                 .IsUnicode(false);
+
+            modelBuilder.Entity<MonDuTuyen>()
+                .HasMany(e => e.ThuyenChuyens)
+                .WithOptional(e => e.MonDuTuyen)
+                .HasForeignKey(e => e.DVDCTMonDayId);
 
             modelBuilder.Entity<Province>()
                 .HasMany(e => e.Districts)
@@ -97,6 +124,21 @@ namespace TCCB_QuanLy.Models.DAO
             modelBuilder.Entity<RegistrationInterview>()
                 .Property(e => e.TienHoaDon)
                 .HasPrecision(18, 0);
+
+            modelBuilder.Entity<School>()
+                .HasMany(e => e.ThuyenChuyens)
+                .WithOptional(e => e.School)
+                .HasForeignKey(e => e.DVDCTTruongId);
+
+            modelBuilder.Entity<School>()
+                .HasMany(e => e.ThuyenChuyens1)
+                .WithOptional(e => e.School1)
+                .HasForeignKey(e => e.DVCDTruongId);
+
+            modelBuilder.Entity<StatusThuyenChuyen>()
+                .HasMany(e => e.ThuyenChuyens)
+                .WithOptional(e => e.StatusThuyenChuyen)
+                .HasForeignKey(e => e.StatusId);
 
             modelBuilder.Entity<TrinhDoCaoNhat>()
                 .HasMany(e => e.RegistrationInterviews)
@@ -123,6 +165,16 @@ namespace TCCB_QuanLy.Models.DAO
 
             modelBuilder.Entity<Ward>()
                 .HasMany(e => e.RegistrationInterviews1)
+                .WithOptional(e => e.Ward1)
+                .HasForeignKey(e => e.HKTTWardId);
+
+            modelBuilder.Entity<Ward>()
+                .HasMany(e => e.ThuyenChuyens)
+                .WithOptional(e => e.Ward)
+                .HasForeignKey(e => e.NoisinhWardId);
+
+            modelBuilder.Entity<Ward>()
+                .HasMany(e => e.ThuyenChuyens1)
                 .WithOptional(e => e.Ward1)
                 .HasForeignKey(e => e.HKTTWardId);
         }

@@ -1,0 +1,748 @@
+﻿
+@{
+    ViewBag.Title = "Đăng kí thuyên chuyển";
+    Layout = "~/Views/Shared/_Home_Layout.cshtml";
+}
+<div class="col-sm-12">
+    <div class="row">
+        <div class="col-sm-5">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <h3 class="text-center text-primary text-uppercase">Đơn vị đang công tác</h3>
+                    <form class="form-horizontal" id="dangcongtac">
+                        <div class="form-group">
+                            <label for="inputEmail3" class="col-sm-3 control-label">Quận/Huyện</label>
+                            <div class="col-sm-7">
+                                <select name="DistrictID" id="quanhuyendvdct" class="form-control">
+                                    @{
+                            foreach (var item in ViewBag.Districts)
+                            {
+                                <option value="@item.Id">@item.Type @item.Name</option>
+                }
+                                    }
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputPassword3" class="col-sm-3 control-label">Loại đơn vị</label>
+                            <div class="col-sm-7">
+                                <select name="DistrictID" id="loaitruongdvdct" class="form-control">
+                                    @{
+                            foreach (var item in ViewBag.CapTruongs)
+                            {
+                                if (item.Id == 4)
+                                {
+                                    <option value="@item.Id" selected>@item.Name</option>
+
+                    }
+                    else
+                    {
+                        <option value="@item.Id">@item.Name</option>
+        }
+
+    }
+                                    }
+
+
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputPassword3" class="col-sm-3 control-label">Đơn vị</label>
+                            <div class="col-sm-7">
+                                <select name="DistrictID" id="tentruongdvdct" class="form-control">
+                                    @{
+                            foreach (var item in ViewBag.Schools)
+                            {
+                                <option value="@item.Id">@item.TenTruong</option>
+                }
+                                    }
+                                </select>
+                            </div>
+                        </div>
+                        <div id="isshowcapday">
+                            <div class="form-group">
+                                <label for="inputPassword3" class="col-sm-3 control-label">Cấp dạy</label>
+                                <div class="col-sm-7">
+                                    <select name="DistrictID" id="captruongdvdct" class="form-control">
+                                        <option value="Không có">Không có</option>
+                                        <option value="Mầm non">Mầm non</option>
+                                        <option value="Tiểu học">Tiểu học</option>
+                                        <option value="Trung học cơ sở">Trung học cơ sở</option>
+                                        <option value="Trung học phổ thông">Trung học phổ thông</option>
+                                        <option value="Trung cấp chuyên nghiệp">Trung cấp chuyên nghiệp</option>
+
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="isshowmonday">
+                            <div class="form-group">
+                                <label for="inputPassword3" class="col-sm-3 control-label">Môn dạy</label>
+                                <div class="col-sm-7">
+                                    <select name="DistrictID" id="mondaydvdct" class="form-control">
+                                        <option value="57">Không</option>
+                                        @{
+                                foreach (var item in ViewBag.MonDays)
+                                {
+                                    if (item.Id != 57)
+                                    {
+                                        <option value="@item.Id">@item.Name</option>
+                        }
+
+
+                    }
+                                        }
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group has-feedback" id="errorbatdaucongtac">
+                            <label for="inputPassword3" class="col-sm-4 control-label">Thời điểm bắt đầu công tác tại đơn vị</label>
+                            <div class="col-sm-6">
+                                <input type="text" class="form-control datepicker" id="batdaucongtac" name="batdaucongtac">
+                                <span id="batdaucongtacmessage" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-2">
+            <h3 class="text-center text-danger" style="padding-top: 45%">CHUYỂN ĐẾN</h3>
+            <div class="text-danger text-center" style="font-size: 60px;"><span class="glyphicon glyphicon-arrow-right"></span></div>
+        </div>
+        <div class="col-sm-5">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <h3 class=" text-center text-uppercase text-primary">Đơn vị xin chuyển đến</h3>
+                    <form class="form-horizontal">
+                        <div class="form-group">
+                            <label for="inputEmail3" class="col-sm-3 control-label">Quận/Huyện</label>
+                            <div class="col-sm-7">
+                                <select name="DistrictID" id="quanhuyendvcd" class="form-control">
+                                    @{
+                                        foreach (var item in ViewBag.Districts)
+                                        {
+                                            <option value="@item.Id">@item.Type @item.Name</option>
+                                        }
+                                    }
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputPassword3" class="col-sm-3 control-label">Loại đơn vị</label>
+                            <div class="col-sm-7">
+                                <select name="DistrictID" id="loaitruongdvcd" class="form-control">
+                                    @{
+                                        foreach (var item in ViewBag.CapTruongs)
+                                        {
+                                            if (item.Id == 4)
+                                            {
+                                                <option value="@item.Id" selected>@item.Name</option>
+
+                                            }
+                                            else
+                                            {
+                                                <option value="@item.Id">@item.Name</option>
+                                            }
+
+                                        }
+                                    }
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputPassword3" class="col-sm-3 control-label">Đơn vị</label>
+                            <div class="col-sm-7">
+                                <select name="DistrictID" id="tentruongdvcd" class="form-control">
+                                    @{
+                                        foreach (var item in ViewBag.Schools)
+                                        {
+                                            <option value="@item.Id">@item.TenTruong</option>
+                                        }
+                                    }
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputPassword3" class="col-sm-3 control-label">Cấp dạy</label>
+                            <div class="col-sm-7">
+                                <select name="DistrictID" id="captruongdvcd" class="form-control">
+                                    <option value="Không có">Không có</option>
+                                    <option value="Mầm non">Mầm non</option>
+                                    <option value="Tiểu học">Tiểu học</option>
+                                    <option value="Trung học cơ sở">Trung học cơ sở</option>
+                                    <option value="Trung học phổ thông">Trung học phổ thông</option>
+                                    <option value="Trung cấp chuyên nghiệp">Trung cấp chuyên nghiệp</option>
+                                </select>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-10 col-sm-offset-1">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <p class="text-primary text-uppercase"><b>Thông tin cá nhân</b></p>
+                <form id="thuyenchuyen">
+                    @Html.AntiForgeryToken()
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <div class="form-group has-feedback">
+                                <label for="exampleInputEmail1" class="control-label">Họ và tên</label>
+                                <input type="text" class="form-control" id="hovaten" name="hovaten">
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <div class="form-group">
+                                <label for="exampleInputEmail1" class="control-label">Số CMND</label>
+                                <input type="text" class="form-control" id="cmnd" name="cmnd">
+                            </div>
+                        </div>
+                        <div class="col-sm-2">
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Giới tính</label>
+                                <select name="DistrictID" id="gioitinh" class="form-control">
+                                    <option value="true">Nam</option>
+                                    <option value="false">Nữ</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <div class="form-group">
+                                <label for="exampleInputEmail1" class="control-label">Năm sinh</label>
+                                <input type="text" class="form-control datepicker" id="namsinh" name="namsinh">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <div class="form-group">
+                                <label for="exampleInputEmail1" class="control-label">Số điện thoại</label>
+                                <input type="text" class="form-control" id="sdt" name="sdt">
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="exampleInputEmail1" class="control-label">Email</label>
+                                <input type="email" class="form-control" id="email" name="email">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">Nơi sinh</label>
+                    </div>
+                    <div class="col-sm-11 col-sm-offset-1 col-xs-11 col-xs-offset-1">
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <div class="form-group">
+                                    <label for="formControlsSelect" class="control-label">Tỉnh/Thành phố</label>
+                                    <select name="DistrictID" id="tinhnoisinh" class="form-control">
+                                        @{
+                                            foreach (var item in ViewBag.Provinces)
+                                            {
+                                                if (item.Id == 79)
+                                                {
+                                                    <option value="@item.Id" selected>@item.Type @item.Name</option>
+                                                }
+                                                else
+                                                {
+                                                    <option value="@item.Id">@item.Type @item.Name</option>
+                                                }
+
+                                            }
+                                        }
+
+                                        }
+
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-sm-3">
+                                <div class="form-group">
+                                    <label for="formControlsSelect" class="control-label">Quận/Huyện</label>
+                                    <select name="DistrictID" id="quanhuyennoisinh" class="form-control">
+                                        @{
+                                            foreach (var item in ViewBag.Districts)
+                                            {
+                                                <option value="@item.Id">@item.Type @item.Name</option>
+                                            }
+                                        }
+
+                                        }
+
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    <label for="formControlsSelect" class="control-label">Phường/Xã</label>
+                                    <select name="WardIdCurrentLiving" id="phuongxanoisinh" class="form-control">
+                                        @{
+                                            foreach (var item in ViewBag.Wards)
+                                            {
+                                                <option value="@item.Id">@item.Type @item.Name</option>
+                                            }
+                                        }
+
+                                        }
+
+                                    </select>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">Hộ khẩu thường trú</label>
+                    </div>
+                    <div class="col-sm-11 col-sm-offset-1 col-xs-11 col-xs-offset-1">
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    <label for="formControlsSelect" class="control-label">Tỉnh/Thành phố</label>
+                                    <select name="ProvinceId" id="tinhhktt" class="form-control">
+                                        @{
+                                            foreach (var item in ViewBag.Provinces)
+                                            {
+                                                if (item.Id == 79)
+                                                {
+                                                    <option value="@item.Id" selected>@item.Type @item.Name</option>
+                                                }
+                                                else
+                                                {
+                                                    <option value="@item.Id">@item.Type @item.Name</option>
+                                                }
+                                            }
+                                        }
+
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-sm-3">
+                                <div class="form-group">
+                                    <label for="formControlsSelect" class="control-label">Quận/Huyện</label>
+                                    <select name="DistrictIDHouseHole" id="quanhuyenhktt" class="form-control">
+                                        @{
+                                            foreach (var item in ViewBag.Districts)
+                                            {
+                                                <option value="@item.Id">@item.Type @item.Name</option>
+                                            }
+                                        }
+
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    <label for="formControlsSelect" class="control-label">Phường/Xã</label>
+                                    <select name="WardIdHouseHold" id="phuongxahktt" class="form-control">
+
+                                        @{
+                                            foreach (var item in ViewBag.Wards)
+                                            {
+                                                <option value="@item.Id">@item.Type @item.Name</option>
+                                            }
+                                        }
+
+
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-5">
+                                <div class="form-group has-feedback">
+                                    <label for="formControlsSelect" class="control-label">
+                                        Số nhà, tên đường/Thôn
+                                    </label>
+                                    <input type="text" name="sonhatenduong" id="sonhatenduong" class="form-control">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-primary text-uppercase"><b>Thông tin trình độ chuyên môn: (Căn cứ vào bằng tốt nghiệp)</b></p>
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Hệ đào tạo</label>
+                                <select name="WardIdHouseHold" id="hedaotao" class="form-control">
+                                    @{
+                                        foreach (var item in ViewBag.BangTotNghieps)
+                                        {
+                                            <option value="@item.Id">@item.Name</option>
+                                        }
+                                    }
+                                </select>
+
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Ngành đào tạo</label>
+                                <select name="WardIdHouseHold" id="nganhdaotao" class="form-control">
+                                    @{
+                                        foreach (var item in ViewBag.ChuyenNganhDaoTaos)
+                                        {
+                                            <option value="@item.Id">@item.Name</option>
+                                        }
+                                    }
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Hình thức đào tạo</label>
+                                <select name="WardIdHouseHold" id="hinhthucdaotao" class="form-control">
+                                    @{
+                                        foreach (var item in ViewBag.HinhThucDaoTaos)
+                                        {
+                                            <option value="@item.Id">@item.Name</option>
+                                        }
+                                    }
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-sm-2">
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Xếp loại tốt nghiệp</label>
+                                <select name="WardIdHouseHold" id="xeploaitotnghiep" class="form-control">
+                                    @{
+                                        foreach (var item in ViewBag.XepLoaiHocLucs)
+                                        {
+                                            <option value="@item.Id">@item.Name</option>
+                                        }
+                                    }
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Trình độ cao nhất</label>
+                                <select name="WardIdHouseHold" id="trinhdocaonhat" class="form-control">
+                                    @{
+                foreach (var item in ViewBag.TrinhDoCaoNhats)
+                {
+                        <option value="@item.Id">@item.Name</option>
+}
+                                    }
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-primary text-uppercase"><b>Thông tin quan hệ gia đình: (Căn cứ vào Sơ yếu lý lịch - mẫu 2c/BNV)</b></p>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1" class="control-label"></label>
+                        <textarea class="form-control" rows="5" id="thongtinquanhegiadinh" name="thongtinquanhegiadinh"></textarea>
+                    </div>
+                    <p class="text-primary text-uppercase"><b>Thông tin quá trình bản thân: (Căn cứ vào Sơ yếu lý lịch - mẫu 2c/BNV)</b></p>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1" class="control-label"></label>
+                        <textarea class="form-control" rows="5" id="thongtinquatrinhbanthan" name="thongtinquatrinhbanthan"></textarea>
+                    </div>
+                    <p class="text-primary text-uppercase"><b>Thông tin về lương: (Căn cứ vào Quyết định lương hiện hưởng)</b></p>
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Mã ngạch</label>
+                                <input type="text" class="form-control" id="mangach" name="mangach">
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Bậc lương</label>
+                                <select class="form-control" id="bacluong">
+                                    @{
+        for (int i = 1; i < 10; i++)
+        {
+                                <option value="Bậc @i">Bậc @i</option>
+}
+                                    }
+
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-sm-2">
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Hệ số</label>
+                                <input type="text" class="form-control" id="heso" name="heso">
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <div class="form-group">
+                                <label for="exampleInputEmail1" class="control-label">Mốc thời gian nâng lương</label>
+                                <input type="text" class="form-control datepicker" id="mocnangluong" name="mocnangluong">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="text-center">
+                        <button class="btn btn-success btn-block text-uppercase" type="submit">Hoàn tất và in phiếu đăng kí</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<span class="loader" hidden id="preloader"></span>
+<script>
+    $('#loaitruongdvdct').change(function () {
+        if ($(this).val() == 1) {
+            $('#isshowmonday').hide();
+
+        }
+        else {
+            $('#isshowmonday').show();
+        }
+    });
+    $('#quanhuyenhktt').change(function () {
+        $.get('/getWardByDistrictId/' + $(this).val(), function (data, status) {
+            var wards = JSON.parse(data.Results);
+            $('#phuongxahktt').children().remove().end();
+            for (var i = 0; i < wards.length; i++) {
+
+                $('#phuongxahktt').append('<option value=' + wards[i].Id + '>' + wards[i].Type + ' ' + wards[i].Name + '</option>')
+            }
+
+        })
+    })
+    $('#tinhhktt').change(function () {
+        $.get('/getDistrictByProvinceId/' + $(this).val(), function (data, status) {
+            var districts = JSON.parse(data.Results);
+            $('#quanhuyenhktt').children().remove().end();
+            for (var i = 0; i < districts.length; i++) {
+                $('#quanhuyenhktt').append('<option value=' + districts[i].Id + '>' + districts[i].Type + ' ' + districts[i].Name + '</option>')
+            }
+            $.get('/getWardByDistrictId/' + districts[0].Id, function (data, status) {
+                var wards = JSON.parse(data.Results);
+                $('#phuongxahktt').children().remove().end();
+                for (var i = 0; i < wards.length; i++) {
+                    $('#phuongxahktt').append('<option value=' + wards[i].Id + '>' + wards[i].Type + ' ' + wards[i].Name + '</option>')
+                }
+            })
+        })
+    })
+    $('#quanhuyennoisinh').change(function () {
+        $.get('/getWardByDistrictId/' + $(this).val(), function (data, status) {
+            var wards = JSON.parse(data.Results);
+            $('#phuongxanoisinh').children().remove().end();
+            for (var i = 0; i < wards.length; i++) {
+
+                $('#phuongxanoisinh').append('<option value=' + wards[i].Id + '>' + wards[i].Type + ' ' + wards[i].Name + '</option>')
+            }
+
+        })
+    })
+    $('#tinhnoisinh').change(function () {
+        $.get('/getDistrictByProvinceId/' + $(this).val(), function (data, status) {
+            var districts = JSON.parse(data.Results);
+            $('#quanhuyennoisinh').children().remove().end();
+            for (var i = 0; i < districts.length; i++) {
+                $('#quanhuyennoisinh').append('<option value=' + districts[i].Id + '>' + districts[i].Type + ' ' + districts[i].Name + '</option>')
+            }
+            $.get('/getWardByDistrictId/' + districts[0].Id, function (data, status) {
+                var wards = JSON.parse(data.Results);
+                $('#phuongxanoisinh').children().remove().end();
+                for (var i = 0; i < wards.length; i++) {
+                    $('#phuongxanoisinh').append('<option value=' + wards[i].Id + '>' + wards[i].Type + ' ' + wards[i].Name + '</option>')
+                }
+            })
+        })
+    })
+    $('#quanhuyendvdct').change(function () {
+        $.get('/getschoolbydistrictandcaphoc/' + $(this).val() + '/' + $('#loaitruongdvdct').val(), function (data, status) {
+            var schools = JSON.parse(data.Results);
+            $('#tentruongdvdct').children().remove().end();
+            for (var i = 0; i < schools.length; i++) {
+                $('#tentruongdvdct').append('<option value=' + schools[i].Id + '>' + schools[i].TenTruong + '</option>')
+            }
+        })
+    });
+    $('#loaitruongdvdct').change(function () {
+        $.get('/getschoolbydistrictandcaphoc/' + $('#quanhuyendvdct').val() + '/' + $(this).val(), function (data, status) {
+            var schools = JSON.parse(data.Results);
+            $('#tentruongdvdct').children().remove().end();
+            for (var i = 0; i < schools.length; i++) {
+                $('#tentruongdvdct').append('<option value=' + schools[i].Id + '>' + schools[i].TenTruong + '</option>')
+            }
+        })
+    });
+    $('#quanhuyendvcd').change(function () {
+        $.get('/getschoolbydistrictandcaphoc/' + $(this).val() + '/' + $('#loaitruongdvcd').val(), function (data, status) {
+            var schools = JSON.parse(data.Results);
+            $('#tentruongdvcd').children().remove().end();
+            for (var i = 0; i < schools.length; i++) {
+                $('#tentruongdvcd').append('<option value=' + schools[i].Id + '>' + schools[i].TenTruong + '</option>')
+            }
+        })
+    });
+    $('#loaitruongdvcd').change(function () {
+        $.get('/getschoolbydistrictandcaphoc/' + $('#quanhuyendvcd').val() + '/' + $(this).val(), function (data, status) {
+            var schools = JSON.parse(data.Results);
+            $('#tentruongdvcd').children().remove().end();
+            for (var i = 0; i < schools.length; i++) {
+                $('#tentruongdvcd').append('<option value=' + schools[i].Id + '>' + schools[i].TenTruong + '</option>')
+            }
+        })
+    });
+    //$('#mangach').change(function () {
+    //    $.post('/thuyenchuyen/getbacluongbynhommangach', { id: $(this).val() }, function (data, status) {
+    //        var bacluong = JSON.parse(data.Results);
+    //        $('#bacluongheso').children().remove().end();
+    //        for (var i = 0; i < bacluong.length; i++) {
+
+    //            $('#bacluongheso').append('<option value=' + bacluong[i].ID + '> Bậc ' + bacluong[i].Bac + ', Hệ số ' + bacluong[i].HeSo + ' ' + bacluong[i].Loai + '</option>')
+    //        }
+    //    })
+    //});
+
+    $(document).ready(function () {
+        jQuery.validator.addMethod("namhoplethuyenchuyen", function (value, element) {
+            console.log(value);
+            return moment(value, "DD-MM-YYYY") > moment().subtract(36, 'months');
+        }, "Để được thuyên chuyển phải công tác tại đơn vị trên 3 năm");
+
+        $('.datepicker').datepicker({
+            format: 'dd-mm-yyyy',
+            autoclose: true,
+        });
+
+        $('#thuyenchuyen').validate({
+            rules: {
+
+                hovaten: {
+                    required: true,
+                    maxlength: 50,
+                },
+                cmnd: {
+                    required: true,
+                    maxlength: 12,
+                },
+                namsinh: 'required',
+                email: {
+                    required: true,
+                    email: true,
+                    maxlength: 100,
+                },
+                sdt: {
+                    required: true,
+                    maxlength: 50,
+                },
+                sonhatenduong: {
+                    required: true,
+                    maxlength: 200,
+                },
+                thongtinquanhegiadinh: 'required',
+                thongtinquatrinhbanthan: 'required',
+                mocnangluong: 'required',
+            },
+            messages: {
+                namsinh: 'Vui lòng nhập',
+                hovaten: {
+                    required: 'Vui lòng nhập',
+                    maxlength: 'Tối đa 50 kí tự'
+                },
+                cmnd: {
+                    required: 'Vui lòng nhập',
+                    maxlength: 'Tối đa 12 kí tự'
+                },
+                sdt: {
+                    required: 'Vui lòng nhập',
+                    maxlength: 'Tối đa 50 kí tự'
+                },
+                email: {
+                    required: 'Vui lòng nhập',
+                    email: 'Vui lòng nhập email hợp lệ',
+                    maxlength: 'Tối đa 100 kí tự'
+                },
+                sonhatenduong: {
+                    required: 'Vui lòng nhập',
+                    maxlength: 'Tối đa 200 kí tự'
+                },
+                thongtinquanhegiadinh: 'Vui lòng nhập',
+                thongtinquatrinhbanthan: 'Vui lòng nhập',
+                mocnangluong: 'Vui lòng nhập'
+            },
+            errorElement: "em",
+            errorPlacement: function (error, element) {
+                // Add the `help-block` class to the error element
+                error.addClass("help-block");
+
+                // Add `has-feedback` class to the parent div.form-group
+                // in order to add icons to inputs
+                element.parent().addClass("has-error");
+
+                if (element.prop("type") === "checkbox") {
+                    error.insertAfter(element.parent("label"));
+                } else {
+                    error.insertAfter(element);
+                }
+
+                // Add the span element, if doesn't exists, and apply the icon classes to it.
+            },
+            highlight: function (element, errorClass, validClass) {
+                $(element).parent().addClass("has-error");
+            },
+            unhighlight: function (element, errorClass, validClass) {
+                $(element).parent().removeClass("has-error");
+            },
+            submitHandler: function (form) {
+                if ($('#batdaucongtac').val() == '') {
+                    $('#errorbatdaucongtac').addClass('has-error');
+                    $('#batdaucongtacmessage').text('Vui lòng nhập');
+                    $('#batdaucongtac').focus();
+                }
+                else if (moment($('#batdaucongtac').val(), "DD-MM-YYYY") > moment().subtract(36, 'months')) {
+                    $('#errorbatdaucongtac').addClass('has-error');
+                    $('#batdaucongtacmessage').text('Để được thuyên chuyển phải công tác tại đơn vị trên 3 năm');
+                    $('#batdaucongtac').focus();
+                }
+                else {
+                    $('#errorbatdaucongtac').removeClass('has-error');
+                    $('#batdaucongtacmessage').text('');
+                    $('#preloader').show();
+                    $.post("/thuyenchuyen/dangkimoiPost",
+                        {
+                            HoTen: $('#hovaten').val(),
+                            CMND: $('#cmnd').val(),
+                            IsMale: $('#gioitinh').val(),
+                            NamSinh: $('#namsinh').val(),
+                            SDT: $('#sdt').val(),
+                            Email: $('#email').val(),
+                            NoisinhWardId: $('#phuongxanoisinh').val(),
+                            HKTTWardId: $('#phuongxahktt').val(),
+                            SoNhaTenDuong: $('#sonhatenduong').val(),
+                            BangTotNghiepId: $('#hedaotao').val(),
+                            HinhThucDaoTaoId: $('#hinhthucdaotao').val(),
+                            ChuyenNganhDaoTaoId: $('#nganhdaotao').val(),
+                            XepLoaiHocLucId: $('#xeploaitotnghiep').val(),
+                            ThongTinQuanHeGiaDinh: $('#thongtinquanhegiadinh').val(),
+                            ThongTinQuanHeBanThan: $('#thongtinquatrinhbanthan').val(),
+                            MaNghach: $('#mangach').val(),
+                            MocNangLuong: moment($('#mocnangluong').val(), 'DD-MM-YYYY').format('YYYY-MM-DD'),
+                            BacLuong: $('#bacluong').val(),
+                            HeSo: $('#heso').val(),
+                            DVDCTTruongId: $('#tentruongdvdct').val(),
+                            DVDCTMonDayId: ($('#loaitruongdvdct').val() == 1 ? null : ($('#mondaydvdct').val() == 'Không' ? null : $('#mondaydvdct').val())),
+                            CapDayDVDCT: $('#captruongdvdct').val(),
+                            DVCDTruongId: $('#tentruongdvcd').val(),
+                            CapDayDVCD: $('#captruongdvcd').val(),
+                            BatDauCongTac: moment($('#batdaucongtac').val(), 'DD-MM-YYYY').format('YYYY-MM-DD'),
+                            TrinhDoCaoNhatId: $('#trinhdocaonhat').val(),
+                            __RequestVerificationToken: $("input[name=__RequestVerificationToken]").val(),
+                        },
+                        function (data, status) {
+                            debugger;
+                            if (data.StatusCode == 200 && status == 'success') {
+                                window.location.replace('/thuyenchuyen/dangkithanhcong/' + data.Results);
+                            }
+                        });
+                }
+            }
+        });
+    })
+</script>

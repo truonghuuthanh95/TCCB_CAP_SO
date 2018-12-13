@@ -6,5 +6,6 @@ namespace TCCB_QuanLy.Repositories.Interfaces
     public interface IMonDuTuyenRepository
     {
         List<MonDuTuyen> GetMonDuTuyens();
+        List<MonDuTuyen> GetAllMonDuTuyens();
     }
 }

@@ -14,6 +14,12 @@ namespace TCCB_QuanLy.Repositories.Implements
             _db = db;
         }
 
+        public List<MonDuTuyen> GetAllMonDuTuyens()
+        {
+            List<MonDuTuyen> monDuTuyens = _db.MonDuTuyens.OrderBy(s => s.PositionInterviewId).ThenBy(s => s.Name).ToList();
+            return monDuTuyens;
+        }
+
         public List<MonDuTuyen> GetMonDuTuyens()
         {
             List<MonDuTuyen> monDuTuyens = _db.MonDuTuyens.Include("ViTriUngTuyen").Where(s => s.IsActive == true).OrderBy(s => s.PositionInterviewId).ThenBy(s => s.Name).ToList();

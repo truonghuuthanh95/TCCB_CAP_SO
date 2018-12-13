@@ -14,7 +14,8 @@ namespace TCCB_QuanLy.App_Start
         {
             CreateMap<RegistrationInterview, RegistrationInterviewDTO>();
             CreateMap<RegistrationInterviewDTO, RegistrationInterview>();
-
+            CreateMap<ThuyenChuyen, ThuyenChuyenDTO>();
+            CreateMap<ThuyenChuyenDTO, ThuyenChuyen>();
         }
     }
 }

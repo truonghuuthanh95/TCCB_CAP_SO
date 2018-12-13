@@ -13,6 +13,7 @@ namespace TCCB_QuanLy.Models.DAO
         public HinhThucDaoTao()
         {
             RegistrationInterviews = new HashSet<RegistrationInterview>();
+            ThuyenChuyens = new HashSet<ThuyenChuyen>();
         }
 
         public int Id { get; set; }
@@ -24,5 +25,8 @@ namespace TCCB_QuanLy.Models.DAO
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<RegistrationInterview> RegistrationInterviews { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ThuyenChuyen> ThuyenChuyens { get; set; }
     }
 }
