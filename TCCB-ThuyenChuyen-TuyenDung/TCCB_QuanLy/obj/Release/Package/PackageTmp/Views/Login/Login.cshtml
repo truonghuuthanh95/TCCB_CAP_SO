@@ -1,0 +1,105 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Đăng Nhập</title>
+    <link rel="shortcut icon" href="~/Content/Images/logo_so.png">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+    <div class="row">
+        <div class="col-xs-10 col-xs-offset-1 col-sm-8 col-sm-offset-2 col-md-4 col-md-offset-4">
+            @*<div class="text-center"><img src="~/Content/Images/logo_so.png" /></div>*@
+            <div class="login-panel panel panel-default" style="margin-top: 60px;">
+                <div class="panel-heading">Đăng Nhập</div>
+                <div class="panel-body">
+                    <form role="form" id="login">
+                        @Html.AntiForgeryToken()
+                        <fieldset>
+                            <div class="form-group has-feedback">
+                                <input class="form-control" placeholder="Tên đăng nhập" id="username" name="username" type="text" autofocus="">
+                            </div>
+                            <div class="form-group has-feedback">
+                                <input class="form-control" placeholder="Mật khẩu" id="password" name="password" type="password" value="">
+                            </div>
+                            <p class="text-center text-danger" id="error"></p>
+                            <button type="submit" id="submit" class="btn btn-info btn-block">Đăng Nhập</button>
+                        </fieldset>
+
+                    </form>
+                </div>
+            </div>
+        </div><!-- /.col-->
+    </div>
+    <span class="loader" hidden id="preloader"></span>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/jqueryval")
+    <script>
+        $(document).ready(function () {
+            $("#login").validate({
+                rules: {
+                    username: 'required',
+                    password: 'required',
+                },
+                messages: {
+                    username: 'Vui lòng nhập',
+                    password: 'Vui lòng nhập',
+                },
+                errorElement: "em",
+                errorPlacement: function (error, element) {
+                    // Add the `help-block` class to the error element
+                    error.addClass("help-block");
+
+                    // Add `has-feedback` class to the parent div.form-group
+                    // in order to add icons to inputs
+                    element.parent().addClass("has-error");
+
+                    if (element.prop("type") === "checkbox") {
+                        error.insertAfter(element.parent("label"));
+                    } else {
+                        error.insertAfter(element);
+                    }
+
+                    // Add the span element, if doesn't exists, and apply the icon classes to it.
+                },
+                highlight: function (element, errorClass, validClass) {
+                    $(element).parent().addClass("has-error");
+                },
+                unhighlight: function (element, errorClass, validClass) {
+                    $(element).parent().removeClass("has-error");
+                },
+                submitHandler: function (form) {
+                    $('#submit').addClass('disabled');
+                    $('#preloader').show();
+                    $.post('/requestLogin', {
+                        username: $('#username').val(),
+                        password: $('#password').val(),
+                        __RequestVerificationToken: $("input[name=__RequestVerificationToken]").val()
+
+                    }, function (data, status) {
+                        $('#submit').removeClass('disabled');
+                        $('#preloader').hide();
+                        if (status == 'success' && data.StatusCode == 200) {
+                            window.location.replace('/quanly');
+                        }
+                        else if (status == 'success' && data.StatusCode != 200) {
+                            $('#error').text(data.Message);
+                        }
+                    })
+                }
+            })
+        })
+
+    </script>
+</body>
+</html>

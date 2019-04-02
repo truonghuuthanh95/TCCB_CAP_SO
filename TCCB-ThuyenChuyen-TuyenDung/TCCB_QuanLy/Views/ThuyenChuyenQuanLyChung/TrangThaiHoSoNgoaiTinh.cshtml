@@ -1,0 +1,174 @@
+﻿
+@{
+    ViewBag.Title = "TrangThaiHoSoNgoaiTinh";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="row">
+    <ol class="breadcrumb">
+        <li>
+            <a href="#">
+                <em class="fa fa-home"></em>
+            </a>
+        </li>
+        <li class="active">Thuyên Chuyên</li>
+        <li class="active">Trạng Thái Hồ Sơ</li>
+    </ol>
+</div><!--/.row-->
+<div class="row">
+    <div class="col-lg-12">
+        <h1 class="page-header">Trạng Thái Hồ Sơ Ngoài Tỉnh Chuyển Vào</h1>
+    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading form-group">
+        <form class="form-inline">
+            <label style="font-size: 16px;">Danh sách hồ sơ</label>
+
+            <div class="form-group">
+                <select class="form-control" id="trangthai" onchange="listenOnChange();">
+                    @{
+                        foreach (var item in ViewBag.StatusThuyenChuyen)
+                        {
+                            if (item.Id == ViewBag.StatusId)
+                            {
+                                <option value="@item.Id" class="form-control" selected>@item.Name</option>
+                            }
+                            else
+                            {
+                                <option value="@item.Id" class="form-control">@item.Name</option>
+                            }
+
+                        }
+                    }
+
+                </select>
+            </div>
+            <label style="font-size: 16px;">Năm</label>
+
+            <div class="form-group">
+                <select class="form-control" id="nam" onchange="listenOnChange();">
+                    @{
+                        for (int i = DateTime.Now.Year - 5; i <= DateTime.Now.Year; i++)
+                        {
+                            if (i == ViewBag.Year)
+                            {
+                                <option value="@i" class="form-control" selected>@i</option>
+                            }
+                            else
+                            {
+                                <option value="@i" class="form-control">@i</option>
+                            }
+
+                        }
+                    }
+
+
+                </select>
+            </div>
+            <div class="form-group">
+                <a role="button" class="btn btn-primary" href="/thuyenchuyen/downloadexcelthuyenchuyenngoaitinh/@ViewBag.StatusId/@ViewBag.Year">Xuất Excel</a>
+            </div>
+        </form>
+    </div>
+    <div class="panel-body table-responsive">
+        <table class="table table-condensed" id="danhsachthuyenchuyen">
+            <thead>
+                <tr>
+                    <th>Mã hồ sơ</th>
+                    <th>Hộ tên</th>
+                    <th>Số CMND</th>
+                    <th>Tỉnh/Thành phố</th>
+                    <th>Đang công tác</th>
+                    <th>Xin chuyễn đến</th>
+                    <th>Trạng thái</th>
+                    <th>Thao Tác</th>
+                </tr>
+            </thead>
+            <tbody>
+                @{
+                    foreach (var item in ViewBag.ThuyenChuyens)
+                    {
+                        <tr>
+                            <td>@item.TienTo@item.Id</td>
+                            <td>@item.HoTen</td>
+                            <td>@item.CMND</td>
+                            <td>@item.Province.Type @item.Province.Name</td>
+                            <td>@item.DVDCTTenTruong</td>
+                            <td>@item.School.TenTruong</td>
+                            <td>@item.StatusThuyenChuyen.Name</td>
+                            <td><a href="/thuyenchuyen/chitiethosongoaitinh/@item.Id" role="button" class="btn btn-sm btn-info"><span class="glyphicon glyphicon-eye-open"></span> Chi tiết</a><button onclick="setTrangThaiHS(@item.StatusThuyenChuyen.Id);" class="btn btn-sm btn-success" data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-edit"></span> Cập nhật</button></td>
+                        </tr>
+                    }
+                }
+
+            </tbody>
+        </table>
+    </div>
+</div>
+<input hidden value="/thuyenchuyen/trangthaihoso/@ViewBag.StatusId/@ViewBag.Year" id="trangthaitmp" />
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Cập nhật trang thái</h4>
+            </div>
+            <div class="modal-body">
+                <form class="form-horizontal">
+                    <div class="form-group">
+                        <label for="inputEmail3" class="col-sm-2 control-label">Trang thái</label>
+                        <div class="col-sm-10">
+                            <select class="form-control" id="trangthai">
+                                @{
+                                    foreach (var item in ViewBag.StatusThuyenChuyen)
+                                    {
+                                        if (item.Id == ViewBag.StatusId)
+                                        {
+                                            <option value="@item.Id" class="form-control" selected>@item.Name</option>
+                                        }
+                                        else
+                                        {
+                                            <option value="@item.Id" class="form-control">@item.Name</option>
+                                        }
+
+                                    }
+                                }
+
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputPassword3" class="col-sm-2 control-label">Ngày</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control datepicker" id="ngay">
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
+                <button type="button" class="btn btn-primary">Cập nhật</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+
+    $(document).ready(function () {
+        $('.datepicker').datepicker({
+            format: 'dd-mm-yyyy',
+            autoclose: true,
+        });
+        $('#danhsachthuyenchuyen').DataTable();
+        //function setTrangThaiHS(statusId) {
+        //    $('#trangthai').val(statusId);
+        //}
+
+    });
+
+    function listenOnChange() {
+        window.location.replace("/thuyenchuyen/trangthaihosongoaitinh/" + $('#trangthai').val() + "/" + $("#nam").val());
+    }     
+</script>

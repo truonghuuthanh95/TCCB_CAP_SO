@@ -14,6 +14,7 @@ namespace TCCB_QuanLy.Models.DAO
         {
             Districts = new HashSet<District>();
             RegistrationInterviews = new HashSet<RegistrationInterview>();
+            ThuyenChuyenNgoaiTinhs = new HashSet<ThuyenChuyenNgoaiTinh>();
         }
 
         public int Id { get; set; }
@@ -46,5 +47,8 @@ namespace TCCB_QuanLy.Models.DAO
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<RegistrationInterview> RegistrationInterviews { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ThuyenChuyenNgoaiTinh> ThuyenChuyenNgoaiTinhs { get; set; }
     }
 }

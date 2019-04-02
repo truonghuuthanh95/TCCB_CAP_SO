@@ -86,6 +86,11 @@ namespace TCCB_QuanLy.Models.DAO
 
         public int? TrinhDoCaoNhatId { get; set; }
 
+        [StringLength(50)]
+        public string TienTo { get; set; }
+
+        public DateTime? NgayTiepNhan { get; set; }
+
         public virtual BangTotNghiep BangTotNghiep { get; set; }
 
         public virtual ChuyenNganhDaoTao ChuyenNganhDaoTao { get; set; }

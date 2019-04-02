@@ -195,6 +195,7 @@
     <Compile Include="Controllers\NguyenVongTruongController.cs" />
     <Compile Include="Controllers\QuanLyTaiKhoanController.cs" />
     <Compile Include="Controllers\SchoolController.cs" />
+    <Compile Include="Controllers\ThuyenChuyenNgoaiTinhController.cs" />
     <Compile Include="Controllers\ThuyenChuyenController.cs" />
     <Compile Include="Controllers\ThuyenChuyenQuanLyChungController.cs" />
     <Compile Include="Controllers\TuyenDungController.cs" />
@@ -227,6 +228,7 @@
     <Compile Include="Models\DAO\StatusThuyenChuyen.cs" />
     <Compile Include="Models\DAO\TCCBDB.cs" />
     <Compile Include="Models\DAO\ThuyenChuyen.cs" />
+    <Compile Include="Models\DAO\ThuyenChuyenNgoaiTinh.cs" />
     <Compile Include="Models\DAO\TrinhDoCaoNhat.cs" />
     <Compile Include="Models\DAO\TrinhDoNgoaiNgu.cs" />
     <Compile Include="Models\DAO\TrinhDoTinHoc.cs" />
@@ -237,7 +239,9 @@
     <Compile Include="Models\DTO\CandidateModelInOneView.cs" />
     <Compile Include="Models\DTO\RegistrationInterviewDTO.cs" />
     <Compile Include="Models\DTO\ReturnResult.cs" />
+    <Compile Include="Models\DTO\ThuyenChuyenContainNgoaiTinhDTO.cs" />
     <Compile Include="Models\DTO\thuyenChuyenDTO.cs" />
+    <Compile Include="Models\DTO\ThuyenChuyenNgoaiTinhDTO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\Implements\AccountRepository.cs" />
     <Compile Include="Repositories\Implements\BacLuongRepository.cs" />
@@ -285,7 +289,33 @@
     <Compile Include="Repositories\Interfaces\IUserPermissionRepository.cs" />
     <Compile Include="Repositories\Interfaces\IWardRepository.cs" />
     <Compile Include="Repositories\Interfaces\IXepLoaiHocLucRepository.cs" />
+    <Compile Include="Services\AccountRepository.cs" />
+    <Compile Include="Services\BacLuongRepository.cs" />
+    <Compile Include="Services\BangTotNghiepRepository.cs" />
+    <Compile Include="Services\CapTruongRepository.cs" />
+    <Compile Include="Services\ChuyenNganhDaoTaoRepository.cs" />
+    <Compile Include="Services\DistrictRepository.cs" />
+    <Compile Include="Services\GroupPermissionRepository.cs" />
+    <Compile Include="Services\HinhThucDaoTaoRepository.cs" />
+    <Compile Include="Services\HoaDonRepository.cs" />
+    <Compile Include="Services\LamViecTrongNganhRepository.cs" />
+    <Compile Include="Services\MaNgachRepository.cs" />
+    <Compile Include="Services\MonDuTuyenRepository.cs" />
+    <Compile Include="Services\ProvinceRepository.cs" />
+    <Compile Include="Services\RegistrationInterviewRepository.cs" />
+    <Compile Include="Services\SchoolRepository.cs" />
+    <Compile Include="Services\ThuyenChuyenNgoaiTinhService.cs" />
+    <Compile Include="Services\ThuyenChuyenRepository.cs" />
+    <Compile Include="Services\TrangThaiHoSoService.cs" />
+    <Compile Include="Services\TrinhDoCaoNhatRepository.cs" />
+    <Compile Include="Services\TrinhDoNgoaiNguRepository.cs" />
+    <Compile Include="Services\TrinhDoTinHocRepository.cs" />
+    <Compile Include="Services\UserPermissionRepository.cs" />
+    <Compile Include="Services\WardRepository.cs" />
+    <Compile Include="Services\XepLoaiHocLucRepository.cs" />
+    <Compile Include="Utils\CheckValidCode.cs" />
     <Compile Include="Utils\Constants.cs" />
+    <Compile Include="Utils\ExportExcel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-theme.css" />
@@ -326,6 +356,7 @@
     <Content Include="fonts\fontawesome-webfont.woff" />
     <Content Include="fonts\fontawesome-webfont.woff2" />
     <Content Include="fonts\FontAwesome.otf" />
+    <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\custom.js" />
     <Content Include="Scripts\dataTables.bootstrap.min.js" />
@@ -394,9 +425,20 @@
     <Content Include="Views\ThuyenChuyen\KiemTraMa.cshtml" />
     <Content Include="Views\ThuyenChuyen\HoSoMau.cshtml" />
     <Content Include="Views\ThuyenChuyenQuanLyChung\ChiTietHoSo.cshtml" />
+    <Content Include="Views\ThuyenChuyenNgoaiTinh\Index.cshtml" />
+    <Content Include="Views\ThuyenChuyenNgoaiTinh\DangKiThanhCong.cshtml" />
+    <Content Include="Utils\ds-thuyenchuyen.xlsx" />
+    <Content Include="Views\ThuyenChuyen\Option.cshtml" />
+    <Content Include="Views\ThuyenChuyenQuanLyChung\DuyetHoSoNgoaiTinh.cshtml" />
+    <Content Include="Views\ThuyenChuyenQuanLyChung\TrangThaiHoSoNgoaiTinh.cshtml" />
+    <Content Include="Utils\ds-thuyenchuyenngoaitinh.xlsx" />
+    <Content Include="Views\ThuyenChuyenQuanLyChung\ChiTietHoSoNgoaiTinh.cshtml" />
+    <Content Include="Views\ThuyenChuyenNgoaiTinh\CapNhatThuyenChuyen.cshtml" />
+    <Content Include="Views\ThuyenChuyenQuanLyChung\DanhSachHoSoDaTiepNhan.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Utils\Files\" />
     <Folder Include="Views\School\" />
   </ItemGroup>
   <ItemGroup>
