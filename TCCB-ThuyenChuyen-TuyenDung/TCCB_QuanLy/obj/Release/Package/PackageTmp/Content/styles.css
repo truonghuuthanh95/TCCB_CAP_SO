@@ -79,8 +79,9 @@ input.form-control {
   border: 1px solid #f9243f; }
 
 .navbar-custom {
-  background: #222;
-  height: 60px; }
+    background: #da2a2a;
+    height: 60px;
+}
 
 .navbar-header .navbar-brand {
   color: #fff;

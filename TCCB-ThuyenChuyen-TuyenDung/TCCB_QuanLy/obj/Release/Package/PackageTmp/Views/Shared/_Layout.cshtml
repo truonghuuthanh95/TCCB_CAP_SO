@@ -1,5 +1,6 @@
 ﻿@{ 
     var account = (TCCB_QuanLy.Models.DAO.Account)Session[TCCB_QuanLy.Utils.Constants.USER_SESSION];
+    List<TCCB_QuanLy.Models.DAO.UserPermission> userPermision = (List<TCCB_QuanLy.Models.DAO.UserPermission>)Session[TCCB_QuanLy.Utils.Constants.USER_PERMISSION_SESSION];
 }
 <!DOCTYPE html>
 <html>
@@ -143,31 +144,42 @@
                     <em class="fa fa-navicon">&nbsp;</em> Thuyên Chuyển <span data-toggle="collapse" href="#sub-item-3" class="icon pull-right"><em class="fa fa-plus"></em></span>
                 </a>
                 <ul class="children collapse" id="sub-item-3">
-                    <li>
-                        <a class="" href="/thuyenchuyen/tiepnhanhoso">
-                            <span class="fa fa-arrow-right">&nbsp;</span> Tiếp nhận hồ sơ
-                        </a>
-                    </li>
-                    <li>
-                        <a class="" href="/thuyenchuyen/trangthaihoso/1/@DateTime.Now.Year">
-                            <span class="glyphicon glyphicon-file">&nbsp;</span>Trạng thái hồ sơ
-                        </a>
-                    </li>
-                    <li>
-                        <a class="" href="/thuyenchuyen/trangthaihosongoaitinh/1/@DateTime.Now.Year">
-                            <span class="glyphicon glyphicon-file">&nbsp;</span>Trạng thái hồ sơ ngoài tỉnh
-                        </a>
-                    </li>
-                    <li>
-                        <a class="" href="#">
-                            <span class="fa fa-arrow-right">&nbsp;</span> Sub Item 3
-                        </a>
-                    </li>
-                    <li>
-                        <a class="" href="/tuyendung/madangki">
-                            <span class="fa fa-bullhorn">&nbsp;</span> Thông Báo
-                        </a>
-                    </li>
+                    @{
+        if (userPermision.Where(s => s.PermissionId == 3).SingleOrDefault() != null)
+        {
+                <li>
+                    <a class="" href="/thuyenchuyen/tiepnhanhoso">
+                        Tiếp nhận hồ sơ
+                    </a>
+                </li>
+}
+
+
+if (userPermision.Where(s => s.PermissionId == 4).SingleOrDefault() != null)
+{
+                <li>
+                    <a class="" href="/thuyenchuyen/trangthaihoso/1/@DateTime.Now.Year">
+                        Hồ sơ trong TP
+                    </a>
+                </li>
+                <li>
+                    <a class="" href="/thuyenchuyen/trangthaihosongoaitinh/1/@DateTime.Now.Year">
+                        Hồ sơ ngoài tỉnh
+                    </a>
+                </li>
+}
+if (userPermision.Where(s => s.PermissionId == 5).SingleOrDefault() != null)
+{
+                <li>
+                    <a class="" href="/thuyenchuyen/danhsachhosodatiepnhan/@DateTime.Now.Year">
+                        Hồ sơ đã tiếp nhận
+                    </a>
+                </li>
+}
+                    }
+
+
+
                 </ul>
             </li>
             <li><a href="/logout"><em class="fa fa-power-off">&nbsp;</em> Logout</a></li>

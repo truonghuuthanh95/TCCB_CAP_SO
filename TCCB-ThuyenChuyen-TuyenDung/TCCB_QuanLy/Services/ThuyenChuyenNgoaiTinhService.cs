@@ -30,7 +30,26 @@ namespace TCCB_QuanLy.Services
             }
 
         }
+        public ThuyenChuyenNgoaiTinh TiepNhanHoSo(ThuyenChuyenNgoaiTinh thuyenChuyen, int trangThaiId, int accountId)
+        {
+            using (var _db = new TCCBDB())
+            {
+                thuyenChuyen.StatusId = trangThaiId;
+                thuyenChuyen.NguoiTiepNhanId = accountId;
+                _db.Entry(thuyenChuyen).State = System.Data.Entity.EntityState.Modified;
+                try
+                {
+                    _db.SaveChanges();
+                }
+                catch (Exception)
+                {
 
+                    return null;
+                }
+                return thuyenChuyen;
+            }
+
+        }
         public ThuyenChuyenNgoaiTinh CapNhatTrangThaiHoSo(ThuyenChuyenNgoaiTinh thuyenChuyen, int trangThaiId)
         {
             using (var _db = new TCCBDB())

@@ -60,6 +60,7 @@ namespace TCCB_QuanLy.Controllers
             }
             
         }
+        //duyệt hồ sơ ngoài tỉnh view()
         [Route("duyethosongoaitinh/{mahoso}")]
         [HttpGet]
         public ActionResult DuyetHoSoNgoaiTinh(int mahoso)
@@ -87,7 +88,7 @@ namespace TCCB_QuanLy.Controllers
             }
 
         }
-
+        //kiểm tra hồ sơ có hợp lệ sua đó trả về json thông báo
         [Route("kiemtramahoso/{mahoso}")]
         [HttpGet]
         public ActionResult KiemTraMaHoSo(string mahoso)
@@ -148,14 +149,11 @@ namespace TCCB_QuanLy.Controllers
                    });
                     return Json(new ReturnResult(200, "success", thuyenChuyenJson), JsonRequestBehavior.AllowGet);
                 }
-            }
-            
+            }            
             else
             {
                 return Json(new ReturnResult(404, "Không tìm thấy", null), JsonRequestBehavior.AllowGet);
-            }
-            
-                 
+            }                 
         }
         [Route("chitiethoso/{mahoso}")]
         [HttpGet]
@@ -205,7 +203,7 @@ namespace TCCB_QuanLy.Controllers
                 {
                     return Json(new ReturnResult(400, "Hồ sơ đã được tiếp nhận trước đó", null), JsonRequestBehavior.AllowGet);
                 }
-                _thuyenChuyenService.CapNhatTrangThaiHoSo(thuyenChuyen, 1);
+                _thuyenChuyenService.TiepNhanHoSo(thuyenChuyen, 1, account.Id);
                 return Json(new ReturnResult(200, "success", null), JsonRequestBehavior.AllowGet);
             }
                       
@@ -236,7 +234,7 @@ namespace TCCB_QuanLy.Controllers
                 {
                     return Json(new ReturnResult(400, "Hồ sơ đã được tiếp nhận trước đó", null), JsonRequestBehavior.AllowGet);
                 }
-                _thuyenChuyenService.CapNhatTrangThaiHoSo(thuyenChuyen, 1);
+                _thuyenChuyenService.TiepNhanHoSo(thuyenChuyen, 1, account.Id);
                 return Json(new ReturnResult(200, "success", null), JsonRequestBehavior.AllowGet);
             }
 
@@ -333,6 +331,7 @@ namespace TCCB_QuanLy.Controllers
         [HttpGet]
         public ActionResult CapNhatTrangThaiNgoaiTinh(int maHoSo, int trangThaiId, DateTime date)
         {
+
             using (var _thuyenChuyen = new ThuyenChuyenNgoaiTinhService())
             {
                 ThuyenChuyenNgoaiTinh thuyenChuyen = _thuyenChuyen.GetThuyenChuyensById(maHoSo);
