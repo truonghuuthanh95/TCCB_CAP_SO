@@ -322,8 +322,13 @@ namespace TCCB_QuanLy.Controllers
                 {
                     return Json(new ReturnResult(400, "failed", null), JsonRequestBehavior.AllowGet);
                 }
-                _thuyenChuyen.CapNhatTrangThaiHoSo(thuyenChuyen, trangThaiId);
-                return Json(new ReturnResult(200, "success", null), JsonRequestBehavior.AllowGet);
+                using (var _trangthai = new TrangThaiHoSoService())
+                {
+                    string trangthai = _trangthai.GetStatusThuyenChuyensById(trangThaiId).Name;
+                    _thuyenChuyen.CapNhatTrangThaiHoSo(thuyenChuyen, trangThaiId);
+                    return Json(new ReturnResult(200, trangthai, null), JsonRequestBehavior.AllowGet);
+                }
+                
             }
 
         }
@@ -362,10 +367,10 @@ namespace TCCB_QuanLy.Controllers
             {
                 using (var _thuyenChuyenNgoaiTinhService = new ThuyenChuyenNgoaiTinhService())
                 {
-                    List<ThuyenChuyenNgoaiTinh> thuyenChuyenNgoaiTinhs = _thuyenChuyenNgoaiTinhService.GetThuyenChuyensByYear(year);
+                    List<ThuyenChuyenNgoaiTinh> thuyenChuyenNgoaiTinhs = _thuyenChuyenNgoaiTinhService.GetThuyenChuyensByYearDaTiepNhan(year);
                     using (var _thuyenChuyenService = new ThuyenChuyenRepository())
                     {
-                        List<ThuyenChuyen> thuyenChuyens = _thuyenChuyenService.GetThuyenChuyensByYear(year);
+                        List<ThuyenChuyen> thuyenChuyens = _thuyenChuyenService.GetThuyenChuyensByYearDaTiepNhan(year);
                         List<ThuyenChuyenContainNgoaiTinhDTO> thuyenChuyenContainNgoais = new List<ThuyenChuyenContainNgoaiTinhDTO>();
                         foreach (var item in thuyenChuyenNgoaiTinhs)
                         {

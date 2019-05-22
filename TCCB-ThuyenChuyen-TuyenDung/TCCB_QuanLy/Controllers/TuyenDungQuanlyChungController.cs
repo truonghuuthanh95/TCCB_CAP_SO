@@ -16,7 +16,6 @@ namespace TCCB_QuanLy.Controllers
         {
             this.registrationInterviewRepository = registrationInterviewRepository;
         }
-
         // GET: TuyenDungQuanlyChung
         [Route("quanlychung")]
         [HttpGet]
@@ -56,5 +55,6 @@ namespace TCCB_QuanLy.Controllers
             ViewBag.DanhSachHopLe = registrationInterviewRepository.GetRegistrationInterviewsHopLe();
             return View();
         }
+
     }
 }

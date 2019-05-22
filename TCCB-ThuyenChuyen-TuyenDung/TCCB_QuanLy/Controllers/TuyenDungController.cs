@@ -26,8 +26,12 @@ namespace TCCB_QuanLy.Controllers
         IMonDuTuyenRepository monDuTuyenRepository;      
         IXepLoaiHocLucRepository xepLoaiHocLucRepository;     
         ICapTruongRepository capTruongRepository;
+        ITonGiaoRepository tonGiaoRepository;
+        IDanTocRepository danTocRepository;
+        IDoiTuongUuTienRepository doiTuongUuTienRepository;
+        IThanhPhanBanThanHienTaiRepository thanhPhanBanThanHienTaiRepository;
 
-        public TuyenDungController(IRegistrationInterviewRepository registrationInterviewRepository, IProvinceRepository provinceRepository, IDistrictRepository districtRepository, IWardRepository wardRepository, IHinhThucDaoTaoRepository hinhThucDaoTaoRepository, IBangTotNghiepRepository bangTotNghiepRepository, IChuyenNganhDaoTaoRepository chuyenNganhDaoTaoRepository, ITrinhDoCaoNhatRepository trinhDoCaoNhatRepository, ILamViecTrongNganhRepository lamViecTrongNganhRepository, ITrinhDoTinHocRepository trinhDoTinHocRepository, ITrinhDoNgoaiNguRepository trinhDoNgoaiNguRepository, IMonDuTuyenRepository monDuTuyenRepository, IXepLoaiHocLucRepository xepLoaiHocLucRepository, ICapTruongRepository capTruongRepository)
+        public TuyenDungController(IRegistrationInterviewRepository registrationInterviewRepository, IProvinceRepository provinceRepository, IDistrictRepository districtRepository, IWardRepository wardRepository, IHinhThucDaoTaoRepository hinhThucDaoTaoRepository, IBangTotNghiepRepository bangTotNghiepRepository, IChuyenNganhDaoTaoRepository chuyenNganhDaoTaoRepository, ITrinhDoCaoNhatRepository trinhDoCaoNhatRepository, ILamViecTrongNganhRepository lamViecTrongNganhRepository, ITrinhDoTinHocRepository trinhDoTinHocRepository, ITrinhDoNgoaiNguRepository trinhDoNgoaiNguRepository, IMonDuTuyenRepository monDuTuyenRepository, IXepLoaiHocLucRepository xepLoaiHocLucRepository, ICapTruongRepository capTruongRepository, ITonGiaoRepository tonGiaoRepository, IDanTocRepository danTocRepository, IDoiTuongUuTienRepository doiTuongUuTienRepository, IThanhPhanBanThanHienTaiRepository thanhPhanBanThanHienTaiRepository)
         {
             this.registrationInterviewRepository = registrationInterviewRepository;
             this.provinceRepository = provinceRepository;
@@ -43,11 +47,15 @@ namespace TCCB_QuanLy.Controllers
             this.monDuTuyenRepository = monDuTuyenRepository;
             this.xepLoaiHocLucRepository = xepLoaiHocLucRepository;
             this.capTruongRepository = capTruongRepository;
+            this.tonGiaoRepository = tonGiaoRepository;
+            this.danTocRepository = danTocRepository;
+            this.doiTuongUuTienRepository = doiTuongUuTienRepository;
+            this.thanhPhanBanThanHienTaiRepository = thanhPhanBanThanHienTaiRepository;
         }
 
 
         // GET: TuyenDung
-        [Route("capnhathosougtuyen", Name = "capnhathosougtuyen")]
+        [Route("capnhathosoungtuyen", Name = "capnhathosoungtuyen")]
         [HttpGet]
         public ActionResult KiemTraMaDangKi()
         {
@@ -75,7 +83,7 @@ namespace TCCB_QuanLy.Controllers
             });
             return Json(new ReturnResult(200, "success", null), JsonRequestBehavior.AllowGet);          
         }
-        [Route("capnhathosougtuyen/{madangki}/{cmnd}")]
+        [Route("capnhathosoungtuyen/{madangki}/{cmnd}")]
         [HttpGet]
         public ActionResult CapNhatHoSoUngTuyen(int madangki, string cmnd)
         {
@@ -100,6 +108,10 @@ namespace TCCB_QuanLy.Controllers
             List<XepLoaiHocLuc> xepLoaiHocLucs = xepLoaiHocLucRepository.GetXepLoaiHocLucs();
             List<District> HCMDistrict = districtRepository.GetDistrictByProvinceId(79);
             CandidateModelInOneView candidateModelInOneView = new CandidateModelInOneView(province, nohnQuanHuyen, nohnPhuongXa, hkttQuanHuyen, hkttPhuongXa, registrationInterview, hinhThucDaoTaos, bangTotNghieps, trinhDoCaoNhats, chuyenNganhDaoTaos, lamViecTrongNganhs, trinhDoTinHocs, trinhDoNgoaiNgus, monDuTuyens, xepLoaiHocLucs, HCMDistrict);
+            ViewBag.DoiTuongUuTiens = doiTuongUuTienRepository.GetDoiTuongUuTiens();
+            ViewBag.TonGiaos = tonGiaoRepository.GetTonGiaos();
+            ViewBag.DanTocs = danTocRepository.GetDanTocs();
+            ViewBag.ThanhPhanBanThanHienTais = thanhPhanBanThanHienTaiRepository.GetThanhPhanBanThanHienTais();
             return View(candidateModelInOneView);
         }
         [Route("submitcapnhat")]

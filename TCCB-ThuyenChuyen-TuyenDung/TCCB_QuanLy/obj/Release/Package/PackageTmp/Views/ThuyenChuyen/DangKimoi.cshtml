@@ -122,10 +122,14 @@
                             <div class="col-sm-7">
                                 <select name="DistrictID" id="quanhuyendvcd" class="form-control">
                                     @{
-                                        foreach (var item in ViewBag.Districts)
-                                        {
-                                            <option value="@item.Id">@item.Type @item.Name</option>
-                                        }
+        foreach (var item in ViewBag.Districts)
+        {
+            if (item.Id != 974)
+            {
+                                <option value="@item.Id">@item.Type @item.Name</option>
+}
+
+}
                                     }
                                 </select>
                             </div>
@@ -135,19 +139,23 @@
                             <div class="col-sm-7">
                                 <select name="DistrictID" id="loaitruongdvcd" class="form-control">
                                     @{
-                                        foreach (var item in ViewBag.CapTruongs)
-                                        {
-                                            if (item.Id == 4)
-                                            {
-                                                <option value="@item.Id" selected>@item.Name</option>
+        foreach (var item in ViewBag.CapTruongs)
+        {
+            if (item.Id != 19 && item.Id != 20)
+            {
+                if (item.Id == 4)
+                {
+                                <option value="@item.Id" selected>@item.Name</option>
 
-                                            }
-                                            else
-                                            {
-                                                <option value="@item.Id">@item.Name</option>
-                                            }
+}
+else
+{
+                                <option value="@item.Id">@item.Name</option>
+}
+}
 
-                                        }
+
+}
                                     }
                                 </select>
                             </div>

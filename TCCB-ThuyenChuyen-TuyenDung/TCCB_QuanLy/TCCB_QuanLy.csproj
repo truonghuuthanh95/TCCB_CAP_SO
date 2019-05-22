@@ -210,7 +210,9 @@
     <Compile Include="Models\DAO\BangTotNghiep.cs" />
     <Compile Include="Models\DAO\CapTruong.cs" />
     <Compile Include="Models\DAO\ChuyenNganhDaoTao.cs" />
+    <Compile Include="Models\DAO\DanToc.cs" />
     <Compile Include="Models\DAO\District.cs" />
+    <Compile Include="Models\DAO\DoiTuongUuTien.cs" />
     <Compile Include="Models\DAO\DVQL.cs" />
     <Compile Include="Models\DAO\GroupPermission.cs" />
     <Compile Include="Models\DAO\HinhThucDaoTao.cs" />
@@ -227,8 +229,10 @@
     <Compile Include="Models\DAO\School.cs" />
     <Compile Include="Models\DAO\StatusThuyenChuyen.cs" />
     <Compile Include="Models\DAO\TCCBDB.cs" />
+    <Compile Include="Models\DAO\ThanhPhanBanThanHienTai.cs" />
     <Compile Include="Models\DAO\ThuyenChuyen.cs" />
     <Compile Include="Models\DAO\ThuyenChuyenNgoaiTinh.cs" />
+    <Compile Include="Models\DAO\TonGiao.cs" />
     <Compile Include="Models\DAO\TrinhDoCaoNhat.cs" />
     <Compile Include="Models\DAO\TrinhDoNgoaiNgu.cs" />
     <Compile Include="Models\DAO\TrinhDoTinHoc.cs" />
@@ -248,7 +252,9 @@
     <Compile Include="Repositories\Implements\BangTotNghiepRepository.cs" />
     <Compile Include="Repositories\Implements\CapTruongRepository.cs" />
     <Compile Include="Repositories\Implements\ChuyenNganhDaoTaoRepository.cs" />
+    <Compile Include="Repositories\Implements\DanTocRopository.cs" />
     <Compile Include="Repositories\Implements\DistrictRepository.cs" />
+    <Compile Include="Repositories\Implements\DoiTuongUuTienRepository.cs" />
     <Compile Include="Repositories\Implements\GroupPermissionRepository.cs" />
     <Compile Include="Repositories\Implements\HinhThucDaoTaoRepository.cs" />
     <Compile Include="Repositories\Implements\HoaDonRepository.cs" />
@@ -259,7 +265,9 @@
     <Compile Include="Repositories\Implements\ProvinceRepository.cs" />
     <Compile Include="Repositories\Implements\RegistrationInterviewRepository.cs" />
     <Compile Include="Repositories\Implements\SchoolRepository.cs" />
+    <Compile Include="Repositories\Implements\ThanhPhanBanThanHienTaiRepository.cs" />
     <Compile Include="Repositories\Implements\ThuyenChuyenRepository.cs" />
+    <Compile Include="Repositories\Implements\TonGiaoRepository.cs" />
     <Compile Include="Repositories\Implements\TrinhDoCaoNhatRepository.cs" />
     <Compile Include="Repositories\Implements\TrinhDoNgoaiNguRepository.cs" />
     <Compile Include="Repositories\Implements\TrinhDoTinHocRepository.cs" />
@@ -271,7 +279,9 @@
     <Compile Include="Repositories\Interfaces\IBangTotNghiepRepository.cs" />
     <Compile Include="Repositories\Interfaces\ICapTruongRepository.cs" />
     <Compile Include="Repositories\Interfaces\IChuyenNganhDaoTaoRepository.cs" />
+    <Compile Include="Repositories\Interfaces\IDanTocRepository.cs" />
     <Compile Include="Repositories\Interfaces\IDistrictRepository.cs" />
+    <Compile Include="Repositories\Interfaces\IDoiTuongUuTienRepository.cs" />
     <Compile Include="Repositories\Interfaces\IGroupPermissionRepository.cs" />
     <Compile Include="Repositories\Interfaces\IHinhThucDaoTaoRepository.cs" />
     <Compile Include="Repositories\Interfaces\IHoaDonRepository.cs" />
@@ -281,7 +291,9 @@
     <Compile Include="Repositories\Interfaces\IPermissionRepository.cs" />
     <Compile Include="Repositories\Interfaces\IProvinceRepository.cs" />
     <Compile Include="Repositories\Interfaces\IRegistrationInterviewRepository.cs" />
+    <Compile Include="Repositories\Interfaces\IThanhPhanBanThanHienTaiRepository.cs" />
     <Compile Include="Repositories\Interfaces\IThuyenChuyenRepository.cs" />
+    <Compile Include="Repositories\Interfaces\ITonGiaoRepository.cs" />
     <Compile Include="Repositories\Interfaces\ITrinhDoCaoNhatRepository.cs" />
     <Compile Include="Repositories\Interfaces\ITrinhDoNgoaiNguRepository.cs" />
     <Compile Include="Repositories\Interfaces\ITrinhDoTinHocRepository.cs" />
@@ -435,6 +447,7 @@
     <Content Include="Views\ThuyenChuyenQuanLyChung\ChiTietHoSoNgoaiTinh.cshtml" />
     <Content Include="Views\ThuyenChuyenNgoaiTinh\CapNhatThuyenChuyen.cshtml" />
     <Content Include="Views\ThuyenChuyenQuanLyChung\DanhSachHoSoDaTiepNhan.cshtml" />
+    <Content Include="Views\ThuyenChuyen\TienDoHoSo.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

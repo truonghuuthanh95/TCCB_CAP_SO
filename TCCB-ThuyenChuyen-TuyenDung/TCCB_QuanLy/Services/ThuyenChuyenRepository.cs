@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using TCCB_QuanLy.Models.DAO;
@@ -16,7 +17,19 @@ namespace TCCB_QuanLy.Services
         {
             using (var _db = new TCCBDB())
             {
-                _db.Entry(thuyenChuyen).State = System.Data.Entity.EntityState.Modified;
+                thuyenChuyen.BangTotNghiep = null;
+                thuyenChuyen.ChuyenNganhDaoTao = null;
+                thuyenChuyen.HinhThucDaoTao = null;
+                thuyenChuyen.MonDuTuyen = null;
+                thuyenChuyen.School = null;
+                thuyenChuyen.School1 = null;
+                thuyenChuyen.StatusThuyenChuyen = null;
+                thuyenChuyen.TrinhDoCaoNhat = null;
+                thuyenChuyen.Ward = null;
+                thuyenChuyen.Ward1 = null;
+                thuyenChuyen.XepLoaiHocLuc = null;
+
+                _db.Entry(thuyenChuyen).State = EntityState.Modified;
                 try
                 {
                     _db.SaveChanges();
@@ -36,7 +49,8 @@ namespace TCCB_QuanLy.Services
             {
                 thuyenChuyen.StatusId = trangThaiId;
                 thuyenChuyen.NguoiTiepNhanId = accountId;
-                _db.Entry(thuyenChuyen).State = System.Data.Entity.EntityState.Modified;
+                thuyenChuyen.NgayTiepNhan = DateTime.Now;
+                _db.Entry(thuyenChuyen).State = EntityState.Modified;
                 try
                 {
                     _db.SaveChanges();
@@ -54,8 +68,9 @@ namespace TCCB_QuanLy.Services
         {
             using (var _db = new TCCBDB())
             {
+                thuyenChuyen.StatusThuyenChuyen = null;
                 thuyenChuyen.StatusId = trangThaiId;                
-                _db.Entry(thuyenChuyen).State = System.Data.Entity.EntityState.Modified;
+                _db.Entry(thuyenChuyen).State = EntityState.Modified;
                 try
                 {
                     _db.SaveChanges();
@@ -99,6 +114,7 @@ namespace TCCB_QuanLy.Services
                 .Include("Ward1.District.Province")
                 .Include("Ward.District.Province")
                 .Include("TrinhDoCaoNhat")
+                .Include("StatusThuyenChuyen")
                 .Where(s => s.TienTo.Trim() + s.Id == id.ToUpper() && s.CMND.Trim() == cmnd.Trim())
                 .SingleOrDefault();
                 return thuyenChuyen;
@@ -127,7 +143,7 @@ namespace TCCB_QuanLy.Services
             }
             
         }
-        public List<ThuyenChuyen> GetThuyenChuyensByYear(int? year)
+        public List<ThuyenChuyen> GetThuyenChuyensByYearDaTiepNhan(int? year)
         {
             using (var _db = new TCCBDB())
             {
@@ -143,7 +159,7 @@ namespace TCCB_QuanLy.Services
                 .Include("Ward1.District.Province")
                 .Include("Ward.District.Province")
                 .Include("TrinhDoCaoNhat")
-                .Where(s => s.NgayTiepNhan.Value.Year == year).ToList();
+                .Where(s => s.NgayTiepNhan.Value.Year == year && s.StatusId != null).ToList();
                 return thuyenChuyens;
             }
 

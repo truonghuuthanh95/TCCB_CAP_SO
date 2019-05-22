@@ -257,11 +257,62 @@ namespace TCCB_QuanLy.Controllers
 
         
 
-        [Route("tiendohoso")]
+        [Route("tiendogiaiquyethoso")]
         [HttpGet]
         public ActionResult TienDoHoSo()
         {
+
             return View();
+        }
+        [Route("tiendogiaiquyethoso/{madangki}/{cmnd}")]
+        [HttpGet]
+        public ActionResult TienDoHoSoJson(string madangki, string cmnd)
+        {
+            if (madangki.ToUpper().Contains("TCN"))
+            {
+                using (var _thuyenChuyenService = new ThuyenChuyenNgoaiTinhService())
+                {
+                    ThuyenChuyenNgoaiTinh thuyenChuyen = _thuyenChuyenService.CheckThuyenChuyenExistedByIdAndCMND(madangki, cmnd);
+                    if (thuyenChuyen == null)
+                    {
+                        return Json(new ReturnResult(400, "Không tìm thấy", null), JsonRequestBehavior.AllowGet);
+
+                    }
+                    
+                    var thuyenChuyenJson = JsonConvert.SerializeObject(thuyenChuyen,
+                  Formatting.None,
+                  new JsonSerializerSettings()
+                  {
+                      ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
+                  });
+                    return Json(new ReturnResult(200, "success", thuyenChuyenJson), JsonRequestBehavior.AllowGet);
+                }
+
+            }
+            else if (madangki.ToUpper().Contains("TC"))
+            {
+                using (var _thuyenChuyenService = new ThuyenChuyenRepository())
+                {
+                    ThuyenChuyen thuyenChuyen = _thuyenChuyenService.CheckThuyenChuyenExistedByIdAndCMND(madangki, cmnd);
+                    if (thuyenChuyen == null)
+                    {
+                        return Json(new ReturnResult(400, "Không tìm thấy", null), JsonRequestBehavior.AllowGet);
+
+                    }
+                    
+                    var thuyenChuyenJson = JsonConvert.SerializeObject(thuyenChuyen,
+                  Formatting.None,
+                  new JsonSerializerSettings()
+                  {
+                      ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
+                  });
+                    return Json(new ReturnResult(200, "success", thuyenChuyenJson), JsonRequestBehavior.AllowGet);
+                }
+            }
+            else
+            {
+                return Json(new ReturnResult(400, "Không tìm thấy", null), JsonRequestBehavior.AllowGet);
+            }           
         }
 
         [Route("huongdan")]

@@ -241,10 +241,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>01/28/2015 04:04:30</publishTime>
     </File>
     <File Include="bin/TCCB_QuanLy.dll">
-      <publishTime>04/03/2019 10:51:28</publishTime>
+      <publishTime>04/17/2019 17:00:22</publishTime>
     </File>
     <File Include="bin/TCCB_QuanLy.pdb">
-      <publishTime>04/03/2019 10:51:28</publishTime>
+      <publishTime>04/17/2019 17:00:22</publishTime>
     </File>
     <File Include="bin/Unity.Abstractions.dll">
       <publishTime>04/18/2018 19:15:06</publishTime>
@@ -508,16 +508,16 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>07/29/2018 17:01:26</publishTime>
     </File>
     <File Include="Views/Shared/_Home_Layout.cshtml">
-      <publishTime>04/01/2019 16:14:50</publishTime>
+      <publishTime>04/11/2019 10:24:52</publishTime>
     </File>
     <File Include="Views/Shared/_Layout.cshtml">
-      <publishTime>04/02/2019 09:50:15</publishTime>
+      <publishTime>04/03/2019 14:48:07</publishTime>
     </File>
     <File Include="Views/ThuyenChuyen/CapNhatThuyenChuyen.cshtml">
-      <publishTime>03/31/2019 16:06:22</publishTime>
+      <publishTime>04/17/2019 16:31:01</publishTime>
     </File>
     <File Include="Views/ThuyenChuyen/DangKimoi.cshtml">
-      <publishTime>03/31/2019 16:00:38</publishTime>
+      <publishTime>04/04/2019 21:35:03</publishTime>
     </File>
     <File Include="Views/ThuyenChuyen/DangKiThanhCong.cshtml">
       <publishTime>03/18/2019 15:29:25</publishTime>
@@ -530,6 +530,9 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     </File>
     <File Include="Views/ThuyenChuyen/Option.cshtml">
       <publishTime>03/19/2019 15:09:02</publishTime>
+    </File>
+    <File Include="Views/ThuyenChuyen/TienDoHoSo.cshtml">
+      <publishTime>04/11/2019 10:19:06</publishTime>
     </File>
     <File Include="Views/ThuyenChuyenNgoaiTinh/CapNhatThuyenChuyen.cshtml">
       <publishTime>03/31/2019 16:06:41</publishTime>
@@ -544,13 +547,13 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>04/02/2019 14:17:15</publishTime>
     </File>
     <File Include="Views/ThuyenChuyenQuanLyChung/ChiTietHoSoNgoaiTinh.cshtml">
-      <publishTime>03/20/2019 14:30:35</publishTime>
+      <publishTime>04/03/2019 10:59:51</publishTime>
     </File>
     <File Include="Views/ThuyenChuyenQuanLyChung/DanhSachHoSoDaTiepNhan.cshtml">
       <publishTime>04/02/2019 09:42:45</publishTime>
     </File>
     <File Include="Views/ThuyenChuyenQuanLyChung/DuyetHoSo.cshtml">
-      <publishTime>04/03/2019 10:14:38</publishTime>
+      <publishTime>04/09/2019 14:18:27</publishTime>
     </File>
     <File Include="Views/ThuyenChuyenQuanLyChung/DuyetHoSoNgoaiTinh.cshtml">
       <publishTime>04/03/2019 10:43:57</publishTime>

@@ -36,6 +36,7 @@ namespace TCCB_QuanLy.Services
             {
                 thuyenChuyen.StatusId = trangThaiId;
                 thuyenChuyen.NguoiTiepNhanId = accountId;
+                thuyenChuyen.NgayTiepNhan = DateTime.Now;
                 _db.Entry(thuyenChuyen).State = System.Data.Entity.EntityState.Modified;
                 try
                 {
@@ -98,6 +99,7 @@ namespace TCCB_QuanLy.Services
                 .Include("Ward1.District.Province")
                 .Include("Ward.District.Province")
                 .Include("TrinhDoCaoNhat")
+                .Include("StatusThuyenChuyen")
                 .Where(s => s.TienTo + s.Id == id.Trim().ToUpper() && s.CMND.Trim() == cmnd.Trim())
                 .SingleOrDefault();
                 return thuyenChuyen;
@@ -125,7 +127,7 @@ namespace TCCB_QuanLy.Services
             }
 
         }
-        public List<ThuyenChuyenNgoaiTinh> GetThuyenChuyensByYear(int? year)
+        public List<ThuyenChuyenNgoaiTinh> GetThuyenChuyensByYearDaTiepNhan(int? year)
         {
             using (var _db = new TCCBDB())
             {
@@ -141,7 +143,7 @@ namespace TCCB_QuanLy.Services
                 .Include("Ward.District.Province")
                 .Include("TrinhDoCaoNhat")
                 .Include("Province")
-                .Where(s => s.NgayTiepNhan.Value.Year == year).ToList();
+                .Where(s => s.NgayTiepNhan.Value.Year == year && s.StatusId != null).ToList();
                 return thuyenChuyens;
             }
 

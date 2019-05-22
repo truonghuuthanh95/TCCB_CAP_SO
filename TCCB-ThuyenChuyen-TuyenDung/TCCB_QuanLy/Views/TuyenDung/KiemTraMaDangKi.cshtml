@@ -9,7 +9,7 @@
         <div class="panel panel-default">
             <div class="panel-body">
                 <form class="form-inline">
-                    <h3 class="text-center text-info">CẬP NHẬT HỒ SƠ ỨNG TUYỂN</h3>
+                    <h3 class="text-center text-info">CẬP NHẬT PHIẾU ĐĂNG KÝ DỰ TUYỂN</h3>
                     <p class="text-warning">Vui lòng nhập mã hồ sơ đăng kí trong biên lai và nhập số chứng minh nhân dân sau đó nhấn xác nhận để hệ thống kiểm tra</p>
                     <p class="text-danger" id="errorMessage"></p>
                     <div class="form-group" id="errorRegistrationId">
@@ -40,7 +40,7 @@
             $('#submit').hide();
             $.get("/tuyendung/kiemtramadangki/" + $('#registrationId').val() + "/" + $('#identifyCard').val(), function (data, status) {
                 if (data.StatusCode == 200 && status == 'success') {
-                    window.location.replace('/tuyendung/capnhathosougtuyen/' + $('#registrationId').val().trim() + '/' + $('#identifyCard').val().trim());                  
+                    window.location.replace('/tuyendung/capnhathosoungtuyen/' + $('#registrationId').val().trim() + '/' + $('#identifyCard').val().trim());                  
                 }
                 else {
                     $('#loader').hide();

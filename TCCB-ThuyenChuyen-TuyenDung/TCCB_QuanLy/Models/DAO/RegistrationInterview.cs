@@ -108,6 +108,43 @@ namespace TCCB_QuanLy.Models.DAO
 
         public bool? IsActive { get; set; }
 
+        [StringLength(50)]
+        public string TienTo { get; set; }
+
+        public int? DanTocId { get; set; }
+
+        public int? TonGiaoId { get; set; }
+
+        [Column(TypeName = "date")]
+        public DateTime? CMNDNgayCap { get; set; }
+
+        public int? CMNDNoiCap { get; set; }
+
+        public int? QueQuanProvinceId { get; set; }
+
+        [StringLength(200)]
+        public string TinhTrangSucKhoe { get; set; }
+
+        public double? Chieucao { get; set; }
+
+        public double? CanNang { get; set; }
+
+        public int? ThanhPhanBanThanHienTaiId { get; set; }
+
+        [StringLength(50)]
+        public string TrinhDoVanHoa { get; set; }
+
+        [StringLength(50)]
+        public string SoVanBangChungChiDaiHoc { get; set; }
+
+        public int? DoiTuongUuTien { get; set; }
+
+        [StringLength(50)]
+        public string SoVanBangChungChiTinHoc { get; set; }
+
+        [StringLength(50)]
+        public string SoVanBangChungChiNgoaiNgu { get; set; }
+
         public virtual Account Account { get; set; }
 
         public virtual Account Account1 { get; set; }
@@ -116,11 +153,15 @@ namespace TCCB_QuanLy.Models.DAO
 
         public virtual ChuyenNganhDaoTao ChuyenNganhDaoTao { get; set; }
 
+        public virtual DanToc DanToc { get; set; }
+
         public virtual District District { get; set; }
 
         public virtual District District1 { get; set; }
 
         public virtual District District2 { get; set; }
+
+        public virtual DoiTuongUuTien DoiTuongUuTien1 { get; set; }
 
         public virtual HinhThucDaoTao HinhThucDaoTao { get; set; }
 
@@ -130,6 +171,8 @@ namespace TCCB_QuanLy.Models.DAO
 
         public virtual Province Province { get; set; }
 
+        public virtual Province Province1 { get; set; }
+
         public virtual XepLoaiHocLuc XepLoaiHocLuc { get; set; }
 
         public virtual TrinhDoNgoaiNgu TrinhDoNgoaiNgu { get; set; }
@@ -137,6 +180,10 @@ namespace TCCB_QuanLy.Models.DAO
         public virtual TrinhDoCaoNhat TrinhDoCaoNhat { get; set; }
 
         public virtual TrinhDoTinHoc TrinhDoTinHoc { get; set; }
+
+        public virtual ThanhPhanBanThanHienTai ThanhPhanBanThanHienTai { get; set; }
+
+        public virtual TonGiao TonGiao { get; set; }
 
         public virtual Ward Ward { get; set; }
 

@@ -60,8 +60,8 @@ namespace TCCB_QuanLy.Models.DTO
         public int BangTotNghiepId { get; set; }
         [Required]
         public bool IsHadNghiepVuSupham { get; set; }
-        [Required]
-        public int LamViecTrongNganhId { get; set; }
+        //[Required]
+        //public int LamViecTrongNganhId { get; set; }
         public string NamVaoNghanh { get; set; } = "Không có";
         
         public string MaNgach { get; set; } = "Không có";
@@ -77,5 +77,38 @@ namespace TCCB_QuanLy.Models.DTO
         public int HKTTWardId { get; set; }
         [Required]
         public string HKTTSoNhaTenDuong { get; set; }
+        [Required]
+        public int DanTocId { get; set; }
+        [Required]
+        public int TonGiaoId { get; set; }
+        [Required]
+        public DateTime CMNDNgayCap { get; set; }
+        [Required]
+        public int CMNDNoiCap { get; set; }
+        [Required]
+        public int QueQuanProvinceId { get; set; }
+        [Required]
+        [StringLength(200)]
+        public string TinhTrangSucKhoe { get; set; }
+        [Required]
+        public double Chieucao { get; set; }
+        [Required]
+        public double CanNang { get; set; }
+        [Required]
+        public int ThanhPhanBanThanHienTaiId { get; set; }
+        //[Required]
+        //[StringLength(50)]
+        //public string TrinhDoVanHoa { get; set; }
+        [Required]
+        [StringLength(50)]
+        public string SoVanBangChungChiDaiHoc { get; set; }
+        [Required]
+        public int DoiTuongUuTien { get; set; }
+        [Required]
+        [StringLength(50)]
+        public string SoVanBangChungChiTinHoc { get; set; }
+        [Required]
+        [StringLength(50)]
+        public string SoVanBangChungChiNgoaiNgu { get; set; }
     }
 }

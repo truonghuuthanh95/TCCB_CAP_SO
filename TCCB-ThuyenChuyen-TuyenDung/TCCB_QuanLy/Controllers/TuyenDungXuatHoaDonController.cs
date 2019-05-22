@@ -67,6 +67,12 @@ namespace TCCB_QuanLy.Controllers
             registrationInterview.IsActive = true;
             registrationInterview.HKTTWardId = 26740;
             registrationInterview.NOHNWardId = 26740;
+            registrationInterview.CMNDNgayCap = DateTime.Now;
+            //create default working status because in 2019 we do not need this propertise field. So I set this thing to 1.
+            registrationInterview.LamViecTrongNganhId = 1;
+            registrationInterview.DoiTuongUuTien = 1;
+            registrationInterview.TienTo = "TD";
+            registrationInterview.TrinhDoVanHoa = "Tốt nghiệp THPT";
             registrationInterviewRepository.TaoMoiUngVien(registrationInterview);
             return Json(new ReturnResult(200, "success", registrationInterview.Id));
         }

@@ -162,6 +162,10 @@
 
                                         foreach (var item in ViewBag.Districts)
                                         {
+                                            if (item.Id != 974)
+                                            {
+
+                                            }
                                             if (item.Id == ViewBag.ThuyenChuyen.School1.Ward.DistrictID)
                                             {
                                                 <option value="@item.Id" selected>@item.Type @item.Name</option>
@@ -184,15 +188,19 @@
                                     @{
                                         foreach (var item in ViewBag.CapTruongs)
                                         {
-                                            if (item.Id == ViewBag.ThuyenChuyen.School1.CapTruongId)
+                                            if (item.Id != 19 && item.Id != 20)
                                             {
-                                                <option value="@item.Id" selected>@item.Name</option>
+                                                if (item.Id == ViewBag.ThuyenChuyen.School1.CapTruongId)
+                                                {
+                                                    <option value="@item.Id" selected>@item.Name</option>
 
+                                                }
+                                                else
+                                                {
+                                                    <option value="@item.Id">@item.Name</option>
+                                                }
                                             }
-                                            else
-                                            {
-                                                <option value="@item.Id">@item.Name</option>
-                                            }
+
 
                                         }
                                     }
@@ -335,18 +343,18 @@
                                     <label for="formControlsSelect" class="control-label">Quận/Huyện</label>
                                     <select name="DistrictID" id="quanhuyennoisinh" class="form-control">
                                         @{
-        foreach (var item in ViewBag.DistrictsNoiSinh)
-        {
-            if (item.Id == ViewBag.ThuyenChuyen.Ward.DistrictID)
-            {
-                                    <option value="@item.Id" selected>@item.Type @item.Name</option>
-}
-else
-{
-                                    <option value="@item.Id">@item.Type @item.Name</option>
-}
+                                            foreach (var item in ViewBag.DistrictsNoiSinh)
+                                            {
+                                                if (item.Id == ViewBag.ThuyenChuyen.Ward.DistrictID)
+                                                {
+                                                    <option value="@item.Id" selected>@item.Type @item.Name</option>
+                                                }
+                                                else
+                                                {
+                                                    <option value="@item.Id">@item.Type @item.Name</option>
+                                                }
 
-}
+                                            }
                                         }
 
                                         }
@@ -359,18 +367,18 @@ else
                                     <label for="formControlsSelect" class="control-label">Phường/Xã</label>
                                     <select name="WardIdCurrentLiving" id="phuongxanoisinh" class="form-control">
                                         @{
-        foreach (var item in ViewBag.WardsNoiSinh)
-        {
-            if (item.Id == ViewBag.ThuyenChuyen.NoisinhWardId)
-            {
-                                    <option value="@item.Id" selected>@item.Type @item.Name</option>
-}
-else
-{
-                                    <option value="@item.Id">@item.Type @item.Name</option>
-}
+                                            foreach (var item in ViewBag.WardsNoiSinh)
+                                            {
+                                                if (item.Id == ViewBag.ThuyenChuyen.NoisinhWardId)
+                                                {
+                                                    <option value="@item.Id" selected>@item.Type @item.Name</option>
+                                                }
+                                                else
+                                                {
+                                                    <option value="@item.Id">@item.Type @item.Name</option>
+                                                }
 
-}
+                                            }
                                         }
 
                                         }
@@ -412,18 +420,18 @@ else
                                     <label for="formControlsSelect" class="control-label">Quận/Huyện</label>
                                     <select name="DistrictIDHouseHole" id="quanhuyenhktt" class="form-control">
                                         @{
-        foreach (var item in ViewBag.DistrictsHKTT)
-        {
-            if (item.Id == ViewBag.ThuyenChuyen.Ward1.DistrictID)
-            {
-                                    <option value="@item.Id" selected>@item.Type @item.Name</option>
-}
-else
-{
-                                    <option value="@item.Id">@item.Type @item.Name</option>
-}
+                                            foreach (var item in ViewBag.DistrictsHKTT)
+                                            {
+                                                if (item.Id == ViewBag.ThuyenChuyen.Ward1.DistrictID)
+                                                {
+                                                    <option value="@item.Id" selected>@item.Type @item.Name</option>
+                                                }
+                                                else
+                                                {
+                                                    <option value="@item.Id">@item.Type @item.Name</option>
+                                                }
 
-}
+                                            }
                                         }
 
                                     </select>
@@ -435,18 +443,18 @@ else
                                     <select name="WardIdHouseHold" id="phuongxahktt" class="form-control">
 
                                         @{
-        foreach (var item in ViewBag.WardsHKTT)
-        {
-            if (item.Id == ViewBag.ThuyenChuyen.HKTTWardId)
-            {
-                                    <option value="@item.Id" selected>@item.Type @item.Name</option>
-}
-else
-{
-                                    <option value="@item.Id">@item.Type @item.Name</option>
-}
+                                            foreach (var item in ViewBag.WardsHKTT)
+                                            {
+                                                if (item.Id == ViewBag.ThuyenChuyen.HKTTWardId)
+                                                {
+                                                    <option value="@item.Id" selected>@item.Type @item.Name</option>
+                                                }
+                                                else
+                                                {
+                                                    <option value="@item.Id">@item.Type @item.Name</option>
+                                                }
 
-}
+                                            }
                                         }
 
 

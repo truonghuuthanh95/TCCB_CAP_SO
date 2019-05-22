@@ -58,6 +58,11 @@ namespace TCCB_QuanLy.Repositories.Implements
                 .Include("District")
                 .Include("District1")
                 .Include("District2")
+                .Include("TonGiao")
+                .Include("DanToc")
+                .Include("ThanhPhanBanThanHienTai")
+                .Include("DoiTuongUuTien1")
+                .Include("Province1")
                 .SingleOrDefault(s => s.Id == id);
             return registrationInterview;
         }                  
@@ -65,14 +70,9 @@ namespace TCCB_QuanLy.Repositories.Implements
         public RegistrationInterview CapNhatRegistrationInterview(RegistrationInterview registrationInterview)
         {           
             _db.Entry(registrationInterview).State = EntityState.Modified;
-            try
-            {
+           
                 _db.SaveChanges();
-            }
-            catch (Exception)
-            {
-                return null;
-            }          
+                     
             return registrationInterview;
         }
 
