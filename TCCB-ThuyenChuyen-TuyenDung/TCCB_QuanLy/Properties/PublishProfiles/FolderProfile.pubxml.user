@@ -241,10 +241,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>01/28/2015 04:04:30</publishTime>
     </File>
     <File Include="bin/TCCB_QuanLy.dll">
-      <publishTime>04/17/2019 17:00:22</publishTime>
+      <publishTime>05/24/2019 14:13:34</publishTime>
     </File>
     <File Include="bin/TCCB_QuanLy.pdb">
-      <publishTime>04/17/2019 17:00:22</publishTime>
+      <publishTime>05/24/2019 14:13:34</publishTime>
     </File>
     <File Include="bin/Unity.Abstractions.dll">
       <publishTime>04/18/2018 19:15:06</publishTime>
@@ -343,7 +343,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/19/2018 13:59:22</publishTime>
     </File>
     <File Include="Content/Site.css">
-      <publishTime>11/27/2018 09:13:10</publishTime>
+      <publishTime>05/23/2019 17:44:48</publishTime>
     </File>
     <File Include="Content/styles.css">
       <publishTime>03/31/2019 16:21:41</publishTime>
@@ -508,10 +508,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>07/29/2018 17:01:26</publishTime>
     </File>
     <File Include="Views/Shared/_Home_Layout.cshtml">
-      <publishTime>04/11/2019 10:24:52</publishTime>
+      <publishTime>05/23/2019 15:32:04</publishTime>
     </File>
     <File Include="Views/Shared/_Layout.cshtml">
-      <publishTime>04/03/2019 14:48:07</publishTime>
+      <publishTime>05/23/2019 17:27:26</publishTime>
     </File>
     <File Include="Views/ThuyenChuyen/CapNhatThuyenChuyen.cshtml">
       <publishTime>04/17/2019 16:31:01</publishTime>
@@ -553,7 +553,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>04/02/2019 09:42:45</publishTime>
     </File>
     <File Include="Views/ThuyenChuyenQuanLyChung/DuyetHoSo.cshtml">
-      <publishTime>04/09/2019 14:18:27</publishTime>
+      <publishTime>04/18/2019 09:57:03</publishTime>
     </File>
     <File Include="Views/ThuyenChuyenQuanLyChung/DuyetHoSoNgoaiTinh.cshtml">
       <publishTime>04/03/2019 10:43:57</publishTime>
@@ -562,19 +562,19 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>03/20/2019 11:51:16</publishTime>
     </File>
     <File Include="Views/ThuyenChuyenQuanLyChung/TrangThaiHoSo.cshtml">
-      <publishTime>04/02/2019 09:42:48</publishTime>
+      <publishTime>04/17/2019 18:42:20</publishTime>
     </File>
     <File Include="Views/ThuyenChuyenQuanLyChung/TrangThaiHoSoNgoaiTinh.cshtml">
       <publishTime>03/20/2019 14:31:10</publishTime>
     </File>
     <File Include="Views/TuyenDung/CapNhatHoSoUngTuyen.cshtml">
-      <publishTime>11/26/2018 16:32:02</publishTime>
+      <publishTime>05/23/2019 16:42:26</publishTime>
     </File>
     <File Include="Views/TuyenDung/InHoSoUngTuyen.cshtml">
-      <publishTime>11/07/2018 21:57:18</publishTime>
+      <publishTime>05/23/2019 15:10:43</publishTime>
     </File>
     <File Include="Views/TuyenDung/KiemTraMaDangKi.cshtml">
-      <publishTime>11/07/2018 21:54:57</publishTime>
+      <publishTime>05/23/2019 16:32:55</publishTime>
     </File>
     <File Include="Views/TuyenDungQuanlyChung/DanhSachChuaHoanThanh.cshtml">
       <publishTime>09/21/2018 16:33:35</publishTime>
@@ -595,10 +595,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>07/30/2018 15:05:42</publishTime>
     </File>
     <File Include="Views/TuyenDungXuatHoaDon/Index.cshtml">
-      <publishTime>08/27/2018 13:47:25</publishTime>
+      <publishTime>05/23/2019 10:38:44</publishTime>
     </File>
     <File Include="Views/TuyenDungXuatHoaDon/InMaDangKi.cshtml">
-      <publishTime>11/10/2018 22:31:02</publishTime>
+      <publishTime>05/23/2019 17:45:14</publishTime>
     </File>
     <File Include="Views/Web.config">
       <publishTime>07/29/2018 17:01:26</publishTime>
@@ -607,7 +607,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>07/29/2018 17:01:26</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>04/03/2019 10:46:03</publishTime>
+      <publishTime>05/23/2019 15:11:17</publishTime>
     </File>
   </ItemGroup>
 </Project>

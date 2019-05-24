@@ -1,25 +1,13 @@
 ﻿@model TCCB_QuanLy.Models.DAO.RegistrationInterview
 @{
-    Layout = null;
+    ViewBag.Title = "";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
-<!DOCTYPE html>
-
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>In mã tuyển dụng</title>
-    <link rel="shortcut icon" href="~/Content/Images/logo_so.png">
-    <link href="https://fonts.googleapis.com/css?family=Montserrat:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
-    @Styles.Render("~/Content/css")
-    @Scripts.Render("~/bundles/modernizr")
-</head>
-<body style="padding-top: 60px;">
     <div class="col-sm-8 col-sm-offset-2">
         <div class="panel panel-default">
             <div class="panel-body">
                 <div>
-                    <h4 class="text-center text-success">Thêm ứng viên <b>@Model.LastName @Model.FirstName</b> thành công với mã hồ sơ là <b>@Model.Id</b></h4>
+                    <h4 class="text-center text-success">Thêm ứng viên <b>@Model.LastName @Model.FirstName</b> thành công với mã <b>TD</b><b>@Model.Id</b></h4>
                     <div class="row">
 
                         <div class="col-sm-6">
@@ -41,14 +29,14 @@
             </div>
         </div>
     </div>
-    <div class="col-sm-12" style="font-family: 'Times New Roman'">
+    <div class="col-sm-12 a5-print" style="font-family: 'Times New Roman'">
         <div class="panel panel-default">
             <div class="panel-body">
                 <div id="printContent">
                     <div class="container bill-print">
                         <div class="row">
                             <div class="col-sm-4 col-xs-4">
-                                <p class="text-center"><b>SỞ GIÁO DỤC VÀ ĐÀO TẠO </b></p>
+                                <p class="text-center" style="font-size: "><b>SỞ GIÁO DỤC VÀ ĐÀO TẠO </b></p>
                                 <p class="text-center"><b>THÀNH PHỐ HỒ CHÍ MINH</b></p>
                                 <p class="text-center" style="margin-top: -25px">_____________</p>
                             </div><div class="col-sm-8 col-xs-8">
@@ -62,7 +50,7 @@
                         <p class="text-center"><i>Ngày @DateTime.Now.Day.ToString("d2") tháng @DateTime.Now.Month.ToString("d2") năm @DateTime.Now.Year</i></p>
                         <div class="bill col-sm-8 col-sm-offset-2 col-xs-8 col-xs-offset-2">
                             <p>Họ, tên người nộp: <b>@Model.LastName @Model.FirstName</b></p><p>Số CMND: <b>@Model.IdentifyCard</b></p>
-                            <p>MÃ SỐ ĐƯỢC CẤP: <b style="font-size: 20px">TD @Model.Id</b></p>
+                            <p>MÃ SỐ ĐƯỢC CẤP: <b style="font-size: 20px">TD</b><b style="font-size: 20px">@Model.Id</b></p>
                         </div><div class="row">
                             <div class="bill col-sm-6 col-xs-6">
 
@@ -85,13 +73,9 @@
             </div>
         </div>
     </div>
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
-    @Scripts.Render("~/bundles/jqueryval")
+    
     <script>
         function printBill() {
             $("#printContent").printThis();
         }
     </script>
-</body>
-</html>

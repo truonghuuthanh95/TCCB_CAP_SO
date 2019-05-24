@@ -173,6 +173,8 @@ namespace TCCB_QuanLy.Models.DAO
 
         public virtual Province Province1 { get; set; }
 
+        public virtual Province Province2 { get; set; }
+
         public virtual XepLoaiHocLuc XepLoaiHocLuc { get; set; }
 
         public virtual TrinhDoNgoaiNgu TrinhDoNgoaiNgu { get; set; }

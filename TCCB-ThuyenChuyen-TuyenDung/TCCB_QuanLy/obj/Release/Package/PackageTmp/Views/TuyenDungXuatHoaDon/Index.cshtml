@@ -1,25 +1,13 @@
 ﻿
 @{
-    Layout = null;
+    ViewBag.Title = "";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
-<!DOCTYPE html>
-
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Xuất mã đăng kí</title>
-    <link rel="shortcut icon" href="~/Content/Images/logo_so.png">
-    <link href="https://fonts.googleapis.com/css?family=Montserrat:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
-    @Styles.Render("~/Content/css")
-    @Scripts.Render("~/bundles/modernizr")
-</head>
-<body style="padding-top: 60px;">
     <div class="col-sm-8 col-sm-offset-2">
         <div class="panel panel-default">
             <div class="panel-body">
-                <div class="text-center checkIDBox">
-                    <h3 class="text-center text-info">XUẤT MÃ ĐĂNG KÍ</h3>
+                <div class="text-center">
+                    <h3 class="text-center text-info">XUẤT MÃ ĐĂNG KÝ</h3>
                     <form class="form-inline">
                         <p class="text-warning">Vui lòng nhập số chứng minh nhân dân sau đó nhấn xác nhận để hệ thống kiểm tra</p>
                         <p class="text-danger" id="errorRegistration"></p>
@@ -33,24 +21,17 @@
             </div>
         </div>
     </div>
-    <div class="exportBillBox col-sm-6 col-sm-offset-3" id="thongtinxuatma" hidden>
+    <div class="col-sm-6 col-sm-offset-3" id="thongtinxuatma" hidden>
         <div class="panel panel-default">
             <div class="panel-body">
                 <form id="taomoiungvien" action="/taomoiungvien" method="get">
                     @Html.AntiForgeryToken()
                     <div class="form-group has-feedback">
-                        <label for="formBasicText" class="control-label">Họ tên người đăng kí</label>
+                        <label for="formBasicText" class="control-label">Họ tên người đăng ký</label>
                         <input placeholder="Họ tên người đăng kí" type="text" id="hovaten" class="form-control" name="hovaten" />
                     </div>
                     <input type="hidden" class="form-control" id="cmndSend" name="cmnd" />
-                    <div class="form-group">
-                        <label class="control-label">Lệ phí</label>
-                        <p class="form-control-static">
-                            <b>
-                                <i>@String.Format("{0:0,0}", 30000) </i>
-                            </b>
-                        </p>
-                    </div>
+
                     <div class="panel-footer">
                         <div class="row">
                             <div class="col-sm-6 col-xs-6">
@@ -68,11 +49,8 @@
         </div>
     </div>
     <span class="loader" hidden id="loader"></span>
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
-    @Scripts.Render("~/bundles/jqueryval")
     <script>
-        
+
         function kiemtracmnd() {
             if ($('#cmnd').val() == '') {
                 $('#errorInputcmnd').addClass('has-error');
@@ -146,9 +124,25 @@
                         hoVaTen: $('#hovaten').val().trim(),
                         __RequestVerificationToken: $("input[name=__RequestVerificationToken]").val(),
                     }, function (data, status) {
-                        if (status == 'success' && data.StatusCode == 200) {                          
+                        if (status == 'success' && data.StatusCode == 200) {
                             window.location.replace('/tuyendung/inmadangki/' + data.Results);
-                        }                       
+                        }
+                        else if (status == 'success' && data.StatusCode == 403) {
+                            window.location.replace('/login');
+                        }
+                        else {
+                            $.confirm({
+                                title: 'Thất bại',
+                                content: 'Có lỗi sảy ra!',
+                                type: 'red',
+                                typeAnimated: true,
+                                buttons: {
+                                    OK: function () {
+
+                                    }
+                                }
+                            });
+                        }
                     });
                 },
             });
@@ -162,5 +156,3 @@
             $('#submitIndentifyCard').removeClass('disabled');
         }
     </script>
-</body>
-</html >

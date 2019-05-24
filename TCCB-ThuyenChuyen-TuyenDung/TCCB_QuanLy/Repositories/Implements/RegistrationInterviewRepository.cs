@@ -24,12 +24,12 @@ namespace TCCB_QuanLy.Repositories.Implements
             return registrationInterview;
         }
 
-        public RegistrationInterview GetRegistrationInterviewByIdAndIdentifyCard(int id, string identifyCard)
+        public RegistrationInterview GetRegistrationInterviewByIdAndIdentifyCard(string id, string identifyCard)
         {
             RegistrationInterview registrationInterview = _db.RegistrationInterviews
                 .Include("Ward.District")
                 .Include("Ward1.District")
-                .SingleOrDefault(s => s.Id == id);
+                .SingleOrDefault(s => s.TienTo + s.Id.ToString() == id.ToUpper());
             if (registrationInterview == null || registrationInterview.IdentifyCard.Trim() != identifyCard)
             {
                 return null;
@@ -63,6 +63,7 @@ namespace TCCB_QuanLy.Repositories.Implements
                 .Include("ThanhPhanBanThanHienTai")
                 .Include("DoiTuongUuTien1")
                 .Include("Province1")
+                .Include("Province2")
                 .SingleOrDefault(s => s.Id == id);
             return registrationInterview;
         }                  

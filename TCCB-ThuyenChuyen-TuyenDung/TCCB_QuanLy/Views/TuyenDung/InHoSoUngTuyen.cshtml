@@ -24,7 +24,7 @@
                 <p class="text-center" style="margin-bottom: -25px;">______________</p>
                 <p class="text-center"><i>Tp.Hồ Chí Minh, ngày @DateTime.Now.Day tháng @DateTime.Now.Month năm @DateTime.Now.Year</i></p>
                 <div class="row">
-                    <div class="col-sm-4 col-xs-4" style="border: solid; border-width: 1px; height: 125px; width: 93px; margin-left: 100px; margin-right: 40px;">
+                    <div class="col-sm-4 col-xs-4" style="border: solid; border-width: 1px; height: 160px; width: 120px; margin-left: 70px; margin-right: 40px;">
                         <p class="text-center" style="padding-top: 47%">Dán ảnh 4x6</p>
                     </div>
                     <div class="col-sm-8 col-xs-8">
@@ -109,7 +109,7 @@
                         <p>Email: <b>@Model.Email</b></p>
                     </div>
                 </div>
-                <p>Quê quán: <b>@Model.Province.Type @Model.Province.Name</b></p>
+                <p>Quê quán: <b>@Model.Province2.Type @Model.Province2.Name</b></p>
                 <p>
                     Hộ khẩu thường trú:<b>
                         @Model.HKTTSoNhaTenDuong, @Model.Ward1.Type @Model.Ward1.Name, @Model.Ward1.District.Type @Model.Ward1.District.Name, @Model.Ward1.District.Province.Type @Model.Ward1.District.Province.Name
@@ -156,9 +156,19 @@
                 </div>
                 <h4 class="text-uppercase" style="padding-left: 20px"><b>II. thông tin đào tạo</b></h4>
                 <div style="border: solid; border-width: 1px;">
-                    <p>
-                        Trường Đào tạo: <b>@Model.TenTruongDaiHoc</b>
-                    </p>
+                    <div class="row">
+                        <div class="col-sm-6 col-xs-6">
+                            <p>
+                                Trường Đào tạo: <b>@Model.TenTruongDaiHoc</b>
+                            </p>
+                        </div>
+                        <div class="col-sm-6 col-xs-6">
+                            <p>
+                                Trường này ở: <b>@Model.Province.Type @Model.Province.Name</b>
+                            </p>
+                        </div>
+                    </div>
+                   
                     <div class="row">
                         <div class="col-xs-6 col-sm-6">
                             <p>
@@ -292,7 +302,7 @@ else
                     </div>
                 </div>
                 <h4 class="text-uppercase" style="padding-left: 20px"><b>III. thông tin khác</b></h4>
-                <p>Đối tượng ưu tiên: @Model.DoiTuongUuTien1.Name</p>
+                <p><b>Đối tượng ưu tiên:</b> @Model.DoiTuongUuTien1.Name</p>
                 <div class="row">
                     <div class="col-xs-4 col-sm-4">
                         <p>
@@ -368,12 +378,9 @@ else
                     <p class="text-center">Ngày&nbsp;&nbsp;&nbsp;&nbsp;tháng&nbsp;&nbsp;&nbsp;&nbsp;năm <b>@DateTime.Now.Year</b></p>
                     <div class="col-xs-6 col-sm-6">
                         <p class="text-center">
-                            <b>Cán bộ kiểm tra</b><br />
-
+                            <b class="text-uppercase">Cán bộ kiểm tra</b><br />
                             <i>(Ký và ghi rõ họ tên)</i>
-
                         </p>
-
                     </div>
                     <div class="col-xs-6 col-sm-6">
                         <p class="text-center">

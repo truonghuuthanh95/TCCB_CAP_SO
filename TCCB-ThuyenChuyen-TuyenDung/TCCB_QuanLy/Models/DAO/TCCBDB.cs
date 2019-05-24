@@ -8,10 +8,10 @@ namespace TCCB_QuanLy.Models.DAO
     public partial class TCCBDB : DbContext
     {
         public TCCBDB()
-            : base("name=TCCBDB13")
+            : base("name=TCCBDB")
         {
-            this.Configuration.ProxyCreationEnabled = false;
             this.Configuration.LazyLoadingEnabled = false;
+            this.Configuration.ProxyCreationEnabled = false;
         }
 
         public virtual DbSet<Account> Accounts { get; set; }
@@ -145,6 +145,11 @@ namespace TCCB_QuanLy.Models.DAO
                 .HasMany(e => e.RegistrationInterviews1)
                 .WithOptional(e => e.Province1)
                 .HasForeignKey(e => e.CMNDNoiCap);
+
+            modelBuilder.Entity<Province>()
+                .HasMany(e => e.RegistrationInterviews2)
+                .WithOptional(e => e.Province2)
+                .HasForeignKey(e => e.QueQuanProvinceId);
 
             modelBuilder.Entity<Province>()
                 .HasMany(e => e.ThuyenChuyenNgoaiTinhs)

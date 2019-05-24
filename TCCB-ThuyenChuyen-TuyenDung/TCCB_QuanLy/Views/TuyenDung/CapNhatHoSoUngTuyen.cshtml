@@ -9,7 +9,7 @@
     <div class="panel panel-default" id="personalInfomation">
         <div class="panel-body">
             <h3 class="text-center text-uppercase text-info">Cập nhật phiếu dự tuyển</h3>
-            <h4 class="text-center text-warning">Vui lòng điền thông tin theo thứ tự. Mọi thắc mắc vui lòng <a href="/lienhe">liên hệ</a></h4>
+            <h4 class="text-center text-warning">Vui lòng điền thông tin theo thứ tự</h4>
             <form id="hosoungtuyen">
                 @Html.AntiForgeryToken()
                 <div>
@@ -185,7 +185,7 @@
                         <div class="col-sm-3">
                             <div class="form-group">
                                 <label for="formControlsSelect" class="control-label">11.Quê quán</label>
-                                <select name="quequan" id="quenquan" class="form-control">
+                                <select name="quequan" id="quequan" class="form-control">
                                     @{
                                         foreach (var item in Model.Provinces)
                                         {
@@ -1144,6 +1144,7 @@
                         SoVanBangChungChiNgoaiNgu: $('#sohieuvanbangchungchingoaingu').val(),
                         __RequestVerificationToken: $("input[name=__RequestVerificationToken]").val(),
                     }, function (data, status) {
+                        debugger;
                         if (data.StatusCode == 200) {
                             window.location.href = '/tuyendung/inhosoungtuyen/' + data.Results
                         }

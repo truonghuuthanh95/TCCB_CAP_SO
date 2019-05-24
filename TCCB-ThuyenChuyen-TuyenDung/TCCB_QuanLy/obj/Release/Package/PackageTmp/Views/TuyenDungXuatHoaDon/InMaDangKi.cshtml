@@ -1,25 +1,13 @@
 ﻿@model TCCB_QuanLy.Models.DAO.RegistrationInterview
 @{
-    Layout = null;
+    ViewBag.Title = "";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
-<!DOCTYPE html>
-
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>In mã tuyển dụng</title>
-    <link rel="shortcut icon" href="~/Content/Images/logo_so.png">
-    <link href="https://fonts.googleapis.com/css?family=Montserrat:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
-    @Styles.Render("~/Content/css")
-    @Scripts.Render("~/bundles/modernizr")
-</head>
-<body style="padding-top: 60px;">
     <div class="col-sm-8 col-sm-offset-2">
         <div class="panel panel-default">
             <div class="panel-body">
                 <div>
-                    <h4 class="text-center text-success">Thêm ứng viên <b>@Model.LastName @Model.FirstName</b> thành công với mã hồ sơ là <b>@Model.Id</b></h4>
+                    <h4 class="text-center text-success">Thêm ứng viên <b>@Model.LastName @Model.FirstName</b> thành công với mã <b>TD</b><b>@Model.Id</b></h4>
                     <div class="row">
 
                         <div class="col-sm-6">
@@ -32,42 +20,40 @@
                         <div class="col-sm-6">
                             <p class="text-center">
                                 <button type="button" class="btn btn-primary" onclick="printBill();">
-                                    <span class="glyphicon glyphicon-print"></span> IN HÓA ĐƠN
+                                    <span class="glyphicon glyphicon-print"></span> IN PHIẾU
                                 </button>
                             </p>
                         </div>
-                    </div>                                       
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-    <div class="col-sm-12" style="font-family: 'Times New Roman'">
+    <div class="col-sm-12 a5-print" style="font-family: 'Times New Roman'">
         <div class="panel panel-default">
             <div class="panel-body">
                 <div id="printContent">
                     <div class="container bill-print">
                         <div class="row">
-                            <div class="col-sm-8 col-xs-8">
-                                <p class="text-center">SỞ GIÁO DỤC VÀ ĐÀO TẠO TP.HỒ CHÍ MINH</p>
-                                <p class="text-center"><i>66-68 Lê Thánh Tôn Phường Bến Nghé Quận 1 TP.HCM</i></p>
-                            </div><div class="col-sm-4 col-xs-4">
-                                <h4>Mã hồ sơ: <b>@Model.Id</b></h4>
+                            <div class="col-sm-4 col-xs-4">
+                                <p class="text-center" style="font-size: "><b>SỞ GIÁO DỤC VÀ ĐÀO TẠO </b></p>
+                                <p class="text-center"><b>THÀNH PHỐ HỒ CHÍ MINH</b></p>
+                                <p class="text-center" style="margin-top: -25px">_____________</p>
+                            </div><div class="col-sm-8 col-xs-8">
+                                <p class="text-center">CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM</p>
+                                <p class="text-center">Độc lập - Tự do - Hạnh phúc</p>
+                                <p class="text-center" style="margin-top: -25px">_____________</p>
                             </div>
-                        </div><h3 class="text-center bill"><b>BIÊN LAI THU TIỀN</b></h3>
+                        </div><h3 class="text-center bill"><b>PHIẾU CUNG CẤP MÃ SỐ</b></h3>
+                        <h3 class="text-center">Đối với người đăng ký tuyển dụng viên chức </h3>
+                        <h3 class="text-center">Năm @DateTime.Now.Year - @DateTime.Now.AddYears(1).Year</h3>
                         <p class="text-center"><i>Ngày @DateTime.Now.Day.ToString("d2") tháng @DateTime.Now.Month.ToString("d2") năm @DateTime.Now.Year</i></p>
                         <div class="bill col-sm-8 col-sm-offset-2 col-xs-8 col-xs-offset-2">
                             <p>Họ, tên người nộp: <b>@Model.LastName @Model.FirstName</b></p><p>Số CMND: <b>@Model.IdentifyCard</b></p>
-                            <p>Nội dung nộp: <b>Lệ phí dự tuyển viên chức 2018</b></p><p>
-                                Số tiền thu: <b>
-                                    @String.Format("{0:0,0 VNĐ}", 30000)
-                                </b> (Viết bằng chữ): Ba mươi ngàn đồng<b></b>
-                            </p>
+                            <p>MÃ SỐ ĐƯỢC CẤP: <b style="font-size: 20px">TD</b><b style="font-size: 20px">@Model.Id</b></p>
                         </div><div class="row">
                             <div class="bill col-sm-6 col-xs-6">
-                                <p class="text-center">
-                                    <b>Người nộp tiền</b><br />
-                                    <i>(Ký và ghi rõ họ tên)</i>
-                                </p>
+
                             </div>
                             <div class="bill col-sm-6 col-xs-6">
                                 <p class="text-center">
@@ -78,8 +64,8 @@
                         </div><div class="warning-box">
                             <p><b>Lưu ý: </b></p><ul>
                                 <li>Ứng viên vui lòng truy cập vào <b>http://tuyendung/hosoungtuyen</b> để cập nhập hồ sơ ứng tuyển</li>
-                                <li>Ứng viên vui lòng đến <b>SỞ GIÁO DỤC VÀ ĐÀO TẠO TP.HỒ CHÍ MINH</b> vào ngày <b>22/7/2018</b> để rà xoát hồ sơ (<i>Mục đích là để đối chiếu hồ sơ với bản khai. Vui lòng tới đúng giờ</i>)</li>
-                                <li>Khi đi ứng viên vui lòng in hố sơ ứng tuyển thành <b>2 bản</b>, sau khi đã hoàn tất cập nhật hồ sơ ứng tuyển</li>
+                                <li>Ứng viên vui lòng đến <b>SỞ GIÁO DỤC VÀ ĐÀO TẠO TP.HỒ CHÍ MINH</b> vào ngày <b>22/7/2018</b> để rà soát hồ sơ (<i>Mục đích là để đối chiếu hồ sơ với bản khai. Vui lòng tới đúng giờ</i>)</li>
+                                <li>Khi đi ứng viên vui lòng in phiếu đăng ký thành <b>2 bản</b>, sau khi đã hoàn tất cập nhật hồ sơ ứng tuyển</li>
                             </ul>
                         </div>
                     </div>
@@ -87,13 +73,9 @@
             </div>
         </div>
     </div>
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
-    @Scripts.Render("~/bundles/jqueryval")
+    
     <script>
-                    function printBill() {
-                        $("#printContent").printThis();
-                    }
+        function printBill() {
+            $("#printContent").printThis();
+        }
     </script>
-</body>
-</html>

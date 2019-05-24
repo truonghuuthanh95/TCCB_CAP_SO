@@ -94,8 +94,8 @@
                             <td>@item.CMND</td>
                             <td>@item.School.TenTruong</td>
                             <td>@item.School1.TenTruong</td>
-                            <td>@item.StatusThuyenChuyen.Name</td>
-                            <td><a href="/thuyenchuyen/chitiethoso/@item.Id" role="button" class="btn btn-sm btn-info"><span class="glyphicon glyphicon-eye-open"></span> Chi tiết</a><button onclick="setTrangThaiHS(@item.StatusThuyenChuyen.Id);" class="btn btn-sm btn-success" data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-edit"></span> Cập nhật</button></td>
+                            <td id="@item.TienTo@item.Id">@item.StatusThuyenChuyen.Name</td>
+                            <td><a href="/thuyenchuyen/chitiethoso/@item.Id" role="button" class="btn btn-sm btn-info"><span class="glyphicon glyphicon-eye-open"></span> Chi tiết</a><button onclick="updateIdTmp(@item.Id);" class="btn btn-sm btn-success" data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-edit"></span> Cập nhật</button></td>
                         </tr>
                     }
                 }
@@ -117,7 +117,7 @@
                     <div class="form-group">
                         <label for="inputEmail3" class="col-sm-2 control-label">Trang thái</label>
                         <div class="col-sm-10">
-                            <select class="form-control" id="trangthai">
+                            <select class="form-control" id="trangthaicapnhat">
                                 @{
         foreach (var item in ViewBag.StatusThuyenChuyen)
         {
@@ -146,7 +146,8 @@ else
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
-                <button type="button" class="btn btn-primary">Cập nhật</button>
+                <button type="button" class="btn btn-primary" onclick="updateTrangThaiHoSo();">Cập nhật</button>
+                <p hidden id="idTmp"></p>
             </div>
         </div>
     </div>
@@ -159,9 +160,7 @@ else
             autoclose: true,
         });
         $('#danhsachthuyenchuyen').DataTable();
-        //function setTrangThaiHS(statusId) {
-        //    $('#trangthai').val(statusId);
-        //}
+       
 
     });
 
@@ -170,5 +169,45 @@ else
     }
         function exportExcel() {
             window.location.href = '/thuyenchuyen/downloadexcelthuyenchuyen/' + @ViewBag.StatusId + '/' + @ViewBag.Year
+    }
+    function updateIdTmp(id) {
+        $('#idTmp').val(id);
+    }
+    function updateTrangThaiHoSo() {
+        $.get('/thuyenchuyen/capnhattrangthai/' + $('#idTmp').val() + '/' + $('#trangthaicapnhat').val() + '/' + moment($('#ngay').val(), 'DD-MM-YYYY').format('YYYY-MM-DD'), function (data, status) {
+            if (data.StatusCode == 200 && status == 'success') {
+                $('#myModal').modal('toggle');
+                $.confirm({
+                    title: 'Thành công!',
+                    content: 'Cập nhật thành công',
+                    type: 'green',
+                    typeAnimated: true,
+                    buttons: {
+                        OK: function () {
+                            window.location.reload();
+                        }
+                    }
+                });                 
+                   
+                
+            }
+            else if (data.StatusCode == 403 && status == 'success') {
+                window.location.href = '/login';
+            }
+            else {
+                $('#myModal').modal('toggle');
+                $.confirm({
+                    title: 'Thất bại',
+                    content: data.Message,
+                    type: 'red',
+                    typeAnimated: true,
+                    buttons: {
+                        OK: function () {
+
+                        }
+                    }
+                });
+            }
+        })
     }
 </script>

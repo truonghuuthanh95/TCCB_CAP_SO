@@ -24,6 +24,18 @@ namespace TCCB_QuanLy.Controllers
         [HttpGet]
         public ActionResult Index()
         {
+            int permisstionId = 6;
+            Account account = (Account)Session[Utils.Constants.USER_SESSION];
+            if (account == null)
+            {
+                return RedirectToRoute("login");
+            }
+            List<UserPermission> userPermission = (List<UserPermission>)Session[Utils.Constants.USER_PERMISSION_SESSION];
+            if (userPermission.Where(s => s.PermissionId == permisstionId).SingleOrDefault() == null)
+            {
+                return RedirectToRoute("login");
+            }
+
             return View();
         }
         [Route("kiemtrahoplecmnd/{cmnd}")]
@@ -36,7 +48,7 @@ namespace TCCB_QuanLy.Controllers
                 if (registrationInterviews.Any(s => s.IsActive == true))
                 {
                     RegistrationInterview daDangKi = registrationInterviews.Where(s => s.IsActive == true).FirstOrDefault();
-                    return Json(new ReturnResult(400, "Ứng viên đã đăng kí trước đó, mã đăng kí là: " + daDangKi.Id, null), JsonRequestBehavior.AllowGet);
+                    return Json(new ReturnResult(400, "Ứng viên đã đăng kí trước đó, mã đăng kí là: " + daDangKi.TienTo + daDangKi.Id, null), JsonRequestBehavior.AllowGet);
                 }
                 else if (registrationInterviews.Any(s => s.IsPass == true))
                 {
@@ -51,6 +63,17 @@ namespace TCCB_QuanLy.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult TaoMoiUngVien(string cmnd, string hoVaTen)
         {
+            int permisstionId = 6;
+            Account account = (Account)Session[Utils.Constants.USER_SESSION];
+            if (account == null)
+            {
+                return Json(new ReturnResult(403, "Access denied", null), JsonRequestBehavior.AllowGet);
+            }
+            List<UserPermission> userPermission = (List<UserPermission>)Session[Utils.Constants.USER_PERMISSION_SESSION];
+            if (userPermission.Where(s => s.PermissionId == permisstionId).SingleOrDefault() == null)
+            {
+                return Json(new ReturnResult(403, "Access denied", null), JsonRequestBehavior.AllowGet);
+            }
             RegistrationInterview registrationInterview = new RegistrationInterview();
             string[] arrListStr = hoVaTen.Trim().Split(' ');//tách trong chuỗi str trên khi gặp ký tự ' '           
             registrationInterview.FirstName = arrListStr[arrListStr.Length - 1].Trim();
@@ -80,6 +103,17 @@ namespace TCCB_QuanLy.Controllers
         [Route("inmadangki/{madangki}")]
         public ActionResult InMaDangKi(int madangki)
         {
+            int permisstionId = 6;
+            Account account = (Account)Session[Utils.Constants.USER_SESSION];
+            if (account == null)
+            {
+                return RedirectToRoute("login");
+            }
+            List<UserPermission> userPermission = (List<UserPermission>)Session[Utils.Constants.USER_PERMISSION_SESSION];
+            if (userPermission.Where(s => s.PermissionId == permisstionId).SingleOrDefault() == null)
+            {
+                return RedirectToRoute("login");
+            }
             RegistrationInterview registrationInterview = registrationInterviewRepository.GetRegistrationInterviewById(madangki);
             return View(registrationInterview);
         }

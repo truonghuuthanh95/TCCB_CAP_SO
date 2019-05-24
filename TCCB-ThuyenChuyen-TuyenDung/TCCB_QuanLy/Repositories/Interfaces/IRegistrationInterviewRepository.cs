@@ -8,7 +8,7 @@ namespace TCCB_QuanLy.Repositories.Interfaces
         RegistrationInterview TaoMoiUngVien(RegistrationInterview registrationInterview);
         RegistrationInterview GetRegistrationInterviewById(int id);
         RegistrationInterview CapNhatRegistrationInterview(RegistrationInterview registrationInterview);
-        RegistrationInterview GetRegistrationInterviewByIdAndIdentifyCard(int id, string identifyCard);        
+        RegistrationInterview GetRegistrationInterviewByIdAndIdentifyCard(string id, string identifyCard);        
         RegistrationInterview GetRegistrationInterviewByIdWithDetail(int id);
         List<RegistrationInterview> GetRegistrationInterviewsByCmnd(string cmnd);
         int GetRegistrationInterviewsDaDangkiSoLuong();

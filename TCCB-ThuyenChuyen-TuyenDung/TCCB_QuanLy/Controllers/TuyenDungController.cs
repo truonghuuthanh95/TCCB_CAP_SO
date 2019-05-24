@@ -55,7 +55,7 @@ namespace TCCB_QuanLy.Controllers
 
 
         // GET: TuyenDung
-        [Route("capnhathosoungtuyen", Name = "capnhathosoungtuyen")]
+        [Route("capnhatphieudutuyen", Name = "capnhatphieudutuyen")]
         [HttpGet]
         public ActionResult KiemTraMaDangKi()
         {
@@ -63,9 +63,9 @@ namespace TCCB_QuanLy.Controllers
         }
         [Route("kiemtramadangki/{madangki}/{cmnd}")]
         [HttpGet]
-        public ActionResult KiemTraMaDangKi(int madangki, string cmnd)
+        public ActionResult KiemTraMaDangKi(string madangki, string cmnd)
         {
-            RegistrationInterview registrationInterview = registrationInterviewRepository.GetRegistrationInterviewByIdAndIdentifyCard(madangki, cmnd.Trim());
+            RegistrationInterview registrationInterview = registrationInterviewRepository.GetRegistrationInterviewByIdAndIdentifyCard(madangki.ToUpper(), cmnd.Trim());
 
             if (registrationInterview == null)
             {
@@ -85,9 +85,9 @@ namespace TCCB_QuanLy.Controllers
         }
         [Route("capnhathosoungtuyen/{madangki}/{cmnd}")]
         [HttpGet]
-        public ActionResult CapNhatHoSoUngTuyen(int madangki, string cmnd)
+        public ActionResult CapNhatHoSoUngTuyen(string madangki, string cmnd)
         {
-            RegistrationInterview registrationInterview = registrationInterviewRepository.GetRegistrationInterviewByIdAndIdentifyCard(madangki, cmnd.Trim());
+            RegistrationInterview registrationInterview = registrationInterviewRepository.GetRegistrationInterviewByIdAndIdentifyCard(madangki.ToUpper(), cmnd.Trim());
             if (registrationInterview == null || registrationInterview.CreatedAt.Value.Year != DateTime.Now.Year || registrationInterview.NguoiRaSoat != null || registrationInterview.IsActive == false)
             {
                 return RedirectToRoute("capnhathosougtuyen");
