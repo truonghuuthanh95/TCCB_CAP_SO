@@ -150,9 +150,11 @@ namespace TCCB_QuanLy.Controllers
         public ActionResult TrangThaiDangKy()
         {
             List<RegistrationInterviewStatusRegistedCountDTO> registration = registrationInterviewRepository.GetSoluongDangkyTheoViTriUngTuyen();
-            List<MonDuTuyen> mondutuyens = monDuTuyenRepository.GetAllMonDuTuyens();
-            var registrationRegistedStatus = (from p in registration from s in mondutuyens where Convert.ToInt32(p.Quantity) == s.Id select new RegistrationInterviewStatusRegistedCountDTO { ViTriUngTuyen = s.Name, Quantity = p.Quantity, Targets = 10 });   
-            ViewBag.RegistrationStatus = registrationRegistedStatus;
+            List<MonDuTuyen> mondutuyens = monDuTuyenRepository.GetMonDuTuyens();
+            var registrationRegistedStatus = (from p in mondutuyens from s in registration where Convert.ToInt32(s.Quantity) == p.Id select new RegistrationInterviewStatusRegistedCountDTO { ViTriUngTuyen = p.ViTriUngTuyen.Name + " " + p.Name , Quantity = s.Quantity, Targets = 10 });
+            var b = (from s1 in mondutuyens from s2 in registration where Convert.ToInt32(s2.ViTriUngTuyen) != s1.Id select new RegistrationInterviewStatusRegistedCountDTO { ViTriUngTuyen = s1.ViTriUngTuyen.Name + " " + s1.Name, Quantity = 0, Targets = 10 } );
+            var ab = registrationRegistedStatus.Concat(b).OrderBy(s => s.ViTriUngTuyen);
+            ViewBag.RegistrationStatus = ab;
             return View();
         }
 

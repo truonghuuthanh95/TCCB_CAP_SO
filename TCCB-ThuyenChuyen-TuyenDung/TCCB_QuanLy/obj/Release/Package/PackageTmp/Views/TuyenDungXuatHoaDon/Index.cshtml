@@ -1,6 +1,6 @@
 ﻿
 @{
-    ViewBag.Title = "";
+    ViewBag.Title = "Xuất mã đăng ký";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
     <div class="col-sm-8 col-sm-offset-2">
@@ -12,7 +12,7 @@
                         <p class="text-warning">Vui lòng nhập số chứng minh nhân dân sau đó nhấn xác nhận để hệ thống kiểm tra</p>
                         <p class="text-danger" id="errorRegistration"></p>
                         <div class="form-group" id="errorInputcmnd">
-                            <label for="cmnd" class="control-label">Số CMND</label>
+                            <label for="cmnd" class="control-label">Số CMND/CCCD</label>
                             <input placeholder="CMND" type="number" id="cmnd" class="form-control" value="">
                         </div>
                         <button type="button" class="btn btn-success" onclick="kiemtracmnd();" id="submitIndentifyCard">XÁC NHẬN</button>

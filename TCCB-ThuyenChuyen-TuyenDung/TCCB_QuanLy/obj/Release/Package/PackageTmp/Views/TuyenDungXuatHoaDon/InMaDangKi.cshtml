@@ -1,81 +1,84 @@
 ﻿@model TCCB_QuanLy.Models.DAO.RegistrationInterview
 @{
-    ViewBag.Title = "";
+    ViewBag.Title = "In mã đăng ký";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-    <div class="col-sm-8 col-sm-offset-2">
-        <div class="panel panel-default">
-            <div class="panel-body">
-                <div>
-                    <h4 class="text-center text-success">Thêm ứng viên <b>@Model.LastName @Model.FirstName</b> thành công với mã <b>TD</b><b>@Model.Id</b></h4>
-                    <div class="row">
+<div class="col-sm-8 col-sm-offset-2">
+    <div class="panel panel-default">
+        <div class="panel-body">
+            <div>
+                <h4 class="text-center text-success">Thêm ứng viên <b>@Model.LastName @Model.FirstName</b> thành công với mã <b>TD</b><b>@Model.Id</b></h4>
+                <div class="row">
 
-                        <div class="col-sm-6">
-                            <div class="text-center">
-                                <a href="/tuyendung/xuatmadangki" role="button" class="btn btn-danger">
-                                    <span class="glyphicon glyphicon-arrow-left"></span> QUAY LẠI
-                                </a>
-                            </div>
+                    <div class="col-sm-6">
+                        <div class="text-center">
+                            <a href="/tuyendung/xuatmadangki" role="button" class="btn btn-danger">
+                                <span class="glyphicon glyphicon-arrow-left"></span> QUAY LẠI
+                            </a>
                         </div>
-                        <div class="col-sm-6">
+                    </div>
+                    <div class="col-sm-6">
+                        <p class="text-center">
+                            <button type="button" class="btn btn-primary" onclick="printBill();">
+                                <span class="glyphicon glyphicon-print"></span> IN PHIẾU
+                            </button>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="col-sm-12 a5-print" style="font-family: 'Times New Roman'">
+    <div class="panel panel-default">
+        <div class="panel-body">
+            <div id="printContent">
+                <div class="container bill-print">
+                    <div class="row">
+                        <div class="col-sm-4 col-xs-4">
+                            <p class="text-center" style="font-size: "><b>SỞ GIÁO DỤC VÀ ĐÀO TẠO </b></p>
+                            <p class="text-center"><b>THÀNH PHỐ HỒ CHÍ MINH</b></p>
+                            <p class="text-center" style="margin-top: -25px">_____________</p>
+                        </div><div class="col-sm-8 col-xs-8">
+                            <p class="text-center"><b>CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM</b></p>
+                            <p class="text-center"><b>Độc lập - Tự do - Hạnh phúc</b></p>
+                            <p class="text-center" style="margin-top: -25px">_____________</p>
+                        </div>
+                    </div><h3 class="text-center bill"><b>PHIẾU CUNG CẤP MÃ SỐ</b></h3>
+                    <h3 class="text-center">Đối với người đăng ký tuyển dụng viên chức </h3>
+                    <h3 class="text-center">Năm @DateTime.Now.Year - @DateTime.Now.AddYears(1).Year</h3>
+                    <div class="bill col-sm-8 col-sm-offset-2 col-xs-8 col-xs-offset-2">
+                        <p>HỌ VÀ TÊN: <b>@Model.LastName @Model.FirstName</b></p><p>SỐ CMND/CCCD: <b>@Model.IdentifyCard</b></p>
+                        <p>MÃ SỐ ĐƯỢC CẤP: <b style="font-size: 20px">TD</b><b style="font-size: 20px">@Model.Id</b></p>
+                    </div>
+                    <div class="row">
+                        <div class="bill col-sm-6 col-xs-6">
+
+                        </div>
+                        <div class="bill col-sm-6 col-xs-6">
                             <p class="text-center">
-                                <button type="button" class="btn btn-primary" onclick="printBill();">
-                                    <span class="glyphicon glyphicon-print"></span> IN PHIẾU
-                                </button>
+                                <i>Thành phố Hồ Chí Minh, ngày @DateTime.Now.Day.ToString("d2") tháng @DateTime.Now.Month.ToString("d2") năm @DateTime.Now.Year</i>
+                            </p>
+                            <p class="text-center">
+                                <b>Người cung cấp mã số</b><br />
+                                <i>(Ký và ghi rõ họ tên)</i>
                             </p>
                         </div>
                     </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="col-sm-12 a5-print" style="font-family: 'Times New Roman'">
-        <div class="panel panel-default">
-            <div class="panel-body">
-                <div id="printContent">
-                    <div class="container bill-print">
-                        <div class="row">
-                            <div class="col-sm-4 col-xs-4">
-                                <p class="text-center" style="font-size: "><b>SỞ GIÁO DỤC VÀ ĐÀO TẠO </b></p>
-                                <p class="text-center"><b>THÀNH PHỐ HỒ CHÍ MINH</b></p>
-                                <p class="text-center" style="margin-top: -25px">_____________</p>
-                            </div><div class="col-sm-8 col-xs-8">
-                                <p class="text-center">CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM</p>
-                                <p class="text-center">Độc lập - Tự do - Hạnh phúc</p>
-                                <p class="text-center" style="margin-top: -25px">_____________</p>
-                            </div>
-                        </div><h3 class="text-center bill"><b>PHIẾU CUNG CẤP MÃ SỐ</b></h3>
-                        <h3 class="text-center">Đối với người đăng ký tuyển dụng viên chức </h3>
-                        <h3 class="text-center">Năm @DateTime.Now.Year - @DateTime.Now.AddYears(1).Year</h3>
-                        <p class="text-center"><i>Ngày @DateTime.Now.Day.ToString("d2") tháng @DateTime.Now.Month.ToString("d2") năm @DateTime.Now.Year</i></p>
-                        <div class="bill col-sm-8 col-sm-offset-2 col-xs-8 col-xs-offset-2">
-                            <p>Họ, tên người nộp: <b>@Model.LastName @Model.FirstName</b></p><p>Số CMND: <b>@Model.IdentifyCard</b></p>
-                            <p>MÃ SỐ ĐƯỢC CẤP: <b style="font-size: 20px">TD</b><b style="font-size: 20px">@Model.Id</b></p>
-                        </div><div class="row">
-                            <div class="bill col-sm-6 col-xs-6">
-
-                            </div>
-                            <div class="bill col-sm-6 col-xs-6">
-                                <p class="text-center">
-                                    <b>Người thu tiền</b><br />
-                                    <i>(Ký và ghi rõ họ tên)</i>
-                                </p>
-                            </div>
-                        </div><div class="warning-box">
-                            <p><b>Lưu ý: </b></p><ul>
-                                <li>Ứng viên vui lòng truy cập vào <b>http://tuyendung/hosoungtuyen</b> để cập nhập hồ sơ ứng tuyển</li>
-                                <li>Ứng viên vui lòng đến <b>SỞ GIÁO DỤC VÀ ĐÀO TẠO TP.HỒ CHÍ MINH</b> vào ngày <b>22/7/2018</b> để rà soát hồ sơ (<i>Mục đích là để đối chiếu hồ sơ với bản khai. Vui lòng tới đúng giờ</i>)</li>
-                                <li>Khi đi ứng viên vui lòng in phiếu đăng ký thành <b>2 bản</b>, sau khi đã hoàn tất cập nhật hồ sơ ứng tuyển</li>
-                            </ul>
-                        </div>
+                    <div class="warning-box">
+                        <p><b>Lưu ý: </b></p><ul>
+                            <li>Ứng viên vui lòng truy cập vào <b>http://tuyendung.hcm.edu.vn/tuyendung/capnhatphieudutuyen</b> để cập nhập phiếu dự tuyển</li>
+                            <li>Khi đi ứng viên vui lòng in phiếu đăng ký thành <b>2 bản</b>, sau khi đã hoàn tất cập nhật phiếu dự tuyển</li>
+                        </ul>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    
-    <script>
-        function printBill() {
-            $("#printContent").printThis();
-        }
-    </script>
+</div>
+
+<script>
+    function printBill() {
+        $("#printContent").printThis();
+    }
+</script>
