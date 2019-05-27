@@ -6,7 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Web.Mvc;
 using TCCB_QuanLy.Models.DTO;
-
+using System.Linq;
 namespace TCCB_QuanLy.Controllers
 {
     [RoutePrefix("tuyendung")]
@@ -144,5 +144,18 @@ namespace TCCB_QuanLy.Controllers
             RegistrationInterview registrationInterview = registrationInterviewRepository.GetRegistrationInterviewByIdWithDetail(madangki);
             return View(registrationInterview);           
         }
+
+        [Route("trangthaidangky")]
+        [HttpGet]
+        public ActionResult TrangThaiDangKy()
+        {
+            List<RegistrationInterviewStatusRegistedCountDTO> registration = registrationInterviewRepository.GetSoluongDangkyTheoViTriUngTuyen();
+            List<MonDuTuyen> mondutuyens = monDuTuyenRepository.GetAllMonDuTuyens();
+            var registrationRegistedStatus = (from p in registration from s in mondutuyens where Convert.ToInt32(p.Quantity) == s.Id select new RegistrationInterviewStatusRegistedCountDTO { ViTriUngTuyen = s.Name, Quantity = p.Quantity, Targets = 10 });   
+            ViewBag.RegistrationStatus = registrationRegistedStatus;
+            return View();
+        }
+
+
     }
 }

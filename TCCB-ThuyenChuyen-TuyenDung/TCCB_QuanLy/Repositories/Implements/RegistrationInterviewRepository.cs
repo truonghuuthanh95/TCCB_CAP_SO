@@ -4,6 +4,7 @@ using TCCB_QuanLy.Repositories.Interfaces;
 using TCCB_QuanLy.Models.DAO;
 using System.Data.Entity;
 using System.Collections.Generic;
+using TCCB_QuanLy.Models.DTO;
 
 namespace TCCB_QuanLy.Repositories.Implements
 {
@@ -137,6 +138,16 @@ namespace TCCB_QuanLy.Repositories.Implements
         public List<RegistrationInterview> GetRegistrationInterviewsHopLe()
         {
             List<RegistrationInterview> registrationInterviews = _db.RegistrationInterviews.Where(s => s.CreatedAt.Value.Year == DateTime.Now.Year && s.NguoiRaSoat != null && (s.IsActive == true || s.IsActive == null)).ToList();
+            return registrationInterviews;
+        }
+
+        public List<RegistrationInterviewStatusRegistedCountDTO> GetSoluongDangkyTheoViTriUngTuyen()
+        {
+            var registrationInterviews = _db.RegistrationInterviews
+                .Where(s => s.IsActive == true && s.MonDuTuyenId != null)
+                .Include("MonDuTuyen")
+                .GroupBy(s => s.MonDuTuyenId)
+                .Select(s => new RegistrationInterviewStatusRegistedCountDTO { ViTriUngTuyen = s.Key.ToString(), Quantity = s.Count(), Targets = 10 }).ToList();
             return registrationInterviews;
         }
     }

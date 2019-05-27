@@ -242,6 +242,7 @@
     <Compile Include="Models\DAO\XepLoaiHocLuc.cs" />
     <Compile Include="Models\DTO\CandidateModelInOneView.cs" />
     <Compile Include="Models\DTO\RegistrationInterviewDTO.cs" />
+    <Compile Include="Models\DTO\RegistrationInterviewStatusRegistedCountDTO.cs" />
     <Compile Include="Models\DTO\ReturnResult.cs" />
     <Compile Include="Models\DTO\ThuyenChuyenContainNgoaiTinhDTO.cs" />
     <Compile Include="Models\DTO\thuyenChuyenDTO.cs" />
@@ -448,6 +449,7 @@
     <Content Include="Views\ThuyenChuyenNgoaiTinh\CapNhatThuyenChuyen.cshtml" />
     <Content Include="Views\ThuyenChuyenQuanLyChung\DanhSachHoSoDaTiepNhan.cshtml" />
     <Content Include="Views\ThuyenChuyen\TienDoHoSo.cshtml" />
+    <Content Include="Views\TuyenDung\TrangThaiDangKy.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
