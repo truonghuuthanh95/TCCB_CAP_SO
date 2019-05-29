@@ -63,6 +63,7 @@ namespace TCCB_QuanLy.Repositories.Implements
                 .Include("DanToc")
                 .Include("ThanhPhanBanThanHienTai")
                 .Include("DoiTuongUuTien1")
+                .Include("TruongHopDacBiet")
                 .Include("Province1")
                 .Include("Province2")
                 .SingleOrDefault(s => s.Id == id);

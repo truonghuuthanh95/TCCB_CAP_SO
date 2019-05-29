@@ -145,6 +145,8 @@ namespace TCCB_QuanLy.Models.DAO
         [StringLength(50)]
         public string SoVanBangChungChiNgoaiNgu { get; set; }
 
+        public int? TruongHopDacBietId { get; set; }
+
         public virtual Account Account { get; set; }
 
         public virtual Account Account1 { get; set; }
@@ -186,6 +188,8 @@ namespace TCCB_QuanLy.Models.DAO
         public virtual ThanhPhanBanThanHienTai ThanhPhanBanThanHienTai { get; set; }
 
         public virtual TonGiao TonGiao { get; set; }
+
+        public virtual TruongHopDacBiet TruongHopDacBiet { get; set; }
 
         public virtual Ward Ward { get; set; }
 

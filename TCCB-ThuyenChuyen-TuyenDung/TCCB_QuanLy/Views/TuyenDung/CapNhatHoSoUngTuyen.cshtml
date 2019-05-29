@@ -71,8 +71,6 @@
                                             <option value="false" selected="">Nữ</option>
                                         }
                                     }
-
-
                                 </select>
                             </div>
                         </div>
@@ -377,7 +375,22 @@
                         <div class="col-sm-4">
                             <div class="form-group has-feedback">
                                 <label for="formControlsSelect" class="control-label">14.Tình trạng sức khỏe </label>
-                                <input name="tinhtrangsuckhoe" type="text" id="tinhtrangsuckhoe" class="form-control" value="@Model.RegistrationInterview.TinhTrangSucKhoe">
+                                <select name="tinhtrangsuckhoe" id="tinhtrangsuckhoe" class="form-control">
+                                    @{
+                                        if (Model.RegistrationInterview.TinhTrangSucKhoe == "Tốt")
+                                        {
+                                            <option value="Tốt" selected>Tốt</option>
+                                            <option value="Bình thường">Bình thường</option>
+                                        }
+                                        else
+                                        {
+                                            <option value="Tốt">Tốt</option>
+                                            <option value="Bình thường" selected>Bình thường</option>
+                                        }
+                                    }
+
+                                </select>
+
                             </div>
                         </div>
                         <div class="col-sm-2">
@@ -404,7 +417,7 @@
                     </div>
 
                     <div class="row">
-                        <div class="col-sm-12">
+                        <div class="col-sm-4">
                             <div class="form-group">
                                 <label for="formControlsSelect" class="control-label">Thành phần bản thân hiện tại</label>
                                 <select name="thanphanbanthanhientai" id="thanphanbanthanhientai" class="form-control">
@@ -562,12 +575,6 @@
                                 <span class="text-warning">Điểm TB các môn học cuối khóa đối với kiểu đào tạo quy chế niên chế</span>
                             </div>
                         </div>
-                        <div class="col-sm-4">
-                            <div class="form-group has-feedback">
-                                <label for="formControlsSelect" class="control-label">15.Số hiệu của văn bằng, chứng chỉ</label>
-                                <input name="sohieuvanbangchungchi" type="text" id="sohieuvanbangchungchi" class="form-control" value="@Model.RegistrationInterview.GPA">
-                            </div>
-                        </div>
                         <div class="col-sm-4" id="isshowdiemluanvan">
                             <div class="form-group has-feedback">
                                 <label for="formControlsSelect" class="control-label">15.1.Điểm thi TN hoặc luận văn TN </label>
@@ -575,6 +582,13 @@
 
                             </div>
                         </div>
+                        <div class="col-sm-4">
+                            <div class="form-group has-feedback">
+                                <label for="formControlsSelect" class="control-label">15.Số hiệu của văn bằng, chứng chỉ</label>
+                                <input name="sohieuvanbangchungchi" type="text" id="sohieuvanbangchungchi" class="form-control" value="@Model.RegistrationInterview.GPA">
+                            </div>
+                        </div>
+
                     </div>
                     <div class="row">
                         <div class="col-sm-3">
@@ -615,6 +629,29 @@
                                     }
 
                                 </select>
+                            </div>
+                        </div>
+                        <div class="col-sm-5">
+                            <div class="form-group has-feedback" id="errorIsHadNghiepVuSupham">
+                                <label class="control-label">24.Chứng chỉ bồi dưỡng nghiệp vụ sư phạm</label>
+                                <select name="ishadnghiepvusupham" class="form-control" id="ishadnghiepvusupham">
+                                    @{
+                                        if (Model.RegistrationInterview.IsHadNghiepVuSupham == true)
+                                        {
+                                            <option value="true" selected>Đã có</option>
+                                            <option value="false">Chưa có</option>
+                                        }
+                                        else
+                                        {
+                                            <option value="true">Đã có</option>
+                                            <option value="false" selected>Chưa có</option>
+                                        }
+                                    }
+
+
+                                </select>
+                                <span class="help-block" id="errorIsHadNghiepVuSuphamMessage"></span>
+
                             </div>
                         </div>
                         <div class="col-sm-5">
@@ -698,11 +735,6 @@
                         </div>
                     </div>
                     <h4 class="text-primary"><b>III. THÔNG TIN KHÁC</b></h4>
-
-
-
-
-
                     <div>
                         <div class="form-group">
                             <label class="control-label">22.Đối tượng ưu tiên</label>
@@ -734,68 +766,74 @@
                             }
                         </div>
                     </div>
-                    <div class="form-group">
-                        <label class="control-label">22.Thông tin lương (dành cho ứng viên có công tác và tham gia Bảo hiểm XH, nếu chưa có vui lòng bỏ qua)</label>
-                    </div>
-                    <div class="row">
-                        <div class="col-sm-3">
-                            <div class="form-group">
-                                <label for="formControlsSelect" class="control-label">Năm vào ngành </label>
-
-                                <input name="namvaonganh" type="text" id="namvaonganh" class="form-control" value="@Model.RegistrationInterview.NamVaoNghanh">
-
-                            </div>
+                    <div>
+                        <div class="form-group">
+                            <label class="control-label">22.Trường hợp đặc biệt trong tuyển dụng viên chức</label>
                         </div>
-                        <div class="col-sm-3">
-                            <div class="form-group has-feedback">
-                                <label for="formControlsSelect" class="control-label">Mã ngạch </label>
-                                <div class="">
-                                    <input name="mangach" type="text" id="mangach" class="form-control" value="@Model.RegistrationInterview.MaNgach">
+                        <div style="padding-left: 15px;">
+                            @{
+                                foreach (var item in ViewBag.TruongHopDacBiets)
+                                {
+                                    if (item.Id == Model.RegistrationInterview.TruongHopDacBietId)
+                                    {
+                                        <div class="radio">
+                                            <label>
+                                                <input type="radio" name="truonghopdacbiet" id="truonghopdacbiet" value="@item.Id" checked>
+                                                @item.Name
+                                            </label>
+                                        </div>
+                                    }
+                                    else
+                                    {
+                                        <div class="radio">
+                                            <label>
+                                                <input type="radio" name="truonghopdacbiet" id="truonghopdacbiet" value="@item.Id">
+                                                @item.Name
+                                            </label>
+                                        </div>
+                                    }
+                                }
+                            }
+                        </div>
+                    </div>
+                    @*<div class="form-group">
+                            <label class="control-label">22.Thông tin lương (dành cho ứng viên có công tác và tham gia Bảo hiểm XH, nếu chưa có vui lòng bỏ qua)</label>
+                        </div>*@
+                    @*<div class="row">
+                            <div class="col-sm-3">
+                                <div class="form-group">
+                                    <label for="formControlsSelect" class="control-label">Năm vào ngành </label>
+
+                                    <input name="namvaonganh" type="text" id="namvaonganh" class="form-control" value="@Model.RegistrationInterview.NamVaoNghanh">
+
                                 </div>
                             </div>
-                        </div><div class="col-sm-3">
-                            <div class="form-group">
-                                <label for="formControlsSelect" class="control-label">Hệ số lương </label>
-                                <input name="hesoluong" type="text" id="hesoluong" class="form-control" value="@Model.RegistrationInterview.HeSoLuong">
+                            <div class="col-sm-3">
+                                <div class="form-group has-feedback">
+                                    <label for="formControlsSelect" class="control-label">Mã ngạch </label>
+                                    <div class="">
+                                        <input name="mangach" type="text" id="mangach" class="form-control" value="@Model.RegistrationInterview.MaNgach">
+                                    </div>
+                                </div>
+                            </div><div class="col-sm-3">
+                                <div class="form-group">
+                                    <label for="formControlsSelect" class="control-label">Hệ số lương </label>
+                                    <input name="hesoluong" type="text" id="hesoluong" class="form-control" value="@Model.RegistrationInterview.HeSoLuong">
 
+                                </div>
                             </div>
-                        </div>
-                        <div class="col-sm-3">
-                            <div class="form-group">
-                                <label for="formControlsSelect" class="control-label">Mốc nâng lương lần sau </label>
+                            <div class="col-sm-3">
+                                <div class="form-group">
+                                    <label for="formControlsSelect" class="control-label">Mốc nâng lương lần sau </label>
 
-                                <input name="mocnangluonglansau" type="text" id="mocnangluonglansau" class="form-control" value="@Model.RegistrationInterview.MocNangLuongLansau">
+                                    <input name="mocnangluonglansau" type="text" id="mocnangluonglansau" class="form-control" value="@Model.RegistrationInterview.MocNangLuongLansau">
 
+                                </div>
                             </div>
-                        </div>
-                    </div><div class="row">
+                        </div>*@
 
-                        <div class="col-sm-6">
-                            <div class="form-group has-feedback" id="errorIsHadNghiepVuSupham">
-                                <label class="control-label">24.Chứng chỉ bồi dưỡng nghiệp vụ sư phạm</label>
-                                <select name="ishadnghiepvusupham" class="form-control" id="ishadnghiepvusupham">
-                                    @{
-                                        if (Model.RegistrationInterview.IsHadNghiepVuSupham == true)
-                                        {
-                                            <option value="true" selected>Đã có</option>
-                                            <option value="false">Chưa có</option>
-                                        }
-                                        else
-                                        {
-                                            <option value="true">Đã có</option>
-                                            <option value="false" selected>Chưa có</option>
-                                        }
-                                    }
-
-
-                                </select>
-                                <span class="help-block" id="errorIsHadNghiepVuSuphamMessage"></span>
-
-                            </div>
-                        </div>
-                    </div>
                     <div class="row">
-                        <p class="text-center">Chỉ dành cho ứng viên đăng ký dạy Trung học phổ thông hoặc TT giáo dục thường xuyên trực thuộc</p>
+                        <p class="text-center">Đăng ký nguyện vọng về đơn vị thuộc quận nào để công tác nếu trúng tuyển</p>
                         <div class="col-sm-4">
                             <div class="form-group">
                                 <label for="formControlsSelect" class="control-label">Nguyện vọng 1</label>
@@ -847,7 +885,8 @@
                                     }
                                 </select>
                             </div>
-                        </div><div class="col-sm-4">
+                        </div>
+                        <div class="col-sm-4">
                             <div class="form-group">
                                 <label for="formControlsSelect" class="control-label">Nguyện vọng 3</label>
                                 <select name="nguyenvong3" id="nguyenvong3" class="form-control">
@@ -988,7 +1027,7 @@
                     required: true,
                     number: true,
                 },
-               
+
                 trinhdovanhoa: {
                     required: true,
                 },
@@ -1039,7 +1078,7 @@
                     required: 'Vui lòng nhập',
                     number: 'Vui lòng nhập số',
                 },
-                
+
                 trinhdovanhoa: {
                     required: 'Vui lòng nhập',
                 },
@@ -1087,6 +1126,7 @@
                 if (mondutuyen.includes('Giáo viên') && bangtotnghiep.includes('khác') && $('#ishadnghiepvusupham').val() == 'false') {
                     $('#errorIsHadNghiepVuSupham').addClass('has-error');
                     $('#errorIsHadNghiepVuSuphamMessage').text('Hiện tại bằng tốt nghiệp của bạn không phải ngành sư phạm, vị trí tuyển dụng bắt buộc phải có chứng chỉ nghiệp vụ sư phạm');
+                    $('#ishadnghiepvusupham').focus();
                 }
                 else {
                     $('#errorIsHadNghiepVuSupham').removeClass('has-error');
@@ -1130,7 +1170,7 @@
                         HKTTSoNhaTenDuong: $('#hkttsonhatenduong').val(),
                         DanTocId: $('#dantoc').val(),
                         TonGiaoId: $('#tongiao').val(),
-                        CMNDNgayCap: $('#ngaycapcmnd').val(),
+                        CMNDNgayCap: moment($('#ngaycapcmnd').val(), 'DD-MM-YYYY').format('YYYY-MM-DD'),
                         CMNDNoiCap: $('#noicap').val(),
                         QueQuanProvinceId: $('#quequan').val(),
                         TinhTrangSucKhoe: $('#tinhtrangsuckhoe').val(),
@@ -1142,6 +1182,7 @@
                         DoiTuongUuTien: $('input[name=doituonguutien]:checked').val(),
                         SoVanBangChungChiTinHoc: $('#sohieuvanbangchungchitinhoc').val(),
                         SoVanBangChungChiNgoaiNgu: $('#sohieuvanbangchungchingoaingu').val(),
+                        TruongHopDacBietId: $('input[name=truonghopdacbiet]:checked').val(),
                         __RequestVerificationToken: $("input[name=__RequestVerificationToken]").val(),
                     }, function (data, status) {
                         debugger;

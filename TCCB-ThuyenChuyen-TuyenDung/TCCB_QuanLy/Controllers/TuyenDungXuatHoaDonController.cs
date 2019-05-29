@@ -96,6 +96,8 @@ namespace TCCB_QuanLy.Controllers
             registrationInterview.DoiTuongUuTien = 1;
             registrationInterview.TienTo = "TD";
             registrationInterview.TrinhDoVanHoa = "Tốt nghiệp THPT";
+            registrationInterview.DoiTuongUuTien = 1;
+            registrationInterview.TruongHopDacBietId = 1;
             registrationInterviewRepository.TaoMoiUngVien(registrationInterview);
             return Json(new ReturnResult(200, "success", registrationInterview.Id));
         }

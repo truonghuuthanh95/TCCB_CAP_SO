@@ -29,6 +29,8 @@ namespace TCCB_QuanLy.Models.DAO
 
         public int? PositionInterviewId { get; set; }
 
+        public int? Targets { get; set; }
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<RegistrationInterview> RegistrationInterviews { get; set; }
 

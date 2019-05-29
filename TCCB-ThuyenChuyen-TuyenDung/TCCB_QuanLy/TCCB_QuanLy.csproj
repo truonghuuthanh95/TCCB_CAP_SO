@@ -236,6 +236,7 @@
     <Compile Include="Models\DAO\TrinhDoCaoNhat.cs" />
     <Compile Include="Models\DAO\TrinhDoNgoaiNgu.cs" />
     <Compile Include="Models\DAO\TrinhDoTinHoc.cs" />
+    <Compile Include="Models\DAO\TruongHopDacBiet.cs" />
     <Compile Include="Models\DAO\UserPermission.cs" />
     <Compile Include="Models\DAO\ViTriUngTuyen.cs" />
     <Compile Include="Models\DAO\Ward.cs" />
@@ -272,9 +273,11 @@
     <Compile Include="Repositories\Implements\TrinhDoCaoNhatRepository.cs" />
     <Compile Include="Repositories\Implements\TrinhDoNgoaiNguRepository.cs" />
     <Compile Include="Repositories\Implements\TrinhDoTinHocRepository.cs" />
+    <Compile Include="Repositories\Implements\TruongHopDacBietRepository.cs" />
     <Compile Include="Repositories\Implements\UserPermissionRepository.cs" />
     <Compile Include="Repositories\Implements\WardRepository.cs" />
     <Compile Include="Repositories\Implements\XepLoaiHocLucRepository.cs" />
+    <Compile Include="Repositories\Interfaces\ITruongHopDacBietRepository.cs" />
     <Compile Include="Repositories\Interfaces\IAccountRepository.cs" />
     <Compile Include="Repositories\Interfaces\IBacLuongRepository.cs" />
     <Compile Include="Repositories\Interfaces\IBangTotNghiepRepository.cs" />

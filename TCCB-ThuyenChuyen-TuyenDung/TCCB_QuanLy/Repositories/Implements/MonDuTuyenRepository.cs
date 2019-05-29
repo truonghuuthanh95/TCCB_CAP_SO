@@ -22,7 +22,7 @@ namespace TCCB_QuanLy.Repositories.Implements
 
         public List<MonDuTuyen> GetMonDuTuyens()
         {
-            List<MonDuTuyen> monDuTuyens = _db.MonDuTuyens.Include("ViTriUngTuyen").Where(s => s.IsActive == true).OrderBy(s => s.PositionInterviewId).ThenBy(s => s.Name).ToList();
+            List<MonDuTuyen> monDuTuyens = _db.MonDuTuyens.Include("ViTriUngTuyen").Where(s => s.IsActive == true).OrderBy(s => s.PositionInterviewId).ThenBy(s => s.Name).ToList();           
             return monDuTuyens;
         }
        

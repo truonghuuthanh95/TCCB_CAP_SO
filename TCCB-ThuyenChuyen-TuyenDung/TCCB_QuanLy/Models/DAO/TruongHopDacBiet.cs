@@ -6,28 +6,24 @@ namespace TCCB_QuanLy.Models.DAO
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    [Table("Permission")]
-    public partial class Permission
+    [Table("TruongHopDacBiet")]
+    public partial class TruongHopDacBiet
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Permission()
+        public TruongHopDacBiet()
         {
-            UserPermissions = new HashSet<UserPermission>();
+            RegistrationInterviews = new HashSet<RegistrationInterview>();
         }
 
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int Id { get; set; }
 
-        [StringLength(50)]
+        [StringLength(500)]
         public string Name { get; set; }
 
         public bool? IsActive { get; set; }
 
-        public int GroupPermissionId { get; set; }
-
-        public virtual GroupPermission GroupPermission { get; set; }
-
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<UserPermission> UserPermissions { get; set; }
+        public virtual ICollection<RegistrationInterview> RegistrationInterviews { get; set; }
     }
 }

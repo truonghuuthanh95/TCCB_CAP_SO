@@ -43,6 +43,7 @@ namespace TCCB_QuanLy.Models.DAO
         public virtual DbSet<TrinhDoCaoNhat> TrinhDoCaoNhats { get; set; }
         public virtual DbSet<TrinhDoNgoaiNgu> TrinhDoNgoaiNgus { get; set; }
         public virtual DbSet<TrinhDoTinHoc> TrinhDoTinHocs { get; set; }
+        public virtual DbSet<TruongHopDacBiet> TruongHopDacBiets { get; set; }
         public virtual DbSet<UserPermission> UserPermissions { get; set; }
         public virtual DbSet<ViTriUngTuyen> ViTriUngTuyens { get; set; }
         public virtual DbSet<Ward> Wards { get; set; }
@@ -102,6 +103,11 @@ namespace TCCB_QuanLy.Models.DAO
                 .HasMany(e => e.RegistrationInterviews)
                 .WithOptional(e => e.DoiTuongUuTien1)
                 .HasForeignKey(e => e.DoiTuongUuTien);
+
+            modelBuilder.Entity<GroupPermission>()
+                .HasMany(e => e.Permissions)
+                .WithRequired(e => e.GroupPermission)
+                .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<LoaiHinh>()
                 .HasMany(e => e.Schools)

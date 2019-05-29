@@ -110,5 +110,7 @@ namespace TCCB_QuanLy.Models.DTO
         [Required]
         [StringLength(50)]
         public string SoVanBangChungChiNgoaiNgu { get; set; }
+        [Required]
+        public int TruongHopDacBietId { get; set; }
     }
 }

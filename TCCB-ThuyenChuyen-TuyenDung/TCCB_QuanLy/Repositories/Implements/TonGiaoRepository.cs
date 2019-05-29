@@ -19,6 +19,12 @@ namespace TCCB_QuanLy.Repositories.Implements
         public List<TonGiao> GetTonGiaos()
         {
             List<TonGiao> tonGiaos = _db.TonGiaos.OrderBy(s => s.Name).ToList();
+            TonGiao tonGiaoKhac = tonGiaos.Where(s => s.Id == 17).SingleOrDefault();
+            tonGiaos.Remove(tonGiaoKhac);
+            tonGiaos.Add(tonGiaoKhac);
+            TonGiao tonGiaoKhong = tonGiaos.Where(s => s.Id == 1).SingleOrDefault();
+            tonGiaos.Remove(tonGiaoKhong);
+            tonGiaos.Insert(0, tonGiaoKhong);
             return tonGiaos;
         }
     }
