@@ -9,7 +9,7 @@ namespace TCCB_QuanLy.Models.DTO
     {
         public string ViTriUngTuyen { get; set; }
         public int Quantity { get; set; }
-        public int Targets { get; set; }
+        public int? Targets { get; set; }
 
         
     }

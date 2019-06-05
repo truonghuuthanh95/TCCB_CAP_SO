@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using TCCB_QuanLy.Models.DAO;
 
 namespace TCCB_QuanLy.Controllers
 {
@@ -21,6 +22,18 @@ namespace TCCB_QuanLy.Controllers
         [HttpGet]
         public ActionResult QuanLyChung()
         {
+            int permissionId = 1;
+            Account account = (Account)Session[Utils.Constants.USER_SESSION];
+            if (account == null)
+            {
+                return RedirectToRoute("login");
+            }
+            List<UserPermission> userPermission = (List<UserPermission>)Session[Utils.Constants.USER_PERMISSION_SESSION];
+            if (userPermission.Where(s => s.PermissionId == permissionId).SingleOrDefault() == null)
+            {
+                return RedirectToRoute("login");
+            }
+         
             ViewBag.DaDangKis = registrationInterviewRepository.GetRegistrationInterviewsDaDangkiSoLuong();
             ViewBag.ChuaCapNhats = registrationInterviewRepository.GetRegistrationInterviewsChuaCapNhatSoLuong();
             ViewBag.DaHoanThanhs = registrationInterviewRepository.GetRegistrationInterviewsDaHoanThanhSoLuong();
@@ -31,6 +44,17 @@ namespace TCCB_QuanLy.Controllers
         [HttpGet]
         public ActionResult DanhSachDangKi()
         {
+            int permissionId = 1;
+            Account account = (Account)Session[Utils.Constants.USER_SESSION];
+            if (account == null)
+            {
+                return RedirectToRoute("login");
+            }
+            List<UserPermission> userPermission = (List<UserPermission>)Session[Utils.Constants.USER_PERMISSION_SESSION];
+            if (userPermission.Where(s => s.PermissionId == permissionId).SingleOrDefault() == null)
+            {
+                return RedirectToRoute("login");
+            }
             ViewBag.DanhSachDangKis = registrationInterviewRepository.GetRegistrationInterviewsDaDangKi();
             return View();
         }
@@ -38,6 +62,17 @@ namespace TCCB_QuanLy.Controllers
         [HttpGet]
         public ActionResult DanhSachHoanThanh()
         {
+            int permissionId = 1;
+            Account account = (Account)Session[Utils.Constants.USER_SESSION];
+            if (account == null)
+            {
+                return RedirectToRoute("login");
+            }
+            List<UserPermission> userPermission = (List<UserPermission>)Session[Utils.Constants.USER_PERMISSION_SESSION];
+            if (userPermission.Where(s => s.PermissionId == permissionId).SingleOrDefault() == null)
+            {
+                return RedirectToRoute("login");
+            }
             ViewBag.DanhSachHoanThanhs = registrationInterviewRepository.GetRegistrationInterviewsDaHoanThanh();
             return View();
         }
@@ -45,6 +80,17 @@ namespace TCCB_QuanLy.Controllers
         [HttpGet]
         public ActionResult DanhSachChuaHoanThanh()
         {
+            int permissionId = 1;
+            Account account = (Account)Session[Utils.Constants.USER_SESSION];
+            if (account == null)
+            {
+                return RedirectToRoute("login");
+            }
+            List<UserPermission> userPermission = (List<UserPermission>)Session[Utils.Constants.USER_PERMISSION_SESSION];
+            if (userPermission.Where(s => s.PermissionId == permissionId).SingleOrDefault() == null)
+            {
+                return RedirectToRoute("login");
+            }
             ViewBag.DanhSachChuaHoanThanhs = registrationInterviewRepository.GetRegistrationInterviewsChuaCapNhat();
             return View();
         }
@@ -52,6 +98,17 @@ namespace TCCB_QuanLy.Controllers
         [HttpGet]
         public ActionResult DanhSachHoSoHopLe()
         {
+            int permissionId = 1;
+            Account account = (Account)Session[Utils.Constants.USER_SESSION];
+            if (account == null)
+            {
+                return RedirectToRoute("login");
+            }
+            List<UserPermission> userPermission = (List<UserPermission>)Session[Utils.Constants.USER_PERMISSION_SESSION];
+            if (userPermission.Where(s => s.PermissionId == permissionId).SingleOrDefault() == null)
+            {
+                return RedirectToRoute("login");
+            }
             ViewBag.DanhSachHopLe = registrationInterviewRepository.GetRegistrationInterviewsHopLe();
             return View();
         }

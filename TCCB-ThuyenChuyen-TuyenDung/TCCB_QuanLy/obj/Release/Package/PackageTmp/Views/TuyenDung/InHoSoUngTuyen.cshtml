@@ -15,9 +15,9 @@
             <div class="col-sm-10 col-sm-offset-1 document-print a4-style" id="printContent">
                 <h4 class="text-right">
                     <b>
-                        Mã hồ sơ:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        Mã tuyển dụng vòng 2:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     </b><br />
-                    <i style="font-size: 15px">(Do cán bộ rà soát hồ sơ ghi)</i>
+                    <i style="font-size: 15px">(Do người rà soát hồ sơ ghi)</i>
                 </h4>
                 <h4 class="text-uppercase text-center"><b>cộng hòa xã hội chủ nghĩa việt nam</b></h4>
                 <h4 class="text-center"><b>Độc lập - Tự do - Hạnh phúc</b></h4>
@@ -31,8 +31,8 @@
                         <h4 style="padding-left: 12%">
                             <b>PHIẾU ĐĂNG KÝ DỰ TUYỂN</b>
                         </h4>
-                            <p style="padding-left: 28%; margin-top: -15px;">_________</p>
-                        
+                        <p style="padding-left: 28%; margin-top: -15px;">_________</p>
+
                         <p>Vị trí dự tuyển: <b>@Model.MonDuTuyen.ViTriUngTuyen.Name @Model.MonDuTuyen.Name</b></p>
                         <p>Đơn vị dự tuyển: <b>Các đơn vị SNCL thuộc Sở GD&DT Tp.Hồ Chí Minh</b></p>
                     </div>
@@ -92,7 +92,7 @@
                     <div class="col-xs-3 col-sm-3">
                         <p>
                             Ngày cấp:
-                            <b>@Model.DOB.Value.ToString("dd/MM/yyyy")</b>
+                            <b>@Model.CMNDNgayCap.Value.ToString("dd/MM/yyyy")</b>
                         </p>
                     </div>
                     <div class="col-xs-5 col-sm-5">
@@ -169,7 +169,7 @@
                             </p>
                         </div>
                     </div>
-                   
+
                     <div class="row">
                         <div class="col-xs-6 col-sm-6">
                             <p>
@@ -302,10 +302,29 @@ else
                         </div>
                     </div>
                 </div>
+                <div style="border: solid; border-width: 1px;">
+                    <div class="row">
+
+                        <div class="col-xs-6 col-sm-6">
+                            <p>
+                                Chứng chỉ Ngoại ngữ khác:<b>
+                                    @Model.TrinhDoNgoaiNguKhac.Name
+                                </b>
+                            </p>
+                        </div>
+                        <div class="col-xs-6 col-sm-6">
+                            <p>
+                                Số hiệu văn bằng, chứng chỉ:<b>
+                                    @Model.SoVanBangChungChiNgoaiNguKhac
+                                </b>
+                            </p>
+                        </div>
+                    </div>
+                </div>
                 <h4 class="text-uppercase" style="padding-left: 20px"><b>III. thông tin khác</b></h4>
                 <p>1/ Đối tượng ưu tiên: <b>@Model.DoiTuongUuTien1.Name</b></p>
                 <p>2/ Trường hợp đặc biệt trong tuyển dụng viên chức: <b>@Model.TruongHopDacBiet.Name</b></p>
-                
+
                 <div class="row">
                     <div class="col-xs-4 col-sm-4">
                         <p>
@@ -330,32 +349,32 @@ else
                     </div>
                 </div>
                 @*<p>
-                    <i>
-                        Thông tin lương (dành cho ứng viên có công tác và tham gia Bảo hiểm
-                        XH)
-                    </i>
-                </p>*@
+            <i>
+                Thông tin lương (dành cho ứng viên có công tác và tham gia Bảo hiểm
+                XH)
+            </i>
+        </p>*@
                 @*<div class="row">
-                    <div class="col-xs-4 col-sm-4">
-                        <p>
-                            Năm vào ngành: <b>@Model.NamVaoNghanh</b>
-                        </p>
-                    </div>
-                    <div class="col-xs-4 col-sm-4">
-                        <p>
-                            Mã ngạch: <b>@Model.MaNgach</b>
-                        </p>
-                    </div>
-                    <div class="col-xs-4 col-sm-4">
-                        <p>
-                            Hệ số lương: <b>@Model.HeSoLuong</b>
-                        </p>
-                    </div>
-                </div>*@
+            <div class="col-xs-4 col-sm-4">
+                <p>
+                    Năm vào ngành: <b>@Model.NamVaoNghanh</b>
+                </p>
+            </div>
+            <div class="col-xs-4 col-sm-4">
+                <p>
+                    Mã ngạch: <b>@Model.MaNgach</b>
+                </p>
+            </div>
+            <div class="col-xs-4 col-sm-4">
+                <p>
+                    Hệ số lương: <b>@Model.HeSoLuong</b>
+                </p>
+            </div>
+        </div>*@
                 @*<p>
-                    Mốc nâng lương lần sau:
-                    <b>@Model.MocNangLuongLansau</b>
-                </p>*@
+            Mốc nâng lương lần sau:
+            <b>@Model.MocNangLuongLansau</b>
+        </p>*@
 
                 <div class="row">
                     <div class="col-sm-9 col-xs-9">
@@ -374,18 +393,21 @@ else
 
 
 
-                <p>
+                <p style="text-align: justify;">
                     &nbsp;&nbsp;&nbsp;&nbsp;Tôi xin cam đoan những lời khai trên của tôi là đúng sự thật. Sau khi nhận được thông báo trúng tuyển tôi sẽ hoàn thiện hồ sơ theo theo quy định. Nếu sai sự thật thì kết quả tuyển dụng của tôi sẽ bị cơ quan có thẩm quyền tuyển dụng hủy bỏ, tôi sẽ chịu trách nhiệm trước pháp luật và cam kết không đăng ký tham gia kỳ tuyển dụng kế tiếp tại cơ quan tuyển dụng./.
                 </p>
                 <div class="row signature">
-                    <p class="text-center"><i>Ngày&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;tháng&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;năm <b>@DateTime.Now.Year</b></i></p>
+
                     <div class="col-xs-6 col-sm-6">
+                        
+                        <p>.</p>
                         <p class="text-center">
-                            <b class="text-uppercase">Cán bộ kiểm tra</b><br />
+                            <b class="text-uppercase">NGƯỜI KIỂM TRA</b><br />
                             <i>(Ký và ghi rõ họ tên)</i>
                         </p>
                     </div>
                     <div class="col-xs-6 col-sm-6">
+                        <p class="text-center"><i>Ngày&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;tháng&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;năm <b>@DateTime.Now.Year</b></i></p>
                         <p class="text-center">
                             <b class="text-uppercase">Người viết phiếu</b><br />
                             <i>(Ký và ghi rõ họ tên)</i>
@@ -401,15 +423,12 @@ else
                 <ul>
                     <li>
                         <i>
-                            In phiếu này ra giấy ( 02 bản: 1 bản nộp cho cán bộ rà soát dữ
-                            liệu khi tham dự vòng 1 kèm theo bộ hồ sơ thứ nhất theo
-                            kế hoạch tuyển dụng)
+                            Sau khi cập nhật đầy đủ và chính xác thông tin Phiếu dự tuyển, người dự tuyển in ra 02 bản đem kèm theo bộ hồ sơ thứ nhất khi đến tham dự Vòng 1
                         </i>
-                    </li>                    
+                    </li>
                     <li>
                         <i>
-                            Đề nghị ứng viên thường xuyên theo dõi thông tin, thông báo trên
-                            trang thông tin điện tử http://tuyendung.hcm.edu.vn/
+                            Đề nghị người dự tuyển thường xuyên theo dõi thông báo trên trang thông tin điện tử tuyển dụng của Sở Giáo dục và Đào tạo http://tuyendung.hcm.edu.vn/
                         </i>
                     </li>
                 </ul>

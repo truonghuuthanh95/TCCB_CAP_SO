@@ -64,6 +64,7 @@ namespace TCCB_QuanLy.Repositories.Implements
                 .Include("ThanhPhanBanThanHienTai")
                 .Include("DoiTuongUuTien1")
                 .Include("TruongHopDacBiet")
+                .Include("TrinhDoNgoaiNguKhac")
                 .Include("Province1")
                 .Include("Province2")
                 .SingleOrDefault(s => s.Id == id);
@@ -102,19 +103,19 @@ namespace TCCB_QuanLy.Repositories.Implements
 
         public List<RegistrationInterview> GetRegistrationInterviewsDaDangKi()
         {
-            List<RegistrationInterview> registrationInterviews = _db.RegistrationInterviews.Where(s => s.CreatedAt.Value.Year == DateTime.Now.Year && (s.IsActive == true || s.IsActive == null)).ToList();
+            List<RegistrationInterview> registrationInterviews = _db.RegistrationInterviews.Include("Account").Where(s => s.CreatedAt.Value.Year == DateTime.Now.Year && (s.IsActive == true || s.IsActive == null)).ToList();
             return registrationInterviews;
         }
 
         public List<RegistrationInterview> GetRegistrationInterviewsChuaCapNhat()
         {
-            List<RegistrationInterview> registrationInterviews = _db.RegistrationInterviews.Where(s => s.CreatedAt.Value.Year == DateTime.Now.Year && (s.IsActive == true || s.IsActive == null) && s.UpdatedAt == null).ToList();
+            List<RegistrationInterview> registrationInterviews = _db.RegistrationInterviews.Include("Account").Where(s => s.CreatedAt.Value.Year == DateTime.Now.Year && (s.IsActive == true || s.IsActive == null) && s.UpdatedAt == null).ToList();
             return registrationInterviews;
         }
 
         public List<RegistrationInterview> GetRegistrationInterviewsDaHoanThanh()
         {
-            List<RegistrationInterview> registrationInterviews = _db.RegistrationInterviews.Where(s => s.CreatedAt.Value.Year == DateTime.Now.Year && (s.IsActive == true || s.IsActive == null) && s.UpdatedAt != null).ToList();
+            List<RegistrationInterview> registrationInterviews = _db.RegistrationInterviews.Include("Account").Where(s => s.CreatedAt.Value.Year == DateTime.Now.Year && (s.IsActive == true || s.IsActive == null) && s.UpdatedAt != null).ToList();
             return registrationInterviews;
         }
 
@@ -148,7 +149,7 @@ namespace TCCB_QuanLy.Repositories.Implements
                 .Where(s => s.IsActive == true && s.MonDuTuyenId != null)
                 .Include("MonDuTuyen")
                 .GroupBy(s => s.MonDuTuyenId)
-                .Select(s => new RegistrationInterviewStatusRegistedCountDTO { ViTriUngTuyen = s.Key.ToString(), Quantity = s.Count(), Targets = 10 }).ToList();
+                .Select(s => new RegistrationInterviewStatusRegistedCountDTO { ViTriUngTuyen = s.Key.ToString(), Quantity = s.Count(), Targets = 0 }).ToList();            
             return registrationInterviews;
         }
     }

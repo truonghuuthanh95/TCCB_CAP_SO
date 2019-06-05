@@ -99,54 +99,61 @@
                     <em class="fa fa-navicon">&nbsp;</em> Tuyển Dụng <span data-toggle="collapse" href="#sub-item-2" class="icon pull-right"><em class="fa fa-plus"></em></span>
                 </a>
                 <ul class="children collapse" id="sub-item-2">
-                    @*<li>
-                            <a class="" href="/tuyendung/quanlychung">
-                                <span class="fa fa-dashboard">&nbsp;</span> Quản Lý Chung
-                            </a>
-                        </li>
-                        <li>
-                            <a class="" href="/tuyendung/raxoat">
-                                <span class="fa fa-edit">&nbsp;</span> Rà Xoát
-                            </a>
-                        </li>
-                        <li>
-                            <a class="" href="/tuyendung/mondutuyen">
-                                <span class="fa  fa-bookmark">&nbsp;</span> Môn Dự Tuyển
-                            </a>
-                        </li>
-                        <li>
-                            <a class="" href="/tuyendung/nguyenvongtruong">
-                                <span class="fa fa-university">&nbsp;</span> NV Trường
-                            </a>
-                        </li>*@
                     @{
-                        if (userPermision.Where(s => s.PermissionId == 6).SingleOrDefault() != null)
-                        {
-                            <li>
-                                <a class="" href="/tuyendung/xuatmadangki">
-                                    <span class="fa fa-print">&nbsp;</span>Xuất Mã Đăng Kí
-                                </a>
-                            </li>
-                        }
+        if (userPermision.Where(s => s.PermissionId == 1).SingleOrDefault() != null)
+        {
+                <li>
+                    <a class="" href="/tuyendung/quanlychung">
+                        <span class="fa fa-dashboard">&nbsp;</span> Quản Lý Chung
+                    </a>
+                </li>
+}
+                    }
+
+                    @*
+        <li>
+            <a class="" href="/tuyendung/raxoat">
+                <span class="fa fa-edit">&nbsp;</span> Rà Xoát
+            </a>
+        </li>
+        <li>
+            <a class="" href="/tuyendung/mondutuyen">
+                <span class="fa  fa-bookmark">&nbsp;</span> Môn Dự Tuyển
+            </a>
+        </li>
+        <li>
+            <a class="" href="/tuyendung/nguyenvongtruong">
+                <span class="fa fa-university">&nbsp;</span> NV Trường
+            </a>
+        </li>*@
+                    @{
+        if (userPermision.Where(s => s.PermissionId == 6).SingleOrDefault() != null)
+        {
+                <li>
+                    <a class="" href="/tuyendung/xuatmadangki">
+                        <span class="fa fa-print">&nbsp;</span>Xuất Mã Đăng Kí
+                    </a>
+                </li>
+}
                     }
 
                     @*<li>
-                            <a class="" href="/tuyendung/madangki">
-                                <span class="fa fa-print">&nbsp;</span> Chỉ Tiêu
-                            </a>
-                        </li>
+            <a class="" href="/tuyendung/madangki">
+                <span class="fa fa-print">&nbsp;</span> Chỉ Tiêu
+            </a>
+        </li>
 
-                        <li>
-                            <a class="" href="/tuyendung/madangki">
-                                <span class="fa fa-print">&nbsp;</span> Kế Hoạch Xét Tuyển
-                            </a>
-                        </li>
+        <li>
+            <a class="" href="/tuyendung/madangki">
+                <span class="fa fa-print">&nbsp;</span> Kế Hoạch Xét Tuyển
+            </a>
+        </li>
 
-                        <li>
-                            <a class="" href="/tuyendung/madangki">
-                                <span class="fa fa-bullhorn">&nbsp;</span> Thông Báo
-                            </a>
-                        </li>*@
+        <li>
+            <a class="" href="/tuyendung/madangki">
+                <span class="fa fa-bullhorn">&nbsp;</span> Thông Báo
+            </a>
+        </li>*@
                 </ul>
             </li>
             <li class="parent">

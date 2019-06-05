@@ -419,7 +419,7 @@
                     <div class="row">
                         <div class="col-sm-4">
                             <div class="form-group">
-                                <label for="formControlsSelect" class="control-label">Thành phần bản thân hiện tại</label>
+                                <label for="formControlsSelect" class="control-label">17.Thành phần bản thân hiện tại</label>
                                 <select name="thanphanbanthanhientai" id="thanphanbanthanhientai" class="form-control">
                                     @{
                                         foreach (var item in ViewBag.ThanhPhanBanThanHienTais)
@@ -452,7 +452,7 @@
                     <div class="row">
                         <div class="col-sm-5">
                             <div class="form-group">
-                                <label for="formControlsSelect" class="control-label">11.Bằng tốt nghiệp</label>
+                                <label for="formControlsSelect" class="control-label">18.Bằng tốt nghiệp</label>
                                 <select name="bangtotnghiep" id="bangtotnghiep" class="form-control">
                                     @{
                                         foreach (var item in Model.BangTotNghieps)
@@ -472,7 +472,7 @@
                             </div>
                         </div><div class="col-sm-3">
                             <div class="form-group">
-                                <label for="formControlsSelect" class="control-label">12.Hệ</label>
+                                <label for="formControlsSelect" class="control-label">19.Hệ</label>
                                 <select name="hinhthucdaotao" id="hinhthucdaotao" class="form-control">
                                     @{
                                         foreach (var item in Model.HinhThucDaoTaos)
@@ -491,7 +491,7 @@
                             </div>
                         </div><div class="col-sm-4">
                             <div class="form-group">
-                                <label for="formControlsSelect" class="control-label">13.Chuyên ngành đào tạo</label>
+                                <label for="formControlsSelect" class="control-label">20.Chuyên ngành đào tạo</label>
                                 <select name="chuyennganhdaotao" id="chuyennganhdaotao" class="form-control">
                                     @{
                                         foreach (var item in Model.ChuyenNganhDaoTaos)
@@ -521,14 +521,14 @@
                     <div class="row">
                         <div class="col-sm-8">
                             <div class="form-group has-feedback">
-                                <label class="control-label" for="formControlsSelect">9.Tên trường đào tạo </label>
+                                <label class="control-label" for="formControlsSelect">21.Tên trường đào tạo </label>
                                 <input placeholder="Tên trường đào tạo" name="tentruongdaotao" type="text" id="tentruongdaotao" class="form-control" value="@Model.RegistrationInterview.TenTruongDaiHoc">
                                 <span class="text-warning">Ghi đầy đủ tên trường (ví dụ: Trường đại học Bách Khoa Tp.HCM)</span>
                             </div>
                         </div>
                         <div class="col-sm-4">
                             <div class="form-group has-feedback">
-                                <label class="control-label">10.Trường này ở</label>
+                                <label class="control-label">22.Trường này ở</label>
                                 <select name="diadiemdaihoc" class="form-control" id="diadiemdaihoc">
                                     @{
                                         foreach (var item in Model.Provinces)
@@ -551,7 +551,7 @@
                     <div class="row">
                         <div class="col-sm-4">
                             <div class="form-group">
-                                <label for="formControlsSelect" class="control-label">14.Phương thức đào tạo</label>
+                                <label for="formControlsSelect" class="control-label">23.Phương thức đào tạo</label>
                                 <select name="IsNienChe" id="IsNienChe" class="form-control">
                                     @{
                                         if (Model.RegistrationInterview.IsNienChe == true)
@@ -570,21 +570,21 @@
                         </div>
                         <div class="col-sm-4">
                             <div class="form-group has-feedback">
-                                <label for="formControlsSelect" class="control-label">15.Điểm TB các môn học</label>
+                                <label for="formControlsSelect" class="control-label">24.Điểm TB các môn học</label>
                                 <input name="GPA" type="number" id="GPA" class="form-control" value="@Model.RegistrationInterview.GPA">
                                 <span class="text-warning">Điểm TB các môn học cuối khóa đối với kiểu đào tạo quy chế niên chế</span>
                             </div>
                         </div>
                         <div class="col-sm-4" id="isshowdiemluanvan">
                             <div class="form-group has-feedback">
-                                <label for="formControlsSelect" class="control-label">15.1.Điểm thi TN hoặc luận văn TN </label>
+                                <label for="formControlsSelect" class="control-label">24.1.Điểm thi TN hoặc luận văn TN </label>
                                 <input name="diemluanvan" type="number" id="diemluanvan" class="form-control" value="@Model.RegistrationInterview.DiemLuanVan">
 
                             </div>
                         </div>
                         <div class="col-sm-4">
                             <div class="form-group has-feedback">
-                                <label for="formControlsSelect" class="control-label">15.Số hiệu của văn bằng, chứng chỉ</label>
+                                <label for="formControlsSelect" class="control-label">25.Số hiệu của văn bằng, chứng chỉ</label>
                                 <input name="sohieuvanbangchungchi" type="text" id="sohieuvanbangchungchi" class="form-control" value="@Model.RegistrationInterview.GPA">
                             </div>
                         </div>
@@ -593,7 +593,7 @@
                     <div class="row">
                         <div class="col-sm-3">
                             <div class="form-group">
-                                <label for="formControlsSelect" class="control-label">16.Năm tốt nghiệp</label>
+                                <label for="formControlsSelect" class="control-label">26.Năm tốt nghiệp</label>
                                 <select name="namtotnghiep" id="namtotnghiep" class="form-control">
                                     @{
                                         for (int i = DateTime.Now.Year - 50; i <= DateTime.Now.Year; i++)
@@ -612,7 +612,7 @@
                             </div>
                         </div><div class="col-sm-3">
                             <div class="form-group">
-                                <label for="formControlsSelect" class="control-label">17.Xếp loại</label>
+                                <label for="formControlsSelect" class="control-label">27.Xếp loại</label>
                                 <select name="xeploaihocluc" id="xeploaihocluc" class="form-control">
                                     @{
                                         foreach (var item in Model.XepLoaiHocLucs)
@@ -633,18 +633,18 @@
                         </div>
                         <div class="col-sm-5">
                             <div class="form-group has-feedback" id="errorIsHadNghiepVuSupham">
-                                <label class="control-label">24.Chứng chỉ bồi dưỡng nghiệp vụ sư phạm</label>
+                                <label class="control-label">28.Chứng chỉ bồi dưỡng nghiệp vụ sư phạm</label>
                                 <select name="ishadnghiepvusupham" class="form-control" id="ishadnghiepvusupham">
                                     @{
                                         if (Model.RegistrationInterview.IsHadNghiepVuSupham == true)
                                         {
-                                            <option value="true" selected>Đã có</option>
-                                            <option value="false">Chưa có</option>
+                                            <option value="true" selected>Có</option>
+                                            <option value="false">Không</option>
                                         }
                                         else
                                         {
-                                            <option value="true">Đã có</option>
-                                            <option value="false" selected>Chưa có</option>
+                                            <option value="true">Có</option>
+                                            <option value="false" selected>Không</option>
                                         }
                                     }
 
@@ -656,7 +656,7 @@
                         </div>
                         <div class="col-sm-5">
                             <div class="form-group">
-                                <label for="formControlsSelect" class="control-label">18.Trình độ cao nhất hiện nay</label>
+                                <label for="formControlsSelect" class="control-label">29.Trình độ cao nhất hiện nay</label>
                                 <select name="trinhdocaonhat" id="trinhdocaonhat" class="form-control">
                                     @{
                                         foreach (var item in Model.TrinhDoCaoNhats)
@@ -679,7 +679,7 @@
                     <div class="row">
                         <div class="col-sm-5">
                             <div class="form-group">
-                                <label for="formControlsSelect" class="control-label">20.Chứng chỉ tin hoc</label>
+                                <label for="formControlsSelect" class="control-label">30.Chứng chỉ tin hoc</label>
                                 <select name="trinhdotinhoc" id="trinhdotinhoc" class="form-control">
                                     @{
                                         foreach (var item in Model.TrinhDoTinHocs)
@@ -699,7 +699,7 @@
                         </div>
                         <div class="col-sm-5">
                             <div class="form-group has-feedback">
-                                <label for="formControlsSelect" class="control-label">15.Số hiệu của văn bằng, chứng chỉ tin học</label>
+                                <label for="formControlsSelect" class="control-label">31.Số hiệu của văn bằng, chứng chỉ tin học</label>
                                 <input name="sohieuvanbangchungchitinhoc" type="text" id="sohieuvanbangchungchitinhoc" class="form-control" value="@Model.RegistrationInterview.SoVanBangChungChiTinHoc">
                             </div>
                         </div>
@@ -708,7 +708,7 @@
                     <div class="row">
                         <div class="col-sm-5">
                             <div class="form-group">
-                                <label for="formControlsSelect" class="control-label">21.Chứng chỉ ngoại ngữ</label>
+                                <label for="formControlsSelect" class="control-label">32.Chứng chỉ ngoại ngữ</label>
                                 <select name="trinhdongoaingu" id="trinhdongoaingu" class="form-control">
                                     @{
                                         foreach (var item in Model.TrinhDoNgoaiNgus)
@@ -729,15 +729,58 @@
 
                         <div class="col-sm-5">
                             <div class="form-group has-feedback">
-                                <label for="formControlsSelect" class="control-label">15.Số hiệu của văn bằng, chứng chỉ ngoại ngữ</label>
+                                <label for="formControlsSelect" class="control-label">33.Số hiệu của văn bằng, chứng chỉ ngoại ngữ</label>
                                 <input name="sohieuvanbangchungchingoaingu" type="text" id="sohieuvanbangchungchingoaingu" class="form-control" value="@Model.RegistrationInterview.SoVanBangChungChiNgoaiNgu">
                             </div>
                         </div>
                     </div>
+                    <div class="row">
+                        <div class="col-sm-5">
+                            <div class="form-group">
+                                <label for="formControlsSelect" class="control-label">34.Chứng chỉ ngoại ngữ khác</label>
+                                <select name="trinhdongoaingukhac" id="trinhdongoaingukhac" class="form-control">
+                                    @{
+                    foreach (var item in ViewBag.TrinhDoNgoaiNguKhas)
+                    {
+                        if (item.Id == Model.RegistrationInterview.TrinhDoNgoaiNguKhacId)
+                        {
+                            <option value="@item.Id" selected>@item.Name</option>
+    }
+    else
+    {
+                    <option value="@item.Id">@item.Name</option>
+}
+}
+                                    }
+                                </select>
+                            </div>
+                        </div>
+                        @{
+        if (Model.RegistrationInterview.TrinhDoNgoaiNguKhacId != 1)
+        {
+                    <div class="col-sm-5" id="isShowsohieuvanbangchungchingoaingukhac">
+                        <div class="form-group has-feedback" id="errorsohieuvanbangchungchingoaingukhac">
+                            <label for="formControlsSelect" class="control-label">34.1.Số hiệu của văn bằng, chứng chỉ ngoại ngữ khác</label>
+                            <input name="sohieuvanbangchungchingoaingukhac" type="text" id="sohieuvanbangchungchingoaingukhac" class="form-control" value="@Model.RegistrationInterview.SoVanBangChungChiNgoaiNguKhac">
+                        </div>
+                    </div>
+}
+else
+{
+                    <div class="col-sm-5" id="isShowsohieuvanbangchungchingoaingukhac" hidden>
+                        <div class="form-group has-feedback" id="errorsohieuvanbangchungchingoaingukhac">
+                            <label for="formControlsSelect" class="control-label">34.1.Số hiệu của văn bằng, chứng chỉ ngoại ngữ khác</label>
+                            <input name="sohieuvanbangchungchingoaingukhac" type="text" id="sohieuvanbangchungchingoaingukhac" class="form-control" value="@Model.RegistrationInterview.SoVanBangChungChiNgoaiNguKhac">
+                        </div>
+                    </div>
+}
+                        }
+
+                    </div>
                     <h4 class="text-primary"><b>III. THÔNG TIN KHÁC</b></h4>
                     <div>
                         <div class="form-group">
-                            <label class="control-label">22.Đối tượng ưu tiên</label>
+                            <label class="control-label">35.Đối tượng ưu tiên</label>
                         </div>
                         <div style="padding-left: 15px;">
                             @{
@@ -768,7 +811,7 @@
                     </div>
                     <div>
                         <div class="form-group">
-                            <label class="control-label">22.Trường hợp đặc biệt trong tuyển dụng viên chức</label>
+                            <label class="control-label">36.Trường hợp đặc biệt trong tuyển dụng viên chức</label>
                         </div>
                         <div style="padding-left: 15px;">
                             @{
@@ -833,7 +876,7 @@
                         </div>*@
 
                     <div class="row">
-                        <p class="text-center">Đăng ký nguyện vọng về đơn vị thuộc quận nào để công tác nếu trúng tuyển</p>
+                        <p class="text-center"><i><b>Đăng ký nguyện vọng về đơn vị thuộc quận nào để công tác nếu trúng tuyển</b></i></p>
                         <div class="col-sm-4">
                             <div class="form-group">
                                 <label for="formControlsSelect" class="control-label">Nguyện vọng 1</label>
@@ -841,19 +884,22 @@
                                     @{
                                         foreach (var item in Model.HCMDistrict)
                                         {
-                                            if (item.Id == Model.RegistrationInterview.NV01Quan)
+                                            if (item.Id != 974)
                                             {
+                                                if (item.Id == Model.RegistrationInterview.NV01Quan)
+                                                {
 
-                                                <option value="@item.Id" selected>
-                                                    @item.Type @item.Name
-                                                </option>
-                                            }
-                                            else
-                                            {
+                                                    <option value="@item.Id" selected>
+                                                        @item.Type @item.Name
+                                                    </option>
+                                                }
+                                                else
+                                                {
 
-                                                <option value="@item.Id">
-                                                    @item.Type @item.Name
-                                                </option>
+                                                    <option value="@item.Id">
+                                                        @item.Type @item.Name
+                                                    </option>
+                                                }
                                             }
                                         }
                                     }
@@ -867,19 +913,22 @@
                                     @{
                                         foreach (var item in Model.HCMDistrict)
                                         {
-                                            if (item.Id == Model.RegistrationInterview.NV02Quan)
+                                            if (item.Id != 974)
                                             {
+                                                if (item.Id == Model.RegistrationInterview.NV02Quan)
+                                                {
 
-                                                <option value="@item.Id" selected>
-                                                    @item.Type @item.Name
-                                                </option>
-                                            }
-                                            else
-                                            {
+                                                    <option value="@item.Id" selected>
+                                                        @item.Type @item.Name
+                                                    </option>
+                                                }
+                                                else
+                                                {
 
-                                                <option value="@item.Id">
-                                                    @item.Type @item.Name
-                                                </option>
+                                                    <option value="@item.Id">
+                                                        @item.Type @item.Name
+                                                    </option>
+                                                }
                                             }
                                         }
                                     }
@@ -893,20 +942,24 @@
                                     @{
                                         foreach (var item in Model.HCMDistrict)
                                         {
-                                            if (item.Id == Model.RegistrationInterview.NV03Quan)
+                                            if (item.Id != 974)
                                             {
+                                                if (item.Id == Model.RegistrationInterview.NV03Quan)
+                                                {
 
-                                                <option value="@item.Id" selected>
-                                                    @item.Type @item.Name
-                                                </option>
-                                            }
-                                            else
-                                            {
+                                                    <option value="@item.Id" selected>
+                                                        @item.Type @item.Name
+                                                    </option>
+                                                }
+                                                else
+                                                {
 
-                                                <option value="@item.Id">
-                                                    @item.Type @item.Name
-                                                </option>
+                                                    <option value="@item.Id">
+                                                        @item.Type @item.Name
+                                                    </option>
+                                                }
                                             }
+
                                         }
                                     }
                                 </select>
@@ -983,6 +1036,14 @@
             $('#isshowdiemluanvan').hide();
         }
     });
+    $('#trinhdongoaingukhac').change(function () {        
+        if ($('#trinhdongoaingukhac').val() != '1') {
+            $('#isShowsohieuvanbangchungchingoaingukhac').show();
+        }
+        else {
+            $('#isShowsohieuvanbangchungchingoaingukhac').hide();
+        }
+    });
 
     $(document).ready(function () {
         $('#IsNienChe').val() == 'true' ? $('#isshowdiemluanvan').show() : $('#isshowdiemluanvan').hide();
@@ -1000,7 +1061,10 @@
                     email: true
                 },
                 sdt: {
-                    required: true
+                    required: true,
+                    number: true,
+                    maxlength: 10,
+                    minlength: 10,
                 },
                 tentruongdaotao: 'required',
                 nohnsonhatenduong: 'required',
@@ -1043,12 +1107,22 @@
                     required: true,
                     maxlength: 50,
                 },
+                sohieuvanbangchungchingoaingukhac: {
+                    required: true,
+                    maxlength: 50,
+                },
+                
 
             },
             messages: {
                 hovatenlot: 'Vui lòng nhập',
                 ten: 'Vui lòng nhập',
-                sdt: 'Vui lòng nhập',
+                sdt: {
+                    required: 'Vui lòng nhập',
+                    number: 'Vui lòng nhập số',
+                    maxlength: 'Yêu cầu số điện thoại 10 số',
+                    minlength: 'Yêu cầu số điện thoại 10 số',
+                },
                 email: {
                     required: 'Vui lòng nhập',
                     email: 'Vui lòng nhập email hợp lệ'
@@ -1094,6 +1168,11 @@
                     required: 'Vui lòng nhập',
                     maxlength: 'Tối đa 50 kí tự',
                 },
+                sohieuvanbangchungchingoaingukhac: {
+                    required: 'Vui lòng nhập',
+                    maxlength: 'Tối đa 50 kí tự',
+                },
+                
             },
             errorElement: "em",
             errorPlacement: function (error, element) {
@@ -1183,6 +1262,8 @@
                         SoVanBangChungChiTinHoc: $('#sohieuvanbangchungchitinhoc').val(),
                         SoVanBangChungChiNgoaiNgu: $('#sohieuvanbangchungchingoaingu').val(),
                         TruongHopDacBietId: $('input[name=truonghopdacbiet]:checked').val(),
+                        TrinhDoNgoaiNguKhacId: $('#trinhdongoaingukhac').val(),
+                        SoVanBangChungChiNgoaiNguKhac: $('#trinhdongoaingukhac').val() == 1? 'Không' : $('#sohieuvanbangchungchingoaingukhac').val(),
                         __RequestVerificationToken: $("input[name=__RequestVerificationToken]").val(),
                     }, function (data, status) {
                         debugger;

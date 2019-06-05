@@ -28,10 +28,8 @@
         <table class="table table-condensed" id="danhsachhoanthanh">
             <thead>
                 <tr>
-
-                    <th>Họ Và Tên Lót</th>
-                    <th>Tên</th>
                     <th>Mã Đăng Kí</th>
+                    <th>Họ Và Tên</th>                  
                     <th>Số CMND</th>
                     <th>Thao tác</th>
                 </tr>
@@ -42,10 +40,9 @@
                     {
                         <tr>
 
-                            <td>@item.Id</td>
-                            <td>@item.FirstName</td>
-                            <td>@item.LastName</td>
-                            <td>@item.IdentifyCard</td>
+                            <td>@item.TienTo@item.Id</td>
+                            <td>@item.LastName @item.FirstName</td>
+                            <td>@item.IdentifyCard</td>                          
                             <td>
                                 <button class="btn btn-primary btn-sm"><span class="fa fa-edit"> Chi tiết</span></button>
                             </td>

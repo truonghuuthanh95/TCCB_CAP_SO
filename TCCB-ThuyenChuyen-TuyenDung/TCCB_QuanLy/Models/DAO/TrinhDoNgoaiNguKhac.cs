@@ -6,11 +6,11 @@ namespace TCCB_QuanLy.Models.DAO
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    [Table("TruongHopDacBiet")]
-    public partial class TruongHopDacBiet
+    [Table("TrinhDoNgoaiNguKhac")]
+    public partial class TrinhDoNgoaiNguKhac
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public TruongHopDacBiet()
+        public TrinhDoNgoaiNguKhac()
         {
             RegistrationInterviews = new HashSet<RegistrationInterview>();
         }

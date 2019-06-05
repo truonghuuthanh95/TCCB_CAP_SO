@@ -9,13 +9,13 @@
                 <div class="text-center">
                     <h3 class="text-center text-info">XUẤT MÃ ĐĂNG KÝ</h3>
                     <form class="form-inline">
-                        <p class="text-warning">Vui lòng nhập số chứng minh nhân dân sau đó nhấn xác nhận để hệ thống kiểm tra</p>
+                        <p class="text-warning">Vui lòng nhập số CMND/CCCD sau đó nhấn xác nhận để hệ thống kiểm tra</p>
                         <p class="text-danger" id="errorRegistration"></p>
                         <div class="form-group" id="errorInputcmnd">
                             <label for="cmnd" class="control-label">Số CMND/CCCD</label>
                             <input placeholder="CMND" type="number" id="cmnd" class="form-control" value="">
                         </div>
-                        <button type="button" class="btn btn-success" onclick="kiemtracmnd();" id="submitIndentifyCard">XÁC NHẬN</button>
+                        <button type="submit" class="btn btn-success" onclick="kiemtracmnd(event);" id="submitIndentifyCard">XÁC NHẬN</button>
                     </form>
                 </div>
             </div>
@@ -51,7 +51,8 @@
     <span class="loader" hidden id="loader"></span>
     <script>
 
-        function kiemtracmnd() {
+        function kiemtracmnd(event) {
+            event.preventDefault();
             if ($('#cmnd').val() == '') {
                 $('#errorInputcmnd').addClass('has-error');
                 $('#errorRegistration').text('Vui lòng nhập số CMND');
@@ -118,7 +119,7 @@
                 },
                 submitHandler: function (form) {
                     $('#loader').show();
-                    $('#summittaomoiungvien').addClass('disabled');
+                    $('#summittaomoiungvien').hide();
                     $.post("/tuyendung/taomoiungvien/", {
                         cmnd: $('#cmnd').val().trim(),
                         hoVaTen: $('#hovaten').val().trim(),

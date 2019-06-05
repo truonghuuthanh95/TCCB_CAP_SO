@@ -29,9 +29,10 @@
             <thead>
                 <tr>
                     <th>Mã Đăng Kí</th>
-                    <th>Họ Và Tên Lót</th>
-                    <th>Tên</th>
+                    <th>Họ Và Tên</th>
                     <th>Số CMND</th>
+                    <th>Người cấp mã</th>
+                    <th>Ngày cấp</th>
                 </tr>
             </thead>
             <tbody>
@@ -39,10 +40,11 @@
                     foreach (var item in ViewBag.DanhSachDangKis)
                     {
                         <tr>
-                            <td>@item.Id</td>
-                            <td>@item.LastName</td>
-                            <td>@item.FirstName</td>
+                            <td>@item.TienTo@item.Id</td>
+                            <td>@item.LastName @item.FirstName</td>
                             <td>@item.IdentifyCard</td>
+                            <td>@item.Account.LastName @item.Account.FirstName</td>
+                            <td>@item.CreatedAt.ToString("dd/MM/yyyy")</td>
                         </tr>
                     }
                 }

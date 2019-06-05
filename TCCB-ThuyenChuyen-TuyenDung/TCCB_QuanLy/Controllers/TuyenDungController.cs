@@ -31,8 +31,9 @@ namespace TCCB_QuanLy.Controllers
         IDoiTuongUuTienRepository doiTuongUuTienRepository;
         IThanhPhanBanThanHienTaiRepository thanhPhanBanThanHienTaiRepository;
         ITruongHopDacBietRepository truongHopDacBietRepository;
+        ITrinhDoNgoaiNguKhacReposittory trinhDoNgoaiNguKhacReposittory;
 
-        public TuyenDungController(IRegistrationInterviewRepository registrationInterviewRepository, IProvinceRepository provinceRepository, IDistrictRepository districtRepository, IWardRepository wardRepository, IHinhThucDaoTaoRepository hinhThucDaoTaoRepository, IBangTotNghiepRepository bangTotNghiepRepository, IChuyenNganhDaoTaoRepository chuyenNganhDaoTaoRepository, ITrinhDoCaoNhatRepository trinhDoCaoNhatRepository, ILamViecTrongNganhRepository lamViecTrongNganhRepository, ITrinhDoTinHocRepository trinhDoTinHocRepository, ITrinhDoNgoaiNguRepository trinhDoNgoaiNguRepository, IMonDuTuyenRepository monDuTuyenRepository, IXepLoaiHocLucRepository xepLoaiHocLucRepository, ICapTruongRepository capTruongRepository, ITonGiaoRepository tonGiaoRepository, IDanTocRepository danTocRepository, IDoiTuongUuTienRepository doiTuongUuTienRepository, IThanhPhanBanThanHienTaiRepository thanhPhanBanThanHienTaiRepository, ITruongHopDacBietRepository truongHopDacBietRepository)
+        public TuyenDungController(IRegistrationInterviewRepository registrationInterviewRepository, IProvinceRepository provinceRepository, IDistrictRepository districtRepository, IWardRepository wardRepository, IHinhThucDaoTaoRepository hinhThucDaoTaoRepository, IBangTotNghiepRepository bangTotNghiepRepository, IChuyenNganhDaoTaoRepository chuyenNganhDaoTaoRepository, ITrinhDoCaoNhatRepository trinhDoCaoNhatRepository, ILamViecTrongNganhRepository lamViecTrongNganhRepository, ITrinhDoTinHocRepository trinhDoTinHocRepository, ITrinhDoNgoaiNguRepository trinhDoNgoaiNguRepository, IMonDuTuyenRepository monDuTuyenRepository, IXepLoaiHocLucRepository xepLoaiHocLucRepository, ICapTruongRepository capTruongRepository, ITonGiaoRepository tonGiaoRepository, IDanTocRepository danTocRepository, IDoiTuongUuTienRepository doiTuongUuTienRepository, IThanhPhanBanThanHienTaiRepository thanhPhanBanThanHienTaiRepository, ITruongHopDacBietRepository truongHopDacBietRepository, ITrinhDoNgoaiNguKhacReposittory trinhDoNgoaiNguKhacReposittory)
         {
             this.registrationInterviewRepository = registrationInterviewRepository;
             this.provinceRepository = provinceRepository;
@@ -53,7 +54,9 @@ namespace TCCB_QuanLy.Controllers
             this.doiTuongUuTienRepository = doiTuongUuTienRepository;
             this.thanhPhanBanThanHienTaiRepository = thanhPhanBanThanHienTaiRepository;
             this.truongHopDacBietRepository = truongHopDacBietRepository;
+            this.trinhDoNgoaiNguKhacReposittory = trinhDoNgoaiNguKhacReposittory;
         }
+
 
 
         // GET: TuyenDung
@@ -115,6 +118,7 @@ namespace TCCB_QuanLy.Controllers
             ViewBag.DanTocs = danTocRepository.GetDanTocs();
             ViewBag.ThanhPhanBanThanHienTais = thanhPhanBanThanHienTaiRepository.GetThanhPhanBanThanHienTais();
             ViewBag.TruongHopDacBiets = truongHopDacBietRepository.GetTruongHopDacBiets();
+            ViewBag.TrinhDoNgoaiNguKhas = trinhDoNgoaiNguKhacReposittory.GetTrinhDoNgoaiNguKhacs();
             return View(candidateModelInOneView);
         }
         [Route("submitcapnhat")]
@@ -154,8 +158,11 @@ namespace TCCB_QuanLy.Controllers
         {
             List<RegistrationInterviewStatusRegistedCountDTO> registration = registrationInterviewRepository.GetSoluongDangkyTheoViTriUngTuyen();
             List<MonDuTuyen> mondutuyens = monDuTuyenRepository.GetMonDuTuyens();
-            var registrationRegistedStatus = (from p in mondutuyens from s in registration where Convert.ToInt32(s.Quantity) == p.Id select new RegistrationInterviewStatusRegistedCountDTO { ViTriUngTuyen = p.ViTriUngTuyen.Name + " " + p.Name , Quantity = s.Quantity, Targets = 10 });
-            var b = (from s1 in mondutuyens from s2 in registration where Convert.ToInt32(s2.ViTriUngTuyen) != s1.Id select new RegistrationInterviewStatusRegistedCountDTO { ViTriUngTuyen = s1.ViTriUngTuyen.Name + " " + s1.Name, Quantity = 0, Targets = 10 } );
+            var registrationRegistedStatus = (from s1 in registration join s2 in mondutuyens on Convert.ToInt32(s1.ViTriUngTuyen) equals s2.Id select new RegistrationInterviewStatusRegistedCountDTO { ViTriUngTuyen = s2.ViTriUngTuyen.Name + " " + s2.Name, Quantity = s1.Quantity, Targets = s2.Targets });
+            
+            //var registrationRegistedStatus = (from p in mondutuyens from s in registration where Convert.ToInt32(s.Quantity) == p.Id select new RegistrationInterviewStatusRegistedCountDTO { ViTriUngTuyen = p.ViTriUngTuyen.Name + " " + p.Name, Quantity = s.Quantity, Targets = p.Targets });
+            //var b = (from s1 in mondutuyens join s2 in registration on s1.Id equals Convert.ToInt32(s2.ViTriUngTuyen) select new RegistrationInterviewStatusRegistedCountDTO { ViTriUngTuyen = s1.ViTriUngTuyen.Name + " " + s1.Name, Quantity = 0, Targets = s1.Targets } );
+            var b = from s1 in mondutuyens where !registration.Any(s => Convert.ToInt32(s.ViTriUngTuyen) == s1.Id) select new RegistrationInterviewStatusRegistedCountDTO { ViTriUngTuyen = s1.ViTriUngTuyen.Name + " " + s1.Name, Quantity = 0, Targets = s1.Targets };
             var ab = registrationRegistedStatus.Concat(b).OrderBy(s => s.ViTriUngTuyen);
             ViewBag.RegistrationStatus = ab;
             return View();

@@ -10,8 +10,8 @@ namespace TCCB_QuanLy.Models.DAO
         public TCCBDB()
             : base("name=TCCBDB")
         {
-            this.Configuration.LazyLoadingEnabled = false;
             this.Configuration.ProxyCreationEnabled = false;
+            this.Configuration.LazyLoadingEnabled = false;
         }
 
         public virtual DbSet<Account> Accounts { get; set; }
@@ -42,6 +42,7 @@ namespace TCCB_QuanLy.Models.DAO
         public virtual DbSet<TonGiao> TonGiaos { get; set; }
         public virtual DbSet<TrinhDoCaoNhat> TrinhDoCaoNhats { get; set; }
         public virtual DbSet<TrinhDoNgoaiNgu> TrinhDoNgoaiNgus { get; set; }
+        public virtual DbSet<TrinhDoNgoaiNguKhac> TrinhDoNgoaiNguKhacs { get; set; }
         public virtual DbSet<TrinhDoTinHoc> TrinhDoTinHocs { get; set; }
         public virtual DbSet<TruongHopDacBiet> TruongHopDacBiets { get; set; }
         public virtual DbSet<UserPermission> UserPermissions { get; set; }

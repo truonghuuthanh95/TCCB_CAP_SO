@@ -19,6 +19,9 @@ namespace TCCB_QuanLy.Repositories.Implements
         public List<ThanhPhanBanThanHienTai> GetThanhPhanBanThanHienTais()
         {
             List<ThanhPhanBanThanHienTai> thanhPhanBanThanHienTais = _db.ThanhPhanBanThanHienTais.OrderBy(s => s.Name).ToList();
+            ThanhPhanBanThanHienTai thanhPhanBanThanHienTai = thanhPhanBanThanHienTais.Where(s => s.Id == 11).SingleOrDefault();
+            thanhPhanBanThanHienTais.Remove(thanhPhanBanThanHienTai);
+            thanhPhanBanThanHienTais.Insert(0, thanhPhanBanThanHienTai);
             return thanhPhanBanThanHienTais;
         }
     }

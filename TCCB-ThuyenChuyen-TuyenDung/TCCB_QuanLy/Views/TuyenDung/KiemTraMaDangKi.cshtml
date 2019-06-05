@@ -10,17 +10,17 @@
             <div class="panel-body">
                 <form class="form-inline">
                     <h3 class="text-center text-info">CẬP NHẬT PHIẾU ĐĂNG KÝ DỰ TUYỂN</h3>
-                    <p class="text-warning">Vui lòng nhập mã hồ sơ đăng kí trong biên lai và nhập số chứng minh nhân dân sau đó nhấn xác nhận để hệ thống kiểm tra</p>
+                    <p class="text-warning">Vui lòng nhập mã số được cấp và nhập số chứng minh nhân dân sau đó nhấn xác nhận để hệ thống kiểm tra</p>
                     <p class="text-danger" id="errorMessage"></p>
                     <div class="form-group" id="errorRegistrationId">
                         <label for="formInlineName" class="control-label">Mã</label>
-                        <input placeholder="Mã đăng kí" name="registrationId" id="registrationId" type="text" class="form-control" value="">
+                        <input name="registrationId" id="registrationId" type="text" class="form-control" value="">
                     </div>
                     <div class="form-group" id="errorIdentifyCard">
-                        <label for="formInlineEmail" class="control-label">Số CMND</label>
-                        <input placeholder="CMND" name="identifyCard" type="number" id="identifyCard" class="form-control" value="">
+                        <label for="formInlineEmail" class="control-label">Số CMND/CCCD</label>
+                        <input name="identifyCard" type="number" id="identifyCard" class="form-control" value="">
                     </div>
-                    <button type="button" class="btn btn-success" onclick="checkValidToUpdate();" id="submit">XÁC NHẬN</button>
+                    <button type="submit" class="btn btn-success" onclick="checkValidToUpdate(event);" id="submit">XÁC NHẬN</button>
                     <span class="loader" id="loader" hidden=""></span>
                 </form>
             </div>
@@ -28,8 +28,8 @@
     </div>
 </div>
 <script>
-    function checkValidToUpdate() {
-
+    function checkValidToUpdate(event) {
+        event.preventDefault();
         if ($('#registrationId').val() == '' || $('#identifyCard').val() == '') {
             $('#errorIdentifyCard').addClass('has-error');
             $('#errorRegistrationId').addClass('has-error');
