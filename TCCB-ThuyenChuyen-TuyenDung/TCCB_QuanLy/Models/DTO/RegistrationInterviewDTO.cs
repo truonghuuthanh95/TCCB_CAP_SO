@@ -59,7 +59,7 @@ namespace TCCB_QuanLy.Models.DTO
         [Required]
         public int BangTotNghiepId { get; set; }
         [Required]
-        public bool IsHadNghiepVuSupham { get; set; }
+        //public bool IsHadNghiepVuSupham { get; set; }
         //[Required]
         //public int LamViecTrongNganhId { get; set; }
         public string NamVaoNghanh { get; set; } = "Không có";
@@ -116,5 +116,9 @@ namespace TCCB_QuanLy.Models.DTO
 
         [StringLength(50)]
         public string SoVanBangChungChiNgoaiNguKhac { get; set; }
+        public int ChungChiNghiepVuSuPhamId { get; set; }
+
+        [StringLength(50)]
+        public string ChungChiNghiepVuSuPhamSoVanBang { get; set; }
     }
 }

@@ -248,32 +248,39 @@
                     <b>@Model.TrinhDoCaoNhat.Name</b>
                 </p>
 
-                <p>
-                    Chứng chỉ Nghiệp vụ sư phạm:
-                    @{
-            if (Model.IsHadNghiepVuSupham == true)
-            {
-                <b>Đã có</b>
-}
-else
-{
-            <b>Chưa có</b>
-}
-                    }
-
-
-                </p>
+                
                 <div style="border: solid; border-width: 1px;">
                     <div class="row">
 
-                        <div class="col-xs-6 col-sm-6">
+                        <div class="col-xs-7 col-sm-7">
+                            <p>
+                                Chứng chỉ :
+                                <b>@Model.ChungChiNghiepVuSuPham.Name</b>
+
+
+                            </p>
+                        </div>
+                        <div class="col-xs-5 col-sm-5">
+                            <p>
+                                Số hiệu văn bằng, chứng chỉ:<b>
+                                    @Model.ChungChiNghiepVuSuPhamSoVanBang
+                                </b>
+                            </p>
+                        </div>
+                    </div>
+
+                </div>
+                <div style="border: solid; border-width: 1px;">
+                    <div class="row">
+
+                        <div class="col-xs-7 col-sm-7">
                             <p>
                                 Chứng chỉ Tin học:<b>
                                     @Model.TrinhDoTinHoc.Name
                                 </b>
                             </p>
                         </div>
-                        <div class="col-xs-6 col-sm-6">
+                        <div class="col-xs-5 col-sm-5">
                             <p>
                                 Số hiệu văn bằng, chứng chỉ:<b>
                                     @Model.SoVanBangChungChiTinHoc
@@ -286,14 +293,14 @@ else
                 <div style="border: solid; border-width: 1px;">
                     <div class="row">
 
-                        <div class="col-xs-6 col-sm-6">
+                        <div class="col-xs-7 col-sm-7">
                             <p>
                                 Chứng chỉ Ngoại ngữ:<b>
                                     @Model.TrinhDoNgoaiNgu.Name
                                 </b>
                             </p>
                         </div>
-                        <div class="col-xs-6 col-sm-6">
+                        <div class="col-xs-5 col-sm-5">
                             <p>
                                 Số hiệu văn bằng, chứng chỉ:<b>
                                     @Model.SoVanBangChungChiNgoaiNgu
@@ -305,14 +312,14 @@ else
                 <div style="border: solid; border-width: 1px;">
                     <div class="row">
 
-                        <div class="col-xs-6 col-sm-6">
+                        <div class="col-xs-7 col-sm-7">
                             <p>
                                 Chứng chỉ Ngoại ngữ khác:<b>
                                     @Model.TrinhDoNgoaiNguKhac.Name
                                 </b>
                             </p>
                         </div>
-                        <div class="col-xs-6 col-sm-6">
+                        <div class="col-xs-5 col-sm-5">
                             <p>
                                 Số hiệu văn bằng, chứng chỉ:<b>
                                     @Model.SoVanBangChungChiNgoaiNguKhac
@@ -399,17 +406,17 @@ else
                 <div class="row signature">
 
                     <div class="col-xs-6 col-sm-6">
-                        
+
                         <p>.</p>
                         <p class="text-center">
-                            <b class="text-uppercase">NGƯỜI KIỂM TRA</b><br />
+                            <b class="text-uppercase">Người viết phiếu</b><br />
                             <i>(Ký và ghi rõ họ tên)</i>
                         </p>
                     </div>
                     <div class="col-xs-6 col-sm-6">
                         <p class="text-center"><i>Ngày&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;tháng&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;năm <b>@DateTime.Now.Year</b></i></p>
                         <p class="text-center">
-                            <b class="text-uppercase">Người viết phiếu</b><br />
+                            <b class="text-uppercase">NGƯỜI KIỂM TRA</b><br />
                             <i>(Ký và ghi rõ họ tên)</i>
                         </p>
 

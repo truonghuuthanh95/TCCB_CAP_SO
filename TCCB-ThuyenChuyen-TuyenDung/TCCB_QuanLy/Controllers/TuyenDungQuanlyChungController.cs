@@ -5,6 +5,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using TCCB_QuanLy.Models.DAO;
+using System.Threading.Tasks;
 
 namespace TCCB_QuanLy.Controllers
 {
@@ -112,6 +113,31 @@ namespace TCCB_QuanLy.Controllers
             ViewBag.DanhSachHopLe = registrationInterviewRepository.GetRegistrationInterviewsHopLe();
             return View();
         }
+        [Route("downloadexceltuyendung/{status}")]
+        [HttpGet]
+        public async Task<ActionResult> DownloadTuyenDung(string status)
+        {
 
+            int permissionId = 1;
+            Account account = (Account)Session[Utils.Constants.USER_SESSION];
+            if (account == null)
+            {
+                return RedirectToRoute("login");
+            }
+            List<UserPermission> userPermission = (List<UserPermission>)Session[Utils.Constants.USER_PERMISSION_SESSION];
+            if (userPermission.Where(s => s.PermissionId == permissionId).SingleOrDefault() == null)
+            {
+                return RedirectToRoute("login");
+            }
+            string filePath;
+            
+                List<RegistrationInterview> registrationInterviews = registrationInterviewRepository.GetRegistrationInterviewsDaHoanThanhWithDetail();
+                filePath = System.Web.HttpContext.Current.Server.MapPath("~/Utils/ds-hoanthanhcapnhat-tuyendung.xlsx");
+                await Utils.ExportExcel.GenerateXLSRegistrationCompleted(registrationInterviews, filePath);
+                return File(filePath, "application/vnd.ms-excel", "ds-hoanthanhcapnhat-tuyendung.xlsx");
+            
+                                        
+
+        }
     }
 }

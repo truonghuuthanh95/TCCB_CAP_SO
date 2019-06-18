@@ -19,6 +19,7 @@ namespace TCCB_QuanLy.Repositories.Interfaces
         List<RegistrationInterview> GetRegistrationInterviewsDaDangKi();
         List<RegistrationInterview> GetRegistrationInterviewsChuaCapNhat();
         List<RegistrationInterview> GetRegistrationInterviewsDaHoanThanh();
+        List<RegistrationInterview> GetRegistrationInterviewsDaHoanThanhWithDetail();
         List<RegistrationInterview> GetRegistrationInterviewsHopLe();
         List<RegistrationInterviewStatusRegistedCountDTO> GetSoluongDangkyTheoViTriUngTuyen();
     }

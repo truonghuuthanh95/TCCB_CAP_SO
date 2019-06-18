@@ -245,5 +245,160 @@ namespace TCCB_QuanLy.Utils
                 }
             });
         }
+        public static Task GenerateXLSRegistrationCompleted(List<RegistrationInterview> registrationInterviews, string filePath)
+        {
+            return Task.Run(() =>
+            {
+                using (ExcelPackage pck = new ExcelPackage())
+                {
+                    //Create the worksheet 
+                    ExcelWorksheet ws = pck.Workbook.Worksheets.Add(DateTime.Now.Date.ToString());
+                    ws.Cells[2, 1].Value = "DANH SÁCH ỨNG VIÊN HOÀN THÀNH CẬP NHẬT";
+                    ws.Cells["A2:I2"].Merge = true;
+
+                    
+                    ws.Cells["A3:I3"].Merge = true;
+                    ws.Cells[4, 1].Value = "Tính tới ngày " + DateTime.Now.ToString("dd/MM/yyyy");
+                    ws.Cells["A4:I4"].Merge = true;
+                    ws.Cells[6, 1].Value = "MÃ";
+                    ws.Cells[6, 2].Value = "MÔN ĐĂNG KÍ";
+                    //THONG TIN CA NHAN
+                    ws.Cells[6, 3].Value = "HỌ VÀ TÊN";                    
+                    ws.Cells[6, 4].Value = "NGÀY SINH";
+                    ws.Cells[6, 5].Value = "GIỚI TÍNH";
+                    ws.Cells[6, 6].Value = "DÂN TỘC";
+                    ws.Cells[6, 7].Value = "TÔN GIÁO";
+                    ws.Cells[6, 8].Value = "SỐ CMND/CCCD";
+                    ws.Cells[6, 9].Value = "NGÀY CẤP";
+                    ws.Cells[6, 10].Value = "NƠI CẤP";
+                    ws.Cells[6, 11].Value = "SĐT";
+                    ws.Cells[6, 12].Value = "EMAIL";                
+                    ws.Cells[6, 13].Value = "QUÊ QUÁN";
+                    ws.Cells[6, 14].Value = "NƠI Ở HIỆN NAY";
+                    ws.Cells[6, 15].Value = "HÔ KHẨU THƯỞNG TRÚ";
+                    ws.Cells[6, 16].Value = "TÌNH TRẠNG SỨC KHỎE";
+                    ws.Cells[6, 17].Value = "CHIỀU CAO (cm)";
+                    ws.Cells[6, 18].Value = "CÂN NẶNG (kg)";
+                    ws.Cells[6, 19].Value = "THÀNH PHẦN BẢN THÂN HIỆN TẠI";
+                    //BANG DAI HOC
+                    ws.Cells[6, 20].Value = "TỐT NGHIỆP";
+                    ws.Cells[6, 21].Value = "HỆ";
+                    ws.Cells[6, 22].Value = "TÊN TRƯỜNG";
+                    ws.Cells[6, 23].Value = "TRƯỜNG NÀY Ở";
+                    ws.Cells[6, 24].Value = "PHƯƠNG THỨC ĐÀO TẠO";
+                    ws.Cells[6, 25].Value = "NĂM TỐT NGHIỆP";                   
+                    ws.Cells[6, 26].Value = "ĐIỂM TB";
+                    ws.Cells[6, 27].Value = "ĐIỂM ĐỒ ÁN";
+                    ws.Cells[6, 28].Value = "XẾP LOẠI";
+                    ws.Cells[6, 29].Value = "SỐ HIỆU VĂN BẰNG";
+                    //CHUNG CHI KHÁC
+                    ws.Cells[6, 30].Value = "CHỨNG CHỈ";                    
+                    ws.Cells[6, 31].Value = "SỐ HIỆU VĂN BẰNG";       
+                    //TIN HOC
+                    ws.Cells[6, 32].Value = "TIN HỌC";
+                    ws.Cells[6, 33].Value = "SỐ HIỆU VĂN BẰNG";
+                    //NGOAI NGHU
+                    ws.Cells[6, 34].Value = "NGOẠI NGỮ";
+                    ws.Cells[6, 35].Value = "SỐ HIỆU VĂN BẰNG";
+                    //NGOAI NGU KHAC
+                    ws.Cells[6, 36].Value = "NGOẠI NGỮ KHÁC";
+                    ws.Cells[6, 37].Value = "SỐ HIỆU VĂN BẰNG";
+                    //THONG TIN KHAC
+                    ws.Cells[6, 38].Value = "ĐỐI TƯỢNG ƯU TIÊN";
+                    ws.Cells[6, 39].Value = "TRƯỜNG HỢP ĐẶC BIỆT";
+                    //NGUYEN VONG
+                    ws.Cells[6, 40].Value = "NGUYỆN VỌNG 1";
+                    ws.Cells[6, 41].Value = "NGUYỆN VỌNG 2";
+                    ws.Cells[6, 42].Value = "NGUYỆN VỌNG 3";
+
+                    for (int i = 0; i < registrationInterviews.Count(); i++)
+                    {
+                        ws.Cells[i + 7, 1].Value = registrationInterviews.ElementAt(i).TienTo + registrationInterviews.ElementAt(i).Id;
+                        ws.Cells[i + 7, 2].Value = registrationInterviews.ElementAt(i).MonDuTuyen.Name;
+                        //THONG TIN CA NHAN
+                        ws.Cells[i + 7, 3].Value = registrationInterviews.ElementAt(i).LastName + " " + registrationInterviews.ElementAt(i).FirstName;
+                        ws.Cells[i + 7, 4].Value = registrationInterviews.ElementAt(i).DOB.Value.ToString("dd/MM/yyyy");                        
+                        ws.Cells[i + 7, 5].Value = registrationInterviews.ElementAt(i).IsMale == true ? "Nam" : "Nữ";
+                        ws.Cells[i + 7, 6].Value = registrationInterviews.ElementAt(i).DanToc.Name;
+                        ws.Cells[i + 7, 7].Value = registrationInterviews.ElementAt(i).TonGiao.Name;
+                        ws.Cells[i + 7, 8].Value = registrationInterviews.ElementAt(i).IdentifyCard;
+                        ws.Cells[i + 7, 9].Value = registrationInterviews.ElementAt(i).CMNDNgayCap.Value.ToString("dd/MM/yyyy");
+                        ws.Cells[i + 7, 10].Value = registrationInterviews.ElementAt(i).Province1.Type + " " + registrationInterviews.ElementAt(i).Province1.Name;
+                        ws.Cells[i + 7, 11].Value = registrationInterviews.ElementAt(i).SDT;
+                        ws.Cells[i + 7, 12].Value = registrationInterviews.ElementAt(i).Email;
+                        ws.Cells[i + 7, 13].Value = registrationInterviews.ElementAt(i).Province2.Type + " " + registrationInterviews.ElementAt(i).Province2.Name;
+                        ws.Cells[i + 7, 14].Value = registrationInterviews.ElementAt(i).HKTTSoNhaTenDuong + ", " + registrationInterviews.ElementAt(i).Ward.Type + " " + registrationInterviews.ElementAt(i).Ward.Name + ", " + registrationInterviews.ElementAt(i).Ward.District.Type + " " + registrationInterviews.ElementAt(i).Ward.District.Name + ", " + registrationInterviews.ElementAt(i).Ward.District.Province. Type + " " + registrationInterviews.ElementAt(i).Ward.District.Province.Name;
+                        ws.Cells[i + 7, 15].Value = registrationInterviews.ElementAt(i).HKTTSoNhaTenDuong + ", " + registrationInterviews.ElementAt(i).Ward1.Type + " " + registrationInterviews.ElementAt(i).Ward1.Name + ", " + registrationInterviews.ElementAt(i).Ward1.District.Type + " " + registrationInterviews.ElementAt(i).Ward1.District.Name + ", " + registrationInterviews.ElementAt(i).Ward1.District.Province.Type + " " + registrationInterviews.ElementAt(i).Ward1.District.Province.Name;
+                        ws.Cells[i + 7, 16].Value = registrationInterviews.ElementAt(i).TinhTrangSucKhoe;
+                        ws.Cells[i + 7, 17].Value = registrationInterviews.ElementAt(i).Chieucao;
+                        ws.Cells[i + 7, 18].Value = registrationInterviews.ElementAt(i).CanNang;
+                        ws.Cells[i + 7, 19].Value = registrationInterviews.ElementAt(i).ThanhPhanBanThanHienTai.Name;
+                        //TRINH DO DAI HOC
+                        ws.Cells[i + 7, 20].Value = registrationInterviews.ElementAt(i).BangTotNghiep.Name;
+                        ws.Cells[i + 7, 21].Value = registrationInterviews.ElementAt(i).HinhThucDaoTao.Name;
+                        ws.Cells[i + 7, 22].Value = registrationInterviews.ElementAt(i).TenTruongDaiHoc;
+                        ws.Cells[i + 7, 23].Value = registrationInterviews.ElementAt(i).Province.Type + " " + registrationInterviews.ElementAt(i).Province.Name;
+                        ws.Cells[i + 7, 24].Value = registrationInterviews.ElementAt(i).IsNienChe == true ? "Niên chế" : "Tín chỉ";
+                        ws.Cells[i + 7, 25].Value = registrationInterviews.ElementAt(i).NamTotNghiep;
+                        ws.Cells[i + 7, 26].Value = registrationInterviews.ElementAt(i).GPA;
+                        ws.Cells[i + 7, 27].Value = registrationInterviews.ElementAt(i).DiemLuanVan;
+                        ws.Cells[i + 7, 28].Value = registrationInterviews.ElementAt(i).XepLoaiHocLuc.Name;
+                        ws.Cells[i + 7, 29].Value = registrationInterviews.ElementAt(i).SoVanBangChungChiDaiHoc;
+                        //CHUNG CHI
+                        ws.Cells[i + 7, 30].Value = registrationInterviews.ElementAt(i).ChungChiNghiepVuSuPham.Name;
+                        ws.Cells[i + 7, 31].Value = registrationInterviews.ElementAt(i).ChungChiNghiepVuSuPhamSoVanBang;
+                        //TIN HOC
+                        ws.Cells[i + 7, 32].Value = registrationInterviews.ElementAt(i).TrinhDoTinHoc.Name;
+                        ws.Cells[i + 7, 33].Value = registrationInterviews.ElementAt(i).SoVanBangChungChiTinHoc;
+                        //NGOAI NGU
+                        ws.Cells[i + 7, 34].Value = registrationInterviews.ElementAt(i).TrinhDoNgoaiNgu.Name;
+                        ws.Cells[i + 7, 35].Value = registrationInterviews.ElementAt(i).SoVanBangChungChiNgoaiNgu;
+                        //NGOAI NGU KHAC
+                        ws.Cells[i + 7, 36].Value = registrationInterviews.ElementAt(i).TrinhDoNgoaiNguKhac;
+                        ws.Cells[i + 7, 37].Value = registrationInterviews.ElementAt(i).SoVanBangChungChiNgoaiNguKhac;
+                        //THONG TIN KHAC
+                        ws.Cells[i + 7, 38].Value = registrationInterviews.ElementAt(i).DoiTuongUuTien1.Name;
+                        ws.Cells[i + 7, 39].Value = registrationInterviews.ElementAt(i).TruongHopDacBiet.Name;
+                        //NGUYEN VONG
+                        ws.Cells[i + 7, 40].Value = registrationInterviews.ElementAt(i).District.Type + " " + registrationInterviews.ElementAt(i).District.Name;
+                        ws.Cells[i + 7, 41].Value = registrationInterviews.ElementAt(i).District1.Type + " " + registrationInterviews.ElementAt(i).District1.Name;
+                        ws.Cells[i + 7, 42].Value = registrationInterviews.ElementAt(i).District2.Type + " " + registrationInterviews.ElementAt(i).District2.Name;
+
+                    }
+                    using (ExcelRange rng = ws.Cells["A2:I2"])
+                    {
+                        rng.Style.Font.Bold = true;
+                        rng.Style.Font.Size = 18;
+                        rng.Style.HorizontalAlignment = ExcelHorizontalAlignment.Center;
+                        rng.Style.Font.Color.SetColor(Color.Black);
+                    }
+                    using (ExcelRange rng = ws.Cells["A3:I3"])
+                    {
+                        rng.Style.Font.Bold = true;
+                        rng.Style.Font.Size = 14;
+                        rng.Style.HorizontalAlignment = ExcelHorizontalAlignment.Center;
+                        rng.Style.Font.Color.SetColor(Color.Black);
+                    }
+                    using (ExcelRange rng = ws.Cells["A4:I4"])
+                    {
+                        rng.Style.Font.Bold = true;
+                        rng.Style.Font.Size = 14;
+                        rng.Style.HorizontalAlignment = ExcelHorizontalAlignment.Center;
+                        rng.Style.Font.Color.SetColor(Color.Red);
+                    }
+                    using (ExcelRange rng = ws.Cells["A6:AP6"])
+                    {
+                        rng.Style.Font.Bold = true;
+                        rng.Style.Fill.PatternType = ExcelFillStyle.Solid;        //Set Pattern for the background to Solid 
+                        rng.Style.Fill.BackgroundColor.SetColor(Color.SkyBlue);  //Set color to blue 
+                        rng.Style.Font.Color.SetColor(Color.Black);
+                        rng.AutoFitColumns();
+                    }
+
+
+                    pck.SaveAs(new FileInfo(filePath));
+                }
+            });
+        }
     }
 }

@@ -18,6 +18,7 @@ namespace TCCB_QuanLy.Models.DAO
         public virtual DbSet<BacLuong> BacLuongs { get; set; }
         public virtual DbSet<BangTotNghiep> BangTotNghieps { get; set; }
         public virtual DbSet<CapTruong> CapTruongs { get; set; }
+        public virtual DbSet<ChungChiNghiepVuSuPham> ChungChiNghiepVuSuPhams { get; set; }
         public virtual DbSet<ChuyenNganhDaoTao> ChuyenNganhDaoTaos { get; set; }
         public virtual DbSet<DanToc> DanTocs { get; set; }
         public virtual DbSet<District> Districts { get; set; }

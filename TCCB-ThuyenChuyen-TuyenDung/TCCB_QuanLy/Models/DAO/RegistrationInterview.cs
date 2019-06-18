@@ -152,11 +152,18 @@ namespace TCCB_QuanLy.Models.DAO
         [StringLength(50)]
         public string SoVanBangChungChiNgoaiNguKhac { get; set; }
 
+        public int? ChungChiNghiepVuSuPhamId { get; set; }
+
+        [StringLength(50)]
+        public string ChungChiNghiepVuSuPhamSoVanBang { get; set; }
+
         public virtual Account Account { get; set; }
 
         public virtual Account Account1 { get; set; }
 
         public virtual BangTotNghiep BangTotNghiep { get; set; }
+
+        public virtual ChungChiNghiepVuSuPham ChungChiNghiepVuSuPham { get; set; }
 
         public virtual ChuyenNganhDaoTao ChuyenNganhDaoTao { get; set; }
 

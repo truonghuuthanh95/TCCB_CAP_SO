@@ -209,6 +209,7 @@
     <Compile Include="Models\DAO\BacLuong.cs" />
     <Compile Include="Models\DAO\BangTotNghiep.cs" />
     <Compile Include="Models\DAO\CapTruong.cs" />
+    <Compile Include="Models\DAO\ChungChiNghiepVuSuPham.cs" />
     <Compile Include="Models\DAO\ChuyenNganhDaoTao.cs" />
     <Compile Include="Models\DAO\DanToc.cs" />
     <Compile Include="Models\DAO\District.cs" />
@@ -254,6 +255,7 @@
     <Compile Include="Repositories\Implements\BacLuongRepository.cs" />
     <Compile Include="Repositories\Implements\BangTotNghiepRepository.cs" />
     <Compile Include="Repositories\Implements\CapTruongRepository.cs" />
+    <Compile Include="Repositories\Implements\ChungChiNghiepVuSuPhamRepository.cs" />
     <Compile Include="Repositories\Implements\ChuyenNganhDaoTaoRepository.cs" />
     <Compile Include="Repositories\Implements\DanTocRopository.cs" />
     <Compile Include="Repositories\Implements\DistrictRepository.cs" />
@@ -279,6 +281,7 @@
     <Compile Include="Repositories\Implements\UserPermissionRepository.cs" />
     <Compile Include="Repositories\Implements\WardRepository.cs" />
     <Compile Include="Repositories\Implements\XepLoaiHocLucRepository.cs" />
+    <Compile Include="Repositories\Interfaces\IChungChiNghiepVuSuPhamRepository.cs" />
     <Compile Include="Repositories\Interfaces\ITrinhDoNgoaiNguKhacReposittory.cs" />
     <Compile Include="Repositories\Interfaces\ITruongHopDacBietRepository.cs" />
     <Compile Include="Repositories\Interfaces\IAccountRepository.cs" />
@@ -456,6 +459,7 @@
     <Content Include="Views\ThuyenChuyenQuanLyChung\DanhSachHoSoDaTiepNhan.cshtml" />
     <Content Include="Views\ThuyenChuyen\TienDoHoSo.cshtml" />
     <Content Include="Views\TuyenDung\TrangThaiDangKy.cshtml" />
+    <Content Include="Utils\ds-hoanthanhcapnhat-tuyendung.xlsx" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

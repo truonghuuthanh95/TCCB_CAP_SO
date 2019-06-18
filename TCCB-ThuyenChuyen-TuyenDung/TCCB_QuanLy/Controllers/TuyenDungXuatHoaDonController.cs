@@ -99,6 +99,7 @@ namespace TCCB_QuanLy.Controllers
             registrationInterview.TruongHopDacBietId = 1;
             registrationInterview.DanTocId = 1;
             registrationInterview.TrinhDoNgoaiNguKhacId = 1;
+            registrationInterview.ChungChiNghiepVuSuPhamId = 1;
             registrationInterviewRepository.TaoMoiUngVien(registrationInterview);
             return Json(new ReturnResult(200, "success", registrationInterview.Id));
         }

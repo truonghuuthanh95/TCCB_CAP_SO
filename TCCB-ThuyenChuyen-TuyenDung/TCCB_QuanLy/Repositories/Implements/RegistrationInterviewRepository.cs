@@ -65,6 +65,7 @@ namespace TCCB_QuanLy.Repositories.Implements
                 .Include("DoiTuongUuTien1")
                 .Include("TruongHopDacBiet")
                 .Include("TrinhDoNgoaiNguKhac")
+                .Include("ChungChiNghiepVuSuPham")
                 .Include("Province1")
                 .Include("Province2")
                 .SingleOrDefault(s => s.Id == id);
@@ -118,7 +119,37 @@ namespace TCCB_QuanLy.Repositories.Implements
             List<RegistrationInterview> registrationInterviews = _db.RegistrationInterviews.Include("Account").Where(s => s.CreatedAt.Value.Year == DateTime.Now.Year && (s.IsActive == true || s.IsActive == null) && s.UpdatedAt != null).ToList();
             return registrationInterviews;
         }
-
+        public List<RegistrationInterview> GetRegistrationInterviewsDaHoanThanhWithDetail()
+        {
+            List<RegistrationInterview> registrationInterviews = _db.RegistrationInterviews
+                .Include("Ward.District.Province")
+                .Include("Ward1.District.Province")
+                .Include("BangTotNghiep")
+                .Include("TrinhDoNgoaiNgu")
+                .Include("XepLoaiHocLuc")
+                .Include("TrinhDoCaoNhat")
+                .Include("TrinhDoTinHoc")
+                .Include("ChuyenNganhDaoTao")
+                .Include("LamViecTrongNganh")
+                .Include("MonDuTuyen.ViTriUngTuyen")
+                .Include("HinhThucDaoTao")
+                .Include("Province")
+                .Include("District")
+                .Include("District1")
+                .Include("District2")
+                .Include("TonGiao")
+                .Include("DanToc")
+                .Include("ThanhPhanBanThanHienTai")
+                .Include("DoiTuongUuTien1")
+                .Include("TruongHopDacBiet")
+                .Include("TrinhDoNgoaiNguKhac")
+                .Include("ChungChiNghiepVuSuPham")
+                .Include("Province1")
+                .Include("Province2")
+                .Include("Account")
+                .Where(s => s.CreatedAt.Value.Year == DateTime.Now.Year && (s.IsActive == true) && s.UpdatedAt != null).ToList();
+            return registrationInterviews;
+        }
         public int GetRegistrationInterviewsChuaCapNhatSoLuong()
         {
             int count = _db.RegistrationInterviews.Where(s => s.CreatedAt.Value.Year == DateTime.Now.Year && (s.IsActive == true || s.IsActive == null) && s.UpdatedAt == null).Count();
