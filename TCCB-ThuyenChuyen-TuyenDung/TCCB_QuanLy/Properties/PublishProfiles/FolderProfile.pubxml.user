@@ -241,10 +241,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>01/28/2015 04:04:30</publishTime>
     </File>
     <File Include="bin/TCCB_QuanLy.dll">
-      <publishTime>06/18/2019 15:00:46</publishTime>
+      <publishTime>06/21/2019 21:36:24</publishTime>
     </File>
     <File Include="bin/TCCB_QuanLy.pdb">
-      <publishTime>06/18/2019 15:00:46</publishTime>
+      <publishTime>06/21/2019 21:36:24</publishTime>
     </File>
     <File Include="bin/Unity.Abstractions.dll">
       <publishTime>04/18/2018 19:15:06</publishTime>
