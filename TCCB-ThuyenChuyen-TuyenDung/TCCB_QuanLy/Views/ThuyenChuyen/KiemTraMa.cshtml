@@ -1,0 +1,53 @@
+﻿
+@{
+    ViewBag.Title = "KiemTraMa";
+    Layout = "~/Views/Shared/_Home_Layout.cshtml";
+}
+
+<div class="col-sm-10 col-sm-offset-1" style="padding-top: 60px;">
+    <div class="panel panel-default">
+        <div class="panel-body">
+            <div class="text-center">
+                <h3 class="text-info text-uppercase">cập nhật thuyên chuyển</h3>
+                <p class="text-warning">Vui lòng nhập mã đăng kí và cmnd để hệ thống kiểm tra</p>
+                <form class="form-inline">
+                    <div class="form-group">
+                        <label for="exampleInputName2" class="control-label">Mã đăng kí</label>
+                        <input type="text" class="form-control" id="madangki">
+                    </div>
+                    <div class="form-group has-feedback">
+                        <label for="exampleInputEmail2" class="control-label">CMND</label>
+                        <input type="email" class="form-control" id="cmnd">                       
+                    </div>
+                    <button type="submit" class="btn btn-success" onclick="checkThuyenChuyen(event);">Cập nhật</button>
+                    <p class="text-danger" style="font-size: 16px; padding-top: 10px;" id="error"></p>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    function checkThuyenChuyen(event) {
+        event.preventDefault();
+        if ($('#madangki').val() == '' || $('#cmnd').val() == '') {
+            $('#error').text('Vui lòng nhập');
+        }
+        else {
+            $('#error').text('');           
+            $.get('/thuyenchuyen/capnhat/kiemtramahoso/' + $('#madangki').val() + '/' + $('#cmnd').val(), function (data, status) {
+                if (data.StatusCode == 200 && status == 'success') {
+                    var dataJson = JSON.parse(data.Results)
+                    if (dataJson.TienTo == 'TC') {
+                        window.location.href = '/thuyenchuyen/capnhat/' + $('#madangki').val() + '/' + $('#cmnd').val();
+                    }
+                    else {
+                        window.location.href = '/thuyenchuyenngoaitinh/capnhat/' + $('#madangki').val() + '/' + $('#cmnd').val();
+                    }
+                }
+                else {
+                    $('#error').text(data.Message);
+                }
+            })
+        }
+    }
+</script>

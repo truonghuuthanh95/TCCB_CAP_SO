@@ -1,30 +1,29 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using System.Collections.Generic;
 using System.Web.Mvc;
+using TCCB_QuanLy.Models.DAO;
 
 namespace TCCB_QuanLy.Controllers
 {
+    
     public class HomeController : Controller
     {
+
         public ActionResult Index()
         {
+            
             return View();
         }
-
-        public ActionResult About()
+        [Route("quanly")]
+        [HttpGet]
+        public ActionResult QuanLy()
         {
-            ViewBag.Message = "Your application description page.";
-
+            Account account = (Account)Session[Utils.Constants.USER_SESSION];
+            if (account == null)
+            {
+                return RedirectToRoute("login");
+            }
             return View();
         }
-
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Your contact page.";
-
-            return View();
-        }
+        
     }
 }

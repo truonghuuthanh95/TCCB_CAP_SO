@@ -1,0 +1,54 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Thuyên Chuyển, Tuyển Dụng</title>
+    <link rel="shortcut icon" href="~/Content/images/logo_so.png">
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+    <nav class="header-color navbar navbar-default">
+        <div class="container">
+            <div class="navbar-header">
+                <a class="logo-style-padding-top navbar-brand active" aria-current="true" href="/">
+                    <img src="/Content/images/logo_so.png" class="logo-style img-rounded">
+                </a>
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+
+            <div class="navbar-collapse collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav-link nav navbar-nav navbar-left">
+                    <li role="presentation" class="nothing">
+                        <a href="/"><span class="glyphicon glyphicon-home"></span> Trang Chủ</a>
+                    </li>
+                </ul>
+                <ul class="nav-link nav navbar-nav navbar-right">
+                    <li role="presentation" class="">
+                        <a href="/lienhe" role="button">
+                            <span class="glyphicon glyphicon-earphone"></span> Liên Hệ
+                        </a>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/jqueryval")
+    @RenderSection("scripts", required: false)
+    <div class="container">
+
+        @RenderBody()
+    </div>
+
+
+</body>
+</html>

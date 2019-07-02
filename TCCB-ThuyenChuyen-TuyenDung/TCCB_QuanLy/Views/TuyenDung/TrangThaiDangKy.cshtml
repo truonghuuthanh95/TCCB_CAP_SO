@@ -1,0 +1,42 @@
+﻿
+@{
+    ViewBag.Title = "Trang thái đăng ký";
+    Layout = "~/Views/Shared/_Home_Layout.cshtml";
+}
+
+<div class="col-sm-10 col-sm-offset-1">
+    <div class="panel panel-default">
+        <div class="panel-body">
+            <h2 class="text-primary text-uppercase text-center">Tình hình đăng ký</h2>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>STT</th>
+                        <th>Vị trí dự tuyển</th>
+                        <th>Chỉ tiêu</th>
+                        <th>Đã đăng ký</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @{
+            int index = 1;
+            foreach (var item in ViewBag.RegistrationStatus)
+            {
+                    <tr>
+                        <td>@index</td>
+
+                        <td>
+                            @item.ViTriUngTuyen
+                        </td>
+                        <td>@item.Targets</td>
+                        <td>@item.Quantity</td>
+                    </tr>
+index++;
+}
+                    }
+                   
+                    </tbody>
+                </table>
+        </div>
+    </div>
+</div>

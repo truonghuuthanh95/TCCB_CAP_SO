@@ -1,0 +1,49 @@
+﻿
+@{
+    ViewBag.Title = "Cập nhật hồ sơ ứng tuyển";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="col-sm-12">
+    <div class="text-center checkIDBox">
+        <form class="form-inline">
+            <h3 class="text-center text-info">CẬP NHẬT HỒ SƠ ỨNG TUYỂN</h3>
+            <p class="text-warning">Vui lòng nhập mã hồ sơ đăng kí trong biên lai và nhập số chứng minh nhân dân sau đó nhấn xác nhận để hệ thống kiểm tra</p>
+            <p class="text-danger" id="errorMessage"></p>
+            <div class="form-group" id="errorRegistrationId">
+                <label for="formInlineName" class="control-label">Mã</label>
+                <input placeholder="Mã đăng kí" name="registrationId" id="registrationId" type="number" class="form-control" value="">
+            </div>
+            <div class="form-group" id="errorIdentifyCard">
+                <label for="formInlineEmail" class="control-label">Số CMND</label>
+                <input placeholder="CMND" name="identifyCard" type="number" id="identifyCard" class="form-control" value="">
+            </div>
+            <button type="button" class="btn btn-success" onclick="checkValidToUpdate();" id="submit">XÁC NHẬN</button>
+            <span class="loader" id="loader" hidden=""></span>
+        </form>
+    </div>
+</div>
+<script>
+    function checkValidToUpdate() {
+
+        if ($('#registrationId').val() == '' || $('#identifyCard').val() == '') {
+            $('#errorIdentifyCard').addClass('has-error');
+            $('#errorRegistrationId').addClass('has-error');
+            $('#errorMessage').text('Vui lòng nhập mã hồ sơ và CMND');
+        }
+        else {
+            $('#loader').show();
+            $('#submit').hide();
+            $.get("/tuyendung/kiemtramadangki/" + $('#registrationId').val() + "/" + $('#identifyCard').val(), function (data, status) {
+                if (data.StatusCode == 200 && status == 'success') {
+                    window.location.replace('/tuyendung/capnhathosougtuyen/' + $('#registrationId').val().trim() + '/' + $('#identifyCard').val().trim());                  
+                }
+                else {
+                    $('#loader').hide();
+                    $('#submit').show();
+                    $('#errorMessage').text(data.Message);
+                }
+            })
+        }
+    }
+</script>

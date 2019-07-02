@@ -1,0 +1,80 @@
+﻿
+@{
+    ViewBag.Title = "Nguyện Vọng Trường";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="row">
+    <ol class="breadcrumb">
+        <li>
+            <a href="#">
+                <em class="fa fa-home"></em>
+            </a>
+        </li>
+        <li class="active">Nguyện Vọng Trường</li>
+    </ol>
+</div><!--/.row-->
+<div class="row">
+    <div class="col-lg-12">
+        <h1 class="page-header">Nguyện Vọng Trường</h1>
+    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading">
+        Danh sách trường
+        <ul class="pull-right panel-settings panel-button-tab-right">
+            <li class="dropdown">
+                <a class="pull-right dropdown-toggle" data-toggle="dropdown" href="#">
+                    <em class="fa fa-cogs"></em>
+                </a>
+                <ul class="dropdown-menu dropdown-menu-right">
+                    <li>
+                        <ul class="dropdown-settings">
+                            <li>
+                                <a href="/tuyendung/nguyenvongtruong/capnhat">
+                                    <em class="fa fa-cog"></em> Cập nhật
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+    <div class="panel-body table-responsive">
+        <table class="table table-condensed" id="testTable">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Tên Trường</th>
+                    <th>Quận/Huyện</th>
+                    <th>Cấp Học</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row">1</th>
+                    <td>Mark</td>
+                    <td>Otto</td>
+                    <td>Otto</td>
+                </tr>
+                <tr>
+                    <th scope="row">2</th>
+                    <td>Jacob</td>
+                    <td>Thornton</td>
+                    <td>fat</td>
+                </tr>
+                <tr>
+                    <th scope="row">3</th>
+                    <td>Larry the Bird</td>
+                    <td>twitter</td>
+                    <td>Larry the Bird</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<script>
+    $(document).ready(function () {
+        $('#testTable').DataTable();
+    });
+</script>

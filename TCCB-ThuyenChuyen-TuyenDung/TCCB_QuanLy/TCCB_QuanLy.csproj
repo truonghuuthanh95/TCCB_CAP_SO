@@ -46,8 +46,17 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AutoMapper, Version=7.0.1.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.7.0.1\lib\net45\AutoMapper.dll</HintPath>
+    </Reference>
     <Reference Include="CommonServiceLocator, Version=2.0.3.0, Culture=neutral, PublicKeyToken=489b6accfaf20ef0, processorArchitecture=MSIL">
       <HintPath>..\packages\Unity.5.8.6\lib\net46\CommonServiceLocator.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="EPPlus, Version=4.5.2.1, Culture=neutral, PublicKeyToken=ea159fdaa78159a1, processorArchitecture=MSIL">
       <HintPath>..\packages\EPPlus.4.5.2.1\lib\net40\EPPlus.dll</HintPath>
@@ -63,7 +72,11 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
+    <Reference Include="System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ValueTuple.4.5.0\lib\net461\System.ValueTuple.dll</HintPath>
+    </Reference>
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -169,19 +182,167 @@
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\IocConfigration.cs" />
+    <Compile Include="App_Start\MappingProfile.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\UnityResolver.cs" />
+    <Compile Include="Controllers\DiaChiController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LienHeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\MaDangKiController.cs" />
     <Compile Include="Controllers\MonDuTuyenController.cs" />
     <Compile Include="Controllers\NguyenVongTruongController.cs" />
     <Compile Include="Controllers\QuanLyTaiKhoanController.cs" />
+    <Compile Include="Controllers\SchoolController.cs" />
+    <Compile Include="Controllers\ThuyenChuyenNgoaiTinhController.cs" />
+    <Compile Include="Controllers\ThuyenChuyenController.cs" />
+    <Compile Include="Controllers\ThuyenChuyenQuanLyChungController.cs" />
+    <Compile Include="Controllers\TuyenDungController.cs" />
+    <Compile Include="Controllers\TuyenDungDuyetHoSoController.cs" />
     <Compile Include="Controllers\TuyenDungQuanlyChungController.cs" />
     <Compile Include="Controllers\TuyenDungThongBaoController.cs" />
+    <Compile Include="Controllers\TuyenDungXuatHoaDonController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\DAO\Account.cs" />
+    <Compile Include="Models\DAO\BacLuong.cs" />
+    <Compile Include="Models\DAO\BangTotNghiep.cs" />
+    <Compile Include="Models\DAO\CapTruong.cs" />
+    <Compile Include="Models\DAO\ChungChiNghiepVuSuPham.cs" />
+    <Compile Include="Models\DAO\ChuyenNganhDaoTao.cs" />
+    <Compile Include="Models\DAO\DanToc.cs" />
+    <Compile Include="Models\DAO\District.cs" />
+    <Compile Include="Models\DAO\DoiTuongUuTien.cs" />
+    <Compile Include="Models\DAO\DVQL.cs" />
+    <Compile Include="Models\DAO\GroupPermission.cs" />
+    <Compile Include="Models\DAO\HinhThucDaoTao.cs" />
+    <Compile Include="Models\DAO\HoaDon.cs" />
+    <Compile Include="Models\DAO\HoSoHopLe.cs" />
+    <Compile Include="Models\DAO\LamViecTrongNganh.cs" />
+    <Compile Include="Models\DAO\LoaiHinh.cs" />
+    <Compile Include="Models\DAO\MaNgach.cs" />
+    <Compile Include="Models\DAO\MonDuTuyen.cs" />
+    <Compile Include="Models\DAO\NgayHetHanSuaThongTin.cs" />
+    <Compile Include="Models\DAO\Permission.cs" />
+    <Compile Include="Models\DAO\Province.cs" />
+    <Compile Include="Models\DAO\RegistrationInterview.cs" />
+    <Compile Include="Models\DAO\Role.cs" />
+    <Compile Include="Models\DAO\School.cs" />
+    <Compile Include="Models\DAO\StatusThuyenChuyen.cs" />
+    <Compile Include="Models\DAO\TCCBDB.cs" />
+    <Compile Include="Models\DAO\ThanhPhanBanThanHienTai.cs" />
+    <Compile Include="Models\DAO\ThuyenChuyen.cs" />
+    <Compile Include="Models\DAO\ThuyenChuyenNgoaiTinh.cs" />
+    <Compile Include="Models\DAO\TonGiao.cs" />
+    <Compile Include="Models\DAO\TrangThaiHoSoTuyenDung.cs" />
+    <Compile Include="Models\DAO\TrinhDoCaoNhat.cs" />
+    <Compile Include="Models\DAO\TrinhDoNgoaiNgu.cs" />
+    <Compile Include="Models\DAO\TrinhDoNgoaiNguKhac.cs" />
+    <Compile Include="Models\DAO\TrinhDoTinHoc.cs" />
+    <Compile Include="Models\DAO\TruongHopDacBiet.cs" />
+    <Compile Include="Models\DAO\UserPermission.cs" />
+    <Compile Include="Models\DAO\ViTriUngTuyen.cs" />
+    <Compile Include="Models\DAO\Ward.cs" />
+    <Compile Include="Models\DAO\XepLoaiHocLuc.cs" />
+    <Compile Include="Models\DTO\CandidateModelInOneView.cs" />
+    <Compile Include="Models\DTO\RegistrationInterviewDTO.cs" />
+    <Compile Include="Models\DTO\RegistrationInterviewStatusRegistedCountDTO.cs" />
+    <Compile Include="Models\DTO\ReturnResult.cs" />
+    <Compile Include="Models\DTO\ThuyenChuyenContainNgoaiTinhDTO.cs" />
+    <Compile Include="Models\DTO\thuyenChuyenDTO.cs" />
+    <Compile Include="Models\DTO\ThuyenChuyenNgoaiTinhDTO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\Implements\AccountRepository.cs" />
+    <Compile Include="Repositories\Implements\BacLuongRepository.cs" />
+    <Compile Include="Repositories\Implements\BangTotNghiepRepository.cs" />
+    <Compile Include="Repositories\Implements\CapTruongRepository.cs" />
+    <Compile Include="Repositories\Implements\ChungChiNghiepVuSuPhamRepository.cs" />
+    <Compile Include="Repositories\Implements\ChuyenNganhDaoTaoRepository.cs" />
+    <Compile Include="Repositories\Implements\DanTocRopository.cs" />
+    <Compile Include="Repositories\Implements\DistrictRepository.cs" />
+    <Compile Include="Repositories\Implements\DoiTuongUuTienRepository.cs" />
+    <Compile Include="Repositories\Implements\GroupPermissionRepository.cs" />
+    <Compile Include="Repositories\Implements\HinhThucDaoTaoRepository.cs" />
+    <Compile Include="Repositories\Implements\HoaDonRepository.cs" />
+    <Compile Include="Repositories\Implements\HoSoHopLeRepository.cs" />
+    <Compile Include="Repositories\Implements\LamViecTrongNganhRepository.cs" />
+    <Compile Include="Repositories\Implements\MaNgachRepository.cs" />
+    <Compile Include="Repositories\Implements\MonDuTuyenRepository.cs" />
+    <Compile Include="Repositories\Implements\PermissionRepository.cs" />
+    <Compile Include="Repositories\Implements\ProvinceRepository.cs" />
+    <Compile Include="Repositories\Implements\RegistrationInterviewRepository.cs" />
+    <Compile Include="Repositories\Implements\SchoolRepository.cs" />
+    <Compile Include="Repositories\Implements\ThanhPhanBanThanHienTaiRepository.cs" />
+    <Compile Include="Repositories\Implements\ThuyenChuyenRepository.cs" />
+    <Compile Include="Repositories\Implements\TonGiaoRepository.cs" />
+    <Compile Include="Repositories\Implements\TrinhDoCaoNhatRepository.cs" />
+    <Compile Include="Repositories\Implements\TrinhDoNgoaiNguKhacReposittory.cs" />
+    <Compile Include="Repositories\Implements\TrinhDoNgoaiNguRepository.cs" />
+    <Compile Include="Repositories\Implements\TrinhDoTinHocRepository.cs" />
+    <Compile Include="Repositories\Implements\TruongHopDacBietRepository.cs" />
+    <Compile Include="Repositories\Implements\UserPermissionRepository.cs" />
+    <Compile Include="Repositories\Implements\WardRepository.cs" />
+    <Compile Include="Repositories\Implements\XepLoaiHocLucRepository.cs" />
+    <Compile Include="Repositories\Interfaces\IChungChiNghiepVuSuPhamRepository.cs" />
+    <Compile Include="Repositories\Interfaces\IHoSoHopLeRepository.cs" />
+    <Compile Include="Repositories\Interfaces\ITrinhDoNgoaiNguKhacReposittory.cs" />
+    <Compile Include="Repositories\Interfaces\ITruongHopDacBietRepository.cs" />
+    <Compile Include="Repositories\Interfaces\IAccountRepository.cs" />
+    <Compile Include="Repositories\Interfaces\IBacLuongRepository.cs" />
+    <Compile Include="Repositories\Interfaces\IBangTotNghiepRepository.cs" />
+    <Compile Include="Repositories\Interfaces\ICapTruongRepository.cs" />
+    <Compile Include="Repositories\Interfaces\IChuyenNganhDaoTaoRepository.cs" />
+    <Compile Include="Repositories\Interfaces\IDanTocRepository.cs" />
+    <Compile Include="Repositories\Interfaces\IDistrictRepository.cs" />
+    <Compile Include="Repositories\Interfaces\IDoiTuongUuTienRepository.cs" />
+    <Compile Include="Repositories\Interfaces\IGroupPermissionRepository.cs" />
+    <Compile Include="Repositories\Interfaces\IHinhThucDaoTaoRepository.cs" />
+    <Compile Include="Repositories\Interfaces\IHoaDonRepository.cs" />
+    <Compile Include="Repositories\Interfaces\ILamViecTrongNganhRepository.cs" />
+    <Compile Include="Repositories\Interfaces\IMaNgachRepository.cs" />
+    <Compile Include="Repositories\Interfaces\IMonDuTuyenRepository.cs" />
+    <Compile Include="Repositories\Interfaces\IPermissionRepository.cs" />
+    <Compile Include="Repositories\Interfaces\IProvinceRepository.cs" />
+    <Compile Include="Repositories\Interfaces\IRegistrationInterviewRepository.cs" />
+    <Compile Include="Repositories\Interfaces\IThanhPhanBanThanHienTaiRepository.cs" />
+    <Compile Include="Repositories\Interfaces\IThuyenChuyenRepository.cs" />
+    <Compile Include="Repositories\Interfaces\ITonGiaoRepository.cs" />
+    <Compile Include="Repositories\Interfaces\ITrinhDoCaoNhatRepository.cs" />
+    <Compile Include="Repositories\Interfaces\ITrinhDoNgoaiNguRepository.cs" />
+    <Compile Include="Repositories\Interfaces\ITrinhDoTinHocRepository.cs" />
+    <Compile Include="Repositories\Interfaces\ISchoolRepository.cs" />
+    <Compile Include="Repositories\Interfaces\IUserPermissionRepository.cs" />
+    <Compile Include="Repositories\Interfaces\IWardRepository.cs" />
+    <Compile Include="Repositories\Interfaces\IXepLoaiHocLucRepository.cs" />
+    <Compile Include="Services\AccountRepository.cs" />
+    <Compile Include="Services\BacLuongRepository.cs" />
+    <Compile Include="Services\BangTotNghiepRepository.cs" />
+    <Compile Include="Services\CapTruongRepository.cs" />
+    <Compile Include="Services\ChuyenNganhDaoTaoRepository.cs" />
+    <Compile Include="Services\DistrictRepository.cs" />
+    <Compile Include="Services\GroupPermissionRepository.cs" />
+    <Compile Include="Services\HinhThucDaoTaoRepository.cs" />
+    <Compile Include="Services\HoaDonRepository.cs" />
+    <Compile Include="Services\LamViecTrongNganhRepository.cs" />
+    <Compile Include="Services\MaNgachRepository.cs" />
+    <Compile Include="Services\MonDuTuyenRepository.cs" />
+    <Compile Include="Services\ProvinceRepository.cs" />
+    <Compile Include="Services\RegistrationInterviewRepository.cs" />
+    <Compile Include="Services\SchoolRepository.cs" />
+    <Compile Include="Services\ThuyenChuyenNgoaiTinhService.cs" />
+    <Compile Include="Services\ThuyenChuyenRepository.cs" />
+    <Compile Include="Services\TrangThaiHoSoService.cs" />
+    <Compile Include="Services\TrinhDoCaoNhatRepository.cs" />
+    <Compile Include="Services\TrinhDoNgoaiNguRepository.cs" />
+    <Compile Include="Services\TrinhDoTinHocRepository.cs" />
+    <Compile Include="Services\UserPermissionRepository.cs" />
+    <Compile Include="Services\WardRepository.cs" />
+    <Compile Include="Services\XepLoaiHocLucRepository.cs" />
+    <Compile Include="Utils\CheckValidCode.cs" />
+    <Compile Include="Utils\Constants.cs" />
+    <Compile Include="Utils\ExportExcel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-theme.css" />
@@ -197,6 +358,7 @@
     <Content Include="Content\Images\sort_asc_disabled.png" />
     <Content Include="Content\Images\sort_both.png" />
     <Content Include="Content\Images\sort_desc.png" />
+    <Content Include="Content\jquery-confirm.min.css" />
     <Content Include="Content\styles.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\fontawesome-webfont.svg" />
@@ -221,6 +383,7 @@
     <Content Include="fonts\fontawesome-webfont.woff" />
     <Content Include="fonts\fontawesome-webfont.woff2" />
     <Content Include="fonts\FontAwesome.otf" />
+    <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\custom.js" />
     <Content Include="Scripts\dataTables.bootstrap.min.js" />
@@ -233,13 +396,16 @@
     <Content Include="Scripts\jquery-3.3.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.3.1.min.map" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery-confirm.min.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\lumino.glyphs.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Scripts\moment.js" />
     <Content Include="Scripts\npm.js" />
+    <Content Include="Scripts\printThis.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.matchmedia.addListener.js" />
     <Content Include="Scripts\respond.matchmedia.addListener.min.js" />
@@ -255,9 +421,6 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
-    <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\MonDuTuyen\MonDuTuyen.cshtml" />
     <Content Include="Views\NguyenVongTruong\NguyenVongTruong.cshtml" />
     <Content Include="Views\TuyenDungQuanlyChung\QuanLyChung.cshtml" />
@@ -271,10 +434,46 @@
     <Content Include="Views\MonDuTuyen\CapNhatMonDuTuyen.cshtml" />
     <Content Include="Views\NguyenVongTruong\CapNhatNguyenVongTruong.cshtml" />
     <Content Include="Views\TuyenDungThongBao\ThongBao.cshtml" />
+    <Content Include="Views\TuyenDungXuatHoaDon\Index.cshtml" />
+    <Content Include="Views\TuyenDungXuatHoaDon\InMaDangKi.cshtml" />
+    <Content Include="Views\TuyenDung\CapNhatHoSoUngTuyen.cshtml" />
+    <Content Include="Views\TuyenDung\InHoSoUngTuyen.cshtml" />
+    <Content Include="Views\TuyenDung\KiemTraMaDangKi.cshtml" />
+    <Content Include="Views\LienHe\LienHe.cshtml" />
+    <Content Include="Views\Shared\_Home_Layout.cshtml" />
+    <Content Include="Views\ThuyenChuyen\DangKimoi.cshtml" />
+    <Content Include="Views\ThuyenChuyenQuanLyChung\TiepNhanHoSo.cshtml" />
+    <Content Include="Views\ThuyenChuyenQuanLyChung\TrangThaiHoSo.cshtml" />
+    <Content Include="Views\Home\QuanLy.cshtml" />
+    <Content Include="Views\ThuyenChuyen\DangKiThanhCong.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\ThuyenChuyenQuanLyChung\DuyetHoSo.cshtml" />
+    <Content Include="Views\ThuyenChuyen\CapNhatThuyenChuyen.cshtml" />
+    <Content Include="Views\ThuyenChuyen\KiemTraMa.cshtml" />
+    <Content Include="Views\ThuyenChuyen\HoSoMau.cshtml" />
+    <Content Include="Views\ThuyenChuyenQuanLyChung\ChiTietHoSo.cshtml" />
+    <Content Include="Views\ThuyenChuyenNgoaiTinh\Index.cshtml" />
+    <Content Include="Views\ThuyenChuyenNgoaiTinh\DangKiThanhCong.cshtml" />
+    <Content Include="Utils\ds-thuyenchuyen.xlsx" />
+    <Content Include="Views\ThuyenChuyen\Option.cshtml" />
+    <Content Include="Views\ThuyenChuyenQuanLyChung\DuyetHoSoNgoaiTinh.cshtml" />
+    <Content Include="Views\ThuyenChuyenQuanLyChung\TrangThaiHoSoNgoaiTinh.cshtml" />
+    <Content Include="Utils\ds-thuyenchuyenngoaitinh.xlsx" />
+    <Content Include="Views\ThuyenChuyenQuanLyChung\ChiTietHoSoNgoaiTinh.cshtml" />
+    <Content Include="Views\ThuyenChuyenNgoaiTinh\CapNhatThuyenChuyen.cshtml" />
+    <Content Include="Views\ThuyenChuyenQuanLyChung\DanhSachHoSoDaTiepNhan.cshtml" />
+    <Content Include="Views\ThuyenChuyen\TienDoHoSo.cshtml" />
+    <Content Include="Views\TuyenDung\TrangThaiDangKy.cshtml" />
+    <Content Include="Utils\ds-hoanthanhcapnhat-tuyendung.xlsx" />
+    <Content Include="Views\TuyenDungDuyetHoSo\DuyetHoSo.cshtml" />
+    <Content Include="Views\TuyenDungDuyetHoSo\DuyetHoSoChiTiet.cshtml" />
+    <Content Include="Views\TuyenDungDuyetHoSo\HoSoDaDuyet.cshtml" />
+    <Content Include="Utils\ds-hople-tuyendung.xlsx" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
+    <Folder Include="Utils\Files\" />
+    <Folder Include="Views\School\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
