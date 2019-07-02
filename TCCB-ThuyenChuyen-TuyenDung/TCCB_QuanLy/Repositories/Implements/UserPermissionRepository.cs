@@ -18,7 +18,7 @@ namespace TCCB_QuanLy.Repositories.Implements
 
         public List<UserPermission> GetUserPermissionsByAccountId(int id)
         {
-            List<UserPermission> userPermissions = _db.UserPermissions.Include("Permission").Where(s => s.AccountId == id).ToList();
+            List<UserPermission> userPermissions = _db.UserPermissions.Include("Permission").Where(s => s.AccountId == id && s.IsActive == true).ToList();
             return userPermissions;            
         }
     }

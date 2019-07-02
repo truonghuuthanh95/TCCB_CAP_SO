@@ -135,13 +135,17 @@
                     </a>
                 </li>
 }
+if (userPermision.Where(s => s.PermissionId == 7).SingleOrDefault() != null)
+{
+                <li>
+                    <a class="" href="/tuyendung/duyethoso">
+                        <span class="fa fa-pencil-square-o">&nbsp;</span> Duyệt hồ sơ
+                    </a>
+                </li>
+}
                     }
 
-                    @*<li>
-            <a class="" href="/tuyendung/madangki">
-                <span class="fa fa-print">&nbsp;</span> Chỉ Tiêu
-            </a>
-        </li>
+                    @*
 
         <li>
             <a class="" href="/tuyendung/madangki">

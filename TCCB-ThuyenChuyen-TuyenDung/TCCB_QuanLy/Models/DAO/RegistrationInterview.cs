@@ -9,6 +9,12 @@ namespace TCCB_QuanLy.Models.DAO
     [Table("RegistrationInterview")]
     public partial class RegistrationInterview
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public RegistrationInterview()
+        {
+            HoSoHopLes = new HashSet<HoSoHopLe>();
+        }
+
         public int Id { get; set; }
 
         [StringLength(50)]
@@ -157,6 +163,12 @@ namespace TCCB_QuanLy.Models.DAO
         [StringLength(50)]
         public string ChungChiNghiepVuSuPhamSoVanBang { get; set; }
 
+        public int? TrangThaiHosoTuyenDungId { get; set; }
+
+        public string GhiChu { get; set; }
+
+        public string LyDoTuChoi { get; set; }
+
         public virtual Account Account { get; set; }
 
         public virtual Account Account1 { get; set; }
@@ -179,6 +191,9 @@ namespace TCCB_QuanLy.Models.DAO
 
         public virtual HinhThucDaoTao HinhThucDaoTao { get; set; }
 
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<HoSoHopLe> HoSoHopLes { get; set; }
+
         public virtual LamViecTrongNganh LamViecTrongNganh { get; set; }
 
         public virtual MonDuTuyen MonDuTuyen { get; set; }
@@ -200,6 +215,8 @@ namespace TCCB_QuanLy.Models.DAO
         public virtual ThanhPhanBanThanHienTai ThanhPhanBanThanHienTai { get; set; }
 
         public virtual TonGiao TonGiao { get; set; }
+
+        public virtual TrangThaiHoSoTuyenDung TrangThaiHoSoTuyenDung { get; set; }
 
         public virtual TrinhDoNgoaiNguKhac TrinhDoNgoaiNguKhac { get; set; }
 

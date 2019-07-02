@@ -111,8 +111,8 @@ C:\Users\thanhthse61493\Desktop\ASP.NET MVC\Git\TCCB_CAP_SO\TCCB-ThuyenChuyen-Tu
 C:\Users\thanhthse61493\Desktop\ASP.NET MVC\Git\TCCB_CAP_SO\TCCB-ThuyenChuyen-TuyenDung\TCCB_QuanLy\bin\Microsoft.AI.ServerTelemetryChannel.xml
 C:\Users\thanhthse61493\Desktop\ASP.NET MVC\Git\TCCB_CAP_SO\TCCB-ThuyenChuyen-TuyenDung\TCCB_QuanLy\bin\Microsoft.AI.WindowsServer.xml
 C:\Users\thanhthse61493\Desktop\ASP.NET MVC\Git\TCCB_CAP_SO\TCCB-ThuyenChuyen-TuyenDung\TCCB_QuanLy\bin\Microsoft.AI.Web.xml
-C:\Users\thanhthse61493\Desktop\ASP.NET MVC\Git\TCCB_CAP_SO\TCCB-ThuyenChuyen-TuyenDung\TCCB_QuanLy\obj\Release\TCCB_QuanLy.csprojResolveAssemblyReference.cache
 C:\Users\thanhthse61493\Desktop\ASP.NET MVC\Git\TCCB_CAP_SO\TCCB-ThuyenChuyen-TuyenDung\TCCB_QuanLy\obj\Release\TCCB_QuanLy.csproj.CoreCompileInputs.cache
 C:\Users\thanhthse61493\Desktop\ASP.NET MVC\Git\TCCB_CAP_SO\TCCB-ThuyenChuyen-TuyenDung\TCCB_QuanLy\obj\Release\TCCB_QuanLy.csproj.CopyComplete
 C:\Users\thanhthse61493\Desktop\ASP.NET MVC\Git\TCCB_CAP_SO\TCCB-ThuyenChuyen-TuyenDung\TCCB_QuanLy\obj\Release\TCCB_QuanLy.dll
 C:\Users\thanhthse61493\Desktop\ASP.NET MVC\Git\TCCB_CAP_SO\TCCB-ThuyenChuyen-TuyenDung\TCCB_QuanLy\obj\Release\TCCB_QuanLy.pdb
+C:\Users\thanhthse61493\Desktop\ASP.NET MVC\Git\TCCB_CAP_SO\TCCB-ThuyenChuyen-TuyenDung\TCCB_QuanLy\obj\Release\TCCB_QuanLy.csprojResolveAssemblyReference.cache

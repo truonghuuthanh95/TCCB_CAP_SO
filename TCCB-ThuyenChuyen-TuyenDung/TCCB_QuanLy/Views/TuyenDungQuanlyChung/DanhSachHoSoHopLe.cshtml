@@ -22,17 +22,17 @@
 <div class="panel panel-default">
     <div class="panel-heading">
         Danh sách hồ sơ hợp lệ
-        <span class="pull-right panel-toggle panel-button-tab-left"><em class="fa fa-download fa-xl color-orange"></em></span>
+        <a href="/tuyendung/downloadexceltuyendung/hople"><span class="pull-right panel-toggle panel-button-tab-left"><em class="fa fa-download fa-xl color-orange"></em></span></a>
     </div>
     <div class="panel-body table-responsive">
         <table class="table table-condensed" id="danhsachhople">
             <thead>
                 <tr>
                     <th>Mã Đăng Kí</th>
-                    <th>Họ Và Tên Lót</th>
-                    <th>Tên</th>
-                    
+                    <th>Mã Vòng 2</th>
+                    <th>Họ Và Tên</th>                    
                     <th>Số CMND</th>
+                    <th>Người ra xoát</th>
                     <th>Thao Tác</th>
                 </tr>
             </thead>
@@ -40,16 +40,17 @@
                 @{
         foreach (var item in ViewBag.DanhSachHopLe)
         {
-            <tr>
+                <tr>
+                    <td>@item.RegistrationInterview.TienTo@item.RegistrationInterview.Id</td>
+                    <td>@item.TienTo@item.MaVong2</td>
+                    <td>@item.RegistrationInterview.LastName @item.RegistrationInterview.FirstName</td>
 
-                <td>@item.Id</td>
-                <td>@item.LastName</td>
-                <td>@item.FirstName</td>
-                <td>@item.IdentifyCard</td>
-                <td>
-                    <button class="btn btn-primary btn-sm"><span class="fa fa-edit"> Chi tiết</span></button>
-                </td>
-            </tr>
+                    <td>@item.RegistrationInterview.IdentifyCard</td>
+                    <td>@item.RegistrationInterview.Account1.LastName @item.RegistrationInterview.Account1.FirstName</td>
+                    <td>
+                        <button class="btn btn-primary btn-sm"><span class="fa fa-edit"> Chi tiết</span></button>
+                    </td>
+                </tr>
 }
                 }
 

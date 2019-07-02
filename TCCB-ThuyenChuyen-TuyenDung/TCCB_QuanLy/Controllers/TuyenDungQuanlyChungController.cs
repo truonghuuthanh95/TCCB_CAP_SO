@@ -130,11 +130,23 @@ namespace TCCB_QuanLy.Controllers
                 return RedirectToRoute("login");
             }
             string filePath;
-            
+            if (status == "hople")
+            {
+                List<HoSoHopLe> hoSoHopLes = registrationInterviewRepository.GetRegistrationInterviewsHopLeWithDetail();
+                filePath = System.Web.HttpContext.Current.Server.MapPath("~/Utils/ds-hople-tuyendung.xlsx");
+                await Utils.ExportExcel.GenerateXLSRegistrationIsAccepted(hoSoHopLes, filePath);
+                return File(filePath, "application/vnd.ms-excel", "ds-hople-tuyendung.xlsx");
+            }
+            else
+            {
                 List<RegistrationInterview> registrationInterviews = registrationInterviewRepository.GetRegistrationInterviewsDaHoanThanhWithDetail();
                 filePath = System.Web.HttpContext.Current.Server.MapPath("~/Utils/ds-hoanthanhcapnhat-tuyendung.xlsx");
                 await Utils.ExportExcel.GenerateXLSRegistrationCompleted(registrationInterviews, filePath);
                 return File(filePath, "application/vnd.ms-excel", "ds-hoanthanhcapnhat-tuyendung.xlsx");
+            }
+            
+            
+                
             
                                         
 

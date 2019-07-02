@@ -20,7 +20,11 @@ namespace TCCB_QuanLy.Repositories.Interfaces
         List<RegistrationInterview> GetRegistrationInterviewsChuaCapNhat();
         List<RegistrationInterview> GetRegistrationInterviewsDaHoanThanh();
         List<RegistrationInterview> GetRegistrationInterviewsDaHoanThanhWithDetail();
-        List<RegistrationInterview> GetRegistrationInterviewsHopLe();
+        List<HoSoHopLe> GetRegistrationInterviewsHopLe();
+        List<HoSoHopLe> GetRegistrationInterviewsHopLeWithDetail();
         List<RegistrationInterviewStatusRegistedCountDTO> GetSoluongDangkyTheoViTriUngTuyen();
+        RegistrationInterview GetRegistrationInterviewByTienToId(string id);
+
+        List<RegistrationInterview> GetRegistrationInterviewsIsCheckByAccountId(int id);
     }
 }

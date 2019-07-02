@@ -164,14 +164,14 @@ namespace TCCB_QuanLy.Repositories.Implements
 
         public int GetRegistrationInterviewsHopLeSoLuong()
         {
-            int count = _db.RegistrationInterviews.Where(s => s.CreatedAt.Value.Year == DateTime.Now.Year && s.NguoiRaSoat != null && (s.IsActive == true || s.IsActive == null)).Count();
+            int count = _db.RegistrationInterviews.Where(s => s.CreatedAt.Value.Year == DateTime.Now.Year && s.TrangThaiHosoTuyenDungId == 1 && (s.IsActive == true || s.IsActive == null)).Count();
             return count;
         }
 
-        public List<RegistrationInterview> GetRegistrationInterviewsHopLe()
+        public List<HoSoHopLe> GetRegistrationInterviewsHopLe()
         {
-            List<RegistrationInterview> registrationInterviews = _db.RegistrationInterviews.Where(s => s.CreatedAt.Value.Year == DateTime.Now.Year && s.NguoiRaSoat != null && (s.IsActive == true || s.IsActive == null)).ToList();
-            return registrationInterviews;
+            List<HoSoHopLe> hoSoHopLes = _db.HoSoHopLes.Include("RegistrationInterview").Include("RegistrationInterview.Account1").Where(s => s.CreatedAt.Value.Year == DateTime.Now.Year && s.RegistrationInterview.TrangThaiHosoTuyenDungId == 1 && (s.RegistrationInterview.IsActive == true || s.RegistrationInterview.IsActive == null)).ToList();
+            return hoSoHopLes;
         }
 
         public List<RegistrationInterviewStatusRegistedCountDTO> GetSoluongDangkyTheoViTriUngTuyen()
@@ -182,6 +182,52 @@ namespace TCCB_QuanLy.Repositories.Implements
                 .GroupBy(s => s.MonDuTuyenId)
                 .Select(s => new RegistrationInterviewStatusRegistedCountDTO { ViTriUngTuyen = s.Key.ToString(), Quantity = s.Count(), Targets = 0 }).ToList();            
             return registrationInterviews;
+        }
+
+        public RegistrationInterview GetRegistrationInterviewByTienToId(string id)
+        {
+            RegistrationInterview registrationInterview = _db.RegistrationInterviews.Include("Account1").Where(s => s.TienTo + s.Id.ToString() == id).SingleOrDefault();
+            return registrationInterview;
+        }
+
+        public List<RegistrationInterview> GetRegistrationInterviewsIsCheckByAccountId(int id)
+        {
+            List<RegistrationInterview> registrationInterviews = _db.RegistrationInterviews.Where(s => s.NguoiRaSoat == id).ToList();
+            return registrationInterviews;
+        }
+
+        public List<HoSoHopLe> GetRegistrationInterviewsHopLeWithDetail()
+        {
+            List<HoSoHopLe> hoSoHopLes = _db.HoSoHopLes
+                .Include("RegistrationInterview")
+                .Include("RegistrationInterview.Ward.District.Province")
+                .Include("RegistrationInterview.Ward1.District.Province")
+                .Include("RegistrationInterview.BangTotNghiep")
+                .Include("RegistrationInterview.TrinhDoNgoaiNgu")
+                .Include("RegistrationInterview.XepLoaiHocLuc")
+                .Include("RegistrationInterview.TrinhDoCaoNhat")
+                .Include("RegistrationInterview.TrinhDoTinHoc")
+                .Include("RegistrationInterview.ChuyenNganhDaoTao")
+                .Include("RegistrationInterview.LamViecTrongNganh")
+                .Include("RegistrationInterview.MonDuTuyen.ViTriUngTuyen")
+                .Include("RegistrationInterview.HinhThucDaoTao")
+                .Include("RegistrationInterview.Province")
+                .Include("RegistrationInterview.District")
+                .Include("RegistrationInterview.District1")
+                .Include("RegistrationInterview.District2")
+                .Include("RegistrationInterview.TonGiao")
+                .Include("RegistrationInterview.DanToc")
+                .Include("RegistrationInterview.ThanhPhanBanThanHienTai")
+                .Include("RegistrationInterview.DoiTuongUuTien1")
+                .Include("RegistrationInterview.TruongHopDacBiet")
+                .Include("RegistrationInterview.TrinhDoNgoaiNguKhac")
+                .Include("RegistrationInterview.ChungChiNghiepVuSuPham")
+                .Include("RegistrationInterview.Province1")
+                .Include("RegistrationInterview.Province2")
+                .Include("RegistrationInterview.Account")
+                .Include("RegistrationInterview.Account1")
+                .Where(s => s.CreatedAt.Value.Year == DateTime.Now.Year && s.RegistrationInterview.TrangThaiHosoTuyenDungId == 1 && (s.RegistrationInterview.IsActive == true || s.RegistrationInterview.IsActive == null)).ToList();
+            return hoSoHopLes;
         }
     }
 }

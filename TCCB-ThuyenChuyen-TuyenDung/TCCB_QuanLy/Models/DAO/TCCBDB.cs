@@ -27,6 +27,7 @@ namespace TCCB_QuanLy.Models.DAO
         public virtual DbSet<GroupPermission> GroupPermissions { get; set; }
         public virtual DbSet<HinhThucDaoTao> HinhThucDaoTaos { get; set; }
         public virtual DbSet<HoaDon> HoaDons { get; set; }
+        public virtual DbSet<HoSoHopLe> HoSoHopLes { get; set; }
         public virtual DbSet<LamViecTrongNganh> LamViecTrongNganhs { get; set; }
         public virtual DbSet<LoaiHinh> LoaiHinhs { get; set; }
         public virtual DbSet<MaNgach> MaNgaches { get; set; }
@@ -41,6 +42,7 @@ namespace TCCB_QuanLy.Models.DAO
         public virtual DbSet<ThanhPhanBanThanHienTai> ThanhPhanBanThanHienTais { get; set; }
         public virtual DbSet<ThuyenChuyen> ThuyenChuyens { get; set; }
         public virtual DbSet<TonGiao> TonGiaos { get; set; }
+        public virtual DbSet<TrangThaiHoSoTuyenDung> TrangThaiHoSoTuyenDungs { get; set; }
         public virtual DbSet<TrinhDoCaoNhat> TrinhDoCaoNhats { get; set; }
         public virtual DbSet<TrinhDoNgoaiNgu> TrinhDoNgoaiNgus { get; set; }
         public virtual DbSet<TrinhDoNgoaiNguKhac> TrinhDoNgoaiNguKhacs { get; set; }
@@ -167,6 +169,12 @@ namespace TCCB_QuanLy.Models.DAO
             modelBuilder.Entity<RegistrationInterview>()
                 .Property(e => e.TienHoaDon)
                 .HasPrecision(18, 0);
+
+            modelBuilder.Entity<RegistrationInterview>()
+                .HasMany(e => e.HoSoHopLes)
+                .WithRequired(e => e.RegistrationInterview)
+                .HasForeignKey(e => e.HoSoId)
+                .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<School>()
                 .HasMany(e => e.ThuyenChuyens)
