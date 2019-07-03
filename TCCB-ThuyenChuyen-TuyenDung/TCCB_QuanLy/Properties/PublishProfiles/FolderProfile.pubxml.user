@@ -241,10 +241,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>01/28/2015 04:04:30</publishTime>
     </File>
     <File Include="bin/TCCB_QuanLy.dll">
-      <publishTime>07/02/2019 18:23:05</publishTime>
+      <publishTime>07/03/2019 19:37:38</publishTime>
     </File>
     <File Include="bin/TCCB_QuanLy.pdb">
-      <publishTime>07/02/2019 18:23:05</publishTime>
+      <publishTime>07/03/2019 19:37:38</publishTime>
     </File>
     <File Include="bin/Unity.Abstractions.dll">
       <publishTime>04/18/2018 19:15:06</publishTime>
@@ -604,7 +604,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/18/2019 14:37:12</publishTime>
     </File>
     <File Include="Views/TuyenDungQuanlyChung/DanhSachHoSoHopLe.cshtml">
-      <publishTime>07/02/2019 18:22:52</publishTime>
+      <publishTime>07/03/2019 19:34:36</publishTime>
     </File>
     <File Include="Views/TuyenDungQuanlyChung/QuanLyChung.cshtml">
       <publishTime>06/03/2019 13:49:03</publishTime>

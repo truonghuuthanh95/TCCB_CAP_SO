@@ -38,6 +38,10 @@ namespace TCCB_QuanLy.Controllers
             {
                 return Json(new ReturnResult(400, "Sai tên truy cập hoặc mật khẩu", null), JsonRequestBehavior.AllowGet);
             }
+            else if (account.IsActive == false)
+            {
+                return Json(new ReturnResult(400, "Tài khoản hiện đang bị khóa", null), JsonRequestBehavior.AllowGet);
+            }
             List<UserPermission> userPermissions = userPermissionRepository.GetUserPermissionsByAccountId(account.Id);
             Session[Constants.USER_SESSION] = account;
             Session[Constants.USER_PERMISSION_SESSION] = userPermissions;
