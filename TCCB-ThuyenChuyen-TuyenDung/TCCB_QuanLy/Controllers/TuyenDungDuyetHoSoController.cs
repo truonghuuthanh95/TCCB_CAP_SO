@@ -117,7 +117,7 @@ namespace TCCB_QuanLy.Controllers
             else if (registrationInterview.TrangThaiHosoTuyenDungId == 1)
             {
                 HoSoHopLe hoSoHopLe = hoSoHopLeRepository.GetHoSoHopLeByHoSoId(registrationInterview.Id);
-                return Json(new ReturnResult(400, "Hồ sơ mã " + id.ToUpper() + " đã được tiếp nhận bởi " + registrationInterview.Account1.LastName + " " + registrationInterview.FirstName + " với mã vòng 2: " + hoSoHopLe.TienTo + hoSoHopLe.MaVong2, null), JsonRequestBehavior.AllowGet);
+                return Json(new ReturnResult(400, "Hồ sơ mã " + id.ToUpper() + " đã được tiếp nhận bởi " + registrationInterview.Account1.LastName + " " + registrationInterview.Account1.FirstName + " với mã vòng 2: " + hoSoHopLe.TienTo + hoSoHopLe.MaVong2, null), JsonRequestBehavior.AllowGet);
             }
             return Json(new ReturnResult(200, "success", registrationInterview.Id), JsonRequestBehavior.AllowGet);           
         }
@@ -184,6 +184,10 @@ namespace TCCB_QuanLy.Controllers
             if (ModelState.IsValid)
             {
                 RegistrationInterview registrationInterview = registrationInterviewRepository.GetRegistrationInterviewById(Id);
+                if (registrationInterview.TrangThaiHosoTuyenDungId == 1 || registrationInterview.TrangThaiHosoTuyenDungId == 3)
+                {
+                    return Json(new ReturnResult(200, "Hò sơ đã được duyệt trước đó", null));
+                }
                 registrationInterview.NgayRaXoat = DateTime.Now;                
                 if (trangthaiId == 2)
                 {                    
@@ -213,11 +217,11 @@ namespace TCCB_QuanLy.Controllers
                     hoSoHopLe.TienTo = account.Code.Trim() + DateTime.Now.Year % 100 + "_";
                     hoSoHopLe.HoSoId = registrationInterview.Id;
                     HoSoHopLe hoSoHopCreated = hoSoHopLeRepository.CreateHoSoHopLe(hoSoHopLe);
-                    return Json(new ReturnResult(200, "Tiếp nhận mã hồ sơ " + registrationInterview.TienTo + registrationInterview.Id + "thành công với mã vòng 2: " + hoSoHopLe.TienTo + hoSoHopLe.MaVong2 , registrationInterviewAfterUpdated.Id));
+                    return Json(new ReturnResult(200, "Tiếp nhận mã hồ sơ " + registrationInterview.TienTo + registrationInterview.Id + " thành công với mã vòng 2: " + hoSoHopLe.TienTo + hoSoHopLe.MaVong2 , registrationInterviewAfterUpdated.Id));
                 }
                 else if (trangthaiId == 2)
                 {
-                    return Json(new ReturnResult(200, "Ghi nhận cần bổ sung mã hồ sơ " + registrationInterview.TienTo + registrationInterview.Id + "thành công", registrationInterviewAfterUpdated.Id));
+                    return Json(new ReturnResult(200, "Ghi nhận cần bổ sung mã hồ sơ " + registrationInterview.TienTo + registrationInterview.Id + " thành công", registrationInterviewAfterUpdated.Id));
                 }
                 else if (trangthaiId == 3)
                 {

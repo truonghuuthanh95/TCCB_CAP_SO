@@ -17,7 +17,8 @@ namespace TCCB_QuanLy.Repositories.Implements
         }
         private int? GetMaxSoHoHopLeByCurrentYear()
         {
-            int? max = _db.HoSoHopLes.Where(s => s.CreatedAt.Value.Year == DateTime.Now.Year).OrderBy(s => s.MaVong2).Select(s => s.MaVong2).FirstOrDefault();
+            //int? max = _db.HoSoHopLes.Where(s => s.CreatedAt.Value.Year == DateTime.Now.Year).OrderBy(s => s.MaVong2).Select(s => s.MaVong2).FirstOrDefault();
+            int? max = _db.HoSoHopLes.Max(s => s.MaVong2);
             if (!max.HasValue)
             {
                 return 0;

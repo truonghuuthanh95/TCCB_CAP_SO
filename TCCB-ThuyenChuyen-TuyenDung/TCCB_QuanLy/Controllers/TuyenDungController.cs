@@ -78,7 +78,7 @@ namespace TCCB_QuanLy.Controllers
             {
                 return Json(new ReturnResult(404, "Không tìm thấy ứng viên. Vui lòng kiểm tra lại số CMND hoặc mã hồ sơ", null), JsonRequestBehavior.AllowGet);
             }
-            else if (registrationInterview.CreatedAt.Value.Year != DateTime.Now.Year || registrationInterview.TrangThaiHosoTuyenDungId == 1 || registrationInterview.TrangThaiHosoTuyenDungId == 3 || registrationInterview.IsActive == false)
+            else if (registrationInterview.CreatedAt.Value.Year != DateTime.Now.Year || registrationInterview.TrangThaiHosoTuyenDungId == 1 || registrationInterview.TrangThaiHosoTuyenDungId == 3 || registrationInterview.IsActive == false || registrationInterview.UpdatedAt == null)
             {
                 return Json(new ReturnResult(404, "Hết hạn để sửa thông tin ứng tuyển", null), JsonRequestBehavior.AllowGet);
             }
@@ -95,7 +95,7 @@ namespace TCCB_QuanLy.Controllers
         public ActionResult CapNhatHoSoUngTuyen(string madangki, string cmnd)
         {
             RegistrationInterview registrationInterview = registrationInterviewRepository.GetRegistrationInterviewByIdAndIdentifyCard(madangki.ToUpper(), cmnd.Trim());
-            if (registrationInterview.CreatedAt.Value.Year != DateTime.Now.Year || registrationInterview.TrangThaiHosoTuyenDungId == 1 || registrationInterview.TrangThaiHosoTuyenDungId == 3 || registrationInterview.IsActive == false)
+            if (registrationInterview.CreatedAt.Value.Year != DateTime.Now.Year || registrationInterview.TrangThaiHosoTuyenDungId == 1 || registrationInterview.TrangThaiHosoTuyenDungId == 3 || registrationInterview.IsActive == false || registrationInterview.UpdatedAt == null)
             {
                 return RedirectToRoute("capnhatphieudutuyen");
             }
@@ -132,6 +132,10 @@ namespace TCCB_QuanLy.Controllers
             if (ModelState.IsValid)
             {
                 RegistrationInterview registrationInterview = registrationInterviewRepository.GetRegistrationInterviewById(Id);
+                if (registrationInterview.CreatedAt.Value.Year != DateTime.Now.Year || registrationInterview.TrangThaiHosoTuyenDungId == 1 || registrationInterview.TrangThaiHosoTuyenDungId == 3 || registrationInterview.IsActive == false || registrationInterview.UpdatedAt == null)
+                {
+                    return Json(new ReturnResult(400, "failed", null));
+                }
                 registrationInterview.UpdatedAt = DateTime.Now;
                 Mapper.Map(registrationInterviewDTO, registrationInterview);
                 if (registrationInterviewDTO.IsNienChe == false)
