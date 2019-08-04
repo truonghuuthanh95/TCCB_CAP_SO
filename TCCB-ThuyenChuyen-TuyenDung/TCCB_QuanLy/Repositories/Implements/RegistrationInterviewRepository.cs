@@ -229,5 +229,17 @@ namespace TCCB_QuanLy.Repositories.Implements
                 .Where(s => s.CreatedAt.Value.Year == DateTime.Now.Year && s.RegistrationInterview.TrangThaiHosoTuyenDungId == 1 && (s.RegistrationInterview.IsActive == true || s.RegistrationInterview.IsActive == null)).ToList();
             return hoSoHopLes;
         }
+
+        public int GetRegistrationInterviewsDaRaXoatSoLuong()
+        {
+            int count = _db.RegistrationInterviews.Where(s => s.CreatedAt.Value.Year == DateTime.Now.Year && (s.IsActive == true || s.IsActive == null) && s.NguoiRaSoat != null).Count();
+            return count;
+        }
+
+        public int GetRegistrationInterviewsKhongHopLeSoLuong()
+        {
+            int count = _db.RegistrationInterviews.Where(s => s.CreatedAt.Value.Year == DateTime.Now.Year && (s.IsActive == true || s.IsActive == null) && s.TrangThaiHosoTuyenDungId == 3).Count();
+            return count;
+        }
     }
 }

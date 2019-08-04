@@ -91,6 +91,8 @@ namespace TCCB_QuanLy.Models.DAO
 
         public DateTime? NgayTiepNhan { get; set; }
 
+        public string GhiChu { get; set; }
+
         public virtual BangTotNghiep BangTotNghiep { get; set; }
 
         public virtual ChuyenNganhDaoTao ChuyenNganhDaoTao { get; set; }

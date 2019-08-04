@@ -116,3 +116,7 @@ C:\Users\thanhthse61493\Desktop\ASP.NET MVC\Git\TCCB_CAP_SO\TCCB-ThuyenChuyen-Tu
 C:\Users\thanhthse61493\Desktop\ASP.NET MVC\Git\TCCB_CAP_SO\TCCB-ThuyenChuyen-TuyenDung\TCCB_QuanLy\obj\Release\TCCB_QuanLy.dll
 C:\Users\thanhthse61493\Desktop\ASP.NET MVC\Git\TCCB_CAP_SO\TCCB-ThuyenChuyen-TuyenDung\TCCB_QuanLy\obj\Release\TCCB_QuanLy.pdb
 C:\Users\thanhthse61493\Desktop\ASP.NET MVC\Git\TCCB_CAP_SO\TCCB-ThuyenChuyen-TuyenDung\TCCB_QuanLy\obj\Release\TCCB_QuanLy.csprojResolveAssemblyReference.cache
+C:\Users\thanhthse61493\Desktop\ASP.NET MVC\Git\TCCB_CAP_SO\TCCB-ThuyenChuyen-TuyenDung\TCCB_QuanLy\bin\LinqToExcel.dll
+C:\Users\thanhthse61493\Desktop\ASP.NET MVC\Git\TCCB_CAP_SO\TCCB-ThuyenChuyen-TuyenDung\TCCB_QuanLy\bin\Remotion.Linq.dll
+C:\Users\thanhthse61493\Desktop\ASP.NET MVC\Git\TCCB_CAP_SO\TCCB-ThuyenChuyen-TuyenDung\TCCB_QuanLy\bin\LinqToExcel.pdb
+C:\Users\thanhthse61493\Desktop\ASP.NET MVC\Git\TCCB_CAP_SO\TCCB-ThuyenChuyen-TuyenDung\TCCB_QuanLy\bin\Remotion.Linq.xml

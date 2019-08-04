@@ -48,6 +48,7 @@ namespace TCCB_QuanLy.App_Start
             container.RegisterType<ITrinhDoNgoaiNguKhacReposittory, TrinhDoNgoaiNguKhacReposittory>(new HierarchicalLifetimeManager());
             container.RegisterType<IChungChiNghiepVuSuPhamRepository, ChungChiNghiepVuSuPhamRepository>(new HierarchicalLifetimeManager());
             container.RegisterType<IHoSoHopLeRepository, HoSoHopLeRepository>(new HierarchicalLifetimeManager());
+            container.RegisterType<IDiemThiTuyenRepository, DiemThiTuyenRepository>(new HierarchicalLifetimeManager());
         }
     }
 }

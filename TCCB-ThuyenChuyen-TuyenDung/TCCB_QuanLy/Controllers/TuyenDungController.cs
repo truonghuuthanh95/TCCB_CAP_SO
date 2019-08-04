@@ -33,8 +33,9 @@ namespace TCCB_QuanLy.Controllers
         ITruongHopDacBietRepository truongHopDacBietRepository;
         ITrinhDoNgoaiNguKhacReposittory trinhDoNgoaiNguKhacReposittory;
         IChungChiNghiepVuSuPhamRepository chungChiNghiepVuSuPhamRepository;
+        IDiemThiTuyenRepository diemThiTuyenRepository;
 
-        public TuyenDungController(IRegistrationInterviewRepository registrationInterviewRepository, IProvinceRepository provinceRepository, IDistrictRepository districtRepository, IWardRepository wardRepository, IHinhThucDaoTaoRepository hinhThucDaoTaoRepository, IBangTotNghiepRepository bangTotNghiepRepository, IChuyenNganhDaoTaoRepository chuyenNganhDaoTaoRepository, ITrinhDoCaoNhatRepository trinhDoCaoNhatRepository, ILamViecTrongNganhRepository lamViecTrongNganhRepository, ITrinhDoTinHocRepository trinhDoTinHocRepository, ITrinhDoNgoaiNguRepository trinhDoNgoaiNguRepository, IMonDuTuyenRepository monDuTuyenRepository, IXepLoaiHocLucRepository xepLoaiHocLucRepository, ICapTruongRepository capTruongRepository, ITonGiaoRepository tonGiaoRepository, IDanTocRepository danTocRepository, IDoiTuongUuTienRepository doiTuongUuTienRepository, IThanhPhanBanThanHienTaiRepository thanhPhanBanThanHienTaiRepository, ITruongHopDacBietRepository truongHopDacBietRepository, ITrinhDoNgoaiNguKhacReposittory trinhDoNgoaiNguKhacReposittory, IChungChiNghiepVuSuPhamRepository chungChiNghiepVuSuPhamRepository)
+        public TuyenDungController(IRegistrationInterviewRepository registrationInterviewRepository, IProvinceRepository provinceRepository, IDistrictRepository districtRepository, IWardRepository wardRepository, IHinhThucDaoTaoRepository hinhThucDaoTaoRepository, IBangTotNghiepRepository bangTotNghiepRepository, IChuyenNganhDaoTaoRepository chuyenNganhDaoTaoRepository, ITrinhDoCaoNhatRepository trinhDoCaoNhatRepository, ILamViecTrongNganhRepository lamViecTrongNganhRepository, ITrinhDoTinHocRepository trinhDoTinHocRepository, ITrinhDoNgoaiNguRepository trinhDoNgoaiNguRepository, IMonDuTuyenRepository monDuTuyenRepository, IXepLoaiHocLucRepository xepLoaiHocLucRepository, ICapTruongRepository capTruongRepository, ITonGiaoRepository tonGiaoRepository, IDanTocRepository danTocRepository, IDoiTuongUuTienRepository doiTuongUuTienRepository, IThanhPhanBanThanHienTaiRepository thanhPhanBanThanHienTaiRepository, ITruongHopDacBietRepository truongHopDacBietRepository, ITrinhDoNgoaiNguKhacReposittory trinhDoNgoaiNguKhacReposittory, IChungChiNghiepVuSuPhamRepository chungChiNghiepVuSuPhamRepository, IDiemThiTuyenRepository diemThiTuyenRepository)
         {
             this.registrationInterviewRepository = registrationInterviewRepository;
             this.provinceRepository = provinceRepository;
@@ -57,7 +58,9 @@ namespace TCCB_QuanLy.Controllers
             this.truongHopDacBietRepository = truongHopDacBietRepository;
             this.trinhDoNgoaiNguKhacReposittory = trinhDoNgoaiNguKhacReposittory;
             this.chungChiNghiepVuSuPhamRepository = chungChiNghiepVuSuPhamRepository;
+            this.diemThiTuyenRepository = diemThiTuyenRepository;
         }
+
 
 
 
@@ -175,6 +178,37 @@ namespace TCCB_QuanLy.Controllers
             return View();
         }
 
-
+        [Route("ketquatuyendung")]
+        [HttpGet]
+        public ActionResult KetQuaTuyenDung()
+        {
+            
+            return View();
+        }
+        [Route("getdiemtuyendung/{cmnd}/{mavong2}")]
+        [HttpGet]
+        public ActionResult GetDiemTuyenDung(string cmnd, string mavong2)
+        {
+          
+            string dateValidShowResultTuyenDung = System.Configuration.ConfigurationManager.AppSettings["DateValidShowResultTuyenDung"];
+            DateTime dateShowResult = DateTime.Parse(dateValidShowResultTuyenDung);
+            if (DateTime.Now < dateShowResult)
+            {
+                return Json(new ReturnResult(400, "Chưa tới ngày công bố kết quả", null), JsonRequestBehavior.AllowGet);
+            }
+            DiemThiTuyen diemThiTuyen = diemThiTuyenRepository.GetDiemThiTuyenByMaVong2AndCmnd(mavong2.Trim(), cmnd.Trim());
+            if (diemThiTuyen == null)
+            {
+                return Json(new ReturnResult(404, "Không tìm thấy vui lòng kiểm tra lại", null), JsonRequestBehavior.AllowGet);
+            }
+            var diemThiTuyenJson = JsonConvert.SerializeObject(diemThiTuyen,
+                  Formatting.None,
+                  new JsonSerializerSettings()
+                  {
+                      ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
+                  });
+            return Json(new ReturnResult(200, "success", diemThiTuyenJson), JsonRequestBehavior.AllowGet);
+            
+        }
     }
 }

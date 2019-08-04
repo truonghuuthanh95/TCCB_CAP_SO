@@ -17,7 +17,7 @@ namespace TCCB_QuanLy.Models.DAO
 
         public int Id { get; set; }
 
-        [StringLength(70)]
+        [StringLength(200)]
         public string Name { get; set; }
 
         public bool? IsActive { get; set; }

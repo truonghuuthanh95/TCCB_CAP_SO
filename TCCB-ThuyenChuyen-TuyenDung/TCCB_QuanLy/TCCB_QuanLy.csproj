@@ -61,6 +61,9 @@
     <Reference Include="EPPlus, Version=4.5.2.1, Culture=neutral, PublicKeyToken=ea159fdaa78159a1, processorArchitecture=MSIL">
       <HintPath>..\packages\EPPlus.4.5.2.1\lib\net40\EPPlus.dll</HintPath>
     </Reference>
+    <Reference Include="LinqToExcel, Version=2.0.0.2, Culture=neutral, PublicKeyToken=9c8ea65a58f03f1f, processorArchitecture=MSIL">
+      <HintPath>..\packages\LinqToExcel.2.0.0-PRERELEASE-2\lib\net46\LinqToExcel.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.8.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.8\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
     </Reference>
@@ -69,6 +72,9 @@
       <HintPath>..\packages\Newtonsoft.Json.11.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="PresentationCore" />
+    <Reference Include="Remotion.Linq, Version=2.1.0.0, Culture=neutral, PublicKeyToken=fee00910d6e5f53b, processorArchitecture=MSIL">
+      <HintPath>..\packages\Remotion.Linq.2.1.2\lib\net45\Remotion.Linq.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -213,6 +219,7 @@
     <Compile Include="Models\DAO\ChungChiNghiepVuSuPham.cs" />
     <Compile Include="Models\DAO\ChuyenNganhDaoTao.cs" />
     <Compile Include="Models\DAO\DanToc.cs" />
+    <Compile Include="Models\DAO\DiemThiTuyen.cs" />
     <Compile Include="Models\DAO\District.cs" />
     <Compile Include="Models\DAO\DoiTuongUuTien.cs" />
     <Compile Include="Models\DAO\DVQL.cs" />
@@ -261,6 +268,7 @@
     <Compile Include="Repositories\Implements\ChungChiNghiepVuSuPhamRepository.cs" />
     <Compile Include="Repositories\Implements\ChuyenNganhDaoTaoRepository.cs" />
     <Compile Include="Repositories\Implements\DanTocRopository.cs" />
+    <Compile Include="Repositories\Implements\DiemThiTuyenRepository.cs" />
     <Compile Include="Repositories\Implements\DistrictRepository.cs" />
     <Compile Include="Repositories\Implements\DoiTuongUuTienRepository.cs" />
     <Compile Include="Repositories\Implements\GroupPermissionRepository.cs" />
@@ -286,6 +294,7 @@
     <Compile Include="Repositories\Implements\WardRepository.cs" />
     <Compile Include="Repositories\Implements\XepLoaiHocLucRepository.cs" />
     <Compile Include="Repositories\Interfaces\IChungChiNghiepVuSuPhamRepository.cs" />
+    <Compile Include="Repositories\Interfaces\IDiemThiTuyenRepository.cs" />
     <Compile Include="Repositories\Interfaces\IHoSoHopLeRepository.cs" />
     <Compile Include="Repositories\Interfaces\ITrinhDoNgoaiNguKhacReposittory.cs" />
     <Compile Include="Repositories\Interfaces\ITruongHopDacBietRepository.cs" />
@@ -469,6 +478,8 @@
     <Content Include="Views\TuyenDungDuyetHoSo\DuyetHoSoChiTiet.cshtml" />
     <Content Include="Views\TuyenDungDuyetHoSo\HoSoDaDuyet.cshtml" />
     <Content Include="Utils\ds-hople-tuyendung.xlsx" />
+    <Content Include="Views\TuyenDung\KetQuaTuyenDung.cshtml" />
+    <Content Include="Views\TuyenDungQuanlyChung\QuanLyKetQuaTuyenDung.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

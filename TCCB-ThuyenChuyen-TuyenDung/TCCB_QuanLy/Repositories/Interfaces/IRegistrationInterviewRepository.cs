@@ -16,6 +16,8 @@ namespace TCCB_QuanLy.Repositories.Interfaces
         int GetRegistrationInterviewsChuaCapNhatSoLuong();
         int GetRegistrationInterviewsDaHoanThanhSoLuong();
         int GetRegistrationInterviewsHopLeSoLuong();
+        int GetRegistrationInterviewsDaRaXoatSoLuong();
+        int GetRegistrationInterviewsKhongHopLeSoLuong();
         List<RegistrationInterview> GetRegistrationInterviewsDaDangKi();
         List<RegistrationInterview> GetRegistrationInterviewsChuaCapNhat();
         List<RegistrationInterview> GetRegistrationInterviewsDaHoanThanh();
@@ -26,5 +28,7 @@ namespace TCCB_QuanLy.Repositories.Interfaces
         RegistrationInterview GetRegistrationInterviewByTienToId(string id);
 
         List<RegistrationInterview> GetRegistrationInterviewsIsCheckByAccountId(int id);
+
+        
     }
 }

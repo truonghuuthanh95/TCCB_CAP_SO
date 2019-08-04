@@ -94,8 +94,8 @@
                             <td>@item.CMND</td>
                             <td>@item.School.TenTruong</td>
                             <td>@item.School1.TenTruong</td>
-                            <td id="@item.TienTo@item.Id">@item.StatusThuyenChuyen.Name</td>
-                            <td><a href="/thuyenchuyen/chitiethoso/@item.Id" role="button" class="btn btn-sm btn-info"><span class="glyphicon glyphicon-eye-open"></span> Chi tiết</a><button onclick="updateIdTmp(@item.Id);" class="btn btn-sm btn-success" data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-edit"></span> Cập nhật</button></td>
+                            <td id="@item.TienTo@item.Id">@item.StatusThuyenChuyen.Name</td>                           
+                            <td><a href="/thuyenchuyen/chitiethoso/@item.Id" role="button" class="btn btn-sm btn-info"><span class="glyphicon glyphicon-eye-open"></span> Chi tiết</a><button onclick="updateIdTmp(@item.Id,'@item.GhiChu');" class="btn btn-sm btn-success" data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-edit"></span> Cập nhật</button></td>
                         </tr>
                     }
                 }
@@ -142,6 +142,13 @@ else
                             <input type="text" class="form-control datepicker" id="ngay">
                         </div>
                     </div>
+                    <div class="form-group">
+                        <label for="inputPassword3" class="col-sm-2 control-label">Ghi chú</label>
+                        <div class="col-sm-10">
+                            <textarea rows="5" class="form-control" id="ghichu"></textarea>
+                        </div>
+                    </div>
+
                 </form>
             </div>
             <div class="modal-footer">
@@ -170,11 +177,17 @@ else
         function exportExcel() {
             window.location.href = '/thuyenchuyen/downloadexcelthuyenchuyen/' + @ViewBag.StatusId + '/' + @ViewBag.Year
     }
-    function updateIdTmp(id) {
+    function updateIdTmp(id, ghiChu) {
         $('#idTmp').val(id);
+        $('#ghichu').val(ghiChu);
     }
     function updateTrangThaiHoSo() {
-        $.get('/thuyenchuyen/capnhattrangthai/' + $('#idTmp').val() + '/' + $('#trangthaicapnhat').val() + '/' + moment($('#ngay').val(), 'DD-MM-YYYY').format('YYYY-MM-DD'), function (data, status) {
+        $.post('/thuyenchuyen/capnhattrangthai/', {
+            maHoSo: $('#idTmp').val(),
+            trangThaiId: $('#trangthaicapnhat').val(),
+            date: moment($('#ngay').val(), 'DD-MM-YYYY').format('YYYY-MM-DD'),
+            ghiChu: $('#ghichu').val(),
+        }, function (data, status) {
             if (data.StatusCode == 200 && status == 'success') {
                 $('#myModal').modal('toggle');
                 $.confirm({

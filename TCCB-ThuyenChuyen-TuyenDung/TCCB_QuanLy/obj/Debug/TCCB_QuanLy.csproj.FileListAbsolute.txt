@@ -225,3 +225,7 @@ C:\Users\thanhthse61493\Desktop\ASP.NET MVC\Git\TCCB_CAP_SO\TCCB-ThuyenChuyen-Tu
 C:\Users\thanhthse61493\Desktop\ASP.NET MVC\Git\TCCB_CAP_SO\TCCB-ThuyenChuyen-TuyenDung\TCCB_QuanLy\bin\EntityFramework.SqlServer.dll
 C:\Users\thanhthse61493\Desktop\ASP.NET MVC\Git\TCCB_CAP_SO\TCCB-ThuyenChuyen-TuyenDung\TCCB_QuanLy\bin\EntityFramework.xml
 C:\Users\thanhthse61493\Desktop\ASP.NET MVC\Git\TCCB_CAP_SO\TCCB-ThuyenChuyen-TuyenDung\TCCB_QuanLy\bin\EntityFramework.SqlServer.xml
+C:\Users\thanhthse61493\Desktop\ASP.NET MVC\Git\TCCB_CAP_SO\TCCB-ThuyenChuyen-TuyenDung\TCCB_QuanLy\bin\LinqToExcel.dll
+C:\Users\thanhthse61493\Desktop\ASP.NET MVC\Git\TCCB_CAP_SO\TCCB-ThuyenChuyen-TuyenDung\TCCB_QuanLy\bin\Remotion.Linq.dll
+C:\Users\thanhthse61493\Desktop\ASP.NET MVC\Git\TCCB_CAP_SO\TCCB-ThuyenChuyen-TuyenDung\TCCB_QuanLy\bin\LinqToExcel.pdb
+C:\Users\thanhthse61493\Desktop\ASP.NET MVC\Git\TCCB_CAP_SO\TCCB-ThuyenChuyen-TuyenDung\TCCB_QuanLy\bin\Remotion.Linq.xml

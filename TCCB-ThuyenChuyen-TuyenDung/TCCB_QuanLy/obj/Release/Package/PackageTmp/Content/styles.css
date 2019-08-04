@@ -80,7 +80,7 @@ input.form-control {
 
 .navbar-custom {
     background: #da2a2a;
-    height: 60px;
+    height: 70px;
 }
 
 .navbar-header .navbar-brand {
@@ -783,7 +783,9 @@ a.label:hover, a.label:focus {
     overflow-y: auto; }
 
   .navbar-header {
-    width: 100%; } }
+    /*width: 100%; }*/ 
+
+}
 .sidebar ul.nav a:hover, .sidebar ul.nav li.parent ul li a:hover {
   text-decoration: none;
   background-color: #30a5ff;

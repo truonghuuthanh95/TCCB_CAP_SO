@@ -311,9 +311,9 @@ namespace TCCB_QuanLy.Controllers
             ViewBag.Year = year;
             return View();
         }
-        [Route("capnhattrangthai/{maHoSo}/{trangThaiId}/{date}")]
-        [HttpGet]
-        public ActionResult CapNhatTrangThai(int maHoSo, int trangThaiId, DateTime date)
+        [Route("capnhattrangthai")]
+        [HttpPost]
+        public ActionResult CapNhatTrangThai(int maHoSo, int trangThaiId, DateTime date, string ghiChu = " ")
         {
             using (var _thuyenChuyen = new ThuyenChuyenRepository())
             {
@@ -325,7 +325,7 @@ namespace TCCB_QuanLy.Controllers
                 using (var _trangthai = new TrangThaiHoSoService())
                 {
                     string trangthai = _trangthai.GetStatusThuyenChuyensById(trangThaiId).Name;
-                    _thuyenChuyen.CapNhatTrangThaiHoSo(thuyenChuyen, trangThaiId);
+                    _thuyenChuyen.CapNhatTrangThaiHoSo(thuyenChuyen, trangThaiId, ghiChu);
                     return Json(new ReturnResult(200, trangthai, null), JsonRequestBehavior.AllowGet);
                 }
                 

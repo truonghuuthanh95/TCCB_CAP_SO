@@ -10,8 +10,8 @@ namespace TCCB_QuanLy.Models.DAO
         public TCCBDB()
             : base("name=TCCBDB")
         {
-            this.Configuration.ProxyCreationEnabled = false;
             this.Configuration.LazyLoadingEnabled = false;
+            this.Configuration.ProxyCreationEnabled = false;
         }
 
         public virtual DbSet<Account> Accounts { get; set; }
@@ -21,6 +21,7 @@ namespace TCCB_QuanLy.Models.DAO
         public virtual DbSet<ChungChiNghiepVuSuPham> ChungChiNghiepVuSuPhams { get; set; }
         public virtual DbSet<ChuyenNganhDaoTao> ChuyenNganhDaoTaos { get; set; }
         public virtual DbSet<DanToc> DanTocs { get; set; }
+        public virtual DbSet<DiemThiTuyen> DiemThiTuyens { get; set; }
         public virtual DbSet<District> Districts { get; set; }
         public virtual DbSet<DoiTuongUuTien> DoiTuongUuTiens { get; set; }
         public virtual DbSet<DVQL> DVQLs { get; set; }

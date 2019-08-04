@@ -311,7 +311,7 @@ namespace TCCB_QuanLy.Utils
                     ws.Cells[6, 41].Value = "NGUYỆN VỌNG 1";
                     ws.Cells[6, 42].Value = "NGUYỆN VỌNG 2";
                     ws.Cells[6, 43].Value = "NGUYỆN VỌNG 3";
-
+                    ws.Cells[6, 44].Value = "TRÌNH DỘ CAO NHẤT";
                     for (int i = 0; i < registrationInterviews.Count(); i++)
                     {
                         ws.Cells[i + 7, 1].Value = registrationInterviews.ElementAt(i).TienTo + registrationInterviews.ElementAt(i).Id;
@@ -365,6 +365,7 @@ namespace TCCB_QuanLy.Utils
                         ws.Cells[i + 7, 41].Value = registrationInterviews.ElementAt(i).District.Type + " " + registrationInterviews.ElementAt(i).District.Name;
                         ws.Cells[i + 7, 42].Value = registrationInterviews.ElementAt(i).District1.Type + " " + registrationInterviews.ElementAt(i).District1.Name;
                         ws.Cells[i + 7, 43].Value = registrationInterviews.ElementAt(i).District2.Type + " " + registrationInterviews.ElementAt(i).District2.Name;
+                        ws.Cells[i + 7, 44].Value = registrationInterviews.ElementAt(i).TrinhDoCaoNhat.Name;
 
                     }
                     using (ExcelRange rng = ws.Cells["A2:I2"])
@@ -388,7 +389,7 @@ namespace TCCB_QuanLy.Utils
                         rng.Style.HorizontalAlignment = ExcelHorizontalAlignment.Center;
                         rng.Style.Font.Color.SetColor(Color.Red);
                     }
-                    using (ExcelRange rng = ws.Cells["A6:AQ6"])
+                    using (ExcelRange rng = ws.Cells["A6:AR6"])
                     {
                         rng.Style.Font.Bold = true;
                         rng.Style.Fill.PatternType = ExcelFillStyle.Solid;        //Set Pattern for the background to Solid 
@@ -470,10 +471,11 @@ namespace TCCB_QuanLy.Utils
                     ws.Cells[6, 43].Value = "NGUYỆN VỌNG 3";
                     ws.Cells[6, 44].Value = "MÃ VÒNG 2";
                     ws.Cells[6, 45].Value = "NGÀY RÀ XOÁT";
+                    ws.Cells[6, 46].Value = "TRÌNH ĐỘ CAO NHẤT";
                     for (int i = 0; i < registrationInterviews.Count(); i++)
                     {
-                        ws.Cells[i + 7, 1].Value = registrationInterviews.ElementAt(i).RegistrationInterview.TienTo + registrationInterviews.ElementAt(i).Id;
-                        ws.Cells[i + 7, 2].Value = registrationInterviews.ElementAt(i).RegistrationInterview.MonDuTuyen.Name;
+                        ws.Cells[i + 7, 1].Value = registrationInterviews.ElementAt(i).RegistrationInterview.TienTo + registrationInterviews.ElementAt(i).HoSoId;
+                        ws.Cells[i + 7, 2].Value = registrationInterviews.ElementAt(i).RegistrationInterview.MonDuTuyen.ViTriUngTuyen.Name.Trim() + " " + registrationInterviews.ElementAt(i).RegistrationInterview.MonDuTuyen.Name;
                         //THONG TIN CA NHAN
                         ws.Cells[i + 7, 3].Value = registrationInterviews.ElementAt(i).RegistrationInterview.LastName + " " + registrationInterviews.ElementAt(i).RegistrationInterview.FirstName;
                         ws.Cells[i + 7, 4].Value = registrationInterviews.ElementAt(i).RegistrationInterview.DOB.Value.ToString("dd/MM/yyyy");
@@ -525,6 +527,8 @@ namespace TCCB_QuanLy.Utils
                         ws.Cells[i + 7, 43].Value = registrationInterviews.ElementAt(i).RegistrationInterview.District2.Type + " " + registrationInterviews.ElementAt(i).RegistrationInterview.District2.Name;
                         ws.Cells[i + 7, 44].Value = registrationInterviews.ElementAt(i).TienTo + registrationInterviews.ElementAt(i).MaVong2;
                         ws.Cells[i + 7, 45].Value = registrationInterviews.ElementAt(i).RegistrationInterview.NgayRaXoat.Value.ToString("dd/MM/yyyy");
+                        ws.Cells[i + 7, 46].Value = registrationInterviews.ElementAt(i).RegistrationInterview.TrinhDoCaoNhat.Name;
+
                     }
                     using (ExcelRange rng = ws.Cells["A2:I2"])
                     {
@@ -547,7 +551,7 @@ namespace TCCB_QuanLy.Utils
                         rng.Style.HorizontalAlignment = ExcelHorizontalAlignment.Center;
                         rng.Style.Font.Color.SetColor(Color.Red);
                     }
-                    using (ExcelRange rng = ws.Cells["A6:AS6"])
+                    using (ExcelRange rng = ws.Cells["A6:AT6"])
                     {
                         rng.Style.Font.Bold = true;
                         rng.Style.Fill.PatternType = ExcelFillStyle.Solid;        //Set Pattern for the background to Solid 

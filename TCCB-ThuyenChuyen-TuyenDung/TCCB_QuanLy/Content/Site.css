@@ -1,4 +1,25 @@
-﻿a5-print {
+﻿@media only screen and (max-device-width: 1000px) {
+    a.navbar-brand {
+        display: none;
+    }
+    ul.nav.navbar-top-links.navbar-right {
+    display: none;
+    }
+    ul.nav.navbar-top-links.navbar-left {
+        display: none;
+    }
+
+}
+
+@media only screen and (min-device-width: 1000px) {
+    a .navbar-brand-mobile {
+        display: none;
+    }
+    
+}
+
+
+a5-print {
     font-size: 9px;
 }
 .loader {
