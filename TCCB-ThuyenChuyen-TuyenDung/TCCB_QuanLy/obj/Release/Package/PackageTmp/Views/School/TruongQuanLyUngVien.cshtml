@@ -1,0 +1,168 @@
+﻿
+@{
+    ViewBag.Title = "TruongQuanLyUngVien";
+    Layout = "~/Views/Shared/_Home_Layout.cshtml";
+    TCCB_QuanLy.Models.DAO.AccountSchool accountSchool = (TCCB_QuanLy.Models.DAO.AccountSchool)Session[TCCB_QuanLy.Utils.Constants.USER_SCHOOL_SESSION];
+}
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        Danh sách nhận nhiệm sở @accountSchool.SchoolName
+    </div>
+    <div class="panel-body">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>STT</th>
+                    <th>Mã vòng 2</th>
+                    <th>Ho và tên</th>
+                    <th>Vị trí đăng ký</th>
+                    <th>Giới tính</th>
+                    <th>Ngày sinh</th>
+                    <th>CMND</th>
+                    <th>Trang thái</th>
+                    <th>Thao tác</th>
+                </tr>
+            </thead>
+            <tbody>
+                @{
+
+                    int index = 1;
+                    foreach (var item in ViewBag.CandidateSchools)
+                    {
+                        <tr>
+                            <td>@index</td>
+                            <td>@item.MaVong2</td>
+                            <td>@item.RegistrationInterview.LastName @item.RegistrationInterview.FirstName</td>
+
+                            <td>@item.RegistrationInterview.MonDuTuyen.ViTriUngTuyen.Name @item.RegistrationInterview.MonDuTuyen.Name</td>
+                            @{
+                                if (item.RegistrationInterview.IsMale)
+                                {
+                                    <td>Nam</td>
+                                }
+                                else
+                                {
+                                    <td>Nữ</td>
+                                }
+                            }
+
+                            <td>@item.RegistrationInterview.DOB.ToString("dd/MM/yyyy")</td>
+                            <td>@item.RegistrationInterview.IdentifyCard</td>
+                            @{
+                                if (item.StatusTiepNhanId != null)
+                                {
+                                    <td>@item.StatusTiepNhan.Name</td>
+                                }
+                                else
+                                {
+                                    <td style="color: red;">Chưa cập nhật</td>
+                                }
+                            }
+
+                            <td>
+                                <button onclick="setCandidateIdTmp(@item.Id, '@item.GhiChu'); setTranThai(@item.StatusTiepNhanId)" type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+                                    <i class="fa fa-edit"></i> Cập nhật
+                                </button>
+                            </td>
+                        </tr>
+                                    index++;
+                                }
+                }
+
+
+            </tbody>
+        </table>
+    </div>
+</div>
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Cập nhật</h4>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">Trang thái</label>
+                        <select class="form-control" id="statusTiepNhan">
+                            @{
+                                foreach (var item in ViewBag.StatusTiepNhans)
+                                {
+                                    <option value="@item.Id">@item.Name</option>
+                                }
+                            }
+
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Ghi chú</label>
+                        <textarea class="form-control" rows="5" id="ghiChu"></textarea>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
+                <button type="button" class="btn btn-primary" onclick="updateCandidateStatus();">Cập nhật</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    var candidateSchoolTmp;
+    function setCandidateIdTmp(candidateSchoolId, ghiChu) {
+        candidateSchoolTmp = candidateSchoolId;
+        $('#ghiChu').val(ghiChu);
+        
+        
+    }
+    function setTranThai(trangThaiId) {
+        if (trangThaiId) {
+            $('#statusTiepNhan').val(trangThaiId);
+        }
+        else {
+            $('#statusTiepNhan').val(1);
+        }
+    }
+
+    function updateCandidateStatus() {
+        $.post("/postcapnhattiepnhan", {
+            candidateSchoolId: candidateSchoolTmp,
+            statusTiepNhanId: $('#statusTiepNhan').val().trim(),
+            ghiChu: $('#ghiChu').val(),
+            __RequestVerificationToken: $("input[name=__RequestVerificationToken]").val(),
+        }, function (data, status) {
+            if (status == 'success' && data.StatusCode == 200) {
+                $.confirm({
+                    title: 'Thành công',
+                    content: 'Cập nhật thành công',
+                    type: 'green',
+                    typeAnimated: true,
+                    buttons: {
+                        OK: function () {
+                            window.location.reload();
+                        }
+                    }
+                });
+                $('#myModal').modal('hide')
+            }
+            else if (status == 'success' && data.StatusCode == 403) {
+                window.location.replace('/schoollogin');
+            }
+            else {
+                $.confirm({
+                    title: 'Thất bại',
+                    content: 'Có lỗi sảy ra!',
+                    type: 'red',
+                    typeAnimated: true,
+                    buttons: {
+                        OK: function () {
+
+                        }
+                    }
+                });
+            }
+        });
+    }
+</script>

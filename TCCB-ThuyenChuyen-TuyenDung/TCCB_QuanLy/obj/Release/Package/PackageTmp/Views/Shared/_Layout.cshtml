@@ -108,6 +108,15 @@
                     </a>
                 </li>
 }
+
+if (userPermision.Where(s => s.PermissionId == 1).SingleOrDefault() != null)
+{
+                <li>
+                    <a class="" href="/tuyendung/quanlychung/phannhiemso">
+                        <span class="fa fa-address-card-o">&nbsp;</span> Phân Nhiệm sở
+                    </a>
+                </li>
+}
                     }
 
                     @*

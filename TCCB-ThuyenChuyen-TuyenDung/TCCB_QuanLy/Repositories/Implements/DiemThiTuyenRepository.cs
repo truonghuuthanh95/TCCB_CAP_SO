@@ -18,7 +18,7 @@ namespace TCCB_QuanLy.Repositories.Implements
 
         public DiemThiTuyen GetDiemThiTuyenByMaVong2AndCmnd(string mavong2, string cmnd)
         {
-            DiemThiTuyen diemThiTuyen = _db.DiemThiTuyens.Where(s => s.MaVong2.Trim() == mavong2.Trim() && s.CMND.Trim() == cmnd.Trim()).SingleOrDefault();
+            DiemThiTuyen diemThiTuyen = _db.DiemThiTuyens.AsNoTracking().Where(s => s.MaVong2.Trim() == mavong2.Trim() && s.CMND.Trim() == cmnd.Trim()).SingleOrDefault();
             return diemThiTuyen;
         }
     }

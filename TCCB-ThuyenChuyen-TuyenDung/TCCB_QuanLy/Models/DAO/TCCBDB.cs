@@ -10,13 +10,16 @@ namespace TCCB_QuanLy.Models.DAO
         public TCCBDB()
             : base("name=TCCBDB")
         {
-            this.Configuration.LazyLoadingEnabled = false;
             this.Configuration.ProxyCreationEnabled = false;
+            this.Configuration.LazyLoadingEnabled = false;
+
         }
 
         public virtual DbSet<Account> Accounts { get; set; }
+        public virtual DbSet<AccountSchool> AccountSchools { get; set; }
         public virtual DbSet<BacLuong> BacLuongs { get; set; }
         public virtual DbSet<BangTotNghiep> BangTotNghieps { get; set; }
+        public virtual DbSet<CandidateSchool> CandidateSchools { get; set; }
         public virtual DbSet<CapTruong> CapTruongs { get; set; }
         public virtual DbSet<ChungChiNghiepVuSuPham> ChungChiNghiepVuSuPhams { get; set; }
         public virtual DbSet<ChuyenNganhDaoTao> ChuyenNganhDaoTaos { get; set; }
@@ -40,6 +43,7 @@ namespace TCCB_QuanLy.Models.DAO
         public virtual DbSet<Role> Roles { get; set; }
         public virtual DbSet<School> Schools { get; set; }
         public virtual DbSet<StatusThuyenChuyen> StatusThuyenChuyens { get; set; }
+        public virtual DbSet<StatusTiepNhan> StatusTiepNhans { get; set; }
         public virtual DbSet<ThanhPhanBanThanHienTai> ThanhPhanBanThanHienTais { get; set; }
         public virtual DbSet<ThuyenChuyen> ThuyenChuyens { get; set; }
         public virtual DbSet<TonGiao> TonGiaos { get; set; }
@@ -75,6 +79,11 @@ namespace TCCB_QuanLy.Models.DAO
                 .HasMany(e => e.ThuyenChuyenNgoaiTinhs)
                 .WithOptional(e => e.Account)
                 .HasForeignKey(e => e.NguoiTiepNhanId);
+
+            modelBuilder.Entity<AccountSchool>()
+                .HasMany(e => e.CandidateSchools)
+                .WithOptional(e => e.AccountSchool)
+                .HasForeignKey(e => e.SchoolId);
 
             modelBuilder.Entity<BacLuong>()
                 .Property(e => e.Loai)
@@ -170,6 +179,11 @@ namespace TCCB_QuanLy.Models.DAO
             modelBuilder.Entity<RegistrationInterview>()
                 .Property(e => e.TienHoaDon)
                 .HasPrecision(18, 0);
+
+            modelBuilder.Entity<RegistrationInterview>()
+                .HasMany(e => e.CandidateSchools)
+                .WithOptional(e => e.RegistrationInterview)
+                .HasForeignKey(e => e.CandidateId);
 
             modelBuilder.Entity<RegistrationInterview>()
                 .HasMany(e => e.HoSoHopLes)

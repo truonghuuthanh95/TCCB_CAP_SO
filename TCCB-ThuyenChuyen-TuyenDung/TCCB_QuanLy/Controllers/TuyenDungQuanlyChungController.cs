@@ -16,11 +16,15 @@ namespace TCCB_QuanLy.Controllers
     public class TuyenDungQuanlyChungController : Controller
     {
         IRegistrationInterviewRepository registrationInterviewRepository;
+        ICandidateSchoolRepository candidateSchoolRepository;
 
-        public TuyenDungQuanlyChungController(IRegistrationInterviewRepository registrationInterviewRepository)
+        public TuyenDungQuanlyChungController(IRegistrationInterviewRepository registrationInterviewRepository, ICandidateSchoolRepository candidateSchoolRepository)
         {
             this.registrationInterviewRepository = registrationInterviewRepository;
+            this.candidateSchoolRepository = candidateSchoolRepository;
         }
+
+
         // GET: TuyenDungQuanlyChung
         [Route("quanlychung")]
         [HttpGet]
@@ -123,6 +127,25 @@ namespace TCCB_QuanLy.Controllers
         public ActionResult QuanLyKetQuaTuyenDung()
         {
 
+            return View();
+        }
+        [Route("quanlychung/phannhiemso")]
+        [HttpGet]
+        public ActionResult PhanNhiemSo()
+        {
+            int permissionId = 1;
+            Account account = (Account)Session[Utils.Constants.USER_SESSION];
+            if (account == null)
+            {
+                return RedirectToRoute("login");
+            }
+            List<UserPermission> userPermission = (List<UserPermission>)Session[Utils.Constants.USER_PERMISSION_SESSION];
+            if (userPermission.Where(s => s.PermissionId == permissionId).SingleOrDefault() == null)
+            {
+                return RedirectToRoute("login");
+            }
+            var listCandidateSchool = candidateSchoolRepository.GetAllCandidatesSchool();
+            ViewBag.CandidatesSchool = listCandidateSchool;
             return View();
         }
         [Route("uploadketqua")]

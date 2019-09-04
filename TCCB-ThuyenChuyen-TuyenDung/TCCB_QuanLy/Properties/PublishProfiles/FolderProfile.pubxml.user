@@ -250,10 +250,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>01/28/2015 04:04:30</publishTime>
     </File>
     <File Include="bin/TCCB_QuanLy.dll">
-      <publishTime>08/04/2019 15:40:32</publishTime>
+      <publishTime>09/04/2019 22:48:46</publishTime>
     </File>
     <File Include="bin/TCCB_QuanLy.pdb">
-      <publishTime>08/04/2019 15:40:32</publishTime>
+      <publishTime>09/04/2019 22:48:46</publishTime>
     </File>
     <File Include="bin/Unity.Abstractions.dll">
       <publishTime>04/18/2018 19:15:06</publishTime>
@@ -501,6 +501,9 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="Views/Login/Login.cshtml">
       <publishTime>11/22/2018 10:51:23</publishTime>
     </File>
+    <File Include="Views/Login/SchoolLogin.cshtml">
+      <publishTime>08/12/2019 15:15:45</publishTime>
+    </File>
     <File Include="Views/MaDangKi/MaDangKi.cshtml">
       <publishTime>04/03/2019 09:50:12</publishTime>
     </File>
@@ -519,14 +522,17 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="Views/QuanLyTaiKhoan/TaiKhoan.cshtml">
       <publishTime>12/09/2018 12:04:46</publishTime>
     </File>
+    <File Include="Views/School/TruongQuanLyUngVien.cshtml">
+      <publishTime>08/21/2019 16:17:36</publishTime>
+    </File>
     <File Include="Views/Shared/Error.cshtml">
       <publishTime>07/29/2018 17:01:26</publishTime>
     </File>
     <File Include="Views/Shared/_Home_Layout.cshtml">
-      <publishTime>08/01/2019 17:09:32</publishTime>
+      <publishTime>08/04/2019 15:44:24</publishTime>
     </File>
     <File Include="Views/Shared/_Layout.cshtml">
-      <publishTime>08/01/2019 17:09:35</publishTime>
+      <publishTime>09/04/2019 22:48:40</publishTime>
     </File>
     <File Include="Views/ThuyenChuyen/CapNhatThuyenChuyen.cshtml">
       <publishTime>04/17/2019 16:31:01</publishTime>
@@ -589,7 +595,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/06/2019 23:11:57</publishTime>
     </File>
     <File Include="Views/TuyenDung/KetQuaTuyenDung.cshtml">
-      <publishTime>08/03/2019 17:08:05</publishTime>
+      <publishTime>08/06/2019 17:08:17</publishTime>
     </File>
     <File Include="Views/TuyenDung/KiemTraMaDangKi.cshtml">
       <publishTime>05/31/2019 22:30:55</publishTime>
@@ -618,6 +624,9 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="Views/TuyenDungQuanlyChung/DanhSachHoSoHopLe.cshtml">
       <publishTime>07/03/2019 19:34:36</publishTime>
     </File>
+    <File Include="Views/TuyenDungQuanlyChung/PhanNhiemSo.cshtml">
+      <publishTime>09/04/2019 22:38:34</publishTime>
+    </File>
     <File Include="Views/TuyenDungQuanlyChung/QuanLyChung.cshtml">
       <publishTime>07/10/2019 17:50:38</publishTime>
     </File>
@@ -640,7 +649,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>07/29/2018 17:01:26</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>08/04/2019 15:40:32</publishTime>
+      <publishTime>08/21/2019 16:25:05</publishTime>
     </File>
   </ItemGroup>
 </Project>

@@ -9,5 +9,6 @@ namespace TCCB_QuanLy.Utils
     {
         public static String USER_SESSION = "USER_SESSION";
         public static String USER_PERMISSION_SESSION = "USER_PERMESSION_SESSION";
+        public static String USER_SCHOOL_SESSION = "USER_SCHOOL_SESSION";
     }
 }

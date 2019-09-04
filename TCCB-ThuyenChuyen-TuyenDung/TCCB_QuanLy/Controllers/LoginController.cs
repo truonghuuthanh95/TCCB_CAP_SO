@@ -14,11 +14,13 @@ namespace TCCB_QuanLy.Controllers
     {
         IAccountRepository accountRepository;
         IUserPermissionRepository userPermissionRepository;
+        IAccountSchoolRepository accountSchoolRepository;
 
-        public LoginController(IAccountRepository accountRepository, IUserPermissionRepository userPermissionRepository)
+        public LoginController(IAccountRepository accountRepository, IUserPermissionRepository userPermissionRepository, IAccountSchoolRepository accountSchoolRepository)
         {
             this.accountRepository = accountRepository;
             this.userPermissionRepository = userPermissionRepository;
+            this.accountSchoolRepository = accountSchoolRepository;
         }
 
 
@@ -52,6 +54,33 @@ namespace TCCB_QuanLy.Controllers
         {
             Session.RemoveAll();
             return RedirectToRoute("login");
+        }
+
+        [Route("schoollogin", Name = "schoolLogin")]
+        public ActionResult SchoolLogin()
+        {
+            List<AccountSchool> accountSchools = accountSchoolRepository.GetAccountSchools();
+            ViewBag.AccountSchools = accountSchools;
+            return View();
+        }
+        [Route("requestSchoolLogin")]
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult RequestSchoolLogin(int schoolId, string password)
+        {
+            AccountSchool account = accountSchoolRepository.GetAccountSchoolById(schoolId);
+            if (account == null)
+            {
+                return Json(new ReturnResult(400, "Sai tên truy cập hoặc mật khẩu", null), JsonRequestBehavior.AllowGet);
+            }
+            else if (account.Password.Trim() != password.Trim())
+            {
+                return Json(new ReturnResult(400, "Mật khẩu không đúng", null), JsonRequestBehavior.AllowGet);
+            }
+            
+            Session[Constants.USER_SCHOOL_SESSION] = account;
+            
+            return Json(new ReturnResult(200, "success", null), JsonRequestBehavior.AllowGet);
         }
     }
 }

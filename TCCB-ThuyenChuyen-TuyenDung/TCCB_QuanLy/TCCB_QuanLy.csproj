@@ -213,8 +213,10 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\DAO\Account.cs" />
+    <Compile Include="Models\DAO\AccountSchool.cs" />
     <Compile Include="Models\DAO\BacLuong.cs" />
     <Compile Include="Models\DAO\BangTotNghiep.cs" />
+    <Compile Include="Models\DAO\CandidateSchool.cs" />
     <Compile Include="Models\DAO\CapTruong.cs" />
     <Compile Include="Models\DAO\ChungChiNghiepVuSuPham.cs" />
     <Compile Include="Models\DAO\ChuyenNganhDaoTao.cs" />
@@ -238,6 +240,7 @@
     <Compile Include="Models\DAO\Role.cs" />
     <Compile Include="Models\DAO\School.cs" />
     <Compile Include="Models\DAO\StatusThuyenChuyen.cs" />
+    <Compile Include="Models\DAO\StatusTiepNhan.cs" />
     <Compile Include="Models\DAO\TCCBDB.cs" />
     <Compile Include="Models\DAO\ThanhPhanBanThanHienTai.cs" />
     <Compile Include="Models\DAO\ThuyenChuyen.cs" />
@@ -262,8 +265,10 @@
     <Compile Include="Models\DTO\ThuyenChuyenNgoaiTinhDTO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\Implements\AccountRepository.cs" />
+    <Compile Include="Repositories\Implements\AccountSchoolRepository.cs" />
     <Compile Include="Repositories\Implements\BacLuongRepository.cs" />
     <Compile Include="Repositories\Implements\BangTotNghiepRepository.cs" />
+    <Compile Include="Repositories\Implements\CandidateSchoolRepository.cs" />
     <Compile Include="Repositories\Implements\CapTruongRepository.cs" />
     <Compile Include="Repositories\Implements\ChungChiNghiepVuSuPhamRepository.cs" />
     <Compile Include="Repositories\Implements\ChuyenNganhDaoTaoRepository.cs" />
@@ -275,6 +280,7 @@
     <Compile Include="Repositories\Implements\HinhThucDaoTaoRepository.cs" />
     <Compile Include="Repositories\Implements\HoaDonRepository.cs" />
     <Compile Include="Repositories\Implements\HoSoHopLeRepository.cs" />
+    <Compile Include="Repositories\Implements\StatusTiepNhanRepository.cs" />
     <Compile Include="Repositories\Implements\LamViecTrongNganhRepository.cs" />
     <Compile Include="Repositories\Implements\MaNgachRepository.cs" />
     <Compile Include="Repositories\Implements\MonDuTuyenRepository.cs" />
@@ -293,9 +299,12 @@
     <Compile Include="Repositories\Implements\UserPermissionRepository.cs" />
     <Compile Include="Repositories\Implements\WardRepository.cs" />
     <Compile Include="Repositories\Implements\XepLoaiHocLucRepository.cs" />
+    <Compile Include="Repositories\Interfaces\IAccountSchoolRepository.cs" />
+    <Compile Include="Repositories\Interfaces\ICandidateSchoolRepository.cs" />
     <Compile Include="Repositories\Interfaces\IChungChiNghiepVuSuPhamRepository.cs" />
     <Compile Include="Repositories\Interfaces\IDiemThiTuyenRepository.cs" />
     <Compile Include="Repositories\Interfaces\IHoSoHopLeRepository.cs" />
+    <Compile Include="Repositories\Interfaces\IStatusTiepNhanRepository.cs" />
     <Compile Include="Repositories\Interfaces\ITrinhDoNgoaiNguKhacReposittory.cs" />
     <Compile Include="Repositories\Interfaces\ITruongHopDacBietRepository.cs" />
     <Compile Include="Repositories\Interfaces\IAccountRepository.cs" />
@@ -480,11 +489,13 @@
     <Content Include="Utils\ds-hople-tuyendung.xlsx" />
     <Content Include="Views\TuyenDung\KetQuaTuyenDung.cshtml" />
     <Content Include="Views\TuyenDungQuanlyChung\QuanLyKetQuaTuyenDung.cshtml" />
+    <Content Include="Views\Login\SchoolLogin.cshtml" />
+    <Content Include="Views\School\TruongQuanLyUngVien.cshtml" />
+    <Content Include="Views\TuyenDungQuanlyChung\PhanNhiemSo.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Utils\Files\" />
-    <Folder Include="Views\School\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

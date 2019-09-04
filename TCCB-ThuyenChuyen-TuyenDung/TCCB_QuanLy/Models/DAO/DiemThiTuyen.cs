@@ -37,9 +37,11 @@ namespace TCCB_QuanLy.Models.DAO
 
         [StringLength(50)]
         public string DiemUuTien { get; set; }
-        [StringLength(50)]
-        public string TongDiem { get; set; }
+
         [StringLength(50)]
         public string KetQua { get; set; }
+
+        [StringLength(50)]
+        public string TongDiem { get; set; }
     }
 }
