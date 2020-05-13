@@ -26,8 +26,9 @@ namespace TCCB_QuanLy.Controllers
         IBangTotNghiepRepository _bangTotNghiepRepository;
         ISchoolRepository _schoolRepository;
         ITrinhDoCaoNhatRepository _trinhDoCaoNhatRepository;
+        IThuyenChuyenRepository _thuyenChuyenRepository;
 
-        public ThuyenChuyenController(IDistrictRepository districtRepository, IWardRepository wardRepository, IProvinceRepository provinceRepository, IMonDuTuyenRepository monDuTuyenRepository, ICapTruongRepository capTruongRepository, IHinhThucDaoTaoRepository hinhThucDaoTaoRepository, IXepLoaiHocLucRepository xepLoaiHocLucRepository, IChuyenNganhDaoTaoRepository chuyenNganhDaoTaoRepository, IBangTotNghiepRepository bangTotNghiepRepository, ISchoolRepository schoolRepository, ITrinhDoCaoNhatRepository trinhDoCaoNhatRepository)
+        public ThuyenChuyenController(IDistrictRepository districtRepository, IWardRepository wardRepository, IProvinceRepository provinceRepository, IMonDuTuyenRepository monDuTuyenRepository, ICapTruongRepository capTruongRepository, IHinhThucDaoTaoRepository hinhThucDaoTaoRepository, IXepLoaiHocLucRepository xepLoaiHocLucRepository, IChuyenNganhDaoTaoRepository chuyenNganhDaoTaoRepository, IBangTotNghiepRepository bangTotNghiepRepository, ISchoolRepository schoolRepository, ITrinhDoCaoNhatRepository trinhDoCaoNhatRepository, IThuyenChuyenRepository thuyenChuyenRepository)
         {
             _districtRepository = districtRepository;
             _wardRepository = wardRepository;
@@ -40,6 +41,7 @@ namespace TCCB_QuanLy.Controllers
             _bangTotNghiepRepository = bangTotNghiepRepository;
             _schoolRepository = schoolRepository;
             _trinhDoCaoNhatRepository = trinhDoCaoNhatRepository;
+            _thuyenChuyenRepository = thuyenChuyenRepository;
         }
 
         [Route("option")]
@@ -68,94 +70,38 @@ namespace TCCB_QuanLy.Controllers
                 ViewBag.Schools = _schoolRepository.GetSchoolsByDistrictAndCapHoc(760, 4);
          
                 ViewBag.TrinhDoCaoNhats = _trinhDoCaoNhatRepository.GetTrinhDoCaoNhats();
-            
-
-            
 
             return View();
         }
-        // GET: ThuyenChuyen
-        //[Route("dangkimoi")]
-        //[HttpGet]
-        //public ActionResult DangKimoi()
-        //{
-        //    using (var _districtService = new DistrictRepository())
-        //    {
-        //        ViewBag.Districts = _districtService.GetDistrictByProvinceId(79);
-        //    }
-        //    using (var _wardService = new WardRepository())
-        //    {
-        //        ViewBag.Wards = _wardService.GetWardByDistrictId(760);
-        //    }
-        //    using (var _provinceService = new ProvinceRepository())
-        //    {
-        //        ViewBag.Provinces = _provinceService.GetProvinceByCountryId(237);
-        //    }
-        //    using (var _CapTruongService = new CapTruongRepository())
-        //    {
-        //        ViewBag.CapTruongs = _CapTruongService.GetCapTruongs();
-        //    }
-        //    using (var _monDuTuyen = new MonDuTuyenRepository())
-        //    {
-        //        ViewBag.MonDays = _monDuTuyen.GetMonDuTuyens();
-        //    }
-        //    using (var _hinhThucDaoTao = new HinhThucDaoTaoRepository())
-        //    {
-        //        ViewBag.HinhThucDaoTaos = _hinhThucDaoTao.GetHinhThucDaoTaos();
-        //    }
-        //    using (var _xepLoaiHocLuc = new XepLoaiHocLucRepository())
-        //    {
-        //        ViewBag.XepLoaiHocLucs = _xepLoaiHocLuc.GetXepLoaiHocLucs();
-        //    }
-        //    using (var _chuyenNghanhDaoTao = new ChuyenNganhDaoTaoRepository())
-        //    {
-        //        ViewBag.ChuyenNganhDaoTaos = _chuyenNghanhDaoTao.GetChuyenNganhDaoTaos();
-        //    }
-        //    using (var _bangTotNghiep = new BangTotNghiepRepository())
-        //    {
-        //        ViewBag.BangTotNghieps = _bangTotNghiep.GetBangTotNghieps();
-        //    }
-        //    using (var _schoolService = new SchoolRepository())
-        //    {
-        //        ViewBag.Schools = _schoolService.GetSchoolsByDistrictAndCapHoc(760, 4);
-        //    }
-        //    using (var _trinhdoDaoTao = new TrinhDoCaoNhatRepository())
-        //    {
-        //        ViewBag.TrinhDoCaoNhats = _trinhdoDaoTao.GetTrinhDoCaoNhats();
-        //    }
-            
-        //    return View();
-        //}
-        //[Route("dangkimoiPost")]
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //public ActionResult DangKiMoiPost(ThuyenChuyenDTO thuyenChuyenDTO)
-        //{
-        //    if (ModelState.IsValid)
-        //    {
-        //        ThuyenChuyen thuyenChuyen = new ThuyenChuyen();
-        //        Mapper.Map(thuyenChuyenDTO, thuyenChuyen);
-        //        using (var _thuyenChuyenService = new ThuyenChuyenRepository())
-        //        {
-        //            ThuyenChuyen thuyenChuyenCreated = _thuyenChuyenService.CreateThuyenChuyen(thuyenChuyen);
-        //            return Json(new ReturnResult(200, "success", thuyenChuyen.Id), JsonRequestBehavior.AllowGet);
-        //        }
+
+        [Route("create")]
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult DangKiMoiPost(ThuyenChuyenDTO2020 thuyenChuyenDTO)
+        {
+            if (ModelState.IsValid)
+            {
+                ThuyenChuyen2020 thuyenChuyen = new ThuyenChuyen2020();
+                Mapper.Map(thuyenChuyenDTO, thuyenChuyen);
+                thuyenChuyen.TienTo = "TC";
+                ThuyenChuyen2020 thuyenChuyenCreated = _thuyenChuyenRepository.CreateThuyenChuyen(thuyenChuyen);
                 
-        //    }
-        //    return Json(new ReturnResult(400, "failed", null), JsonRequestBehavior.AllowGet);
-        //}
-        //[Route("dangkithanhcong/{id}")]
-        //[HttpGet]
-        //public ActionResult DangKiThanhCong(int id)
-        //{
-        //    using (var _thuyenChuyenService = new ThuyenChuyenRepository())
-        //    {
-        //        ViewBag.ThuyenChuyen = _thuyenChuyenService.GetThuyenChuyensById(id);
-        //        ViewBag.Id = id;
-        //        return View();
-        //    }
+                return Json(new ReturnResult(200, "success", thuyenChuyen.Id), JsonRequestBehavior.AllowGet);
+
+            }
+            return Json(new ReturnResult(400, "failed", null), JsonRequestBehavior.AllowGet);
+        }
+
+        [Route("dangkithanhcong/{id}")]
+        [HttpGet]
+        public ActionResult DangKiThanhCong(int id)
+        {
             
-        //}
+                ViewBag.ThuyenChuyen = _thuyenChuyenRepository.GetThuyenChuyensById(id);
+                ViewBag.Id = id;
+                return View();           
+
+        }
         //[Route("capnhat/{id}/{cmnd}")]
         //[HttpGet]
         //public ActionResult CapNhatThuyenChuyen(string id, string cmnd)
@@ -220,7 +166,7 @@ namespace TCCB_QuanLy.Controllers
         //        ViewBag.ThuyenChuyen = thuyenChuyen;
         //        return View();
         //    }
-            
+
         //}
         //[Route("capnhat/kiemtrama", Name ="thuyenchuyenkiemtramatruong")]
         //[HttpGet]
@@ -284,7 +230,7 @@ namespace TCCB_QuanLy.Controllers
         //    {
         //        return Json(new ReturnResult(400, "Không tìm thấy", null), JsonRequestBehavior.AllowGet);
         //    }
-                       
+
         //}
         //[Route("capnhatPost")]
         //[HttpPost]
@@ -304,11 +250,11 @@ namespace TCCB_QuanLy.Controllers
         //            return Json(new ReturnResult(200, "success", thuyenChuyenUpdated.Id), JsonRequestBehavior.AllowGet);
         //        }
         //    }
-                
+
         //    return Json(new ReturnResult(400, "failed", null), JsonRequestBehavior.AllowGet);
         //}
 
-        
+
 
         //[Route("tiendogiaiquyethoso")]
         //[HttpGet]
@@ -331,7 +277,7 @@ namespace TCCB_QuanLy.Controllers
         //                return Json(new ReturnResult(400, "Không tìm thấy", null), JsonRequestBehavior.AllowGet);
 
         //            }
-                    
+
         //            var thuyenChuyenJson = JsonConvert.SerializeObject(thuyenChuyen,
         //          Formatting.None,
         //          new JsonSerializerSettings()
@@ -352,7 +298,7 @@ namespace TCCB_QuanLy.Controllers
         //                return Json(new ReturnResult(400, "Không tìm thấy", null), JsonRequestBehavior.AllowGet);
 
         //            }
-                    
+
         //            var thuyenChuyenJson = JsonConvert.SerializeObject(thuyenChuyen,
         //          Formatting.None,
         //          new JsonSerializerSettings()
@@ -399,9 +345,9 @@ namespace TCCB_QuanLy.Controllers
         //          });
         //            return Json(new ReturnResult(200, "success", bacLuongsJson), JsonRequestBehavior.AllowGet);
         //        }
-                
+
         //    }
-                
+
         //}
         //[Route("downloadtailieu/{tentailieu}")]
         //[HttpPost]

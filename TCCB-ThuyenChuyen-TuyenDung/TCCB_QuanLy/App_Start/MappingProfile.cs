@@ -14,10 +14,12 @@ namespace TCCB_QuanLy.App_Start
         {
             CreateMap<RegistrationInterview, RegistrationInterviewDTO>();
             CreateMap<RegistrationInterviewDTO, RegistrationInterview>();
-            CreateMap<ThuyenChuyen, ThuyenChuyenDTO>();
-            CreateMap<ThuyenChuyenDTO, ThuyenChuyen>();
+            //CreateMap<ThuyenChuyen, ThuyenChuyenDTO>();
+            //CreateMap<ThuyenChuyenDTO, ThuyenChuyen>();
             CreateMap<ThuyenChuyenNgoaiTinh, ThuyenChuyenNgoaiTinhDTO>();
             CreateMap<ThuyenChuyenNgoaiTinhDTO, ThuyenChuyenNgoaiTinh>();
+            CreateMap<ThuyenChuyenDTO2020, ThuyenChuyen2020>();
+            CreateMap<ThuyenChuyen2020, ThuyenChuyenDTO2020>();
         }
     }
 }

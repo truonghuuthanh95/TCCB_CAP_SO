@@ -244,6 +244,7 @@
     <Compile Include="Models\DAO\TCCBDB.cs" />
     <Compile Include="Models\DAO\ThanhPhanBanThanHienTai.cs" />
     <Compile Include="Models\DAO\ThuyenChuyen.cs" />
+    <Compile Include="Models\DAO\ThuyenChuyen2020.cs" />
     <Compile Include="Models\DAO\ThuyenChuyenNgoaiTinh.cs" />
     <Compile Include="Models\DAO\TonGiao.cs" />
     <Compile Include="Models\DAO\TrangThaiHoSoTuyenDung.cs" />
@@ -262,6 +263,7 @@
     <Compile Include="Models\DTO\ReturnResult.cs" />
     <Compile Include="Models\DTO\ThuyenChuyenContainNgoaiTinhDTO.cs" />
     <Compile Include="Models\DTO\thuyenChuyenDTO.cs" />
+    <Compile Include="Models\DTO\ThuyenChuyenDTO2020.cs" />
     <Compile Include="Models\DTO\ThuyenChuyenNgoaiTinhDTO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\Implements\AccountRepository.cs" />

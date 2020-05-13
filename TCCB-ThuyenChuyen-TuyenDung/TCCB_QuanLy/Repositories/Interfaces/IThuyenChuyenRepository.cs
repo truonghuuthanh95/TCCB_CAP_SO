@@ -8,12 +8,12 @@ namespace TCCB_QuanLy.Repositories.Interfaces
 {
     public interface IThuyenChuyenRepository
     {
-        ThuyenChuyen CreateThuyenChuyen(ThuyenChuyen thuyenChuyen);
-        List<ThuyenChuyen> GetThuyenChuyens(int? dvqlId);
-        ThuyenChuyen GetThuyenChuyensById(int id);
-        ThuyenChuyen CapNhatTrangThaiHoSo(ThuyenChuyen thuyenChuyen, int trangThaiId);
-        ThuyenChuyen CapNhatThuyenChuyen(ThuyenChuyen thuyenChuyen);
-        ThuyenChuyen checkThuyenChuyenExistedByIdAndCMND(int id, string cmnd);
-        List<ThuyenChuyen> GetThuyenChuyenByStatusAndDvql(int statusId, int? dvqlId);
+        ThuyenChuyen2020 CreateThuyenChuyen(ThuyenChuyen2020 thuyenChuyen);
+        List<ThuyenChuyen2020> GetThuyenChuyens(int? dvqlId);
+        ThuyenChuyen2020 GetThuyenChuyensById(int id);
+        ThuyenChuyen2020 CapNhatTrangThaiHoSo(ThuyenChuyen2020 thuyenChuyen, int trangThaiId);
+        ThuyenChuyen2020 CapNhatThuyenChuyen(ThuyenChuyen2020 thuyenChuyen);
+        ThuyenChuyen2020 checkThuyenChuyenExistedByIdAndCMND(int id, string cmnd);
+        List<ThuyenChuyen2020> GetThuyenChuyenByStatusAndDvql(int statusId, int? dvqlId);
     }
 }

@@ -32,23 +32,15 @@
                                 </select>
                             </div>
                         </div>
-                        <div class="form-group">
+                        <div class="form-group" id="quanhuyendvdctIsShow">
                             <label for="inputEmail3" class="col-sm-3 control-label">Quận/Huyện</label>
                             <div class="col-sm-7">
                                 <select name="DistrictID" id="quanhuyendvdct" class="form-control">
                                     @{
-                                        foreach (var item in ViewBag.Provinces)
-                                        {
-                                            if (item.Id == 79)
-                                            {
-                                                <option value="@item.Id" selected>@item.Type @item.Name</option>
-                                            }
-                                            else
-                                            {
-                                                <option value="@item.Id">@item.Type @item.Name</option>
-                                            }
-
-                                        }
+        foreach (var item in ViewBag.Districts)
+        {
+                                <option value="@item.Id">@item.Type @item.Name</option>
+}
                                     }
                                 </select>
                             </div>
@@ -58,10 +50,19 @@
                             <div class="col-sm-7">
                                 <select name="DistrictID" id="loaitruongdvdct" class="form-control">
                                     @{
-                                        foreach (var item in ViewBag.CapTruongs)
-                                        {
-                                            <option value="@item.Name" selected>@item.Name</option>
-                                        }
+        foreach (var item in ViewBag.CapTruongs)
+        {
+            if (item.Id == 4)
+            {
+                                <option value="@item.Id" selected>@item.Name</option>
+
+}
+else
+{
+                                <option value="@item.Id">@item.Name</option>
+}
+
+}
                                     }
 
                                 </select>
@@ -72,12 +73,12 @@
                             <div class="col-sm-7">
                                 <input type="text" class="form-control" id="tentruongdvdcttext" name="tentruongdvdct" style="display: none;">
                                 <select name="DistrictID" id="tentruongdvdctselect" class="form-control">
-                                    <option value="Không có">Không có</option>
-                                    <option value="Mầm non">Mầm non</option>
-                                    <option value="Tiểu học">Tiểu học</option>
-                                    <option value="Trung học cơ sở">Trung học cơ sở</option>
-                                    <option value="Trung học phổ thông">Trung học phổ thông</option>
-                                    <option value="Trung cấp chuyên nghiệp">Trung cấp chuyên nghiệp</option>
+                                    @{
+        foreach (var item in ViewBag.Schools)
+        {
+                                <option value="@item.Id">@item.TenTruong</option>
+}
+                                    }
 
                                 </select>
                                 <span id="tentruongdvdctmessage" class="text-danger"></span>
@@ -161,7 +162,7 @@
                                 </select>
                             </div>
                         </div>
-                        <div class="form-group">
+                        <div class="form-group" id="quanhuyendvcdIsShow">
                             <label for="inputEmail3" class="col-sm-3 control-label">Quận/Huyện</label>
                             <div class="col-sm-7">
                                 <select name="DistrictID" id="quanhuyendvcd" class="form-control">
@@ -196,10 +197,10 @@
                                 </select>
                             </div>
                         </div>
-                        <div class="form-group">
+                        <div class="form-group" id="errortentruongdvcd">
                             <label for="inputPassword3" class="col-sm-3 control-label">Tên đơn vị</label>
                             <div class="col-sm-7">
-                                <input type="text" class="form-control" id="tentruongdvcdtext" name="tentruongdvcd" style="display: none;">                               
+                                <input type="text" class="form-control" id="tentruongdvcdtext" name="tentruongdvcd" style="display: none;">
                                 <select name="DistrictID" id="tentruongdvcdselect" class="form-control">
                                     @{
             foreach (var item in ViewBag.Schools)
@@ -208,6 +209,7 @@
 }
                                     }
                                 </select>
+                                <span id="tentruongdvcdmessage" class="text-danger"></span>
                             </div>
                         </div>
                         <div class="form-group">
@@ -535,15 +537,18 @@
 </div>
 <span class="loader" hidden id="preloader"></span>
 <script>
+    //kiem tra co phai chuyen tinh
     $('#tinhdvdct').change(function () {
         if ($(this).val() != 79) {
             $('#tentruongdvdcttext').show();
             $('#tentruongdvdctselect').hide();
+            $('#quanhuyendvdctIsShow').hide();
             
         }
         else {
             $('#tentruongdvdcttext').hide();
             $('#tentruongdvdctselect').show();
+            $('#quanhuyendvdctIsShow').show();
 
         }
     })
@@ -551,14 +556,17 @@
         if ($(this).val() != 79) {
             $('#tentruongdvcdtext').show();
             $('#tentruongdvcdselect').hide();
+            $('#quanhuyendvcdIsShow').hide();
 
         }
         else {
             $('#tentruongdvcdtext').hide();
             $('#tentruongdvcdselect').show();
+            $('#quanhuyendvcdIsShow').show();
 
         }
     })
+    //kiem tra co phai la mam non thi ko mon day
     $('#loaitruongdvdct').change(function () {
         if ($(this).val() == 1) {
             $('#isshowmonday').hide();
@@ -568,6 +576,7 @@
             $('#isshowmonday').show();
         }
     });
+    //get quan huyen phuong xa theo dieu kien
     $('#quanhuyenhktt').change(function () {
         $.get('/getWardByDistrictId/' + $(this).val(), function (data, status) {
             var wards = JSON.parse(data.Results);
@@ -622,39 +631,41 @@
             })
         })
     })
-    //$('#quanhuyendvdct').change(function () {
-    //    $.get('/getschoolbydistrictandcaphoc/' + $(this).val() + '/' + $('#loaitruongdvdct').val(), function (data, status) {
-    //        var schools = JSON.parse(data.Results);
-    //        $('#tentruongdvdct').children().remove().end();
-    //        for (var i = 0; i < schools.length; i++) {
-    //            $('#tentruongdvdct').append('<option value=' + schools[i].Id + '>' + schools[i].TenTruong + '</option>')
-    //        }
-    //    })
-    //});
-    //$('#loaitruongdvdct').change(function () {
-    //    $.get('/getschoolbydistrictandcaphoc/' + $('#quanhuyendvdct').val() + '/' + $(this).val(), function (data, status) {
-    //        var schools = JSON.parse(data.Results);
-    //        $('#tentruongdvdct').children().remove().end();
-    //        for (var i = 0; i < schools.length; i++) {
-    //            $('#tentruongdvdct').append('<option value=' + schools[i].Id + '>' + schools[i].TenTruong + '</option>')
-    //        }
-    //    })
-    //});
+    $('#quanhuyendvdct').change(function () {
+        $.get('/getschoolbydistrictandcaphoc/' + $(this).val() + '/' + $('#loaitruongdvdct').val(), function (data, status) {
+            var schools = JSON.parse(data.Results);
+            $('#tentruongdvdctselect').children().remove().end();
+            for (var i = 0; i < schools.length; i++) {
+                $('#tentruongdvdctselect').append('<option value=' + schools[i].Id + '>' + schools[i].TenTruong + '</option>')
+            }
+        })
+    });
+    //get truong theo cap truong
+    $('#loaitruongdvdct').change(function () {
+        $.get('/getschoolbydistrictandcaphoc/' + $('#quanhuyendvdct').val() + '/' + $(this).val(), function (data, status) {
+            var schools = JSON.parse(data.Results);
+            $('#tentruongdvdctselect').children().remove().end();
+            for (var i = 0; i < schools.length; i++) {
+                $('#tentruongdvdctselect').append('<option value=' + schools[i].Id + '>' + schools[i].TenTruong + '</option>')
+            }
+        })
+    });
+    //get truong theo quan huyen
     $('#quanhuyendvcd').change(function () {
         $.get('/getschoolbydistrictandcaphoc/' + $(this).val() + '/' + $('#loaitruongdvcd').val(), function (data, status) {
             var schools = JSON.parse(data.Results);
-            $('#tentruongdvcd').children().remove().end();
+            $('#tentruongdvcdselect').children().remove().end();
             for (var i = 0; i < schools.length; i++) {
-                $('#tentruongdvcd').append('<option value=' + schools[i].Id + '>' + schools[i].TenTruong + '</option>')
+                $('#tentruongdvcdselect').append('<option value=' + schools[i].Id + '>' + schools[i].TenTruong + '</option>')
             }
         })
     });
     $('#loaitruongdvcd').change(function () {
         $.get('/getschoolbydistrictandcaphoc/' + $('#quanhuyendvcd').val() + '/' + $(this).val(), function (data, status) {
             var schools = JSON.parse(data.Results);
-            $('#tentruongdvcd').children().remove().end();
+            $('#tentruongdvcdselect').children().remove().end();
             for (var i = 0; i < schools.length; i++) {
-                $('#tentruongdvcd').append('<option value=' + schools[i].Id + '>' + schools[i].TenTruong + '</option>')
+                $('#tentruongdvcdselect').append('<option value=' + schools[i].Id + '>' + schools[i].TenTruong + '</option>')
             }
         })
     });
@@ -759,18 +770,24 @@
                     $('#errorbatdaucongtac').addClass('has-error');
                     $('#batdaucongtacmessage').text('Để được thuyên chuyển phải công tác tại đơn vị trên 3 năm');
                     $('#batdaucongtac').focus();
-                } else if ($('#tentruongdvdct').val() == '') {
+                }
+                else if ($('#tentruongdvdcttext').val() == '' && $('#tinhdvdct').val() != 79) {
                     $('#errortentruongdvdct').addClass('has-error');
                     $('#tentruongdvdctmessage').text('Vui lòng nhập');
-                    $('#tentruongdvdct').focus();
+                    $('#tentruongdvdcttext').focus();
                 }
+                else if ($('#tentruongdvcdtext').val() == '' && $('#tinhdvcd').val() != 79) {
+                    $('#errortentruongdvcd').addClass('has-error');
+                    $('#tentruongdvcdmessage').text('Vui lòng nhập');
+                    $('#tentruongdvcdtext').focus();
+                }
+
                 else {
                     $('#errorbatdaucongtac').removeClass('has-error');
                     $('#batdaucongtacmessage').text('');
                     $('#preloader').show();
-                    $.post("/thuyenchuyenngoaitinh/dangkimoiPost",
-                        {
-                            DVDCTProvinceId: $('#tinhdvdct').val(),
+                    $.post("/thuyenchuyen/create",
+                        {                            
                             HoTen: $('#hovaten').val(),
                             CMND: $('#cmnd').val(),
                             IsMale: $('#gioitinh').val(),
@@ -790,12 +807,15 @@
                             MocNangLuong: moment($('#mocnangluong').val(), 'DD-MM-YYYY').format('YYYY-MM-DD'),
                             BacLuong: $('#bacluong').val(),
                             HeSo: $('#heso').val(),
-                            DVDCTCapTruong: $('#loaitruongdvdct').val(),
-                            DVDCTTenTruong: $('#tentruongdvdct').val(),
+                            DVDCTProvinceId: $('#tinhdvdct').val(),                           
+                            DVDCTTenTruong: $('#tentruongdvdcttext').val(),
+                            DVDCTTruongId: $('#tentruongdvdctselect').val(),
                             DVDCTMonDayId: ($('#loaitruongdvdct').val() == 1 ? 57 : $('#mondaydvdct').val()),
-                            CapDayDVDCT: $('#captruongdvdct').val(),
-                            DVCDTruongId: $('#tentruongdvcd').val(),
+                            DVCDProvinceId: $('#tinhdvcd').val(), 
+                            DVCDTruongId: $('#tentruongdvcdselect').val(),
+                            DVCDTenTruong: $('#tentruongdvcdtext').val(),                            
                             CapDayDVCD: $('#captruongdvcd').val(),
+                            CapDayDVDCT: $('#captruongdvdct').val(),
                             BatDauCongTac: moment($('#batdaucongtac').val(), 'DD-MM-YYYY').format('YYYY-MM-DD'),
                             TrinhDoCaoNhatId: $('#trinhdocaonhat').val(),
                             __RequestVerificationToken: $("input[name=__RequestVerificationToken]").val(),

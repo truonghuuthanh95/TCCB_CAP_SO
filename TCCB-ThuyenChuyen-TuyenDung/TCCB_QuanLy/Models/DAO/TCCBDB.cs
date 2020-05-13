@@ -8,11 +8,10 @@ namespace TCCB_QuanLy.Models.DAO
     public partial class TCCBDB : DbContext
     {
         public TCCBDB()
-            : base("name=TCCBDB")
+            : base("name=TCCBDB8")
         {
             this.Configuration.ProxyCreationEnabled = false;
             this.Configuration.LazyLoadingEnabled = false;
-
         }
 
         public virtual DbSet<Account> Accounts { get; set; }
@@ -46,6 +45,7 @@ namespace TCCB_QuanLy.Models.DAO
         public virtual DbSet<StatusTiepNhan> StatusTiepNhans { get; set; }
         public virtual DbSet<ThanhPhanBanThanHienTai> ThanhPhanBanThanHienTais { get; set; }
         public virtual DbSet<ThuyenChuyen> ThuyenChuyens { get; set; }
+        public virtual DbSet<ThuyenChuyen2020> ThuyenChuyen2020 { get; set; }
         public virtual DbSet<TonGiao> TonGiaos { get; set; }
         public virtual DbSet<TrangThaiHoSoTuyenDung> TrangThaiHoSoTuyenDungs { get; set; }
         public virtual DbSet<TrinhDoCaoNhat> TrinhDoCaoNhats { get; set; }
@@ -74,6 +74,11 @@ namespace TCCB_QuanLy.Models.DAO
                 .HasMany(e => e.RegistrationInterviews1)
                 .WithOptional(e => e.Account1)
                 .HasForeignKey(e => e.NguoiRaSoat);
+
+            modelBuilder.Entity<Account>()
+                .HasMany(e => e.ThuyenChuyen2020)
+                .WithOptional(e => e.Account)
+                .HasForeignKey(e => e.NguoiTiepNhanId);
 
             modelBuilder.Entity<Account>()
                 .HasMany(e => e.ThuyenChuyenNgoaiTinhs)
@@ -147,6 +152,11 @@ namespace TCCB_QuanLy.Models.DAO
                 .HasForeignKey(e => e.DVDCTMonDayId);
 
             modelBuilder.Entity<MonDuTuyen>()
+                .HasMany(e => e.ThuyenChuyen2020)
+                .WithOptional(e => e.MonDuTuyen)
+                .HasForeignKey(e => e.DVDCTMonDayId);
+
+            modelBuilder.Entity<MonDuTuyen>()
                 .HasMany(e => e.ThuyenChuyenNgoaiTinhs)
                 .WithOptional(e => e.MonDuTuyen)
                 .HasForeignKey(e => e.DVDCTMonDayId);
@@ -172,6 +182,16 @@ namespace TCCB_QuanLy.Models.DAO
                 .HasForeignKey(e => e.QueQuanProvinceId);
 
             modelBuilder.Entity<Province>()
+                .HasMany(e => e.ThuyenChuyen2020)
+                .WithOptional(e => e.Province)
+                .HasForeignKey(e => e.DVDCTProvinceId);
+
+            modelBuilder.Entity<Province>()
+                .HasMany(e => e.ThuyenChuyen20201)
+                .WithOptional(e => e.Province1)
+                .HasForeignKey(e => e.DVCDProvinceId);
+
+            modelBuilder.Entity<Province>()
                 .HasMany(e => e.ThuyenChuyenNgoaiTinhs)
                 .WithOptional(e => e.Province)
                 .HasForeignKey(e => e.DVDCTProvinceId);
@@ -179,11 +199,6 @@ namespace TCCB_QuanLy.Models.DAO
             modelBuilder.Entity<RegistrationInterview>()
                 .Property(e => e.TienHoaDon)
                 .HasPrecision(18, 0);
-
-            modelBuilder.Entity<RegistrationInterview>()
-                .HasMany(e => e.CandidateSchools)
-                .WithOptional(e => e.RegistrationInterview)
-                .HasForeignKey(e => e.CandidateId);
 
             modelBuilder.Entity<RegistrationInterview>()
                 .HasMany(e => e.HoSoHopLes)
@@ -202,12 +217,27 @@ namespace TCCB_QuanLy.Models.DAO
                 .HasForeignKey(e => e.DVCDTruongId);
 
             modelBuilder.Entity<School>()
+                .HasMany(e => e.ThuyenChuyen2020)
+                .WithOptional(e => e.School)
+                .HasForeignKey(e => e.DVCDTruongId);
+
+            modelBuilder.Entity<School>()
+                .HasMany(e => e.ThuyenChuyen20201)
+                .WithOptional(e => e.School1)
+                .HasForeignKey(e => e.DVDCTTruongId);
+
+            modelBuilder.Entity<School>()
                 .HasMany(e => e.ThuyenChuyenNgoaiTinhs)
                 .WithOptional(e => e.School)
                 .HasForeignKey(e => e.DVCDTruongId);
 
             modelBuilder.Entity<StatusThuyenChuyen>()
                 .HasMany(e => e.ThuyenChuyens)
+                .WithOptional(e => e.StatusThuyenChuyen)
+                .HasForeignKey(e => e.StatusId);
+
+            modelBuilder.Entity<StatusThuyenChuyen>()
+                .HasMany(e => e.ThuyenChuyen2020)
                 .WithOptional(e => e.StatusThuyenChuyen)
                 .HasForeignKey(e => e.StatusId);
 
@@ -251,6 +281,16 @@ namespace TCCB_QuanLy.Models.DAO
 
             modelBuilder.Entity<Ward>()
                 .HasMany(e => e.ThuyenChuyens1)
+                .WithOptional(e => e.Ward1)
+                .HasForeignKey(e => e.HKTTWardId);
+
+            modelBuilder.Entity<Ward>()
+                .HasMany(e => e.ThuyenChuyen2020)
+                .WithOptional(e => e.Ward)
+                .HasForeignKey(e => e.NoisinhWardId);
+
+            modelBuilder.Entity<Ward>()
+                .HasMany(e => e.ThuyenChuyen20201)
                 .WithOptional(e => e.Ward1)
                 .HasForeignKey(e => e.HKTTWardId);
 

@@ -6,7 +6,7 @@ using System.Web;
 
 namespace TCCB_QuanLy.Models.DTO
 {
-    public class ThuyenChuyen2020DTO
+    public class ThuyenChuyenDTO2020
     {
         [StringLength(50)]
         public string HoTen { get; set; }
@@ -45,7 +45,7 @@ namespace TCCB_QuanLy.Models.DTO
 
         [StringLength(50)]
         public string MaNghach { get; set; }
-      
+
         public DateTime MocNangLuong { get; set; }
 
         [StringLength(50)]
@@ -54,12 +54,22 @@ namespace TCCB_QuanLy.Models.DTO
         [StringLength(50)]
         public string HeSo { get; set; }
 
+        public int DVDCTProvinceId { get; set; }
+
+        [StringLength(100)]
+        public string DVDCTTenTruong { get; set; }
+
         public int DVDCTTruongId { get; set; }
 
         public int DVDCTMonDayId { get; set; }
 
-        public int DVCDTruongId { get; set; }                  
+        public int DVCDProvinceId { get; set; }
 
+        [StringLength(100)]
+        public string DVCDTenTruong { get; set; }
+
+        public int DVCDTruongId { get; set; }           
+     
         [StringLength(50)]
         public string CapDayDVCD { get; set; }
 
@@ -68,6 +78,7 @@ namespace TCCB_QuanLy.Models.DTO
 
         public DateTime BatDauCongTac { get; set; }
 
-        public int TrinhDoCaoNhatId { get; set; }
+        public int TrinhDoCaoNhatId { get; set; }  
+
     }
 }

@@ -26,8 +26,6 @@ namespace TCCB_QuanLy.Models.DAO
 
         public virtual AccountSchool AccountSchool { get; set; }
 
-        public virtual RegistrationInterview RegistrationInterview { get; set; }
-
         public virtual StatusTiepNhan StatusTiepNhan { get; set; }
     }
 }
