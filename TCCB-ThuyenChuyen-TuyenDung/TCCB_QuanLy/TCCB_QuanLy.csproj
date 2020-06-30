@@ -241,6 +241,7 @@
     <Compile Include="Models\DAO\School.cs" />
     <Compile Include="Models\DAO\StatusThuyenChuyen.cs" />
     <Compile Include="Models\DAO\StatusTiepNhan.cs" />
+    <Compile Include="Models\DAO\sysdiagram.cs" />
     <Compile Include="Models\DAO\TCCBDB.cs" />
     <Compile Include="Models\DAO\ThanhPhanBanThanHienTai.cs" />
     <Compile Include="Models\DAO\ThuyenChuyen.cs" />
@@ -253,6 +254,8 @@
     <Compile Include="Models\DAO\TrinhDoNgoaiNguKhac.cs" />
     <Compile Include="Models\DAO\TrinhDoTinHoc.cs" />
     <Compile Include="Models\DAO\TruongHopDacBiet.cs" />
+    <Compile Include="Models\DAO\TruongMonDuTuyen.cs" />
+    <Compile Include="Models\DAO\TuyenDung2020.cs" />
     <Compile Include="Models\DAO\UserPermission.cs" />
     <Compile Include="Models\DAO\ViTriUngTuyen.cs" />
     <Compile Include="Models\DAO\Ward.cs" />
@@ -261,6 +264,8 @@
     <Compile Include="Models\DTO\RegistrationInterviewDTO.cs" />
     <Compile Include="Models\DTO\RegistrationInterviewStatusRegistedCountDTO.cs" />
     <Compile Include="Models\DTO\ReturnResult.cs" />
+    <Compile Include="Models\DTO\SSOResult.cs" />
+    <Compile Include="Models\DTO\SSOSessionReturn.cs" />
     <Compile Include="Models\DTO\ThuyenChuyenContainNgoaiTinhDTO.cs" />
     <Compile Include="Models\DTO\thuyenChuyenDTO.cs" />
     <Compile Include="Models\DTO\ThuyenChuyenDTO2020.cs" />
@@ -298,6 +303,7 @@
     <Compile Include="Repositories\Implements\TrinhDoNgoaiNguRepository.cs" />
     <Compile Include="Repositories\Implements\TrinhDoTinHocRepository.cs" />
     <Compile Include="Repositories\Implements\TruongHopDacBietRepository.cs" />
+    <Compile Include="Repositories\Implements\TruongMonDuTuyenRepository.cs" />
     <Compile Include="Repositories\Implements\UserPermissionRepository.cs" />
     <Compile Include="Repositories\Implements\WardRepository.cs" />
     <Compile Include="Repositories\Implements\XepLoaiHocLucRepository.cs" />
@@ -333,6 +339,7 @@
     <Compile Include="Repositories\Interfaces\ITrinhDoNgoaiNguRepository.cs" />
     <Compile Include="Repositories\Interfaces\ITrinhDoTinHocRepository.cs" />
     <Compile Include="Repositories\Interfaces\ISchoolRepository.cs" />
+    <Compile Include="Repositories\Interfaces\ITruongMonDuTuyenRepository.cs" />
     <Compile Include="Repositories\Interfaces\IUserPermissionRepository.cs" />
     <Compile Include="Repositories\Interfaces\IWardRepository.cs" />
     <Compile Include="Repositories\Interfaces\IXepLoaiHocLucRepository.cs" />
@@ -494,6 +501,9 @@
     <Content Include="Views\Login\SchoolLogin.cshtml" />
     <Content Include="Views\School\TruongQuanLyUngVien.cshtml" />
     <Content Include="Views\TuyenDungQuanlyChung\PhanNhiemSo.cshtml" />
+    <Content Include="Views\TuyenDung\KiemTraCMND.cshtml" />
+    <Content Include="Views\TuyenDung\TaoMoiHoSoUngTuyen.cshtml" />
+    <Content Include="Views\Login\LoginOption.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

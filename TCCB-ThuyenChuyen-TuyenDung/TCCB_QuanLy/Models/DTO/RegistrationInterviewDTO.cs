@@ -8,9 +8,7 @@ namespace TCCB_QuanLy.Models.DTO
 {
     public class RegistrationInterviewDTO
     {
-        [Required]
-        public int Id { get; set; }
-
+       
         [Required]
         public string LastName { get; set; }
 
@@ -20,12 +18,7 @@ namespace TCCB_QuanLy.Models.DTO
         public DateTime? DOB { get; set; }
         [Required]
         public string SDT { get; set; }
-        [Required]
-        public int NV01Quan { get; set; }
-        [Required]
-        public int NV02Quan { get; set; }
-        [Required]
-        public int NV03Quan { get; set; }
+        
         [Required]
         public string Email { get; set; }
         [Required]
@@ -120,5 +113,10 @@ namespace TCCB_QuanLy.Models.DTO
 
         [StringLength(50)]
         public string ChungChiNghiepVuSuPhamSoVanBang { get; set; }
+        [Required]
+        public int TruongDuTuyenId { get; set; }
+        [Required]
+        public string IdentifyCard { get; set; }
+
     }
 }

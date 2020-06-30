@@ -92,9 +92,32 @@
                             <td>@item.TienTo@item.Id</td>
                             <td>@item.HoTen</td>
                             <td>@item.CMND</td>
-                            <td>@item.School.TenTruong</td>
-                            <td>@item.School1.TenTruong</td>
-                            <td id="@item.TienTo@item.Id">@item.StatusThuyenChuyen.Name</td>                           
+                            @{ if (item.Province.Id != 79)
+                                {
+                                    <td>@item.DVDCTTenTruong</td>
+
+                                }
+                                else
+                                {
+                                    <td>@item.School1.TenTruong</td>
+
+                                }
+                            }
+                            @{
+                                if (item.Province1.Id != 79)
+
+                                {
+                                    <td>@item.DVCDTenTruong</td>
+
+                                }
+                                else
+                                {
+                                    <td>@item.School.TenTruong</td>
+
+                                }
+                            }
+
+                            <td id="@item.TienTo@item.Id">@item.StatusThuyenChuyen.Name</td>
                             <td><a href="/thuyenchuyen/chitiethoso/@item.Id" role="button" class="btn btn-sm btn-info"><span class="glyphicon glyphicon-eye-open"></span> Chi tiết</a><button onclick="updateIdTmp(@item.Id,'@item.GhiChu');" class="btn btn-sm btn-success" data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-edit"></span> Cập nhật</button></td>
                         </tr>
                     }
@@ -119,20 +142,20 @@
                         <div class="col-sm-10">
                             <select class="form-control" id="trangthaicapnhat">
                                 @{
-        foreach (var item in ViewBag.StatusThuyenChuyen)
-        {
-            if (item.Id == ViewBag.StatusId)
-            {
-                            <option value="@item.Id" class="form-control" selected>@item.Name</option>
-}
-else
-{
-                            <option value="@item.Id" class="form-control">@item.Name</option>
-}
+                                    foreach (var item in ViewBag.StatusThuyenChuyen)
+                                    {
+                                        if (item.Id == ViewBag.StatusId)
+                                        {
+                                            <option value="@item.Id" class="form-control" selected>@item.Name</option>
+                                        }
+                                        else
+                                        {
+                                            <option value="@item.Id" class="form-control">@item.Name</option>
+                                        }
 
-}
+                                    }
                                 }
-                                
+
                             </select>
                         </div>
                     </div>
@@ -167,7 +190,7 @@ else
             autoclose: true,
         });
         $('#danhsachthuyenchuyen').DataTable();
-       
+
 
     });
 
@@ -200,9 +223,9 @@ else
                             window.location.reload();
                         }
                     }
-                });                 
-                   
-                
+                });
+
+
             }
             else if (data.StatusCode == 403 && status == 'success') {
                 window.location.href = '/login';

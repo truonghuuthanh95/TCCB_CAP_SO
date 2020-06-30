@@ -19,6 +19,8 @@ namespace TCCB_QuanLy.Models.DAO
             ThuyenChuyens1 = new HashSet<ThuyenChuyen>();
             ThuyenChuyen2020 = new HashSet<ThuyenChuyen2020>();
             ThuyenChuyen20201 = new HashSet<ThuyenChuyen2020>();
+            TuyenDung2020 = new HashSet<TuyenDung2020>();
+            TuyenDung20201 = new HashSet<TuyenDung2020>();
             ThuyenChuyenNgoaiTinhs = new HashSet<ThuyenChuyenNgoaiTinh>();
             ThuyenChuyenNgoaiTinhs1 = new HashSet<ThuyenChuyenNgoaiTinh>();
         }
@@ -66,6 +68,12 @@ namespace TCCB_QuanLy.Models.DAO
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ThuyenChuyen2020> ThuyenChuyen20201 { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<TuyenDung2020> TuyenDung2020 { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<TuyenDung2020> TuyenDung20201 { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ThuyenChuyenNgoaiTinh> ThuyenChuyenNgoaiTinhs { get; set; }

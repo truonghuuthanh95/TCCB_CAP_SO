@@ -250,10 +250,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>01/28/2015 04:04:30</publishTime>
     </File>
     <File Include="bin/TCCB_QuanLy.dll">
-      <publishTime>09/04/2019 22:48:46</publishTime>
+      <publishTime>06/30/2020 15:11:28</publishTime>
     </File>
     <File Include="bin/TCCB_QuanLy.pdb">
-      <publishTime>09/04/2019 22:48:46</publishTime>
+      <publishTime>06/30/2020 15:11:28</publishTime>
     </File>
     <File Include="bin/Unity.Abstractions.dll">
       <publishTime>04/18/2018 19:15:06</publishTime>
@@ -484,7 +484,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>07/08/2019 19:48:35</publishTime>
     </File>
     <File Include="Utils/ds-thuyenchuyen.xlsx">
-      <publishTime>03/20/2019 13:55:30</publishTime>
+      <publishTime>06/08/2020 11:06:39</publishTime>
     </File>
     <File Include="Utils/ds-thuyenchuyenngoaitinh.xlsx">
       <publishTime>03/20/2019 13:56:26</publishTime>
@@ -500,6 +500,9 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     </File>
     <File Include="Views/Login/Login.cshtml">
       <publishTime>11/22/2018 10:51:23</publishTime>
+    </File>
+    <File Include="Views/Login/LoginOption.cshtml">
+      <publishTime>06/30/2020 11:34:45</publishTime>
     </File>
     <File Include="Views/Login/SchoolLogin.cshtml">
       <publishTime>08/12/2019 15:15:45</publishTime>
@@ -523,25 +526,25 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>12/09/2018 12:04:46</publishTime>
     </File>
     <File Include="Views/School/TruongQuanLyUngVien.cshtml">
-      <publishTime>08/21/2019 16:17:36</publishTime>
+      <publishTime>06/30/2020 14:08:30</publishTime>
     </File>
     <File Include="Views/Shared/Error.cshtml">
       <publishTime>07/29/2018 17:01:26</publishTime>
     </File>
     <File Include="Views/Shared/_Home_Layout.cshtml">
-      <publishTime>08/04/2019 15:44:24</publishTime>
+      <publishTime>06/29/2020 17:11:10</publishTime>
     </File>
     <File Include="Views/Shared/_Layout.cshtml">
-      <publishTime>09/04/2019 22:48:40</publishTime>
+      <publishTime>05/21/2020 10:29:20</publishTime>
     </File>
     <File Include="Views/ThuyenChuyen/CapNhatThuyenChuyen.cshtml">
       <publishTime>04/17/2019 16:31:01</publishTime>
     </File>
     <File Include="Views/ThuyenChuyen/DangKimoi.cshtml">
-      <publishTime>04/04/2019 21:35:03</publishTime>
+      <publishTime>05/09/2020 20:14:43</publishTime>
     </File>
     <File Include="Views/ThuyenChuyen/DangKiThanhCong.cshtml">
-      <publishTime>03/18/2019 15:29:25</publishTime>
+      <publishTime>05/19/2020 15:06:35</publishTime>
     </File>
     <File Include="Views/ThuyenChuyen/HoSoMau.cshtml">
       <publishTime>12/12/2018 15:43:13</publishTime>
@@ -550,7 +553,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>03/20/2019 15:17:29</publishTime>
     </File>
     <File Include="Views/ThuyenChuyen/Option.cshtml">
-      <publishTime>03/19/2019 15:09:02</publishTime>
+      <publishTime>05/19/2020 15:09:36</publishTime>
     </File>
     <File Include="Views/ThuyenChuyen/TienDoHoSo.cshtml">
       <publishTime>04/11/2019 10:19:06</publishTime>
@@ -559,46 +562,52 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>03/31/2019 16:06:41</publishTime>
     </File>
     <File Include="Views/ThuyenChuyenNgoaiTinh/DangKiThanhCong.cshtml">
-      <publishTime>03/20/2019 14:46:37</publishTime>
+      <publishTime>05/12/2020 16:16:08</publishTime>
     </File>
     <File Include="Views/ThuyenChuyenNgoaiTinh/Index.cshtml">
       <publishTime>03/31/2019 15:57:13</publishTime>
     </File>
     <File Include="Views/ThuyenChuyenQuanLyChung/ChiTietHoSo.cshtml">
-      <publishTime>04/02/2019 14:17:15</publishTime>
+      <publishTime>06/08/2020 10:59:54</publishTime>
     </File>
     <File Include="Views/ThuyenChuyenQuanLyChung/ChiTietHoSoNgoaiTinh.cshtml">
       <publishTime>04/03/2019 10:59:51</publishTime>
     </File>
     <File Include="Views/ThuyenChuyenQuanLyChung/DanhSachHoSoDaTiepNhan.cshtml">
-      <publishTime>04/02/2019 09:42:45</publishTime>
+      <publishTime>05/21/2020 09:57:36</publishTime>
     </File>
     <File Include="Views/ThuyenChuyenQuanLyChung/DuyetHoSo.cshtml">
-      <publishTime>04/18/2019 09:57:03</publishTime>
+      <publishTime>05/26/2020 16:03:50</publishTime>
     </File>
     <File Include="Views/ThuyenChuyenQuanLyChung/DuyetHoSoNgoaiTinh.cshtml">
       <publishTime>04/03/2019 10:43:57</publishTime>
     </File>
     <File Include="Views/ThuyenChuyenQuanLyChung/TiepNhanHoSo.cshtml">
-      <publishTime>03/20/2019 11:51:16</publishTime>
+      <publishTime>05/25/2020 15:34:56</publishTime>
     </File>
     <File Include="Views/ThuyenChuyenQuanLyChung/TrangThaiHoSo.cshtml">
-      <publishTime>08/04/2019 15:10:35</publishTime>
+      <publishTime>06/08/2020 17:10:07</publishTime>
     </File>
     <File Include="Views/ThuyenChuyenQuanLyChung/TrangThaiHoSoNgoaiTinh.cshtml">
       <publishTime>03/20/2019 14:31:10</publishTime>
     </File>
     <File Include="Views/TuyenDung/CapNhatHoSoUngTuyen.cshtml">
-      <publishTime>07/23/2019 11:08:03</publishTime>
+      <publishTime>06/30/2020 14:04:54</publishTime>
     </File>
     <File Include="Views/TuyenDung/InHoSoUngTuyen.cshtml">
-      <publishTime>06/06/2019 23:11:57</publishTime>
+      <publishTime>06/30/2020 15:09:31</publishTime>
     </File>
     <File Include="Views/TuyenDung/KetQuaTuyenDung.cshtml">
       <publishTime>08/06/2019 17:08:17</publishTime>
     </File>
+    <File Include="Views/TuyenDung/KiemTraCMND.cshtml">
+      <publishTime>06/17/2020 17:01:44</publishTime>
+    </File>
     <File Include="Views/TuyenDung/KiemTraMaDangKi.cshtml">
-      <publishTime>05/31/2019 22:30:55</publishTime>
+      <publishTime>06/17/2020 15:32:31</publishTime>
+    </File>
+    <File Include="Views/TuyenDung/TaoMoiHoSoUngTuyen.cshtml">
+      <publishTime>06/30/2020 14:06:33</publishTime>
     </File>
     <File Include="Views/TuyenDung/TrangThaiDangKy.cshtml">
       <publishTime>06/04/2019 15:00:33</publishTime>
@@ -628,7 +637,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>09/04/2019 22:38:34</publishTime>
     </File>
     <File Include="Views/TuyenDungQuanlyChung/QuanLyChung.cshtml">
-      <publishTime>07/10/2019 17:50:38</publishTime>
+      <publishTime>06/24/2020 10:01:14</publishTime>
     </File>
     <File Include="Views/TuyenDungQuanlyChung/QuanLyKetQuaTuyenDung.cshtml">
       <publishTime>07/23/2019 13:51:04</publishTime>
@@ -649,7 +658,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>07/29/2018 17:01:26</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>08/21/2019 16:25:05</publishTime>
+      <publishTime>06/29/2020 16:07:42</publishTime>
     </File>
   </ItemGroup>
 </Project>

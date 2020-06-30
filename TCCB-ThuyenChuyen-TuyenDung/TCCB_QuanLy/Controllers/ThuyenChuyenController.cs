@@ -256,13 +256,13 @@ namespace TCCB_QuanLy.Controllers
 
 
 
-        //[Route("tiendogiaiquyethoso")]
-        //[HttpGet]
-        //public ActionResult TienDoHoSo()
-        //{
+        [Route("tiendogiaiquyethoso")]
+        [HttpGet]
+        public ActionResult TienDoHoSo()
+        {
 
-        //    return View();
-        //}
+            return View();
+        }
         //[Route("tiendogiaiquyethoso/{madangki}/{cmnd}")]
         //[HttpGet]
         //public ActionResult TienDoHoSoJson(string madangki, string cmnd)

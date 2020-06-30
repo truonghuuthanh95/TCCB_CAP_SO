@@ -22,7 +22,7 @@
 </div>
 <div class="panel panel-default">
     <div class="panel-heading form-group">
-        <form class="form-inline">                    
+        <form class="form-inline">
             <label style="font-size: 16px;">Năm</label>
             <div class="form-group">
                 <select class="form-control" id="nam" onchange="listenOnChange();">
@@ -44,8 +44,8 @@
                 </select>
             </div>
             @*<div class="form-group">
-                <a role="button" class="btn btn-primary" href="/thuyenchuyen/downloadexcelthuyenchuyen/@ViewBag.StatusId/@ViewBag.Year">Xuất Excel</a>
-            </div>*@
+                    <a role="button" class="btn btn-primary" href="/thuyenchuyen/downloadexcelthuyenchuyen/@ViewBag.StatusId/@ViewBag.Year">Xuất Excel</a>
+                </div>*@
         </form>
     </div>
     <div class="panel-body table-responsive">
@@ -56,7 +56,7 @@
                     <th>Hộ tên</th>
                     <th>Số CMND</th>
                     <th>Đang công tác</th>
-                    <th>Xin chuyễn đến</th>  
+                    <th>Xin chuyễn đến</th>
                     <th>Ngày tiếp nhận</th>
                 </tr>
             </thead>
@@ -68,8 +68,26 @@
                             <td>@item.TienTo@item.Id</td>
                             <td>@item.HoTen</td>
                             <td>@item.CMND</td>
-                            <td>@item.DangCongTac</td>
-                            <td>@item.XinChuyenDen</td>   
+                            @{
+                                if (item.Province.Id != 79)
+                                {
+                                    <td>@item.DVDCTTenTruong</td>
+                                }
+                                else
+                                {
+                                    <td>@item.School1.TenTruong</td>
+                                }
+                            }
+                            =@{
+                                if (item.Province1.Id != 79)
+                                {
+                                    <td>@item.DVCDTenTruong</td>
+                                }
+                                else
+                                {
+                                    <td>@item.School.TenTruong</td>
+                                }
+                            }
                             <td>@item.NgayTiepNhan.ToString("dd/MM/yyyy")</td>
                         </tr>
                     }

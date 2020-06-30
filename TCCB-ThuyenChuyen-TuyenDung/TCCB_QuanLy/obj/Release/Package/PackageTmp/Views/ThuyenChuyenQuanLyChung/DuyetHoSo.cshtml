@@ -1,7 +1,7 @@
 ﻿@{
-        ViewBag.Title = "Tiếp nhận hồ sơ";
-        Layout = "~/Views/Shared/_Layout.cshtml";        
-    }
+    ViewBag.Title = "Tiếp nhận hồ sơ";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
 <div class="row">
     <ol class="breadcrumb">
         <li>
@@ -49,9 +49,27 @@
                 <div class="panel-body">
                     <form class="form-horizontal">
                         <div class="form-group">
+                            <label for="inputEmail3" class="col-sm-4 control-label">Từ</label>
+                            <div class="col-sm-6">
+                                <p class="form-control-static" id="tentruongdct">@ViewBag.ThuyenChuyen.Province.Type @ViewBag.ThuyenChuyen.Province.Name</p>
+                            </div>
+                        </div>
+                        <div class="form-group">
                             <label for="inputEmail3" class="col-sm-4 control-label">Tên trường</label>
                             <div class="col-sm-6">
-                                <p class="form-control-static" id="tentruongdct">@ViewBag.ThuyenChuyen.School.TenTruong</p>
+                                @{
+                                    if (ViewBag.ThuyenChuyen.Province.Id != 79)
+                                    {
+                                        <p class="form-control-static" id="tentruongdct"> @ViewBag.ThuyenChuyen.DVDCTTenTruong</p>
+
+                                    }
+                                    else
+                                    {
+                                        <p class="form-control-static" id="tentruongdct">@ViewBag.ThuyenChuyen.School1.TenTruong</p>
+
+                                    }
+                                }
+
                             </div>
                         </div>
                         <div class="form-group">
@@ -83,9 +101,28 @@
                 <div class="panel-body">
                     <form class="form-horizontal">
                         <div class="form-group">
+                            <label for="inputEmail3" class="col-sm-4 control-label">Tỉnh/Thành phố</label>
+                            <div class="col-sm-6">
+                                <p class="form-control-static" id="captruongcd">@ViewBag.ThuyenChuyen.Province1.Type @ViewBag.ThuyenChuyen.Province1.Name</p>
+                            </div>
+                        </div>
+                        <div class="form-group">
                             <label for="inputEmail3" class="col-sm-4 control-label">Tên trường</label>
                             <div class="col-sm-6">
-                                <p class="form-control-static" id="tentruongcd">@ViewBag.ThuyenChuyen.School1.TenTruong</p>
+                                @{
+                                    if (ViewBag.ThuyenChuyen.Province1.Id != 79)
+
+                                    {
+                                        <p class="form-control-static" id="tentruongcd">@ViewBag.ThuyenChuyen.DVCDTenTruong</p>
+
+                                    }
+                                    else
+                                    {
+                                        <p class="form-control-static" id="tentruongcd">@ViewBag.ThuyenChuyen.School.TenTruong</p>
+
+                                    }
+                                }
+
                             </div>
                         </div>
                         <div class="form-group">
@@ -325,11 +362,11 @@
                 <p class="text-center"><b style="border: solid 1px; padding: 9px;">Mã số Hồ sơ đăng ký: @ViewBag.ThuyenChuyen.TienTo@ViewBag.MaHoSo</b></p>
                 <div class="col-sm-12 col-xs-12">
                     <p><b>1. Tên người đăng kí chuyển công tác: </b>@ViewBag.ThuyenChuyen.HoTen</p>
-                    <p><b>2. Đơn vị đang công tác: </b>@ViewBag.ThuyenChuyen.School.TenTruong</p>
+                    <p><b>2. Đơn vị đang công tác: </b>@ViewBag.ThuyenChuyen.School1.TenTruong</p>
                     <p>
                         <b>3. Nội dung Hồ sơ: </b>
                         @{
-                            if (ViewBag.ThuyenChuyen.School.Id >= 9630 && ViewBag.ThuyenChuyen.School.Id <= 9654 )
+                            if (ViewBag.ThuyenChuyen.School.Id >= 9630 && ViewBag.ThuyenChuyen.School.Id <= 9654)
                             {
                                 <span>Chuyển công tác đối với các đơn vị trong biên chế TP.HCM đến Sở GD&ĐT.</span>
                             }
@@ -352,7 +389,7 @@
                     <p><label><input style=" transform: scale(1.5);" type="checkbox" name="checkbox" value="value"> Bản sao có chứng thực quyết định tuyển dụng viên chức và quyết định bổ nhiệm chức danh nghề nghiệp đối với viên chức;</label></p>
                     <p><label><input style=" transform: scale(1.5);" type="checkbox" name="checkbox" value="value"> Bản sao quyết định lương hiện hưởng;</label></p>
                     <p><label><input style=" transform: scale(1.5);" type="checkbox" name="checkbox" value="value"> Giấy chứng nhận sức khỏe có kết luận đủ sức khỏe công tác, do cơ quan y tế có thẩm quyền cấp theo quy định tại Thông tư số 14/2013/TT-BYT ngày 06 tháng 5 năm 2013 của Bộ Y tế hướng dẫn khám sức khỏe (trong vòng 6 tháng tính đến thời điểm nộp hồ sơ);</label></p>
-                    <p><label><input style=" transform: scale(1.5);" type="checkbox" name="checkbox" value="value"> Phiếu đánh giá, phân loại viên chức 02 năm học liền kề (2017 – 2018 và 2018-2019);</label></p>
+                    <p><label><input style=" transform: scale(1.5);" type="checkbox" name="checkbox" value="value"> Phiếu đánh giá, phân loại viên chức 02 năm học liền kề (@DateTime.Now.AddYears(-2).Year - @DateTime.Now.AddYears(-1).Year và @DateTime.Now.AddYears(-1).Year - @DateTime.Now.Year);</label></p>
                     <p><b>5. Ngày nộp hồ sơ: </b>@DateTime.Now.ToString("dd/MM/yyyy")</p>
                     <p><b>6. Số điện thoại liên hệ: 028.38290927 (Phòng Tổ chức Cán bộ)</b>	</p>
                     <p><b>7. Lưu ý: Sở Giáo dục và Đào tạo thường xuyên cấp nhật tiến độ giải quyết tại trang web: http://tuyendung.hcm.edu.vn/thuyenchuyen/tiendogiaiquyethoso./. </b></p>
@@ -383,12 +420,12 @@
             $.get('/thuyenchuyen/kiemtramahoso/' + $('#mahoso').val().trim(), function (data, status) {
                 if (data.StatusCode == 200 && status == 'success') {
                     var dataJson = JSON.parse(data.Results);
-                    if (dataJson.TienTo == 'TC') {
-                        window.location.href = '/thuyenchuyen/duyethoso/' + dataJson.Id;
-                    }
-                    else {
-                        window.location.href = '/thuyenchuyen/duyethosongoaitinh/' + dataJson.Id;
-                    }
+                    //if (dataJson.TienTo == 'TC') {
+                    window.location.href = '/thuyenchuyen/duyethoso/' + data.Results;
+                    //}
+                    //else {
+                    //    window.location.href = '/thuyenchuyen/duyethosongoaitinh/' + dataJson.Id;
+                    //}
                     $('#preloader').hide();
                 }
                 else if (data.StatusCode == 403 && status == 'success') {

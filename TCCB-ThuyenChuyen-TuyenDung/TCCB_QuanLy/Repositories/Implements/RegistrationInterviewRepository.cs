@@ -15,50 +15,48 @@ namespace TCCB_QuanLy.Repositories.Implements
         public RegistrationInterviewRepository(TCCBDB db)
         {
             _db = db;
-        }       
-        
-        public RegistrationInterview GetRegistrationInterviewById(int id)
-        {
-            RegistrationInterview registrationInterview = _db.RegistrationInterviews             
-               .SingleOrDefault(s => s.Id == id);
-               
-            return registrationInterview;
         }
 
-        public RegistrationInterview GetRegistrationInterviewByIdAndIdentifyCard(string id, string identifyCard)
+        public TuyenDung2020 GetTuyenDungById(int id)
         {
-            RegistrationInterview registrationInterview = _db.RegistrationInterviews
+            TuyenDung2020 TuyenDung = _db.TuyenDung2020
+               .SingleOrDefault(s => s.Id == id);
+
+            return TuyenDung;
+        }
+
+        public TuyenDung2020 GetTuyenDungByIdAndIdentifyCard(string id, string identifyCard)
+        {
+            TuyenDung2020 TuyenDung = _db.TuyenDung2020
                 .Include("Ward.District")
                 .Include("Ward1.District")
                 .SingleOrDefault(s => s.TienTo + s.Id.ToString() == id.ToUpper());
-            if (registrationInterview == null || registrationInterview.IdentifyCard.Trim() != identifyCard)
+            if (TuyenDung == null || TuyenDung.IdentifyCard.Trim() != identifyCard)
             {
                 return null;
 
-            }            
-                return registrationInterview;
-            
+            }
+            return TuyenDung;
+
         }
 
-        
-        public RegistrationInterview GetRegistrationInterviewByIdWithDetail(int id)
+
+        public TuyenDung2020 GetTuyenDungByIdWithDetail(int id)
         {
-            RegistrationInterview registrationInterview = _db.RegistrationInterviews
+            TuyenDung2020 TuyenDung = _db.TuyenDung2020
                 .Include("Ward.District.Province")
                 .Include("Ward1.District.Province")
-                .Include("BangTotNghiep")                
+                .Include("BangTotNghiep")
                 .Include("TrinhDoNgoaiNgu")
                 .Include("XepLoaiHocLuc")
                 .Include("TrinhDoCaoNhat")
-                .Include("TrinhDoTinHoc")                            
+                .Include("TrinhDoTinHoc")
                 .Include("ChuyenNganhDaoTao")
                 .Include("LamViecTrongNganh")
                 .Include("MonDuTuyen.ViTriUngTuyen")
                 .Include("HinhThucDaoTao")
                 .Include("Province")
-                .Include("District")
-                .Include("District1")
-                .Include("District2")
+                
                 .Include("TonGiao")
                 .Include("DanToc")
                 .Include("ThanhPhanBanThanHienTai")
@@ -68,60 +66,61 @@ namespace TCCB_QuanLy.Repositories.Implements
                 .Include("ChungChiNghiepVuSuPham")
                 .Include("Province1")
                 .Include("Province2")
+                .Include("School")
                 .SingleOrDefault(s => s.Id == id);
-            return registrationInterview;
-        }                  
-
-        public RegistrationInterview CapNhatRegistrationInterview(RegistrationInterview registrationInterview)
-        {           
-            _db.Entry(registrationInterview).State = EntityState.Modified;
-           
-                _db.SaveChanges();
-                     
-            return registrationInterview;
+            return TuyenDung;
         }
 
-        public RegistrationInterview TaoMoiUngVien(RegistrationInterview registrationInterview)
-        {           
-            _db.RegistrationInterviews.Add(registrationInterview);
+        public TuyenDung2020 CapNhatTuyenDung(TuyenDung2020 TuyenDung)
+        {
+            _db.Entry(TuyenDung).State = EntityState.Modified;
+
             _db.SaveChanges();
-            return registrationInterview;
-            
+
+            return TuyenDung;
+        }
+
+        public TuyenDung2020 TaoMoiUngVien(TuyenDung2020 TuyenDung)
+        {
+            _db.TuyenDung2020.Add(TuyenDung);
+            _db.SaveChanges();
+            return TuyenDung;
+
 
         }
 
-        public List<RegistrationInterview> GetRegistrationInterviewsByCmnd(string cmnd)
+        public List<TuyenDung2020> GetTuyenDungsByCmnd(string cmnd)
         {
-            List<RegistrationInterview> registrationInterviews = _db.RegistrationInterviews.Where(s => s.IdentifyCard.Trim() == cmnd.Trim()).OrderByDescending(s => s.CreatedAt).ToList();
-            return registrationInterviews;
+            List<TuyenDung2020> TuyenDungs = _db.TuyenDung2020.Where(s => s.IdentifyCard.Trim() == cmnd.Trim()).OrderByDescending(s => s.CreatedAt).ToList();
+            return TuyenDungs;
         }
 
-        public int GetRegistrationInterviewsDaDangkiSoLuong()
+        public int GetTuyenDungsDaDangkiSoLuong()
         {
-            int count = _db.RegistrationInterviews.Where(s => s.CreatedAt.Value.Year == DateTime.Now.Year && (s.IsActive == true || s.IsActive == null)).Count();
+            int count = _db.TuyenDung2020.Where(s => s.CreatedAt.Value.Year == DateTime.Now.Year && (s.IsActive == true || s.IsActive == null)).Count();
             return count;
         }
 
-        public List<RegistrationInterview> GetRegistrationInterviewsDaDangKi()
+        public List<TuyenDung2020> GetTuyenDungsDaDangKi()
         {
-            List<RegistrationInterview> registrationInterviews = _db.RegistrationInterviews.Include("Account").Where(s => s.CreatedAt.Value.Year == DateTime.Now.Year && (s.IsActive == true || s.IsActive == null)).ToList();
-            return registrationInterviews;
+            List<TuyenDung2020> TuyenDungs = _db.TuyenDung2020.Include("Account").Where(s => s.CreatedAt.Value.Year == DateTime.Now.Year && (s.IsActive == true || s.IsActive == null)).ToList();
+            return TuyenDungs;
         }
 
-        public List<RegistrationInterview> GetRegistrationInterviewsChuaCapNhat()
+        public List<TuyenDung2020> GetTuyenDungsChuaCapNhat()
         {
-            List<RegistrationInterview> registrationInterviews = _db.RegistrationInterviews.Include("Account").Where(s => s.CreatedAt.Value.Year == DateTime.Now.Year && (s.IsActive == true || s.IsActive == null) && s.UpdatedAt == null).ToList();
-            return registrationInterviews;
+            List<TuyenDung2020> TuyenDungs = _db.TuyenDung2020.Include("Account").Where(s => s.CreatedAt.Value.Year == DateTime.Now.Year && (s.IsActive == true || s.IsActive == null) && s.UpdatedAt == null).ToList();
+            return TuyenDungs;
         }
 
-        public List<RegistrationInterview> GetRegistrationInterviewsDaHoanThanh()
+        public List<TuyenDung2020> GetTuyenDungsDaHoanThanh()
         {
-            List<RegistrationInterview> registrationInterviews = _db.RegistrationInterviews.Include("Account").Where(s => s.CreatedAt.Value.Year == DateTime.Now.Year && (s.IsActive == true || s.IsActive == null) && s.UpdatedAt != null).ToList();
-            return registrationInterviews;
+            List<TuyenDung2020> TuyenDungs = _db.TuyenDung2020.Include("Account").Where(s => s.CreatedAt.Value.Year == DateTime.Now.Year && (s.IsActive == true || s.IsActive == null) && s.UpdatedAt != null).ToList();
+            return TuyenDungs;
         }
-        public List<RegistrationInterview> GetRegistrationInterviewsDaHoanThanhWithDetail()
+        public List<TuyenDung2020> GetTuyenDungsDaHoanThanhWithDetail()
         {
-            List<RegistrationInterview> registrationInterviews = _db.RegistrationInterviews
+            List<TuyenDung2020> TuyenDungs = _db.TuyenDung2020
                 .Include("Ward.District.Province")
                 .Include("Ward1.District.Province")
                 .Include("BangTotNghiep")
@@ -148,98 +147,130 @@ namespace TCCB_QuanLy.Repositories.Implements
                 .Include("Province2")
                 .Include("Account")
                 .Where(s => s.CreatedAt.Value.Year == DateTime.Now.Year && (s.IsActive == true) && s.UpdatedAt != null).ToList();
-            return registrationInterviews;
+            return TuyenDungs;
         }
-        public int GetRegistrationInterviewsChuaCapNhatSoLuong()
+        public int GetTuyenDungsChuaCapNhatSoLuong()
         {
-            int count = _db.RegistrationInterviews.Where(s => s.CreatedAt.Value.Year == DateTime.Now.Year && (s.IsActive == true || s.IsActive == null) && s.UpdatedAt == null).Count();
+            int count = _db.TuyenDung2020.Where(s => s.CreatedAt.Value.Year == DateTime.Now.Year && (s.IsActive == true || s.IsActive == null) && s.UpdatedAt == null).Count();
             return count;
         }
 
-        public int GetRegistrationInterviewsDaHoanThanhSoLuong()
+        public int GetTuyenDungsDaHoanThanhSoLuong()
         {
-            int count = _db.RegistrationInterviews.Where(s => s.CreatedAt.Value.Year == DateTime.Now.Year && (s.IsActive == true || s.IsActive == null) && s.UpdatedAt != null).Count();
+            int count = _db.TuyenDung2020.Where(s => s.CreatedAt.Value.Year == DateTime.Now.Year && (s.IsActive == true || s.IsActive == null) && s.UpdatedAt != null).Count();
             return count;
         }
 
-        public int GetRegistrationInterviewsHopLeSoLuong()
+        public int GetTuyenDungsHopLeSoLuong()
         {
-            int count = _db.RegistrationInterviews.Where(s => s.CreatedAt.Value.Year == DateTime.Now.Year && s.TrangThaiHosoTuyenDungId == 1 && (s.IsActive == true || s.IsActive == null)).Count();
+            int count = _db.TuyenDung2020.Where(s => s.CreatedAt.Value.Year == DateTime.Now.Year && s.TrangThaiHosoTuyenDungId == 1 && (s.IsActive == true || s.IsActive == null)).Count();
             return count;
         }
 
-        public List<HoSoHopLe> GetRegistrationInterviewsHopLe()
-        {
-            List<HoSoHopLe> hoSoHopLes = _db.HoSoHopLes.Include("RegistrationInterview").Include("RegistrationInterview.Account1").Where(s => s.CreatedAt.Value.Year == DateTime.Now.Year && s.RegistrationInterview.TrangThaiHosoTuyenDungId == 1 && (s.RegistrationInterview.IsActive == true || s.RegistrationInterview.IsActive == null)).ToList();
-            return hoSoHopLes;
-        }
+        //public List<HoSoHopLe> GetTuyenDungsHopLe()
+        //{
+        //    List<HoSoHopLe> hoSoHopLes = _db.HoSoHopLes.Include("TuyenDung").Include("TuyenDung.Account1").Where(s => s.CreatedAt.Value.Year == DateTime.Now.Year && s.TuyenDung.TrangThaiHosoTuyenDungId == 1 && (s.TuyenDung.IsActive == true || s.TuyenDung.IsActive == null)).ToList();
+        //    return hoSoHopLes;
+        //}
 
         public List<RegistrationInterviewStatusRegistedCountDTO> GetSoluongDangkyTheoViTriUngTuyen()
         {
-            var registrationInterviews = _db.RegistrationInterviews
+            var TuyenDungs = _db.TuyenDung2020
                 .Where(s => s.IsActive == true && s.MonDuTuyenId != null)
                 .Include("MonDuTuyen")
                 .GroupBy(s => s.MonDuTuyenId)
-                .Select(s => new RegistrationInterviewStatusRegistedCountDTO { ViTriUngTuyen = s.Key.ToString(), Quantity = s.Count(), Targets = 0 }).ToList();            
-            return registrationInterviews;
+                .Select(s => new RegistrationInterviewStatusRegistedCountDTO { ViTriUngTuyen = s.Key.ToString(), Quantity = s.Count(), Targets = 0 }).ToList();
+            return TuyenDungs;
         }
 
-        public RegistrationInterview GetRegistrationInterviewByTienToId(string id)
+        public TuyenDung2020 GetTuyenDungByTienToId(string id)
         {
-            RegistrationInterview registrationInterview = _db.RegistrationInterviews.Include("Account1").Where(s => s.TienTo + s.Id.ToString() == id).SingleOrDefault();
-            return registrationInterview;
+            TuyenDung2020 TuyenDung = _db.TuyenDung2020.Include("Account1").Where(s => s.TienTo + s.Id.ToString() == id).SingleOrDefault();
+            return TuyenDung;
         }
 
-        public List<RegistrationInterview> GetRegistrationInterviewsIsCheckByAccountId(int id)
+        public List<TuyenDung2020> GetTuyenDungsIsCheckByAccountId(int id)
         {
-            List<RegistrationInterview> registrationInterviews = _db.RegistrationInterviews.Where(s => s.NguoiRaSoat == id).ToList();
-            return registrationInterviews;
+            List<TuyenDung2020> TuyenDungs = _db.TuyenDung2020.Where(s => s.NguoiRaSoat == id).ToList();
+            return TuyenDungs;
         }
 
-        public List<HoSoHopLe> GetRegistrationInterviewsHopLeWithDetail()
-        {
-            List<HoSoHopLe> hoSoHopLes = _db.HoSoHopLes
-                .Include("RegistrationInterview")
-                .Include("RegistrationInterview.Ward.District.Province")
-                .Include("RegistrationInterview.Ward1.District.Province")
-                .Include("RegistrationInterview.BangTotNghiep")
-                .Include("RegistrationInterview.TrinhDoNgoaiNgu")
-                .Include("RegistrationInterview.XepLoaiHocLuc")
-                .Include("RegistrationInterview.TrinhDoCaoNhat")
-                .Include("RegistrationInterview.TrinhDoTinHoc")
-                .Include("RegistrationInterview.ChuyenNganhDaoTao")
-                .Include("RegistrationInterview.LamViecTrongNganh")
-                .Include("RegistrationInterview.MonDuTuyen.ViTriUngTuyen")
-                .Include("RegistrationInterview.HinhThucDaoTao")
-                .Include("RegistrationInterview.Province")
-                .Include("RegistrationInterview.District")
-                .Include("RegistrationInterview.District1")
-                .Include("RegistrationInterview.District2")
-                .Include("RegistrationInterview.TonGiao")
-                .Include("RegistrationInterview.DanToc")
-                .Include("RegistrationInterview.ThanhPhanBanThanHienTai")
-                .Include("RegistrationInterview.DoiTuongUuTien1")
-                .Include("RegistrationInterview.TruongHopDacBiet")
-                .Include("RegistrationInterview.TrinhDoNgoaiNguKhac")
-                .Include("RegistrationInterview.ChungChiNghiepVuSuPham")
-                .Include("RegistrationInterview.Province1")
-                .Include("RegistrationInterview.Province2")
-                .Include("RegistrationInterview.Account")
-                .Include("RegistrationInterview.Account1")
-                .Where(s => s.CreatedAt.Value.Year == DateTime.Now.Year && s.RegistrationInterview.TrangThaiHosoTuyenDungId == 1 && (s.RegistrationInterview.IsActive == true || s.RegistrationInterview.IsActive == null)).ToList();
-            return hoSoHopLes;
-        }
+        //public List<HoSoHopLe> GetTuyenDungsHopLeWithDetail()
+        //{
+        //    List<HoSoHopLe> hoSoHopLes = _db.HoSoHopLes
+        //        .Include("TuyenDung")
+        //        .Include("TuyenDung.Ward.District.Province")
+        //        .Include("TuyenDung.Ward1.District.Province")
+        //        .Include("TuyenDung.BangTotNghiep")
+        //        .Include("TuyenDung.TrinhDoNgoaiNgu")
+        //        .Include("TuyenDung.XepLoaiHocLuc")
+        //        .Include("TuyenDung.TrinhDoCaoNhat")
+        //        .Include("TuyenDung.TrinhDoTinHoc")
+        //        .Include("TuyenDung.ChuyenNganhDaoTao")
+        //        .Include("TuyenDung.LamViecTrongNganh")
+        //        .Include("TuyenDung.MonDuTuyen.ViTriUngTuyen")
+        //        .Include("TuyenDung.HinhThucDaoTao")
+        //        .Include("TuyenDung.Province")
+        //        .Include("TuyenDung.District")
+        //        .Include("TuyenDung.District1")
+        //        .Include("TuyenDung.District2")
+        //        .Include("TuyenDung.TonGiao")
+        //        .Include("TuyenDung.DanToc")
+        //        .Include("TuyenDung.ThanhPhanBanThanHienTai")
+        //        .Include("TuyenDung.DoiTuongUuTien1")
+        //        .Include("TuyenDung.TruongHopDacBiet")
+        //        .Include("TuyenDung.TrinhDoNgoaiNguKhac")
+        //        .Include("TuyenDung.ChungChiNghiepVuSuPham")
+        //        .Include("TuyenDung.Province1")
+        //        .Include("TuyenDung.Province2")
+        //        .Include("TuyenDung.Account")
+        //        .Include("TuyenDung.Account1")
+        //        .Where(s => s.CreatedAt.Value.Year == DateTime.Now.Year && s.tuyend.TrangThaiHosoTuyenDungId == 1 && (s.TuyenDung.IsActive == true || s.TuyenDung.IsActive == null)).ToList();
+        //    return hoSoHopLes;
+        //}
 
-        public int GetRegistrationInterviewsDaRaXoatSoLuong()
+        public int GetTuyenDungsDaRaXoatSoLuong()
         {
-            int count = _db.RegistrationInterviews.Where(s => s.CreatedAt.Value.Year == DateTime.Now.Year && (s.IsActive == true || s.IsActive == null) && s.NguoiRaSoat != null).Count();
+            int count = _db.TuyenDung2020.Where(s => s.CreatedAt.Value.Year == DateTime.Now.Year && (s.IsActive == true || s.IsActive == null) && s.NguoiRaSoat != null).Count();
             return count;
         }
 
-        public int GetRegistrationInterviewsKhongHopLeSoLuong()
+        public int GetTuyenDungsKhongHopLeSoLuong()
         {
-            int count = _db.RegistrationInterviews.Where(s => s.CreatedAt.Value.Year == DateTime.Now.Year && (s.IsActive == true || s.IsActive == null) && s.TrangThaiHosoTuyenDungId == 3).Count();
+            int count = _db.TuyenDung2020.Where(s => s.CreatedAt.Value.Year == DateTime.Now.Year && (s.IsActive == true || s.IsActive == null) && s.TrangThaiHosoTuyenDungId == 3).Count();
             return count;
+        }
+
+        public List<HoSoHopLe> GetTuyenDungsHopLe()
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<HoSoHopLe> GetTuyenDungsHopLeWithDetail()
+        {
+            throw new NotImplementedException();
+        }
+
+        public TuyenDung2020 GetTuyenDungByCMND(string cmnd)
+        {
+            TuyenDung2020 tuyenDung = _db.TuyenDung2020.Where(s => s.IdentifyCard == cmnd.Trim()).SingleOrDefault();
+            return tuyenDung;
+        }
+
+        public List<TuyenDung2020> GetTuyenDungBySchoolID(int schoolID)
+        {
+            List<TuyenDung2020> tuyenDung2020s = _db.TuyenDung2020.AsNoTracking().Include("MonDuTuyen.ViTriUngTuyen")
+                .Include("TrangThaiHosoTuyenDung").Where(s => s.School.Id == schoolID).ToList();
+            return tuyenDung2020s;
+        }
+
+        public List<TuyenDung2020> GetTuyenDungsByStatus(int id)
+        {
+            List<TuyenDung2020> tuyenDung2020s = _db.TuyenDung2020.AsNoTracking()
+                .Include("School")
+                .Include("MonDuTuyen.ViTriUngTuyen")
+                .Where(s => s.TrangThaiHosoTuyenDungId == id).ToList();
+            return tuyenDung2020s;
         }
     }
 }

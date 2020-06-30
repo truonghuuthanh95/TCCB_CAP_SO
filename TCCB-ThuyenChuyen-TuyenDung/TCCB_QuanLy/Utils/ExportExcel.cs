@@ -13,7 +13,7 @@ namespace TCCB_QuanLy.Utils
 {
     public class ExportExcel
     {
-        public static Task GenerateXLSThuyenChuyen(List<ThuyenChuyen> thuyenChuyens, string filepath, string status)
+        public static Task GenerateXLSThuyenChuyen(List<ThuyenChuyen2020> thuyenChuyens, string filepath, string status)
         {
             return Task.Run(() =>
             {
@@ -61,10 +61,26 @@ namespace TCCB_QuanLy.Utils
                     {
                         ws.Cells[i + 8, 1].Value = i + 1;
                         ws.Cells[i + 8, 2].Value = thuyenChuyens.ElementAt(i).TienTo + thuyenChuyens.ElementAt(i).Id;
-                        ws.Cells[i + 8, 3].Value = thuyenChuyens.ElementAt(i).School.TenTruong;
+                        if (thuyenChuyens.ElementAt(i).Province.Id != 79)
+                        {
+                            ws.Cells[i + 8, 3].Value = thuyenChuyens.ElementAt(i).DVDCTTenTruong;
+                        }
+                        else
+                        {
+                            ws.Cells[i + 8, 3].Value = thuyenChuyens.ElementAt(i).School1.TenTruong;
+                        }
+                        
                         ws.Cells[i + 8, 4].Value = thuyenChuyens.ElementAt(i).CapDayDVDCT;
                         ws.Cells[i + 8, 5].Value = thuyenChuyens.ElementAt(i).MonDuTuyen.Name;
-                        ws.Cells[i + 8, 6].Value = thuyenChuyens.ElementAt(i).School1.TenTruong;
+                        if (thuyenChuyens.ElementAt(i).Province1.Id != 79)
+                        {
+                            ws.Cells[i + 8, 3].Value = thuyenChuyens.ElementAt(i).DVCDTenTruong;
+                        }
+                        else
+                        {
+                            ws.Cells[i + 8, 6].Value = thuyenChuyens.ElementAt(i).School.TenTruong;
+                        }
+                        
                         ws.Cells[i + 8, 7].Value = thuyenChuyens.ElementAt(i).CapDayDVCD;
                         ws.Cells[i + 8, 8].Value = thuyenChuyens.ElementAt(i).MonDuTuyen.Name;
                         ws.Cells[i + 8, 9].Value = thuyenChuyens.ElementAt(i).HoTen;

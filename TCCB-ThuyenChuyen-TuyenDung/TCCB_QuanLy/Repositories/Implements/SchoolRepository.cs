@@ -22,6 +22,12 @@ namespace TCCB_QuanLy.Repositories.Implements
             return school;
         }
 
+        public School GetSchoolByMaTruong(string maTruong)
+        {
+            School school = _db.Schools.Include("Ward.District").Where(s => s.MaTruong.Trim() == maTruong.Trim()).SingleOrDefault();
+            return school;
+        }
+
         public List<School> GetSchoolsByDistrictAndCapHoc(int? districtId, int? caphoc)
         {
             List<School> schools = _db.Schools.Where(s => s.Ward.DistrictID == districtId).Where(s => s.CapTruongId == caphoc).ToList();

@@ -19,17 +19,39 @@
                                 <label for="formControlsSelect" class="control-label">Môn dự tuyển</label>
                                 <select name="mondutuyen" id="mondutuyen" class="form-control">
                                     @{
-                                        foreach (var item in Model.MonDuTuyens)
-                                        {
-                                            if (item.Id == Model.RegistrationInterview.MonDuTuyenId)
-                                            {
-                                                <option value="@item.Id" selected>@item.ViTriUngTuyen.Name @item.Name</option>
-                                            }
-                                            else
-                                            {
-                                                <option value="@item.Id">@item.ViTriUngTuyen.Name @item.Name</option>
-                                            }
-                                        }
+                    foreach (var item in Model.MonDuTuyens)
+                    {
+                        if (item.Id == Model.RegistrationInterview.MonDuTuyenId)
+                        {
+                            <option value="@item.Id" selected>@item.ViTriUngTuyen.Name @item.Name</option>
+    }
+    else
+    {
+                    <option value="@item.Id">@item.ViTriUngTuyen.Name @item.Name</option>
+}
+}
+                                    }
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-sm-5">
+                            <div class="form-group">
+                                <label for="formControlsSelect" class="control-label">Trường dự tuyển</label>
+                                <select name="truongdutuyen" id="truongdutuyen" class="form-control">
+                                    @{
+        foreach (var item in ViewBag.TruongMonDuTuyens)
+        {
+            if (item.Id == Model.RegistrationInterview.TruongDuTuyenId)
+            {
+                                <option value="@item.Id" selected>@item.TenTruong</option>
+}
+else
+{
+                                <option value="@item.Id">@item.TenTruong</option>
+}
+
+
+}
                                     }
                                 </select>
                             </div>
@@ -636,7 +658,7 @@
                     <div class="row">
                         <div class="col-sm-5">
                             <div class="form-group has-feedback" id="errorIsHadNghiepVuSupham">
-                                <label class="control-label">28.Chứng chỉ</label>
+                                <label class="control-label">28.Chứng chỉ nghiệp vụ</label>
                                 <select name="ishadnghiepvusupham" class="form-control" id="ishadnghiepvusupham">
                                     @{
                     foreach (var item in ViewBag.ChungChiNghiepVuSuPhams)
@@ -854,7 +876,7 @@ else
                             }
                         </div>
                     </div>
-                    <div>
+                    @*<div>
                         <div class="form-group">
                             <label class="control-label">36.Trường hợp đặc biệt trong tuyển dụng viên chức</label>
                         </div>
@@ -883,134 +905,10 @@ else
                                 }
                             }
                         </div>
-                    </div>
-                    @*<div class="form-group">
-                            <label class="control-label">22.Thông tin lương (dành cho ứng viên có công tác và tham gia Bảo hiểm XH, nếu chưa có vui lòng bỏ qua)</label>
-                        </div>*@
-                    @*<div class="row">
-                            <div class="col-sm-3">
-                                <div class="form-group">
-                                    <label for="formControlsSelect" class="control-label">Năm vào ngành </label>
+                    </div>*@
+                   
 
-                                    <input name="namvaonganh" type="text" id="namvaonganh" class="form-control" value="@Model.RegistrationInterview.NamVaoNghanh">
-
-                                </div>
-                            </div>
-                            <div class="col-sm-3">
-                                <div class="form-group has-feedback">
-                                    <label for="formControlsSelect" class="control-label">Mã ngạch </label>
-                                    <div class="">
-                                        <input name="mangach" type="text" id="mangach" class="form-control" value="@Model.RegistrationInterview.MaNgach">
-                                    </div>
-                                </div>
-                            </div><div class="col-sm-3">
-                                <div class="form-group">
-                                    <label for="formControlsSelect" class="control-label">Hệ số lương </label>
-                                    <input name="hesoluong" type="text" id="hesoluong" class="form-control" value="@Model.RegistrationInterview.HeSoLuong">
-
-                                </div>
-                            </div>
-                            <div class="col-sm-3">
-                                <div class="form-group">
-                                    <label for="formControlsSelect" class="control-label">Mốc nâng lương lần sau </label>
-
-                                    <input name="mocnangluonglansau" type="text" id="mocnangluonglansau" class="form-control" value="@Model.RegistrationInterview.MocNangLuongLansau">
-
-                                </div>
-                            </div>
-                        </div>*@
-
-                    <div class="row">
-                        <p class="text-center"><i><b>Đăng ký nguyện vọng về đơn vị thuộc quận nào để công tác nếu trúng tuyển</b></i></p>
-                        <div class="col-sm-4">
-                            <div class="form-group">
-                                <label for="formControlsSelect" class="control-label">Nguyện vọng 1</label>
-                                <select name="nguyenvong1" id="nguyenvong1" class="form-control">
-                                    @{
-                                        foreach (var item in Model.HCMDistrict)
-                                        {
-                                            if (item.Id != 974)
-                                            {
-                                                if (item.Id == Model.RegistrationInterview.NV01Quan)
-                                                {
-
-                                                    <option value="@item.Id" selected>
-                                                        @item.Type @item.Name
-                                                    </option>
-                                                }
-                                                else
-                                                {
-
-                                                    <option value="@item.Id">
-                                                        @item.Type @item.Name
-                                                    </option>
-                                                }
-                                            }
-                                        }
-                                    }
-
-                                </select>
-                            </div>
-                        </div><div class="col-sm-4">
-                            <div class="form-group">
-                                <label for="formControlsSelect" class="control-label">Nguyện vọng 2</label>
-                                <select name="nguyenvong2" id="nguyenvong2" class="form-control">
-                                    @{
-                                        foreach (var item in Model.HCMDistrict)
-                                        {
-                                            if (item.Id != 974)
-                                            {
-                                                if (item.Id == Model.RegistrationInterview.NV02Quan)
-                                                {
-
-                                                    <option value="@item.Id" selected>
-                                                        @item.Type @item.Name
-                                                    </option>
-                                                }
-                                                else
-                                                {
-
-                                                    <option value="@item.Id">
-                                                        @item.Type @item.Name
-                                                    </option>
-                                                }
-                                            }
-                                        }
-                                    }
-                                </select>
-                            </div>
-                        </div>
-                        <div class="col-sm-4">
-                            <div class="form-group">
-                                <label for="formControlsSelect" class="control-label">Nguyện vọng 3</label>
-                                <select name="nguyenvong3" id="nguyenvong3" class="form-control">
-                                    @{
-                                        foreach (var item in Model.HCMDistrict)
-                                        {
-                                            if (item.Id != 974)
-                                            {
-                                                if (item.Id == Model.RegistrationInterview.NV03Quan)
-                                                {
-
-                                                    <option value="@item.Id" selected>
-                                                        @item.Type @item.Name
-                                                    </option>
-                                                }
-                                                else
-                                                {
-
-                                                    <option value="@item.Id">
-                                                        @item.Type @item.Name
-                                                    </option>
-                                                }
-                                            }
-
-                                        }
-                                    }
-                                </select>
-                            </div>
-                        </div>
-                    </div>
+                    
 
                 </div>
                 <div class="col-sm-12"><button type="submit" id="submit" class="btn btn-success btn-block">CẬP NHẬT</button></div>
@@ -1020,6 +918,17 @@ else
 </div>
 <span class="loader" hidden id="loader"></span>
 <script>
+    $('#mondutuyen').change(function () {
+        $.get('/getschoolbymondutuyen/' + $(this).val(), function (data, status) {
+            var schools = JSON.parse(data.Results);
+            $('#truongdutuyen').children().remove().end();
+            for (var i = 0; i < schools.length; i++) {
+
+                $('#truongdutuyen').append('<option value=' + schools[i].Id + '>' + schools[i].TenTruong + '</option>')
+            }
+
+        })
+    })
     $('#nohnquanhuyen').change(function () {
         $.get('/getWardByDistrictId/' + $(this).val(), function (data, status) {
             var wards = JSON.parse(data.Results);
@@ -1278,14 +1187,12 @@ else
                     //$('#submit').hide();
                     $('#loader').show();
                     $.post('/tuyendung/submitcapnhat', {
+                        IdentifyCard: @Model.RegistrationInterview.IdentifyCard,
                         Id: @Model.RegistrationInterview.Id,
                         FirstName: $('#ten').val(),
                         LastName: $('#hovatenlot').val(),
                         DOB: moment($('#ngaysinh').val(), 'DD-MM-YYYY').format('YYYY-MM-DD'),
-                        SDT: $('#sdt').val(),
-                        NV01Quan: $('#nguyenvong1').val(),
-                        NV02Quan: $('#nguyenvong2').val(),
-                        NV03Quan: $('#nguyenvong3').val(),
+                        SDT: $('#sdt').val(),                        
                         Email: $('#email').val(),
                         MonDuTuyenId: $('#mondutuyen').val(),
                         TrinhDoNgoaiNguId: $('#trinhdongoaingu').val(),
@@ -1326,10 +1233,11 @@ else
                         DoiTuongUuTien: $('input[name=doituonguutien]:checked').val(),
                         SoVanBangChungChiTinHoc: $('#sohieuvanbangchungchitinhoc').val(),
                         SoVanBangChungChiNgoaiNgu: $('#trinhdongoaingu').val() == 1? 'Không' : $('#sohieuvanbangchungchingoaingu').val(),
-                        TruongHopDacBietId: $('input[name=truonghopdacbiet]:checked').val(),
+                        TruongHopDacBietId: 1,
                         TrinhDoNgoaiNguKhacId: $('#trinhdongoaingukhac').val(),
                         SoVanBangChungChiNgoaiNguKhac: $('#trinhdongoaingukhac').val() == 1 ? 'Không' : $('#sohieuvanbangchungchingoaingukhac').val(),
                         ChungChiNghiepVuSuPhamSoVanBang: $('#ishadnghiepvusupham').val() == 1 ? 'Không' : $('#sohieuvanbangchungchinghepvusupham').val(),
+                        TruongDuTuyenId: $('#truongdutuyen').val(),
                         __RequestVerificationToken: $("input[name=__RequestVerificationToken]").val(),
                     }, function (data, status) {
                         debugger;

@@ -7,5 +7,7 @@ namespace TCCB_QuanLy.Repositories.Interfaces
     {
         School GetSchoolById(int? id);
         List<School> GetSchoolsByDistrictAndCapHoc(int? districtId, int? caphoc);
+        School GetSchoolByMaTruong(string maTruong);
+       
     }
 }

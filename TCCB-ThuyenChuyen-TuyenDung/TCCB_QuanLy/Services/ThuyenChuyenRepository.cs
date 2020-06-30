@@ -231,7 +231,7 @@ namespace TCCB_QuanLy.Services
             
         }
 
-        public List<ThuyenChuyen> GetThuyenChuyenByStatusAndDvqlAndYear(int statusId, int? dvqlId, int year)
+        public List<ThuyenChuyen> GetThuyenChuyenByStatusAndYear(int statusId, int? dvqlId, int year)
         {
             using (var _db = new TCCBDB())
             {

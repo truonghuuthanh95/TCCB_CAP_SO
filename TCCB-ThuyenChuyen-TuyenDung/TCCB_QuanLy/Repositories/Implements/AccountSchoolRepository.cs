@@ -18,13 +18,13 @@ namespace TCCB_QuanLy.Repositories.Implements
 
         public AccountSchool GetAccountSchoolById(int id)
         {
-            AccountSchool accountSchool = _db.AccountSchools.Where(s => s.Id == id).SingleOrDefault();
+            AccountSchool accountSchool = _db.AccountSchools.AsNoTracking().Where(s => s.Id == id).SingleOrDefault();
             return accountSchool;
         }
 
         public List<AccountSchool> GetAccountSchools()
         {
-            var accountSchools = _db.AccountSchools.OrderBy(s => s.SchoolName).ToList();
+            var accountSchools = _db.AccountSchools.AsNoTracking().OrderBy(s => s.SchoolName).ToList();
             return accountSchools;
         }
     }

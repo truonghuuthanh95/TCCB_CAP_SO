@@ -15,14 +15,17 @@ namespace TCCB_QuanLy.Controllers
         ISchoolRepository schoolRepository;
         ICandidateSchoolRepository candidateSchoolRepository;
         IStatusTiepNhanRepository statusTiepNhanRepository;
+        ITruongMonDuTuyenRepository truongMonDuTuyenRepository;
+        IRegistrationInterviewRepository registrationInterviewRepository;
 
-        public SchoolController(ISchoolRepository schoolRepository, ICandidateSchoolRepository candidateSchoolRepository, IStatusTiepNhanRepository statusTiepNhanRepository)
+        public SchoolController(ISchoolRepository schoolRepository, ICandidateSchoolRepository candidateSchoolRepository, IStatusTiepNhanRepository statusTiepNhanRepository, ITruongMonDuTuyenRepository truongMonDuTuyenRepository, IRegistrationInterviewRepository registrationInterviewRepository)
         {
             this.schoolRepository = schoolRepository;
             this.candidateSchoolRepository = candidateSchoolRepository;
             this.statusTiepNhanRepository = statusTiepNhanRepository;
+            this.truongMonDuTuyenRepository = truongMonDuTuyenRepository;
+            this.registrationInterviewRepository = registrationInterviewRepository;
         }
-
 
 
         // GET: School
@@ -39,35 +42,55 @@ namespace TCCB_QuanLy.Controllers
          });
             return Json(new ReturnResult(200, "success", schoolsJson), JsonRequestBehavior.AllowGet);           
         }
-
-        [Route("truongquanlyungvien")]
+        [Route("getschoolbymondutuyen/{monDuTuyenId}")]
+        [HttpGet]
+        public ActionResult GetSchoolByMonDuTuyenId(int monDuTuyenId)
+        {
+            List<School> schools = truongMonDuTuyenRepository.GetTruongByMonDuTuyen(monDuTuyenId);
+            var schoolsJson = JsonConvert.SerializeObject(schools,
+         Formatting.None,
+         new JsonSerializerSettings()
+         {
+             ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
+         });
+            return Json(new ReturnResult(200, "success", schoolsJson), JsonRequestBehavior.AllowGet);
+        }
+        [Route("truongquanlyungvien", Name = "truongquanlyungvien")]
         [HttpGet]
         public ActionResult TruongQuanLyUngVien()
         {
-            AccountSchool accountSchool = (AccountSchool)Session[Utils.Constants.USER_SCHOOL_SESSION];
+            School accountSchool = (School)Session[Utils.Constants.USER_SCHOOL_SESSION];
             if (accountSchool == null)
             {
-                return RedirectToRoute("schoolLogin");
+                return RedirectToRoute("loginsoption");
             }
             List<StatusTiepNhan> statusTiepNhans = statusTiepNhanRepository.GetStatusTiepNhans();
-            List<CandidateSchool> candidateSchools = candidateSchoolRepository.GetCandidateBySchoolId(accountSchool.Id);
-            ViewBag.CandidateSchools = candidateSchools;
+            ViewBag.School = accountSchool;
+            ViewBag.CandidateSchools = registrationInterviewRepository.GetTuyenDungBySchoolID(accountSchool.Id);
             ViewBag.StatusTiepNhans = statusTiepNhans;
             return View();
         }
 
-        [Route("postcapnhattiepnhan")]
-        [HttpPost]
-        public ActionResult PostCapNhatTiepNhan(int candidateSchoolId, int statusTiepNhanId, string ghiChu = "")
+        [Route("capnhattiepnhantuyendung/{tuyenDungId}/{statusTiepNhanId}")]
+        [HttpGet]
+        public ActionResult CapNhatTiepNhanTuyenDung(int tuyenDungId, int statusTiepNhanId)
         {
-            CandidateSchool candidateSchool = candidateSchoolRepository.GetCandidateSchoolById(candidateSchoolId);
-            if (candidateSchool == null)
+            TuyenDung2020 tuyenDung2020 = registrationInterviewRepository.GetTuyenDungById(tuyenDungId);
+            if (tuyenDung2020 == null)
             {
                 return Json(new ReturnResult(404, "không tim thấy ứng viên", null), JsonRequestBehavior.AllowGet);
             }
-            candidateSchool.StatusTiepNhanId = statusTiepNhanId;
-            candidateSchool.GhiChu = ghiChu;
-            candidateSchoolRepository.UpdateStatusCandidate(candidateSchool);
+            if (statusTiepNhanId == 99)
+            {
+                tuyenDung2020.TrangThaiHosoTuyenDungId = null;
+            }
+            else
+            {
+                tuyenDung2020.TrangThaiHosoTuyenDungId = statusTiepNhanId;
+                
+            }
+            registrationInterviewRepository.CapNhatTuyenDung(tuyenDung2020);
+
             return Json(new ReturnResult(200, "success", null), JsonRequestBehavior.AllowGet);
         }
     }

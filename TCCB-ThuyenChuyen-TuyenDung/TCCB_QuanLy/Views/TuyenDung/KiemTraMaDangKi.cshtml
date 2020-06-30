@@ -10,16 +10,17 @@
             <div class="panel-body">
                 <form class="form-inline">
                     <h3 class="text-center text-info">CẬP NHẬT PHIẾU ĐĂNG KÝ DỰ TUYỂN</h3>
-                    <p class="text-warning">Vui lòng nhập mã số được cấp và nhập số chứng minh nhân dân sau đó nhấn xác nhận để hệ thống kiểm tra</p>
+                    <p class="text-warning">Vui lòng nhập nhập số CMND/CCCD sau đó nhấn xác nhận để hệ thống kiểm tra</p>
                     <p class="text-danger" id="errorMessage"></p>
+                    <div class="form-group" id="errorIdentifyCard">
+                        <label for="formInlineEmail" class="control-label">Số CMND/CCCD</label>
+                        <input name="identifyCard" disabled type="number" id="identifyCard" class="form-control" value="@ViewBag.CMND">
+                    </div>
                     <div class="form-group" id="errorRegistrationId">
                         <label for="formInlineName" class="control-label">Mã</label>
                         <input name="registrationId" id="registrationId" type="text" class="form-control" value="">
                     </div>
-                    <div class="form-group" id="errorIdentifyCard">
-                        <label for="formInlineEmail" class="control-label">Số CMND/CCCD</label>
-                        <input name="identifyCard" type="number" id="identifyCard" class="form-control" value="">
-                    </div>
+
                     <button type="submit" class="btn btn-success" onclick="checkValidToUpdate(event);" id="submit">XÁC NHẬN</button>
                     <span class="loader" id="loader" hidden=""></span>
                 </form>
@@ -30,15 +31,14 @@
 <script>
     function checkValidToUpdate(event) {
         event.preventDefault();
-        if ($('#registrationId').val() == '' || $('#identifyCard').val() == '') {
-            $('#errorIdentifyCard').addClass('has-error');
+        if ($('#registrationId').val() == '') {            
             $('#errorRegistrationId').addClass('has-error');
-            $('#errorMessage').text('Vui lòng nhập mã hồ sơ và CMND');
+            $('#errorMessage').text('Vui lòng nhập mã hồ sơ');
         }
         else {
             $('#loader').show();
             $('#submit').hide();
-            $.get("/tuyendung/kiemtramadangki/" + $('#registrationId').val() + "/" + $('#identifyCard').val(), function (data, status) {
+            $.get("/tuyendung/kiemtramadangkicmnd/" + $('#registrationId').val() + "/" + $('#identifyCard').val(), function (data, status) {
                 if (data.StatusCode == 200 && status == 'success') {
                     window.location.replace('/tuyendung/capnhathosoungtuyen/' + $('#registrationId').val().trim() + '/' + $('#identifyCard').val().trim());                  
                 }

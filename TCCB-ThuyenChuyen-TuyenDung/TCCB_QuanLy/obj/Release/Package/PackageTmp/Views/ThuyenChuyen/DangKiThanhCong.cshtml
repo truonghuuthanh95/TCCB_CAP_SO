@@ -13,7 +13,6 @@
             <p><span class="text-danger">*Lưu ý:</span> Thành phần hồ sơ, quy trình giải quyết thuyên chuyển xem chi tiết tại mục <a href="/thuyenchuyen/mauquytrinhgiaiquyet" target="_blank">Mẩu hồ sơ và qui trình giải quyết </a>của thuyên chuyển</p>
         </div>
     </div>
-
 </div>
 <div class="col-sm-10 col-sm-offset-1">
     <div class="panel panel-default">
@@ -26,13 +25,35 @@
                 <div class="row">
                     <div class="col-sm-6 col-xs-6">
                         <p class="text-center"><b>Đơn vị đang công tác</b></p>
-                        <p style="padding-left: 20px;"><b>Tên trường:</b> @ViewBag.ThuyenChuyen.School.TenTruong</p>
+                        <p style="padding-left: 20px;"><b>Tỉnh/Thành phố:</b> @ViewBag.ThuyenChuyen.Province.Type @ViewBag.ThuyenChuyen.Province.Name</p>
+                        @{
+                            if (ViewBag.ThuyenChuyen.Province.Id != 79)
+                            {
+                                <p style="padding-left: 20px;"><b>Tên trường:</b> @ViewBag.ThuyenChuyen.DVDCTTenTruong</p>
+                            }
+                            else
+                            {
+                                <p style="padding-left: 20px;"><b>Tên trường:</b> @ViewBag.ThuyenChuyen.School1.TenTruong</p>
+                            }
+                        }
+
                         <p style="padding-left: 20px;"><b>Cấp trường:</b> @ViewBag.ThuyenChuyen.CapDayDVDCT</p>
                         <p style="padding-left: 20px;"><b>Môn dạy:</b> @ViewBag.ThuyenChuyen.MonDuTuyen.Name</p>
                     </div>
                     <div class="col-sm-6 col-xs-6">
                         <p class="text-center"><b>Đơn vị chuyển đến</b></p>
-                        <p><b>Tên trường:</b> @ViewBag.ThuyenChuyen.School1.TenTruong</p>
+                        <p><b>Tỉnh/Thành phố:</b> @ViewBag.ThuyenChuyen.Province1.Type @ViewBag.ThuyenChuyen.Province1.Name</p>
+                        @{
+                            if (ViewBag.ThuyenChuyen.Province1.Id != 79)
+                            {
+                                <p><b>Tên trường:</b> @ViewBag.ThuyenChuyen.DVCDTenTruong</p>
+                            }
+                            else
+                            {
+                                <p><b>Tên trường:</b> @ViewBag.ThuyenChuyen.School.TenTruong</p>
+                            }
+                        }
+
                         <p><b>Cấp trường:</b> @ViewBag.ThuyenChuyen.CapDayDVCD</p>
                     </div>
                 </div>
@@ -40,20 +61,20 @@
                     <p><b>A. Thông tin cá nhân</b></p>
                     <div class="row" style="padding-left: 20px;">
                         <div class="col-sm-6 col-xs-6"><p><b>Họ và tên:</b> @ViewBag.ThuyenChuyen.HoTen</p></div>
-                        <div class="col-sm-6 col-xs-6"><p><b>Ngày sinh:</b> @ViewBag.ThuyenChuyen.NamSinh.ToString("dd-MM-yyyy")</p></div>                        
+                        <div class="col-sm-6 col-xs-6"><p><b>Ngày sinh:</b> @ViewBag.ThuyenChuyen.NamSinh.ToString("dd-MM-yyyy")</p></div>
 
                     </div>
                     <div class="row" style="padding-left: 20px;">
                         <div class="col-sm-6 col-xs-6"><p><b>CMND:</b> @ViewBag.ThuyenChuyen.CMND</p></div>
                         @{
-        if (@ViewBag.ThuyenChuyen.IsMale == true)
-        {
-                    <div class="col-sm-6 col-xs-6"><p><b>Giới tính:</b> Nam</p></div>
-}
-else
-{
-                    <div class="col-sm-6 col-xs-6"><p><b>Giới tính: </b>Nữ</p></div>
-}
+                            if (@ViewBag.ThuyenChuyen.IsMale == true)
+                            {
+                                <div class="col-sm-6 col-xs-6"><p><b>Giới tính:</b> Nam</p></div>
+                            }
+                            else
+                            {
+                                <div class="col-sm-6 col-xs-6"><p><b>Giới tính: </b>Nữ</p></div>
+                            }
                         }
                     </div>
                     <div style="padding-left: 20px;">
@@ -72,7 +93,7 @@ else
                         <div class="col-sm-6 col-xs-6">
                             <p><b>Hình thức đào tạo: </b>@ViewBag.ThuyenChuyen.HinhThucDaoTao.Name</p>
                             <p><b>Ngành đào tạo:</b> @ViewBag.ThuyenChuyen.ChuyenNganhDaoTao.Name</p>
-                        </div>                       
+                        </div>
                     </div>
                 </div>
                 <div>

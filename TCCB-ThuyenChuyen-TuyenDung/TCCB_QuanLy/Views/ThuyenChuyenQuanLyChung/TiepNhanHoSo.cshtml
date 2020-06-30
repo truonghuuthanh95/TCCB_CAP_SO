@@ -54,12 +54,12 @@
             $.get('/thuyenchuyen/kiemtramahoso/' + $('#mahoso').val().trim(), function (data, status) {
                 if (data.StatusCode == 200 && status == 'success') {
                     var dataJson = JSON.parse(data.Results);
-                    if (dataJson.TienTo == 'TC') {
-                        window.location.href = 'duyethoso/' + dataJson.Id;
-                    }
-                    else {
-                        window.location.href = 'duyethosongoaitinh/' + dataJson.Id;
-                    }
+                    //if (dataJson.TienTo == 'TC') {
+                    window.location.href = 'duyethoso/' + data.Results;
+                    //}
+                    //else {
+                    //    window.location.href = 'duyethosongoaitinh/' + dataJson.Id;
+                    //}
                     $('#preloader').hide();
                 }
                 else if (data.StatusCode == 403 && status == 'success') {

@@ -12,8 +12,8 @@ namespace TCCB_QuanLy.App_Start
     {
         public MappingProfile()
         {
-            CreateMap<RegistrationInterview, RegistrationInterviewDTO>();
-            CreateMap<RegistrationInterviewDTO, RegistrationInterview>();
+            CreateMap<TuyenDung2020, RegistrationInterviewDTO>();
+            CreateMap<RegistrationInterviewDTO, TuyenDung2020>();
             //CreateMap<ThuyenChuyen, ThuyenChuyenDTO>();
             //CreateMap<ThuyenChuyenDTO, ThuyenChuyen>();
             CreateMap<ThuyenChuyenNgoaiTinh, ThuyenChuyenNgoaiTinhDTO>();
