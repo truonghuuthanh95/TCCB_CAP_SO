@@ -75,6 +75,8 @@ namespace TCCB_QuanLy.Models.DTO
         [Required]
         public int TonGiaoId { get; set; }
         [Required]
+        public string IdentifyCard { get; set; }
+        [Required]
         public DateTime CMNDNgayCap { get; set; }
         [Required]
         public int CMNDNoiCap { get; set; }
@@ -115,8 +117,7 @@ namespace TCCB_QuanLy.Models.DTO
         public string ChungChiNghiepVuSuPhamSoVanBang { get; set; }
         [Required]
         public int TruongDuTuyenId { get; set; }
-        [Required]
-        public string IdentifyCard { get; set; }
+      
 
     }
 }

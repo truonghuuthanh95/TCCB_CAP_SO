@@ -17,7 +17,7 @@ namespace TCCB_QuanLy.Repositories.Implements
 
         public List<TrinhDoNgoaiNgu> GetTrinhDoNgoaiNgus()
         {
-            List<TrinhDoNgoaiNgu> trinhDoNgoaiNgus = _db.TrinhDoNgoaiNgus.Where(s => s.IsActive == true).ToList();
+            List<TrinhDoNgoaiNgu> trinhDoNgoaiNgus = _db.TrinhDoNgoaiNgus.Where(s => s.IsActive == true).OrderBy(s => s.Name).ToList();
             return trinhDoNgoaiNgus;
         }
     }

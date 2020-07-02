@@ -16,7 +16,7 @@ namespace TCCB_QuanLy.Repositories.Implements
             _db = db;
         }
 
-        public List<School> GetTruongByMonDuTuyen(int monDuTuyenId)
+        public List<School> GetTruongByMonDuTuyen(int? monDuTuyenId)
         {
             List <School> schools = _db.TruongMonDuTuyens.AsNoTracking().Where(s => s.IsActive == true && s.MonDuTuyenId == monDuTuyenId).Select(s => s.School).ToList();
             return schools;

@@ -41,7 +41,7 @@ namespace TCCB_QuanLy.Controllers
                 return RedirectToRoute("login");
             }
             //get tuyendung by truong duyet
-            ViewBag.TuyenDungs = registrationInterviewRepository.GetTuyenDungsByStatus(4);
+            ViewBag.TuyenDungs = registrationInterviewRepository.GetTuyenDungsByStatus(null);
             return View();
         }
         //[Route("quanlychung/danhsachdangki")]

@@ -30,7 +30,7 @@ namespace TCCB_QuanLy.Repositories.Interfaces
         List<TuyenDung2020> GetTuyenDungsIsCheckByAccountId(int id);
         TuyenDung2020 GetTuyenDungByCMND(string cmnd);
         List<TuyenDung2020> GetTuyenDungBySchoolID(int schoolID);
-        List<TuyenDung2020> GetTuyenDungsByStatus(int id);
+        List<TuyenDung2020> GetTuyenDungsByStatus(int? id);
 
 
     }

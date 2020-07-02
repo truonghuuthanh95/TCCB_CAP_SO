@@ -121,7 +121,7 @@
                         <div class="col-sm-2">
                             <div class="form-group">
                                 <label class="control-label">6.Số CMND/CCCD</label>
-                                <p class="form-control-static">@ViewBag.CMND</p>
+                                <p class="form-control-static" id="cmnd">@ViewBag.CMND</p>
                             </div>
                         </div>
                         <div class="col-sm-2">
@@ -624,9 +624,9 @@
                         </div>
 
 
-                        <div class="col-sm-5" id="isShowChungChiNgoaiNguSoVanBang" hidden>
+                        <div class="col-sm-5" id="isShowChungChiNgoaiNguSoVanBang">
                             <div class="form-group has-feedback">
-                                <label for="formControlsSelect" class="control-label">33.Số hiệu của văn bằng, chứng chỉ ngoại ngữ</label>
+                                <label for="formControlsSelect" class="control-label">33.Số hiệu của văn bằng, chứng chỉ tiếng anh</label>
                                 <input name="sohieuvanbangchungchingoaingu" type="text" id="sohieuvanbangchungchingoaingu" class="form-control" value="">
                             </div>
                         </div>
@@ -794,6 +794,7 @@
             $('#isShowChungChiNgoaiNguSoVanBang').hide();
         }
     });
+
     $(document).ready(function () {
         $('#IsNienChe').val() == 'true' ? $('#isshowdiemluanvan').show() : $('#isshowdiemluanvan').hide();
         $('.datepicker').datepicker({
@@ -974,7 +975,7 @@
                     //$('#submit').hide();
                     $('#loader').show();
                     $.post('/tuyendung/submittaomoi', {       
-                        IdentifyCard: @ViewBag.CMND,
+                        IdentifyCard: "@ViewBag.CMND.ToString()",
                         FirstName: $('#ten').val(),
                         LastName: $('#hovatenlot').val(),
                         DOB: moment($('#ngaysinh').val(), 'DD-MM-YYYY').format('YYYY-MM-DD'),

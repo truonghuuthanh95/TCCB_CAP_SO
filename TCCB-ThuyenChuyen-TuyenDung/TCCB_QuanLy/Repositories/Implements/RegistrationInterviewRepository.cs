@@ -264,12 +264,24 @@ namespace TCCB_QuanLy.Repositories.Implements
             return tuyenDung2020s;
         }
 
-        public List<TuyenDung2020> GetTuyenDungsByStatus(int id)
+        public List<TuyenDung2020> GetTuyenDungsByStatus(int? id)
         {
-            List<TuyenDung2020> tuyenDung2020s = _db.TuyenDung2020.AsNoTracking()
+            List<TuyenDung2020> tuyenDung2020s = new List<TuyenDung2020>();
+            if (id == null)
+            {
+                tuyenDung2020s = _db.TuyenDung2020.AsNoTracking()
                 .Include("School")
                 .Include("MonDuTuyen.ViTriUngTuyen")
-                .Where(s => s.TrangThaiHosoTuyenDungId == id).ToList();
+                .ToList();
+            }
+            else
+            {
+                tuyenDung2020s = _db.TuyenDung2020.AsNoTracking()
+                                .Include("School")
+                                .Include("MonDuTuyen.ViTriUngTuyen")
+                                .Where(s => s.TrangThaiHosoTuyenDungId == id).ToList();
+            }
+            
             return tuyenDung2020s;
         }
     }

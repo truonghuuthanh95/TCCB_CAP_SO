@@ -7,6 +7,8 @@ using System.Collections.Generic;
 using System.Web.Mvc;
 using TCCB_QuanLy.Models.DTO;
 using System.Linq;
+using System.Threading.Tasks;
+
 namespace TCCB_QuanLy.Controllers
 {
     [RoutePrefix("tuyendung")]
@@ -152,7 +154,7 @@ namespace TCCB_QuanLy.Controllers
             ViewBag.ThanhPhanBanThanHienTais = thanhPhanBanThanHienTaiRepository.GetThanhPhanBanThanHienTais();
             ViewBag.TruongHopDacBiets = truongHopDacBietRepository.GetTruongHopDacBiets();
             ViewBag.TrinhDoNgoaiNguKhas = trinhDoNgoaiNguKhacReposittory.GetTrinhDoNgoaiNguKhacs();
-            ViewBag.CMND = cmnd.Trim();
+            ViewBag.CMND = cmnd;
             ViewBag.TruongMonDuTuyens = truongMonDuTuyenRepository.GetTruongByMonDuTuyen(monDuTuyens[0].Id);
             return View(candidateModelInOneView);
         }
@@ -214,7 +216,7 @@ namespace TCCB_QuanLy.Controllers
             ViewBag.TruongHopDacBiets = truongHopDacBietRepository.GetTruongHopDacBiets();
             ViewBag.TrinhDoNgoaiNguKhas = trinhDoNgoaiNguKhacReposittory.GetTrinhDoNgoaiNguKhacs();
             ViewBag.ChungChiNghiepVuSuPhams = chungChiNghiepVuSuPhamRepository.GetChungChiNghiepVuSuPhams();
-            ViewBag.TruongMonDuTuyens = truongMonDuTuyenRepository.GetTruongByMonDuTuyen(monDuTuyens[0].Id);
+            ViewBag.TruongMonDuTuyens = truongMonDuTuyenRepository.GetTruongByMonDuTuyen(registrationInterview.MonDuTuyenId);
             return View(candidateModelInOneView);
         }
 
@@ -249,6 +251,16 @@ namespace TCCB_QuanLy.Controllers
             TuyenDung2020 registrationInterview = registrationInterviewRepository.GetTuyenDungByIdWithDetail(madangki);
             return View(registrationInterview);
         }
+
+        [Route("downloadfile/{name}")]
+        [HttpGet]
+        public  ActionResult DownloadFile(string name)
+        {              
+            string filePath = System.Web.HttpContext.Current.Server.MapPath("~/Utils/ds-truong-tuyendung.xlsx");               
+                return File(filePath, "application/vnd.ms-excel", "ds-truong-tuyendung.xlsx");
+            
+        }
+
 
         //[Route("trangthaidangky")]
         //[HttpGet]

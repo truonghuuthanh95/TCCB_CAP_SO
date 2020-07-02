@@ -504,6 +504,7 @@
     <Content Include="Views\TuyenDung\KiemTraCMND.cshtml" />
     <Content Include="Views\TuyenDung\TaoMoiHoSoUngTuyen.cshtml" />
     <Content Include="Views\Login\LoginOption.cshtml" />
+    <Content Include="Utils\ds-truong-tuyendung.xlsx" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

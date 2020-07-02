@@ -9,6 +9,6 @@ namespace TCCB_QuanLy.Repositories.Interfaces
     public interface ITruongMonDuTuyenRepository
     {
         List<TruongMonDuTuyen> GetTruongMonDuTuyens();
-        List<School> GetTruongByMonDuTuyen(int monDuTuyenId);
+        List<School> GetTruongByMonDuTuyen(int? monDuTuyenId);
     }
 }

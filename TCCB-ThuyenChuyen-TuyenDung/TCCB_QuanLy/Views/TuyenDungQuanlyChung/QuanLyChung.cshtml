@@ -33,20 +33,32 @@
                     <th>Họ và tên</th>
                     <th>Số CMND</th>
                     <th>Vị trí dự tuyển</th>
-                    <th>Trường</th>                    
+                    <th>Trường</th>
+                    <th>Trạng thái</th>
                 </tr>
             </thead>
             <tbody>
                 @{
                     foreach (var item in ViewBag.TuyenDungs)
                     {
-                <tr>
-                    <td>@item.TienTo@item.Id</td>
-                    <td>@item.LastName @item.FirstName</td>
-                    <td>@item.IdentifyCard</td>
-                    <td>@item.MonDuTuyen.ViTriUngTuyen.Name @item.MonDuTuyen.Name</td>
-                    <td>@item.School.TenTruong</td>
-                </tr>
+                        <tr>
+                            <td>@item.TienTo@item.Id</td>
+                            <td>@item.LastName @item.FirstName</td>
+                            <td>@item.IdentifyCard</td>
+                            <td>@item.MonDuTuyen.ViTriUngTuyen.Name @item.MonDuTuyen.Name</td>
+                            <td>@item.School.TenTruong</td>
+                            @{
+                                if (@item.TrangThaiHosoTuyenDungId != null)
+                                {
+                                    <td>@item.TrangThaiHoSoTuyenDung.Name</td>
+                                }
+                                else
+                                {
+                                    <td>Chưa trình hồ sơ</td>
+                                }
+                            }
+
+                        </tr>
                     }
                 }
             </tbody>
@@ -54,4 +66,9 @@
 
     </div>
 </div>
+<script>
+    $(document).ready(function () {
+        $('#danhsachdangki').DataTable();
+    });
+</script>
 
