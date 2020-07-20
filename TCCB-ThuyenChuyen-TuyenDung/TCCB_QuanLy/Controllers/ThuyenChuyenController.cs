@@ -263,56 +263,43 @@ namespace TCCB_QuanLy.Controllers
 
             return View();
         }
-        //[Route("tiendogiaiquyethoso/{madangki}/{cmnd}")]
-        //[HttpGet]
-        //public ActionResult TienDoHoSoJson(string madangki, string cmnd)
-        //{
-        //    if (madangki.ToUpper().Contains("TCN"))
-        //    {
-        //        using (var _thuyenChuyenService = new ThuyenChuyenNgoaiTinhService())
-        //        {
-        //            ThuyenChuyenNgoaiTinh thuyenChuyen = _thuyenChuyenService.CheckThuyenChuyenExistedByIdAndCMND(madangki, cmnd);
-        //            if (thuyenChuyen == null)
-        //            {
-        //                return Json(new ReturnResult(400, "Không tìm thấy", null), JsonRequestBehavior.AllowGet);
+        [Route("tiendogiaiquyethoso/{madangki}/{cmnd}")]
+        [HttpGet]
+        public ActionResult TienDoHoSoJson(string madangki, string cmnd)
+        {
+            madangki.ToUpper().Contains("TC");
+            
+              
+                    ThuyenChuyen2020 thuyenChuyen = _thuyenChuyenRepository.GetThuyenChuyensByMaHoSo(madangki.Trim());
+            if (thuyenChuyen != null)
+            {
+                if (thuyenChuyen.CMND.Trim() == cmnd.Trim())
+                {
 
-        //            }
-
-        //            var thuyenChuyenJson = JsonConvert.SerializeObject(thuyenChuyen,
-        //          Formatting.None,
-        //          new JsonSerializerSettings()
-        //          {
-        //              ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
-        //          });
-        //            return Json(new ReturnResult(200, "success", thuyenChuyenJson), JsonRequestBehavior.AllowGet);
-        //        }
-
-        //    }
-        //    else if (madangki.ToUpper().Contains("TC"))
-        //    {
-        //        using (var _thuyenChuyenService = new ThuyenChuyenRepository())
-        //        {
-        //            ThuyenChuyen thuyenChuyen = _thuyenChuyenService.CheckThuyenChuyenExistedByIdAndCMND(madangki, cmnd);
-        //            if (thuyenChuyen == null)
-        //            {
-        //                return Json(new ReturnResult(400, "Không tìm thấy", null), JsonRequestBehavior.AllowGet);
-
-        //            }
-
-        //            var thuyenChuyenJson = JsonConvert.SerializeObject(thuyenChuyen,
-        //          Formatting.None,
-        //          new JsonSerializerSettings()
-        //          {
-        //              ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
-        //          });
-        //            return Json(new ReturnResult(200, "success", thuyenChuyenJson), JsonRequestBehavior.AllowGet);
-        //        }
-        //    }
-        //    else
-        //    {
-        //        return Json(new ReturnResult(400, "Không tìm thấy", null), JsonRequestBehavior.AllowGet);
-        //    }           
-        //}
+                    var thuyenChuyenJson = JsonConvert.SerializeObject(thuyenChuyen,
+                  Formatting.None,
+                  new JsonSerializerSettings()
+                  {
+                      ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
+                  });
+                    return Json(new ReturnResult(200, "success", thuyenChuyenJson), JsonRequestBehavior.AllowGet);
+                }
+                else
+                {
+                    return Json(new ReturnResult(400, "Không tìm thấy", null), JsonRequestBehavior.AllowGet);
+                }
+            }
+            else
+            {
+                return Json(new ReturnResult(400, "Không tìm thấy", null), JsonRequestBehavior.AllowGet);
+            }
+                    
+                    
+                    
+                
+            
+          
+        }
 
         //[Route("huongdan")]
         //[HttpGet]

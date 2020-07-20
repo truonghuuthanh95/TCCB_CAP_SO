@@ -680,16 +680,10 @@
                                         </label>
                                     </div>
 
-
                                 }
                             }
                         </div>
                     </div>
-                   
-                   
-
-
-
                 </div>
                 <div class="col-sm-12"><button type="submit" id="submit" class="btn btn-success btn-block">CẬP NHẬT</button></div>
             </form>
@@ -972,8 +966,8 @@
                 else {
                     $('#errorIsHadNghiepVuSupham').removeClass('has-error');
                     $('#errorIsHadNghiepVuSuphamMessage').text('');
-                    //$('#submit').hide();
-                    $('#loader').show();
+                    $('#submit').hide();
+                    $('#loader').show();                                       
                     $.post('/tuyendung/submittaomoi', {       
                         IdentifyCard: "@ViewBag.CMND.ToString()",
                         FirstName: $('#ten').val(),

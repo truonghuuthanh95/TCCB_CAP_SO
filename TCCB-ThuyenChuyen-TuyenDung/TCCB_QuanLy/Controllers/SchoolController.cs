@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using AutoMapper;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,15 +18,20 @@ namespace TCCB_QuanLy.Controllers
         IStatusTiepNhanRepository statusTiepNhanRepository;
         ITruongMonDuTuyenRepository truongMonDuTuyenRepository;
         IRegistrationInterviewRepository registrationInterviewRepository;
+        ITruongNhiemVuThamGiaHDTDRepository truongNhiemVuThamGiaHDTDRepository;
 
-        public SchoolController(ISchoolRepository schoolRepository, ICandidateSchoolRepository candidateSchoolRepository, IStatusTiepNhanRepository statusTiepNhanRepository, ITruongMonDuTuyenRepository truongMonDuTuyenRepository, IRegistrationInterviewRepository registrationInterviewRepository)
+        public SchoolController(ISchoolRepository schoolRepository, ICandidateSchoolRepository candidateSchoolRepository, IStatusTiepNhanRepository statusTiepNhanRepository, ITruongMonDuTuyenRepository truongMonDuTuyenRepository, IRegistrationInterviewRepository registrationInterviewRepository, ITruongNhiemVuThamGiaHDTDRepository truongNhiemVuThamGiaHDTDRepository)
         {
             this.schoolRepository = schoolRepository;
             this.candidateSchoolRepository = candidateSchoolRepository;
             this.statusTiepNhanRepository = statusTiepNhanRepository;
             this.truongMonDuTuyenRepository = truongMonDuTuyenRepository;
             this.registrationInterviewRepository = registrationInterviewRepository;
+            this.truongNhiemVuThamGiaHDTDRepository = truongNhiemVuThamGiaHDTDRepository;
         }
+
+
+
 
 
         // GET: School
@@ -93,5 +99,58 @@ namespace TCCB_QuanLy.Controllers
 
             return Json(new ReturnResult(200, "success", null), JsonRequestBehavior.AllowGet);
         }
-    }
+
+
+        [Route("canbothamgiahoidongthi", Name = "canbothamgiahoidongthi")]
+        [HttpGet]
+        public ActionResult TruongNhapCanBoThamGia()
+        {
+            School accountSchool = (School)Session[Utils.Constants.USER_SCHOOL_SESSION];
+            if (accountSchool == null)
+            {
+                return RedirectToRoute("loginsoption");
+            }
+            ViewBag.TruongNhiemVuThamGiaHDTDs = truongNhiemVuThamGiaHDTDRepository.GetNhiemVuThamGiaHDTDsBySchoolId(accountSchool.Id);
+            return View();
+        }
+        [Route("capnhatcanbothamgiahoidong", Name = "capnhatcanbothamgiahoidong")]
+        [HttpPost]
+        
+        public ActionResult CapNhatCanBoThamGiaHoiDong(string canBoThamGiaHoiDongDTO)
+        {
+            School accountSchool = (School)Session[Utils.Constants.USER_SCHOOL_SESSION];
+            if (accountSchool == null)
+            {
+                return Json(new ReturnResult(403, "access denied", null), JsonRequestBehavior.AllowGet);
+            }
+            List<CanBoThamGiaHoiDongDTO> canBoThamGiaHoiDongDTOs = JsonConvert.DeserializeObject<List<CanBoThamGiaHoiDongDTO>>(canBoThamGiaHoiDongDTO) as List<CanBoThamGiaHoiDongDTO>;
+            List<TruongNhiemVuThamGiaHDTD> truongNhiemVuThamGiaHDTDs = new List<TruongNhiemVuThamGiaHDTD>(); 
+            foreach (var item in canBoThamGiaHoiDongDTOs)
+            {
+                TruongNhiemVuThamGiaHDTD truongNhiemVuThamGiaHDTD = new TruongNhiemVuThamGiaHDTD();
+                Mapper.Map(item, truongNhiemVuThamGiaHDTD);
+                truongNhiemVuThamGiaHDTD.SchoolId = accountSchool.Id;
+                truongNhiemVuThamGiaHDTDs.Add(truongNhiemVuThamGiaHDTD);
+            }
+
+            bool flag = truongNhiemVuThamGiaHDTDRepository.UpdateTruongNhiemVuThamGiaHDTD(truongNhiemVuThamGiaHDTDs);
+            if (flag)
+            {
+                return Json(new ReturnResult(200, "success", null), JsonRequestBehavior.AllowGet);
+            }
+            return Json(new ReturnResult(400, "failed", null), JsonRequestBehavior.AllowGet);
+        }
+        [Route("indanhsachthamgiahoidongtuyendung")]
+        public ActionResult InDanhSachThamGiaHDTD()
+        {
+            School accountSchool = (School)Session[Utils.Constants.USER_SCHOOL_SESSION];
+            if (accountSchool == null)
+            {
+                return RedirectToRoute("loginsoption");
+            }
+            ViewBag.School = accountSchool;
+            ViewBag.TruongNhiemVuThamGiaHDTDs = truongNhiemVuThamGiaHDTDRepository.GetNhiemVuThamGiaHDTDsBySchoolId(7852);
+            return View();
+        }
+        }
 }

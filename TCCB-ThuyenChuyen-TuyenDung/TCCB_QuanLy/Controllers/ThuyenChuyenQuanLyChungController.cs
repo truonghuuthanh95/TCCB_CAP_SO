@@ -194,24 +194,37 @@ namespace TCCB_QuanLy.Controllers
         [HttpPost]
         public ActionResult CapNhatTrangThai(int maHoSo, int trangThaiId, DateTime date, string ghiChu = " ")
         {
-            using (var _thuyenChuyen = new ThuyenChuyenRepository())
+            ThuyenChuyen2020 thuyenChuyen2020 = _thuyenChuyenRepository.GetThuyenChuyensById(maHoSo);
+            if (thuyenChuyen2020 == null)
             {
-                ThuyenChuyen thuyenChuyen = _thuyenChuyen.GetThuyenChuyensById(maHoSo);
-                if (thuyenChuyen == null)
-                {
-                    return Json(new ReturnResult(400, "failed", null), JsonRequestBehavior.AllowGet);
-                }
-                using (var _trangthai = new TrangThaiHoSoService())
-                {
-                    string trangthai = _trangthai.GetStatusThuyenChuyensById(trangThaiId).Name;
-                    _thuyenChuyen.CapNhatTrangThaiHoSo(thuyenChuyen, trangThaiId, ghiChu);
-                    return Json(new ReturnResult(200, trangthai, null), JsonRequestBehavior.AllowGet);
-                }
-                
+                return Json(new ReturnResult(400, "failed", null), JsonRequestBehavior.AllowGet);
             }
+            using (var _trangthai = new TrangThaiHoSoService())
+            {
+                string trangthai = _trangthai.GetStatusThuyenChuyensById(trangThaiId).Name;
+                thuyenChuyen2020.StatusId = trangThaiId;
+                thuyenChuyen2020.GhiChu = ghiChu;
+                _thuyenChuyenRepository.CapNhatTrangThaiHoSo(thuyenChuyen2020, trangThaiId);
+                return Json(new ReturnResult(200, trangthai, null), JsonRequestBehavior.AllowGet);
+            }
+            //using (var _thuyenChuyen = new ThuyenChuyenRepository())
+            //{
+            //    ThuyenChuyen2020 thuyenChuyen = _thuyenChuyen.GetThuyenChuyensById(maHoSo);
+            //    if (thuyenChuyen == null)
+            //    {
+            //        return Json(new ReturnResult(400, "failed", null), JsonRequestBehavior.AllowGet);
+            //    }
+            //    using (var _trangthai = new TrangThaiHoSoService())
+            //    {
+            //        string trangthai = _trangthai.GetStatusThuyenChuyensById(trangThaiId).Name;
+            //        _thuyenChuyen.CapNhatTrangThaiHoSo(thuyenChuyen, trangThaiId, ghiChu);
+            //        return Json(new ReturnResult(200, trangthai, null), JsonRequestBehavior.AllowGet);
+            //    }
+
+            //}
 
         }
-        
+
         [Route("danhsachhosodatiepnhan/{year}")]
         [HttpGet]
         public ActionResult DanhSachHoSoDaTiepNhan(int year)

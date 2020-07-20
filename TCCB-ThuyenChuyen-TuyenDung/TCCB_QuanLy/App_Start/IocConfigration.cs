@@ -53,6 +53,7 @@ namespace TCCB_QuanLy.App_Start
             container.RegisterType<ICandidateSchoolRepository, CandidateSchoolRepository>(new HierarchicalLifetimeManager());
             container.RegisterType<IStatusTiepNhanRepository, StatusTiepNhanRepository>(new HierarchicalLifetimeManager());
             container.RegisterType<ITruongMonDuTuyenRepository, TruongMonDuTuyenRepository>(new HierarchicalLifetimeManager());
+            container.RegisterType<ITruongNhiemVuThamGiaHDTDRepository, TruongNhiemVuThamGiaHDTDRepository>(new HierarchicalLifetimeManager());
         }
     }
 }

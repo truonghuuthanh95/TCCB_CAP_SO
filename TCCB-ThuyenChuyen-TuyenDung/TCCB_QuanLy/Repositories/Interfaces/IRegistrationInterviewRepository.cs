@@ -21,7 +21,7 @@ namespace TCCB_QuanLy.Repositories.Interfaces
         List<TuyenDung2020> GetTuyenDungsDaDangKi();
         List<TuyenDung2020> GetTuyenDungsChuaCapNhat();
         List<TuyenDung2020> GetTuyenDungsDaHoanThanh();
-        List<TuyenDung2020> GetTuyenDungsDaHoanThanhWithDetail();
+        List<TuyenDung2020> GetTuyenDungsDaHoanThanhWithDetail(int? id);
         List<HoSoHopLe> GetTuyenDungsHopLe();
         List<HoSoHopLe> GetTuyenDungsHopLeWithDetail();
         List<RegistrationInterviewStatusRegistedCountDTO> GetSoluongDangkyTheoViTriUngTuyen();
@@ -31,7 +31,7 @@ namespace TCCB_QuanLy.Repositories.Interfaces
         TuyenDung2020 GetTuyenDungByCMND(string cmnd);
         List<TuyenDung2020> GetTuyenDungBySchoolID(int schoolID);
         List<TuyenDung2020> GetTuyenDungsByStatus(int? id);
-
+        List<SoLuongDangKi> GetTinhHinhDangKi();
 
     }
 }

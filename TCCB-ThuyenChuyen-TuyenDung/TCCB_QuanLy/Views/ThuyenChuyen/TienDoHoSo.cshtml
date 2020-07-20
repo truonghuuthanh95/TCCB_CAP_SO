@@ -34,9 +34,7 @@
                     <tr>
                         <th>Họ tên</th>
                         <th>Năm sinh</th>
-                        <th>CMND</th>
-                        <th>Đang công tác</th>
-                        <th>Chuyển đến</th>
+                        <th>CMND</th>                       
                         <th>Trạng thái</th>
                     </tr>
                 </thead>
@@ -65,9 +63,7 @@
                             $('#trangthai').append('<tr><td>'
                                 + dataJson.HoTen + '</td><td>'
                                 + moment(dataJson.NamSinh).format("DD/MM/YYYY") + '</td><td>'
-                                + dataJson.CMND + '</td><td>'
-                                + dataJson.School.TenTruong + '</td><td>'
-                                + dataJson.School1.TenTruong + '</td><td>'
+                                + dataJson.CMND + '</td><td>'                               
                                 + dataJson.StatusThuyenChuyen.Name + '</td></tr>');  
                         }
                         else {
@@ -75,8 +71,7 @@
                                 + dataJson.HoTen + '</td><td>'
                                 + moment(dataJson.NamSinh).format("DD/MM/YYYY") + '</td><td>'
                                 + dataJson.CMND + '</td><td>'
-                                + dataJson.School.TenTruong + '</td><td>'
-                                + dataJson.School1.TenTruong + '</td><td>'
+                                
                                 + 'Chưa tiếp nhận' + '</td></tr>');  
                         }
                                             

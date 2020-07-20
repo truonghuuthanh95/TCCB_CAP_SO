@@ -36,6 +36,7 @@ namespace TCCB_QuanLy.Models.DAO
         public virtual DbSet<MaNgach> MaNgaches { get; set; }
         public virtual DbSet<MonDuTuyen> MonDuTuyens { get; set; }
         public virtual DbSet<NgayHetHanSuaThongTin> NgayHetHanSuaThongTins { get; set; }
+        public virtual DbSet<NhiemVuThamGiaHoiDongTuyenDung> NhiemVuThamGiaHoiDongTuyenDungs { get; set; }
         public virtual DbSet<Permission> Permissions { get; set; }
         public virtual DbSet<Province> Provinces { get; set; }
         public virtual DbSet<RegistrationInterview> RegistrationInterviews { get; set; }
@@ -43,7 +44,6 @@ namespace TCCB_QuanLy.Models.DAO
         public virtual DbSet<School> Schools { get; set; }
         public virtual DbSet<StatusThuyenChuyen> StatusThuyenChuyens { get; set; }
         public virtual DbSet<StatusTiepNhan> StatusTiepNhans { get; set; }
-        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<ThanhPhanBanThanHienTai> ThanhPhanBanThanHienTais { get; set; }
         public virtual DbSet<ThuyenChuyen> ThuyenChuyens { get; set; }
         public virtual DbSet<ThuyenChuyen2020> ThuyenChuyen2020 { get; set; }
@@ -55,6 +55,7 @@ namespace TCCB_QuanLy.Models.DAO
         public virtual DbSet<TrinhDoTinHoc> TrinhDoTinHocs { get; set; }
         public virtual DbSet<TruongHopDacBiet> TruongHopDacBiets { get; set; }
         public virtual DbSet<TruongMonDuTuyen> TruongMonDuTuyens { get; set; }
+        public virtual DbSet<TruongNhiemVuThamGiaHDTD> TruongNhiemVuThamGiaHDTDs { get; set; }
         public virtual DbSet<TuyenDung2020> TuyenDung2020 { get; set; }
         public virtual DbSet<UserPermission> UserPermissions { get; set; }
         public virtual DbSet<ViTriUngTuyen> ViTriUngTuyens { get; set; }
@@ -178,6 +179,11 @@ namespace TCCB_QuanLy.Models.DAO
                 .HasMany(e => e.ThuyenChuyenNgoaiTinhs)
                 .WithOptional(e => e.MonDuTuyen)
                 .HasForeignKey(e => e.DVDCTMonDayId);
+
+            modelBuilder.Entity<NhiemVuThamGiaHoiDongTuyenDung>()
+                .HasMany(e => e.TruongNhiemVuThamGiaHDTDs)
+                .WithOptional(e => e.NhiemVuThamGiaHoiDongTuyenDung)
+                .HasForeignKey(e => e.NhiemVuId);
 
             modelBuilder.Entity<Province>()
                 .HasMany(e => e.Districts)

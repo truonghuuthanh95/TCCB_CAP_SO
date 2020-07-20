@@ -104,7 +104,7 @@ namespace TCCB_QuanLy.Repositories.Implements
 
         public List<ThuyenChuyen2020> GetThuyenChuyenByStatusAndYear(int statusId, int year)
         {
-            List<ThuyenChuyen2020> thuyenChuyen2020 = _db.ThuyenChuyen2020
+            List<ThuyenChuyen2020> thuyenChuyen2020 = _db.ThuyenChuyen2020.AsNoTracking()
                .Include("Province")
                .Include("Province1")
                .Include("BangTotNghiep")
@@ -126,21 +126,9 @@ namespace TCCB_QuanLy.Repositories.Implements
         public ThuyenChuyen2020 GetThuyenChuyensByMaHoSo(string maHoSo)
         {
             ThuyenChuyen2020 thuyenChuyen = _db.ThuyenChuyen2020
-                //.Include("Province")
-                //.Include("Province1")
-                //.Include("BangTotNghiep")
-                ////.Include("StatusThuyenChuyen")
-                //.Include("ChuyenNganhDaoTao")
-                //.Include("HinhThucDaoTao")
-                //.Include("MonDuTuyen")
-                //.Include("School.DVQL")
-                //.Include("School.Ward.District")
-                //.Include("School1.DVQL")
-                //.Include("School1.Ward.District")
-                //.Include("XepLoaiHocLuc")
-                //.Include("Ward1.District.Province")
-                //.Include("Ward.District.Province")
-                //.Include("TrinhDoCaoNhat")
+
+                .Include("StatusThuyenChuyen")
+
                 .Where(s => s.TienTo + s.Id == maHoSo).SingleOrDefault();
             return thuyenChuyen;
         }
@@ -165,7 +153,7 @@ namespace TCCB_QuanLy.Repositories.Implements
 
         public List<ThuyenChuyen2020> GetThuyenChuyensByYear(int year)
         {
-            List<ThuyenChuyen2020> thuyenChuyen2020 = _db.ThuyenChuyen2020
+            List<ThuyenChuyen2020> thuyenChuyen2020 = _db.ThuyenChuyen2020.AsNoTracking()
                 .Include("Province")
                 .Include("Province1")
                 .Include("BangTotNghiep")

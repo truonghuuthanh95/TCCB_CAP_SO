@@ -2,41 +2,67 @@
 @{
     ViewBag.Title = "Trang thái đăng ký";
     Layout = "~/Views/Shared/_Home_Layout.cshtml";
+    List<TCCB_QuanLy.Models.DTO.SoLuongDangKi> tinhHinhDangKis = (List<TCCB_QuanLy.Models.DTO.SoLuongDangKi>)ViewBag.TinhHinhDangKi;
 }
 
 <div class="col-sm-10 col-sm-offset-1">
     <div class="panel panel-default">
         <div class="panel-body">
             <h2 class="text-primary text-uppercase text-center">Tình hình đăng ký</h2>
-            <table class="table table-bordered">
-                <thead>
-                    <tr>
-                        <th>STT</th>
-                        <th>Vị trí dự tuyển</th>
-                        <th>Chỉ tiêu</th>
-                        <th>Đã đăng ký</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @{
-            int index = 1;
-            foreach (var item in ViewBag.RegistrationStatus)
-            {
-                    <tr>
-                        <td>@index</td>
+            
+            @{
+                foreach (var item in ViewBag.MonDuTuyens)
+                {
+                    <div class="panel-group" id="@item.Name" role="tablist" aria-multiselectable="true">
+                        <div class="panel panel-default">
+                            <div class="panel-heading" role="tab" id="headingOne">
+                                <h4 class="panel-title">
+                                    <a role="button" data-toggle="collapse" data-parent="#@item.Name" href="#@item.Id"  aria-expanded="true" aria-controls="collapseOne">
+                                        <b class="text-danger">@item.ViTriUngTuyen.Name @item.Name</b>
+                                    </a>
+                                </h4>
+                            </div>
+                            <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+                                <div class="panel-body">
+                                    <table class="table table-bordered">
+                                        <thead>
+                                            <tr>
 
-                        <td>
-                            @item.ViTriUngTuyen
-                        </td>
-                        <td>@item.Targets</td>
-                        <td>@item.Quantity</td>
-                    </tr>
-index++;
-}
-                    }
-                   
-                    </tbody>
-                </table>
+                                                <th>Tên trường</th>
+                                                <th>Nhu cầu</th>
+                                                <th>Đã đăng kí</th>
+                                                <th>Đã nộp hồ sơ</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @{
+                                                foreach (var itemTinhHinh in tinhHinhDangKis.Where(s => s.MonDuTuyenId == item.Id))
+                                                {
+                                                    <tr>
+
+                                                        <td>@itemTinhHinh.TenTruong</td>
+                                                        <td>@itemTinhHinh.Targets</td>
+                                                        <td>@itemTinhHinh.SoLuong</td>
+                                                        <td>@itemTinhHinh.DaNopHs</td>
+                                                    </tr>
+
+                                                }
+                                            }
+
+
+
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+                }
+            }
+
         </div>
     </div>
 </div>
+

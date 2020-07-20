@@ -20,6 +20,8 @@ namespace TCCB_QuanLy.App_Start
             CreateMap<ThuyenChuyenNgoaiTinhDTO, ThuyenChuyenNgoaiTinh>();
             CreateMap<ThuyenChuyenDTO2020, ThuyenChuyen2020>();
             CreateMap<ThuyenChuyen2020, ThuyenChuyenDTO2020>();
+            CreateMap<CanBoThamGiaHoiDongDTO, TruongNhiemVuThamGiaHDTD>();
+            CreateMap<TruongNhiemVuThamGiaHDTD, CanBoThamGiaHoiDongDTO>();
         }
     }
 }

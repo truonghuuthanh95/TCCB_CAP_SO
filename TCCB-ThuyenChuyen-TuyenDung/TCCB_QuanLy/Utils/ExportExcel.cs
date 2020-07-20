@@ -261,7 +261,7 @@ namespace TCCB_QuanLy.Utils
                 }
             });
         }
-        public static Task GenerateXLSRegistrationCompleted(List<RegistrationInterview> registrationInterviews, string filePath)
+        public static Task GenerateXLSRegistrationCompleted(List<TuyenDung2020> registrationInterviews, string filePath)
         {
             return Task.Run(() =>
             {
@@ -269,7 +269,7 @@ namespace TCCB_QuanLy.Utils
                 {
                     //Create the worksheet 
                     ExcelWorksheet ws = pck.Workbook.Worksheets.Add(DateTime.Now.Date.ToString());
-                    ws.Cells[2, 1].Value = "DANH SÁCH ỨNG VIÊN HOÀN THÀNH CẬP NHẬT";
+                    ws.Cells[2, 1].Value = "DANH SÁCH ỨNG VIÊN";
                     ws.Cells["A2:I2"].Merge = true;
 
                     
@@ -322,12 +322,12 @@ namespace TCCB_QuanLy.Utils
                     ws.Cells[6, 38].Value = "SỐ HIỆU VĂN BẰNG";
                     //THONG TIN KHAC
                     ws.Cells[6, 39].Value = "ĐỐI TƯỢNG ƯU TIÊN";
-                    ws.Cells[6, 40].Value = "TRƯỜNG HỢP ĐẶC BIỆT";
+                    //ws.Cells[6, 40].Value = "TRƯỜNG HỢP ĐẶC BIỆT";
                     //NGUYEN VONG
-                    ws.Cells[6, 41].Value = "NGUYỆN VỌNG 1";
-                    ws.Cells[6, 42].Value = "NGUYỆN VỌNG 2";
-                    ws.Cells[6, 43].Value = "NGUYỆN VỌNG 3";
-                    ws.Cells[6, 44].Value = "TRÌNH DỘ CAO NHẤT";
+                    ws.Cells[6, 40].Value = "TRƯỜNG DỰ TUYỂN";
+                   
+                    ws.Cells[6, 41].Value = "TRÌNH DỘ CAO NHẤT";
+                    ws.Cells[6, 42].Value = "TRẠNG THÁI";
                     for (int i = 0; i < registrationInterviews.Count(); i++)
                     {
                         ws.Cells[i + 7, 1].Value = registrationInterviews.ElementAt(i).TienTo + registrationInterviews.ElementAt(i).Id;
@@ -376,12 +376,12 @@ namespace TCCB_QuanLy.Utils
                         ws.Cells[i + 7, 38].Value = registrationInterviews.ElementAt(i).SoVanBangChungChiNgoaiNguKhac;
                         //THONG TIN KHAC
                         ws.Cells[i + 7, 39].Value = registrationInterviews.ElementAt(i).DoiTuongUuTien1.Name;
-                        ws.Cells[i + 7, 40].Value = registrationInterviews.ElementAt(i).TruongHopDacBiet.Name;
+                        //ws.Cells[i + 7, 40].Value = registrationInterviews.ElementAt(i).TruongHopDacBiet.Name;
                         //NGUYEN VONG
-                        ws.Cells[i + 7, 41].Value = registrationInterviews.ElementAt(i).District.Type + " " + registrationInterviews.ElementAt(i).District.Name;
-                        ws.Cells[i + 7, 42].Value = registrationInterviews.ElementAt(i).District1.Type + " " + registrationInterviews.ElementAt(i).District1.Name;
-                        ws.Cells[i + 7, 43].Value = registrationInterviews.ElementAt(i).District2.Type + " " + registrationInterviews.ElementAt(i).District2.Name;
-                        ws.Cells[i + 7, 44].Value = registrationInterviews.ElementAt(i).TrinhDoCaoNhat.Name;
+                        ws.Cells[i + 7, 40].Value = registrationInterviews.ElementAt(i).School.TenTruong;
+                       
+                        ws.Cells[i + 7, 41].Value = registrationInterviews.ElementAt(i).TrinhDoCaoNhat.Name;
+                        ws.Cells[i + 7, 42].Value = registrationInterviews.ElementAt(i).TrangThaiHosoTuyenDungId == null? "Chưa trình hồ sơ" : registrationInterviews.ElementAt(i).TrangThaiHoSoTuyenDung.Name;
 
                     }
                     using (ExcelRange rng = ws.Cells["A2:I2"])

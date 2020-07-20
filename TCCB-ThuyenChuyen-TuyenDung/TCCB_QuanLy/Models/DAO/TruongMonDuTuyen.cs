@@ -17,6 +17,8 @@ namespace TCCB_QuanLy.Models.DAO
 
         public bool? IsActive { get; set; }
 
+        public int? Targets { get; set; }
+
         public virtual MonDuTuyen MonDuTuyen { get; set; }
 
         public virtual School School { get; set; }

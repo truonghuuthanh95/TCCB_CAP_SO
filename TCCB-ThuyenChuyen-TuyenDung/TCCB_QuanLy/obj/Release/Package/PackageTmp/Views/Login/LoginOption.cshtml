@@ -56,6 +56,7 @@
 
                             </select>
                         </div>
+                        <p id="errorloginsso"></p>
                         <p class="text-center"><button onclick="loginSchool();" class="btn btn-primary">TIẾP TỤC</button></p>
                     </div>
                 </div>
@@ -98,9 +99,13 @@
                 Returnuri: "http://localhost:49222/Login/LoginSSOSchool"
 
             }, function (data, status) {
-       
-                if (status == 'success') {
+
+                if (status == 'success' && data.StatusCode == 200) {
                     window.location.href = data.Result;
+                }
+                else {
+                    
+                    $("#errorloginsso").text("Trường chưa khai báo tài khoản Hiệu trưởng trên trang quanly.hcm.edu.vn");
                 }
             })
         };

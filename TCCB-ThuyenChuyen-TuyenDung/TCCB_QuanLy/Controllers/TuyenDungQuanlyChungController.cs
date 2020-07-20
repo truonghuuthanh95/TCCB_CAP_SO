@@ -265,45 +265,29 @@ namespace TCCB_QuanLy.Controllers
         //    //}
         //    return View();
         //}
-        //[Route("downloadexceltuyendung/{status}")]
-        //[HttpGet]
-        //public async Task<ActionResult> DownloadTuyenDung(string status)
-        //{
+        [Route("downloadexceltuyendung")]
+        [HttpGet]
+        public async Task<ActionResult> DownloadTuyenDung()
+        {
 
-        //    int permissionId = 1;
-        //    Account account = (Account)Session[Utils.Constants.USER_SESSION];
-        //    if (account == null)
-        //    {
-        //        return RedirectToRoute("login");
-        //    }
-        //    List<UserPermission> userPermission = (List<UserPermission>)Session[Utils.Constants.USER_PERMISSION_SESSION];
-        //    if (userPermission.Where(s => s.PermissionId == permissionId).SingleOrDefault() == null)
-        //    {
-        //        return RedirectToRoute("login");
-        //    }
-        //    string filePath;
-        //    if (status == "hople")
-        //    {
-        //        List<HoSoHopLe> hoSoHopLes = registrationInterviewRepository.GetRegistrationInterviewsHopLeWithDetail();
-        //        filePath = System.Web.HttpContext.Current.Server.MapPath("~/Utils/ds-hople-tuyendung.xlsx");
-        //        await Utils.ExportExcel.GenerateXLSRegistrationIsAccepted(hoSoHopLes, filePath);
-        //        return File(filePath, "application/vnd.ms-excel", "ds-hople-tuyendung.xlsx");
-        //    }
-        //    else
-        //    {
-        //        List<RegistrationInterview> registrationInterviews = registrationInterviewRepository.GetRegistrationInterviewsDaHoanThanhWithDetail();
-        //        filePath = System.Web.HttpContext.Current.Server.MapPath("~/Utils/ds-hoanthanhcapnhat-tuyendung.xlsx");
-        //        await Utils.ExportExcel.GenerateXLSRegistrationCompleted(registrationInterviews, filePath);
-        //        return File(filePath, "application/vnd.ms-excel", "ds-hoanthanhcapnhat-tuyendung.xlsx");
-        //    }
+            int permissionId = 1;
+            Account account = (Account)Session[Utils.Constants.USER_SESSION];
+            if (account == null)
+            {
+                return RedirectToRoute("login");
+            }
+            List<UserPermission> userPermission = (List<UserPermission>)Session[Utils.Constants.USER_PERMISSION_SESSION];
+            if (userPermission.Where(s => s.PermissionId == permissionId).SingleOrDefault() == null)
+            {
+                return RedirectToRoute("login");
+            }
+            string filePath;
+            
+                List<TuyenDung2020> registrationInterviews = registrationInterviewRepository.GetTuyenDungsDaHoanThanhWithDetail(null);
+                filePath = System.Web.HttpContext.Current.Server.MapPath("~/Utils/ds-hoanthanhcapnhat-tuyendung.xlsx");
+                await Utils.ExportExcel.GenerateXLSRegistrationCompleted(registrationInterviews, filePath);
+                return File(filePath, "application/vnd.ms-excel", "ds-hoanthanhcapnhat-tuyendung.xlsx");
 
-
-
-
-
-
-        //}
-
-
+        }
     }
 }

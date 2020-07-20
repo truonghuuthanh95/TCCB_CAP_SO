@@ -262,21 +262,15 @@ namespace TCCB_QuanLy.Controllers
         }
 
 
-        //[Route("trangthaidangky")]
-        //[HttpGet]
-        //public ActionResult TrangThaiDangKy()
-        //{
-        //    List<RegistrationInterviewStatusRegistedCountDTO> registration = registrationInterviewRepository.GetSoluongDangkyTheoViTriUngTuyen();
-        //    List<MonDuTuyen> mondutuyens = monDuTuyenRepository.GetMonDuTuyens();
-        //    var registrationRegistedStatus = (from s1 in registration join s2 in mondutuyens on Convert.ToInt32(s1.ViTriUngTuyen) equals s2.Id select new RegistrationInterviewStatusRegistedCountDTO { ViTriUngTuyen = s2.ViTriUngTuyen.Name + " " + s2.Name, Quantity = s1.Quantity, Targets = s2.Targets });
-
-        //    //var registrationRegistedStatus = (from p in mondutuyens from s in registration where Convert.ToInt32(s.Quantity) == p.Id select new RegistrationInterviewStatusRegistedCountDTO { ViTriUngTuyen = p.ViTriUngTuyen.Name + " " + p.Name, Quantity = s.Quantity, Targets = p.Targets });
-        //    //var b = (from s1 in mondutuyens join s2 in registration on s1.Id equals Convert.ToInt32(s2.ViTriUngTuyen) select new RegistrationInterviewStatusRegistedCountDTO { ViTriUngTuyen = s1.ViTriUngTuyen.Name + " " + s1.Name, Quantity = 0, Targets = s1.Targets } );
-        //    var b = from s1 in mondutuyens where !registration.Any(s => Convert.ToInt32(s.ViTriUngTuyen) == s1.Id) select new RegistrationInterviewStatusRegistedCountDTO { ViTriUngTuyen = s1.ViTriUngTuyen.Name + " " + s1.Name, Quantity = 0, Targets = s1.Targets };
-        //    var ab = registrationRegistedStatus.Concat(b).OrderBy(s => s.ViTriUngTuyen);
-        //    ViewBag.RegistrationStatus = ab;
-        //    return View();
-        //}
+        [Route("trangthaidangky")]
+        [HttpGet]
+        public ActionResult TrangThaiDangKy()
+        {
+            List<SoLuongDangKi> soLuongDangKis = registrationInterviewRepository.GetTinhHinhDangKi();
+            ViewBag.TinhHinhDangKi = soLuongDangKis;
+            ViewBag.MonDuTuyens = monDuTuyenRepository.GetMonDuTuyens();
+            return View();
+        }
 
         //[Route("ketquatuyendung")]
         //[HttpGet]

@@ -1,0 +1,274 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>TruongNhapCanBoThamGia</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+    @*<div class="container">
+            <div class="panel panel-default">
+                <div class="panel-heading">1. Thành viên tham gia Hội đồng tuyển dụng (1 người)</div>
+                <div class="panel-body">
+                    <div class="col-sm-4 col-sm-offset-4">
+                        <form>
+                            <div class="form-group">
+                                <label for="exampleInputName2">Họ và tên</label>
+                                <input type="text" class="form-control" id="exampleInputName2" >
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputEmail2">Ngày/tháng/năm sinh</label>
+                                <input type="email" class="form-control" id="exampleInputEmail2" >
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputEmail2">Giới tính</label>
+                                <input type="email" class="form-control" id="exampleInputEmail2" >
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputEmail2">Chức vụ</label>
+                                <input type="email" class="form-control" id="exampleInputEmail2" >
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputEmail2">Trình độ chuyên môn</label>
+                                <input type="email" class="form-control" id="exampleInputEmail2" >
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputEmail2">Chuyên ngành đào tạo</label>
+                                <input type="email" class="form-control" id="exampleInputEmail2" >
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputEmail2">Năm vào ngành</label>
+                                <input type="email" class="form-control" id="exampleInputEmail2">
+                            </div>
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-heading">2. Thành viên tham gia Ban kiểm tra giám sát (1 người)</div>
+                <div class="panel-body">
+                    <form>
+                        <div class="form-group">
+                            <label for="exampleInputName2">Họ và tên</label>
+                            <input type="text" class="form-control" id="exampleInputName2">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputEmail2">Ngày/tháng/năm sinh</label>
+                            <input type="email" class="form-control" id="exampleInputEmail2">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputEmail2">Giới tính</label>
+                            <input type="email" class="form-control" id="exampleInputEmail2">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputEmail2">Chức vụ</label>
+                            <input type="email" class="form-control" id="exampleInputEmail2">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputEmail2">Trình độ chuyên môn</label>
+                            <input type="email" class="form-control" id="exampleInputEmail2">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputEmail2">Chuyên ngành đào tạo</label>
+                            <input type="email" class="form-control" id="exampleInputEmail2">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputEmail2">Năm vào ngành</label>
+                            <input type="email" class="form-control" id="exampleInputEmail2">
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-heading">3. Thành viên tham gia Ban kiểm tra sát hạch (theo nhu cầu, có thể nhiều người)</div>
+                <div class="panel-body">
+
+                </div>
+            </div>
+        </div>*@
+    <div class="container-fluid">
+        <div class="panel panel-default">
+            <div class="panel-body"><h3><b>Danh sách tham gia hội đồng tuyển dụng </b></h3></div>
+            <div class="panel-body">
+
+                <table class="table table-bordered" id="excelDataTable">
+                    <thead>
+                        <tr>
+                            <th>Họ và tên</th>
+                            <th>Ngày/tháng/năm sinh</th>
+                            <th>Giới tính</th>
+                            <th>Chức vụ</th>
+                            <th>Trình độ chuyên môn</th>
+                            <th>Chuyên nghành đào tạo</th>
+                            <th>Năm vào ngành</th>
+                            <th>Vị trí</th>
+                            <th>Thao tác</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @{
+                            if (ViewBag.TruongNhiemVuThamGiaHDTDs.Count > 0)
+                            {
+                                foreach (var item in ViewBag.TruongNhiemVuThamGiaHDTDs)
+                                {
+                                    <tr>
+                                        <td contenteditable="true">@item.HoTen</td>
+                                        <td contenteditable="true">@item.NamSinh</td>
+                                        <td>
+                                            <select class="form-control">
+                                                @{
+                                                    if (item.GioiTinh)
+                                                    {
+                                                        <option value="1" selected>Nam</option>
+                                                        <option value="0">Nữ</option>
+                                                    }
+                                                    else
+                                                    {
+                                                        <option value="1">Nam</option>
+                                                        <option value="0" selected>Nữ</option>
+                                                    }
+                                                }
+
+
+
+                                            </select>
+                                        </td>
+                                        }
+                                        <td contenteditable="true">@item.ChucVu</td>
+                                        <td contenteditable="true">@item.TrinhDoChuyenMon</td>
+                                        <td contenteditable="true">@item.ChuyenNganhDaoTao</td>
+                                        <td contenteditable="true">@item.NamVaoNganh</td>
+                                        <td>
+                                            <select class="form-control">
+                                                @{
+                                                    if (item.NhiemVuId == 1)
+                                                    {
+                                                        <option value="1" selected>Tham gia Hội đồng tuyển dụng (1 người)</option>
+                                                        <option value="2">Thành viên tham gia Ban kiểm tra giám sát (1 người)</option>
+                                                        <option value="3">Thành viên tham gia Ban kiểm tra sát hạch (theo nhu cầu, có thể nhiều người)</option>
+                                                    }
+                                                    else if (item.NhiemVuId == 2)
+                                                    {
+                                                        <option value="1">Tham gia Hội đồng tuyển dụng (1 người)</option>
+                                                        <option value="2" selected>Thành viên tham gia Ban kiểm tra giám sát (1 người)</option>
+                                                        <option value="3">Thành viên tham gia Ban kiểm tra sát hạch (theo nhu cầu, có thể nhiều người)</option>
+                                                    }
+                                                    else
+                                                    {
+                                                        <option value="1">Tham gia Hội đồng tuyển dụng (1 người)</option>
+                                                        <option value="2">Thành viên tham gia Ban kiểm tra giám sát (1 người)</option>
+                                                        <option value="3" selected>Thành viên tham gia Ban kiểm tra sát hạch (theo nhu cầu, có thể nhiều người)</option>
+                                                    }
+                                                }
+                                            </select>
+                                        </td>
+                                        <td class="text-danger" onClick="removeRow(this)">Xóa</td>
+                                    </tr>
+                                }
+                            }
+                            else
+                            {
+                                <tr>
+                                    <td contenteditable="true"></td>
+                                    <td contenteditable="true"></td>
+                                    <td><select class="form-control"><option value="1">Nam</option><option value="0">Nữ</option></select></td>
+                                    <td contenteditable="true"></td>
+                                    <td contenteditable="true"></td>
+                                    <td contenteditable="true"></td>
+                                    <td contenteditable="true"></td>
+                                    <td><select class="form-control"><option value="1">Tham gia Hội đồng tuyển dụng (1 người)</option><option value="2">Thành viên tham gia Ban kiểm tra giám sát (1 người)</option><option value="3">Thành viên tham gia Ban kiểm tra sát hạch (theo nhu cầu, có thể nhiều người)</option></select></td>
+                                    <td class="text-danger" onClick="removeRow(this)">Xóa</td>
+                                </tr>
+                            }
+                        }
+
+                    </tbody>
+                </table>
+                <p>
+                    <button class="btn btn-primary" onclick="addRow();"><i class="glyphicon glyphicon-plus"> Thêm dòng</i></button>
+                </p>
+                <p class="text-danger text-center" id="error"></p>
+                <p class="text-center">
+                    <button id="exportJsonData" class="btn btn-success btn-lg">LƯU</button>
+                </p>
+            </div>
+        </div>
+
+    </div>
+    <span class="loader" hidden id="loader"></span>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/jqueryval")
+    <script>
+        function removeRow(e) {
+            $(e).closest("tr").remove()
+        }
+        function addRow() {
+            $("#excelDataTable tbody").append("<tr><td contenteditable='true'></td><td contenteditable ='true'></td><td><select class='form-control'><option value='1'>Nam</option><option value='0'>Nữ</option></select></td><td contenteditable='true'></td><td contenteditable='true'></td><td contenteditable='true'></td><td contenteditable='true'></td> <td><select class='form-control'><option value='1'>Tham gia Hội đồng tuyển dụng (1 người)</option><option value='2'>Thành viên tham gia Ban kiểm tra giám sát (1 người)</option><option value='3'>Thành viên tham gia Ban kiểm tra sát hạch (theo nhu cầu, có thể nhiều người)</option></select></td><td class='text-danger' onClick='removeRow(this)'>Xóa</td></tr>");
+        }
+
+        jQuery.fn.pop = [].pop;
+        jQuery.fn.shift = [].shift;
+        $(document).on('click', 'button#exportJsonData', function () {
+            var $rows = $('table#excelDataTable').find('tr:not(:hidden)');
+            var headers = ["HoTen", "NamSinh", "GioiTinh", "ChucVu", "TrinhDoChuyenMon", "ChuyenNganhDaoTao", "NamVaoNganh", "NhiemVuId"];
+            //var headers = [];
+            var data = [];
+            $rows.shift()
+            //$($rows.shift()).find('th:not(:empty):not([data-attr-ignore])').each(function () {
+            //    console.log('[' + $(this).text().toLowerCase() + ']');
+            //    headers.push($(this).text().toLowerCase());
+            //});
+            $rows.each(function () {
+
+                var $td = $(this).find('td:not([data-attr-ignore])');
+
+                var h = {};
+                headers.forEach(function (header, i) {
+                    if ($td.eq(i).children().length > 0) {
+                        if (i === 2 || i === 7) {
+                            h[header] = parseInt($td.eq(i).children().val());
+                        }
+                        else {
+                            h[header] = $td.eq(i).children().val();
+                        }
+
+                    }
+                    else {
+                        h[header] = $td.eq(i).text();
+                    }
+
+                });
+                data.push(h);
+            });
+            if (data[0].HoTen !== '') {
+                var dataString = JSON.stringify(data);
+                $('#loader').show();
+                $('#exportJsonData').hide();
+                $.post('/capnhatcanbothamgiahoidong', {
+                    canBoThamGiaHoiDongDTO: JSON.stringify(data)
+                }, function (data, status) {
+                    if (data.StatusCode == 200) {
+                        window.location.href = '/indanhsachthamgiahoidongtuyendung'
+                    }
+                })
+            }
+            else {
+                $('#error').text('Vui lòng nhập');
+            }
+            var jsonString = JSON.stringify(data);
+
+        });
+    </script>
+</body>
+</html>
