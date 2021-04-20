@@ -760,10 +760,10 @@
     $(document).ready(function () {
         $("#captruongdvdct").val($('#captruongdvdcttmp').val());
         $("#captruongdvcd").val($('#captruongdvcdtmp').val());
-        jQuery.validator.addMethod("namhoplethuyenchuyen", function (value, element) {
-            console.log(value);
-            return moment(value, "DD-MM-YYYY") > moment().subtract(36, 'months');
-        }, "Để được thuyên chuyển phải công tác tại đơn vị trên 3 năm");
+        //jQuery.validator.addMethod("namhoplethuyenchuyen", function (value, element) {
+        //    console.log(value);
+        //    return moment(value, "DD-MM-YYYY") > moment().subtract(36, 'months');
+        //}, "Để được thuyên chuyển phải công tác tại đơn vị trên 3 năm");
 
         $('.datepicker').datepicker({
             format: 'dd-mm-yyyy',
@@ -855,11 +855,11 @@
                     $('#batdaucongtacmessage').text('Vui lòng nhập');
                     $('#batdaucongtac').focus();
                 }
-                else if (moment($('#batdaucongtac').val(), "DD-MM-YYYY") > moment().subtract(36, 'months')) {
-                    $('#errorbatdaucongtac').addClass('has-error');
-                    $('#batdaucongtacmessage').text('Để được thuyên chuyển phải công tác tại đơn vị trên 3 năm');
-                    $('#batdaucongtac').focus();
-                }
+                //else if (moment($('#batdaucongtac').val(), "DD-MM-YYYY") > moment().subtract(36, 'months')) {
+                //    $('#errorbatdaucongtac').addClass('has-error');
+                //    $('#batdaucongtacmessage').text('Để được thuyên chuyển phải công tác tại đơn vị trên 3 năm');
+                //    $('#batdaucongtac').focus();
+                //}
                 else {
                     $('#errorbatdaucongtac').removeClass('has-error');
                     $('#batdaucongtacmessage').text('');
