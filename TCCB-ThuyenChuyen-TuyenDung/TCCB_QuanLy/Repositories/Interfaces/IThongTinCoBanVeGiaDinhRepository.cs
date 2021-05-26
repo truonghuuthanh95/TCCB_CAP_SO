@@ -7,10 +7,9 @@ using TCCB_QuanLy.Models.DAO;
 
 namespace TCCB_QuanLy.Repositories.Interfaces
 {
-    public interface IThongTinGiaDinhRepository
+    public interface IThongTinCoBanVeGiaDinhRepository
     {
-
         List<ThongTinCoBanVeGiaDinh> GetThongTinCoBanVeGiaDinhsByTuyenDungId(int id);
-        List<ThongTinCoBanVeGiaDinh> CreateThongTinGiaDinh(List<ThongTinCoBanVeGiaDinh> thongTinCoBanVeGiaDinhs);
+        List<ThongTinCoBanVeGiaDinh> CreateThongTinCoBanVeGiaDinh(List<ThongTinCoBanVeGiaDinh> thongTinCoBanVeGiaDinhs);
     }
 }

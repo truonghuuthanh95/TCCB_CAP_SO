@@ -9,7 +9,7 @@ namespace TCCB_QuanLy.Repositories.Interfaces
 {
     public interface IThongTinQuaTrinhCongTacRepository
     {
-        List<ThongTinQuaTrinhCongTac> GetThongTinQuaTrinhCongTacsByTuyenDungId(int id);
+        List<ThongTinQuaTrinhCongTac> GetThongTinQuaTrinhCongTacsByTuyenDungId(int tuyendungId);
         List<ThongTinQuaTrinhCongTac> CreateThongTinQuaTrinhCongTac(List<ThongTinQuaTrinhCongTac> thongTinQuaTrinhCongTacs);
     }
 }

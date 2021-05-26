@@ -536,7 +536,7 @@ namespace TCCB_QuanLy.Utils
                         ws.Cells[i + 7, 38].Value = registrationInterviews.ElementAt(i).RegistrationInterview.SoVanBangChungChiNgoaiNguKhac;
                         //THONG TIN KHAC
                         ws.Cells[i + 7, 39].Value = registrationInterviews.ElementAt(i).RegistrationInterview.DoiTuongUuTien1.Name;
-                        ws.Cells[i + 7, 40].Value = registrationInterviews.ElementAt(i).RegistrationInterview.TruongHopDacBiet.Name;
+                        //ws.Cells[i + 7, 40].Value = registrationInterviews.ElementAt(i).RegistrationInterview.TruongHopDacBiet.Name;
                         //NGUYEN VONG
                         ws.Cells[i + 7, 41].Value = registrationInterviews.ElementAt(i).RegistrationInterview.District.Type + " " + registrationInterviews.ElementAt(i).RegistrationInterview.District.Name;
                         ws.Cells[i + 7, 42].Value = registrationInterviews.ElementAt(i).RegistrationInterview.District1.Type + " " + registrationInterviews.ElementAt(i).RegistrationInterview.District1.Name;

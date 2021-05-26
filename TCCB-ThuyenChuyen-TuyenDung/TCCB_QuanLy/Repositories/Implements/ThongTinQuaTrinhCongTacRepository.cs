@@ -23,9 +23,9 @@ namespace TCCB_QuanLy.Repositories.Implements
             return thongTinQuaTrinhCongTacs;
         }
 
-        public List<ThongTinQuaTrinhCongTac> GetThongTinQuaTrinhCongTacsByTuyenDungId(int id)
+        public List<ThongTinQuaTrinhCongTac> GetThongTinQuaTrinhCongTacsByTuyenDungId(int tuyendungId)
         {
-            var result = _db.ThongTinQuaTrinhCongTacs.Where(s => s.TuyenDungId == id).ToList();
+            var result = _db.ThongTinQuaTrinhCongTacs.Where(s => s.TuyenDungId == tuyendungId).ToList();
             return result;
         }
     }
