@@ -11,7 +11,7 @@ namespace TCCB_QuanLy.Models.DAO
     {
         public int Id { get; set; }
 
-        public int HoSoId { get; set; }
+        public int? HoSoId { get; set; }
 
         public int? MaVong2 { get; set; }
 

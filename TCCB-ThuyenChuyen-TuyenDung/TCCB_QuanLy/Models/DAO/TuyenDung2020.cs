@@ -158,6 +158,10 @@ namespace TCCB_QuanLy.Models.DAO
 
         public int? TruongDuTuyenId { get; set; }
 
+        public int? NhanNhiemSo { get; set; }
+
+        public bool? IsTrungTuyen { get; set; }
+
         public virtual Account Account { get; set; }
 
         public virtual Account Account1 { get; set; }

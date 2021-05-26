@@ -90,10 +90,10 @@ namespace TCCB_QuanLy.Models.DAO
         public int? TrinhDoCaoNhatId { get; set; }
 
         [StringLength(50)]
-        public string DVDCTCapTruong { get; set; }
+        public string TienTo { get; set; }
 
         [StringLength(50)]
-        public string TienTo { get; set; }
+        public string DVDCTCapTruong { get; set; }
 
         public DateTime? NgayTiepNhan { get; set; }
 

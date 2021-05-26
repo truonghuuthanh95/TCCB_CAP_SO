@@ -229,6 +229,7 @@
     <Compile Include="Models\DAO\HinhThucDaoTao.cs" />
     <Compile Include="Models\DAO\HoaDon.cs" />
     <Compile Include="Models\DAO\HoSoHopLe.cs" />
+    <Compile Include="Models\DAO\KetQuaTuyenDung2020.cs" />
     <Compile Include="Models\DAO\LamViecTrongNganh.cs" />
     <Compile Include="Models\DAO\LoaiHinh.cs" />
     <Compile Include="Models\DAO\MaNgach.cs" />
@@ -242,8 +243,11 @@
     <Compile Include="Models\DAO\School.cs" />
     <Compile Include="Models\DAO\StatusThuyenChuyen.cs" />
     <Compile Include="Models\DAO\StatusTiepNhan.cs" />
+    <Compile Include="Models\DAO\sysdiagram.cs" />
     <Compile Include="Models\DAO\TCCBDB.cs" />
     <Compile Include="Models\DAO\ThanhPhanBanThanHienTai.cs" />
+    <Compile Include="Models\DAO\ThongTinCoBanVeGiaDinh.cs" />
+    <Compile Include="Models\DAO\ThongTinQuaTrinhCongTac.cs" />
     <Compile Include="Models\DAO\ThuyenChuyen.cs" />
     <Compile Include="Models\DAO\ThuyenChuyen2020.cs" />
     <Compile Include="Models\DAO\ThuyenChuyenNgoaiTinh.cs" />
@@ -257,6 +261,7 @@
     <Compile Include="Models\DAO\TruongMonDuTuyen.cs" />
     <Compile Include="Models\DAO\TruongNhiemVuThamGiaHDTD.cs" />
     <Compile Include="Models\DAO\TuyenDung2020.cs" />
+    <Compile Include="Models\DAO\TuyenDung2021.cs" />
     <Compile Include="Models\DAO\UserPermission.cs" />
     <Compile Include="Models\DAO\ViTriUngTuyen.cs" />
     <Compile Include="Models\DAO\Ward.cs" />

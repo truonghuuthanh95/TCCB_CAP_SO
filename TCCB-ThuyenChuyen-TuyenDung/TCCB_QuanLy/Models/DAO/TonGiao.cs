@@ -14,6 +14,7 @@ namespace TCCB_QuanLy.Models.DAO
         {
             RegistrationInterviews = new HashSet<RegistrationInterview>();
             TuyenDung2020 = new HashSet<TuyenDung2020>();
+            TuyenDung2021 = new HashSet<TuyenDung2021>();
         }
 
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
@@ -27,5 +28,8 @@ namespace TCCB_QuanLy.Models.DAO
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<TuyenDung2020> TuyenDung2020 { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<TuyenDung2021> TuyenDung2021 { get; set; }
     }
 }

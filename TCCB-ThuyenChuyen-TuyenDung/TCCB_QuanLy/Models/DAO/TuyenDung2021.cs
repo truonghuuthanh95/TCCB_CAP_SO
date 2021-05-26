@@ -6,16 +6,8 @@ namespace TCCB_QuanLy.Models.DAO
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    [Table("RegistrationInterview")]
-    public partial class RegistrationInterview
+    public partial class TuyenDung2021
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public RegistrationInterview()
-        {
-            CandidateSchools = new HashSet<CandidateSchool>();
-            HoSoHopLes = new HashSet<HoSoHopLe>();
-        }
-
         public int Id { get; set; }
 
         [StringLength(50)]
@@ -38,12 +30,6 @@ namespace TCCB_QuanLy.Models.DAO
 
         [StringLength(12)]
         public string SDT { get; set; }
-
-        public int? NV01Quan { get; set; }
-
-        public int? NV02Quan { get; set; }
-
-        public int? NV03Quan { get; set; }
 
         public bool? IsPass { get; set; }
 
@@ -170,14 +156,21 @@ namespace TCCB_QuanLy.Models.DAO
 
         public string LyDoTuChoi { get; set; }
 
+        public int? TruongDuTuyenId { get; set; }
+
+        public int? NhanNhiemSo { get; set; }
+
+        public bool? IsTrungTuyen { get; set; }
+
+        public int? ThongTinQuaTrinhCongTacId { get; set; }
+
+        public int? ThongTinVeGiaDinhId { get; set; }
+
         public virtual Account Account { get; set; }
 
         public virtual Account Account1 { get; set; }
 
         public virtual BangTotNghiep BangTotNghiep { get; set; }
-
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<CandidateSchool> CandidateSchools { get; set; }
 
         public virtual ChungChiNghiepVuSuPham ChungChiNghiepVuSuPham { get; set; }
 
@@ -185,18 +178,9 @@ namespace TCCB_QuanLy.Models.DAO
 
         public virtual DanToc DanToc { get; set; }
 
-        public virtual District District { get; set; }
-
-        public virtual District District1 { get; set; }
-
-        public virtual District District2 { get; set; }
-
         public virtual DoiTuongUuTien DoiTuongUuTien1 { get; set; }
 
         public virtual HinhThucDaoTao HinhThucDaoTao { get; set; }
-
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<HoSoHopLe> HoSoHopLes { get; set; }
 
         public virtual LamViecTrongNganh LamViecTrongNganh { get; set; }
 
@@ -208,21 +192,29 @@ namespace TCCB_QuanLy.Models.DAO
 
         public virtual Province Province2 { get; set; }
 
-        public virtual XepLoaiHocLuc XepLoaiHocLuc { get; set; }
-
-        public virtual TrinhDoNgoaiNgu TrinhDoNgoaiNgu { get; set; }
-
-        public virtual TrinhDoCaoNhat TrinhDoCaoNhat { get; set; }
-
-        public virtual TrinhDoTinHoc TrinhDoTinHoc { get; set; }
+        public virtual School School { get; set; }
 
         public virtual ThanhPhanBanThanHienTai ThanhPhanBanThanHienTai { get; set; }
+
+        public virtual ThongTinCoBanVeGiaDinh ThongTinCoBanVeGiaDinh { get; set; }
+
+        public virtual ThongTinQuaTrinhCongTac ThongTinQuaTrinhCongTac { get; set; }
 
         public virtual TonGiao TonGiao { get; set; }
 
         public virtual TrangThaiHoSoTuyenDung TrangThaiHoSoTuyenDung { get; set; }
 
+        public virtual TrinhDoCaoNhat TrinhDoCaoNhat { get; set; }
+
+        public virtual TrinhDoNgoaiNgu TrinhDoNgoaiNgu { get; set; }
+
         public virtual TrinhDoNgoaiNguKhac TrinhDoNgoaiNguKhac { get; set; }
+
+        public virtual TrinhDoTinHoc TrinhDoTinHoc { get; set; }
+
+        public virtual TruongHopDacBiet TruongHopDacBiet { get; set; }
+
+        public virtual XepLoaiHocLuc XepLoaiHocLuc { get; set; }
 
         public virtual Ward Ward { get; set; }
 

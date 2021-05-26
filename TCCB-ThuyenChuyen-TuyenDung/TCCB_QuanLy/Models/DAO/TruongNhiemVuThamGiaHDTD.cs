@@ -20,19 +20,20 @@ namespace TCCB_QuanLy.Models.DAO
         [StringLength(50)]
         public string NamVaoNganh { get; set; }
 
-        [StringLength(50)]
+        [StringLength(100)]
         public string ChucVu { get; set; }
 
-        [StringLength(50)]
+        [StringLength(500)]
         public string ChuyenNganhDaoTao { get; set; }
 
-        [StringLength(50)]
+        [StringLength(500)]
         public string TrinhDoChuyenMon { get; set; }
 
         public int? SchoolId { get; set; }
 
         public int? NhiemVuId { get; set; }
-        public bool GioiTinh { get; set; }
+
+        public bool? GioiTinh { get; set; }
 
         public virtual NhiemVuThamGiaHoiDongTuyenDung NhiemVuThamGiaHoiDongTuyenDung { get; set; }
 

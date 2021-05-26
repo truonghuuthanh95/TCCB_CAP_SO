@@ -9,12 +9,6 @@ namespace TCCB_QuanLy.Models.DAO
     [Table("StatusTiepNhan")]
     public partial class StatusTiepNhan
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public StatusTiepNhan()
-        {
-            CandidateSchools = new HashSet<CandidateSchool>();
-        }
-
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int Id { get; set; }
 
@@ -22,8 +16,5 @@ namespace TCCB_QuanLy.Models.DAO
         public string Name { get; set; }
 
         public bool? IsActive { get; set; }
-
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<CandidateSchool> CandidateSchools { get; set; }
     }
 }
