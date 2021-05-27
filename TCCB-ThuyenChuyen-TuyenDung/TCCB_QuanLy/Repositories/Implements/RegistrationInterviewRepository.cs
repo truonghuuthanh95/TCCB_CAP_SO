@@ -17,17 +17,17 @@ namespace TCCB_QuanLy.Repositories.Implements
 			_db = db;
 		}
 
-		public TuyenDung2020 GetTuyenDungById(int id)
+		public TuyenDung2021 GetTuyenDungById(int id)
 		{
-			TuyenDung2020 TuyenDung = _db.TuyenDung2020
+			TuyenDung2021 TuyenDung = _db.TuyenDung2021
 			   .SingleOrDefault(s => s.Id == id);
 
 			return TuyenDung;
 		}
 
-		public TuyenDung2020 GetTuyenDungByIdAndIdentifyCard(string id, string identifyCard)
+		public TuyenDung2021 GetTuyenDungByIdAndIdentifyCard(string id, string identifyCard)
 		{
-			TuyenDung2020 TuyenDung = _db.TuyenDung2020
+			TuyenDung2021 TuyenDung = _db.TuyenDung2021
 				.Include("Ward.District")
 				.Include("Ward1.District")
 				.SingleOrDefault(s => s.TienTo + s.Id.ToString() == id.ToUpper());
@@ -41,9 +41,9 @@ namespace TCCB_QuanLy.Repositories.Implements
 		}
 
 
-		public TuyenDung2020 GetTuyenDungByIdWithDetail(int id)
+		public TuyenDung2021 GetTuyenDungByIdWithDetail(int id)
 		{
-			TuyenDung2020 TuyenDung = _db.TuyenDung2020
+			TuyenDung2021 TuyenDung = _db.TuyenDung2021
 				.Include("Ward.District.Province")
 				.Include("Ward1.District.Province")
 				.Include("BangTotNghiep")
@@ -71,7 +71,7 @@ namespace TCCB_QuanLy.Repositories.Implements
 			return TuyenDung;
 		}
 
-		public TuyenDung2020 CapNhatTuyenDung(TuyenDung2020 TuyenDung)
+		public TuyenDung2021 CapNhatTuyenDung(TuyenDung2021 TuyenDung)
 		{
 			_db.Entry(TuyenDung).State = EntityState.Modified;
 
@@ -80,51 +80,51 @@ namespace TCCB_QuanLy.Repositories.Implements
 			return TuyenDung;
 		}
 
-		public TuyenDung2020 TaoMoiUngVien(TuyenDung2020 TuyenDung)
+		public TuyenDung2021 TaoMoiUngVien(TuyenDung2021 TuyenDung)
 		{
-			_db.TuyenDung2020.Add(TuyenDung);
+			_db.TuyenDung2021.Add(TuyenDung);
 			_db.SaveChanges();
 			return TuyenDung;
 
 
 		}
 
-		public List<TuyenDung2020> GetTuyenDungsByCmnd(string cmnd)
+		public List<TuyenDung2021> GetTuyenDungsByCmnd(string cmnd)
 		{
-			List<TuyenDung2020> TuyenDungs = _db.TuyenDung2020.Where(s => s.IdentifyCard.Trim() == cmnd.Trim()).OrderByDescending(s => s.CreatedAt).ToList();
+			List<TuyenDung2021> TuyenDungs = _db.TuyenDung2021.Where(s => s.IdentifyCard.Trim() == cmnd.Trim()).OrderByDescending(s => s.CreatedAt).ToList();
 			return TuyenDungs;
 		}
 
 		public int GetTuyenDungsDaDangkiSoLuong()
 		{
-			int count = _db.TuyenDung2020.Where(s => s.CreatedAt.Value.Year == DateTime.Now.Year && (s.IsActive == true || s.IsActive == null)).Count();
+			int count = _db.TuyenDung2021.Where(s => s.CreatedAt.Value.Year == DateTime.Now.Year && (s.IsActive == true || s.IsActive == null)).Count();
 			return count;
 		}
 
-		public List<TuyenDung2020> GetTuyenDungsDaDangKi()
+		public List<TuyenDung2021> GetTuyenDungsDaDangKi()
 		{
-			List<TuyenDung2020> TuyenDungs = _db.TuyenDung2020.Include("Account").Where(s => s.CreatedAt.Value.Year == DateTime.Now.Year && (s.IsActive == true || s.IsActive == null)).ToList();
+			List<TuyenDung2021> TuyenDungs = _db.TuyenDung2021.Include("Account").Where(s => s.CreatedAt.Value.Year == DateTime.Now.Year && (s.IsActive == true || s.IsActive == null)).ToList();
 			return TuyenDungs;
 		}
 
-		public List<TuyenDung2020> GetTuyenDungsChuaCapNhat()
+		public List<TuyenDung2021> GetTuyenDungsChuaCapNhat()
 		{
-			List<TuyenDung2020> TuyenDungs = _db.TuyenDung2020.Include("Account").Where(s => s.CreatedAt.Value.Year == DateTime.Now.Year && (s.IsActive == true || s.IsActive == null) && s.UpdatedAt == null).ToList();
+			List<TuyenDung2021> TuyenDungs = _db.TuyenDung2021.Include("Account").Where(s => s.CreatedAt.Value.Year == DateTime.Now.Year && (s.IsActive == true || s.IsActive == null) && s.UpdatedAt == null).ToList();
 			return TuyenDungs;
 		}
 
-		public List<TuyenDung2020> GetTuyenDungsDaHoanThanh()
+		public List<TuyenDung2021> GetTuyenDungsDaHoanThanh()
 		{
-			List<TuyenDung2020> TuyenDungs = _db.TuyenDung2020.Include("Account").Where(s => s.CreatedAt.Value.Year == DateTime.Now.Year && (s.IsActive == true || s.IsActive == null) && s.UpdatedAt != null).ToList();
+			List<TuyenDung2021> TuyenDungs = _db.TuyenDung2021.Include("Account").Where(s => s.CreatedAt.Value.Year == DateTime.Now.Year && (s.IsActive == true || s.IsActive == null) && s.UpdatedAt != null).ToList();
 			return TuyenDungs;
 		}
-		public List<TuyenDung2020> GetTuyenDungsDaHoanThanhWithDetail(int? id)
+		public List<TuyenDung2021> GetTuyenDungsDaHoanThanhWithDetail(int? id)
 		{
-            List<TuyenDung2020> TuyenDungs = new List<TuyenDung2020>();
+            List<TuyenDung2021> TuyenDungs = new List<TuyenDung2021>();
             if (id == null)
             {
-                TuyenDungs = _db.TuyenDung2020
-                .Include("Ward.District.Province")
+                TuyenDungs = _db.TuyenDung2021
+				.Include("Ward.District.Province")
                 .Include("Ward1.District.Province")
                 .Include("BangTotNghiep")
                 .Include("TrinhDoNgoaiNgu")
@@ -152,8 +152,8 @@ namespace TCCB_QuanLy.Repositories.Implements
             }
             else
             {
-                TuyenDungs = _db.TuyenDung2020
-                .Include("Ward.District.Province")
+                TuyenDungs = _db.TuyenDung2021
+				.Include("Ward.District.Province")
                 .Include("Ward1.District.Province")
                 .Include("BangTotNghiep")
                 .Include("TrinhDoNgoaiNgu")
@@ -185,19 +185,19 @@ namespace TCCB_QuanLy.Repositories.Implements
 		}
 		public int GetTuyenDungsChuaCapNhatSoLuong()
 		{
-			int count = _db.TuyenDung2020.Where(s => s.CreatedAt.Value.Year == DateTime.Now.Year && (s.IsActive == true || s.IsActive == null) && s.UpdatedAt == null).Count();
+			int count = _db.TuyenDung2021.Where(s => s.CreatedAt.Value.Year == DateTime.Now.Year && (s.IsActive == true || s.IsActive == null) && s.UpdatedAt == null).Count();
 			return count;
 		}
 
 		public int GetTuyenDungsDaHoanThanhSoLuong()
 		{
-			int count = _db.TuyenDung2020.Where(s => s.CreatedAt.Value.Year == DateTime.Now.Year && (s.IsActive == true || s.IsActive == null) && s.UpdatedAt != null).Count();
+			int count = _db.TuyenDung2021.Where(s => s.CreatedAt.Value.Year == DateTime.Now.Year && (s.IsActive == true || s.IsActive == null) && s.UpdatedAt != null).Count();
 			return count;
 		}
 
 		public int GetTuyenDungsHopLeSoLuong()
 		{
-			int count = _db.TuyenDung2020.Where(s => s.CreatedAt.Value.Year == DateTime.Now.Year && s.TrangThaiHosoTuyenDungId == 1 && (s.IsActive == true || s.IsActive == null)).Count();
+			int count = _db.TuyenDung2021.Where(s => s.CreatedAt.Value.Year == DateTime.Now.Year && s.TrangThaiHosoTuyenDungId == 1 && (s.IsActive == true || s.IsActive == null)).Count();
 			return count;
 		}
 
@@ -209,7 +209,7 @@ namespace TCCB_QuanLy.Repositories.Implements
 
 		public List<RegistrationInterviewStatusRegistedCountDTO> GetSoluongDangkyTheoViTriUngTuyen()
 		{
-			var TuyenDungs = _db.TuyenDung2020
+			var TuyenDungs = _db.TuyenDung2021
 				.Where(s => s.IsActive == true && s.MonDuTuyenId != null)
 				.Include("MonDuTuyen")
 				.GroupBy(s => s.MonDuTuyenId)
@@ -217,15 +217,15 @@ namespace TCCB_QuanLy.Repositories.Implements
 			return TuyenDungs;
 		}
 
-		public TuyenDung2020 GetTuyenDungByTienToId(string id)
+		public TuyenDung2021 GetTuyenDungByTienToId(string id)
 		{
-			TuyenDung2020 TuyenDung = _db.TuyenDung2020.Include("Account1").Where(s => s.TienTo + s.Id.ToString() == id).SingleOrDefault();
+			TuyenDung2021 TuyenDung = _db.TuyenDung2021.Include("Account1").Where(s => s.TienTo + s.Id.ToString() == id).SingleOrDefault();
 			return TuyenDung;
 		}
 
-		public List<TuyenDung2020> GetTuyenDungsIsCheckByAccountId(int id)
+		public List<TuyenDung2021> GetTuyenDungsIsCheckByAccountId(int id)
 		{
-			List<TuyenDung2020> TuyenDungs = _db.TuyenDung2020.Where(s => s.NguoiRaSoat == id).ToList();
+			List<TuyenDung2021> TuyenDungs = _db.TuyenDung2021.Where(s => s.NguoiRaSoat == id).ToList();
 			return TuyenDungs;
 		}
 
@@ -265,13 +265,13 @@ namespace TCCB_QuanLy.Repositories.Implements
 
 		public int GetTuyenDungsDaRaXoatSoLuong()
 		{
-			int count = _db.TuyenDung2020.Where(s => s.CreatedAt.Value.Year == DateTime.Now.Year && (s.IsActive == true || s.IsActive == null) && s.NguoiRaSoat != null).Count();
+			int count = _db.TuyenDung2021.Where(s => s.CreatedAt.Value.Year == DateTime.Now.Year && (s.IsActive == true || s.IsActive == null) && s.NguoiRaSoat != null).Count();
 			return count;
 		}
 
 		public int GetTuyenDungsKhongHopLeSoLuong()
 		{
-			int count = _db.TuyenDung2020.Where(s => s.CreatedAt.Value.Year == DateTime.Now.Year && (s.IsActive == true || s.IsActive == null) && s.TrangThaiHosoTuyenDungId == 3).Count();
+			int count = _db.TuyenDung2021.Where(s => s.CreatedAt.Value.Year == DateTime.Now.Year && (s.IsActive == true || s.IsActive == null) && s.TrangThaiHosoTuyenDungId == 3).Count();
 			return count;
 		}
 
@@ -285,25 +285,25 @@ namespace TCCB_QuanLy.Repositories.Implements
 			throw new NotImplementedException();
 		}
 
-		public TuyenDung2020 GetTuyenDungByCMND(string cmnd)
+		public TuyenDung2021 GetTuyenDungByCMND(string cmnd)
 		{
-			TuyenDung2020 tuyenDung = _db.TuyenDung2020.Where(s => s.IdentifyCard == cmnd.Trim()).SingleOrDefault();
+			TuyenDung2021 tuyenDung = _db.TuyenDung2021.Where(s => s.IdentifyCard == cmnd.Trim()).SingleOrDefault();
 			return tuyenDung;
 		}
 
-		public List<TuyenDung2020> GetTuyenDungBySchoolID(int schoolID)
+		public List<TuyenDung2021> GetTuyenDungBySchoolID(int schoolID)
 		{
-			List<TuyenDung2020> tuyenDung2020s = _db.TuyenDung2020.AsNoTracking().Include("MonDuTuyen.ViTriUngTuyen")
+			List<TuyenDung2021> tuyenDung2020s = _db.TuyenDung2021.AsNoTracking().Include("MonDuTuyen.ViTriUngTuyen")
 				.Include("TrangThaiHosoTuyenDung").Where(s => s.School.Id == schoolID).ToList();
 			return tuyenDung2020s;
 		}
 
-		public List<TuyenDung2020> GetTuyenDungsByStatus(int? id)
+		public List<TuyenDung2021> GetTuyenDungsByStatus(int? id)
 		{
-			List<TuyenDung2020> tuyenDung2020s = new List<TuyenDung2020>();
+			List<TuyenDung2021> tuyenDung2020s = new List<TuyenDung2021>();
 			if (id == null)
 			{
-				tuyenDung2020s = _db.TuyenDung2020.AsNoTracking()
+				tuyenDung2020s = _db.TuyenDung2021.AsNoTracking()
 				.Include("School")
 				.Include("MonDuTuyen.ViTriUngTuyen")
 				.Include("TrangThaiHosoTuyenDung")
@@ -311,7 +311,7 @@ namespace TCCB_QuanLy.Repositories.Implements
 			}
 			else
 			{
-				tuyenDung2020s = _db.TuyenDung2020.AsNoTracking()
+				tuyenDung2020s = _db.TuyenDung2021.AsNoTracking()
 								.Include("School")
 								.Include("MonDuTuyen.ViTriUngTuyen")
 								.Include("TrangThaiHosoTuyenDung")
@@ -343,7 +343,7 @@ FROM
 		SELECT MonDuTuyenId,
 			   TruongDuTuyenId,
 			   COUNT(TruongDuTuyenId) AS 'SoLuong'
-		FROM [TuyenDung2020] AS s1,
+		FROM [TuyenDung2021] AS s1,
 			 School AS s2
 		WHERE s1.TruongDuTuyenId = s2.Id
 		GROUP BY s1.[TruongDuTuyenId],
@@ -358,7 +358,7 @@ LEFT JOIN
 	SELECT MonDuTuyenId,
 		   TruongDuTuyenId,
 		   COUNT(TruongDuTuyenId) AS 'DaNopHs'
-	FROM [TuyenDung2020] AS s1,
+	FROM [TuyenDung2021] AS s1,
 		 School AS s2
 	WHERE s1.TruongDuTuyenId = s2.Id
 		  AND s1.[TrangThaiHosoTuyenDungId] IS NOT NULL

@@ -8,10 +8,10 @@ namespace TCCB_QuanLy.Models.DAO
     public partial class TCCBDB : DbContext
     {
         public TCCBDB()
-            : base("name=TCCBDB6")
+            : base("name=TCCBDB7")
         {
-            this.Configuration.ProxyCreationEnabled = false;
             this.Configuration.LazyLoadingEnabled = false;
+            this.Configuration.ProxyCreationEnabled = false;
         }
 
         public virtual DbSet<Account> Accounts { get; set; }
@@ -62,6 +62,7 @@ namespace TCCB_QuanLy.Models.DAO
         public virtual DbSet<TruongNhiemVuThamGiaHDTD> TruongNhiemVuThamGiaHDTDs { get; set; }
         public virtual DbSet<TuyenDung2020> TuyenDung2020 { get; set; }
         public virtual DbSet<TuyenDung2021> TuyenDung2021 { get; set; }
+        public virtual DbSet<TuyenDungNguyenVong> TuyenDungNguyenVongs { get; set; }
         public virtual DbSet<UserPermission> UserPermissions { get; set; }
         public virtual DbSet<ViTriUngTuyen> ViTriUngTuyens { get; set; }
         public virtual DbSet<Ward> Wards { get; set; }
@@ -361,6 +362,11 @@ namespace TCCB_QuanLy.Models.DAO
             modelBuilder.Entity<TuyenDung2021>()
                 .Property(e => e.TienHoaDon)
                 .HasPrecision(18, 0);
+
+            modelBuilder.Entity<TuyenDung2021>()
+                .HasMany(e => e.TuyenDungNguyenVongs)
+                .WithOptional(e => e.TuyenDung2021)
+                .HasForeignKey(e => e.TuyenDungId);
 
             modelBuilder.Entity<ViTriUngTuyen>()
                 .Property(e => e.Name)

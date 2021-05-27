@@ -81,7 +81,7 @@ namespace TCCB_QuanLy.Controllers
         [HttpGet]
         public ActionResult CapNhatTiepNhanTuyenDung(int tuyenDungId, int statusTiepNhanId)
         {
-            TuyenDung2020 tuyenDung2020 = registrationInterviewRepository.GetTuyenDungById(tuyenDungId);
+            TuyenDung2021 tuyenDung2020 = registrationInterviewRepository.GetTuyenDungById(tuyenDungId);
             if (tuyenDung2020 == null)
             {
                 return Json(new ReturnResult(404, "không tim thấy ứng viên", null), JsonRequestBehavior.AllowGet);

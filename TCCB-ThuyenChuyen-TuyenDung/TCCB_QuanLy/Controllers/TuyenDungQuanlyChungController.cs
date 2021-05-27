@@ -283,7 +283,7 @@ namespace TCCB_QuanLy.Controllers
             }
             string filePath;
             
-                List<TuyenDung2020> registrationInterviews = registrationInterviewRepository.GetTuyenDungsDaHoanThanhWithDetail(null);
+                List<TuyenDung2021> registrationInterviews = registrationInterviewRepository.GetTuyenDungsDaHoanThanhWithDetail(null);
                 filePath = System.Web.HttpContext.Current.Server.MapPath("~/Utils/ds-hoanthanhcapnhat-tuyendung.xlsx");
                 await Utils.ExportExcel.GenerateXLSRegistrationCompleted(registrationInterviews, filePath);
                 return File(filePath, "application/vnd.ms-excel", "ds-hoanthanhcapnhat-tuyendung.xlsx");

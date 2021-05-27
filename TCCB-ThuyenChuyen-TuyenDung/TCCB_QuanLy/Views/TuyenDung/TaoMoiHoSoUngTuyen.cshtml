@@ -19,11 +19,11 @@
                                 <label for="formControlsSelect" class="control-label">Môn dự tuyển</label>
                                 <select name="mondutuyen" id="mondutuyen" class="form-control">
                                     @{
-                    foreach (var item in Model.MonDuTuyens)
-                    {
+                                        foreach (var item in Model.MonDuTuyens)
+                                        {
 
-                        <option value="@item.Id">@item.ViTriUngTuyen.Name @item.Name</option>
-}
+                                            <option value="@item.Id">@item.ViTriUngTuyen.Name @item.Name</option>
+                                        }
                                     }
                                 </select>
                             </div>
@@ -33,11 +33,11 @@
                                 <label for="formControlsSelect" class="control-label">Trường dự tuyển</label>
                                 <select name="truongdutuyen" id="truongdutuyen" class="form-control">
                                     @{
-                    foreach (var item in ViewBag.TruongMonDuTuyens)
-                    {
+                                        foreach (var item in ViewBag.TruongMonDuTuyens)
+                                        {
 
-                        <option value="@item.Id">@item.TenTruong</option>
-}
+                                            <option value="@item.Id">@item.TenTruong</option>
+                                        }
                                     }
                                 </select>
                             </div>
@@ -85,14 +85,14 @@
                                 <label for="formControlsSelect" class="control-label">4.Dân tộc</label>
                                 <select name="dantoc" id="dantoc" class="form-control">
                                     @{
-                                            foreach (var item in ViewBag.DanTocs)
-                                            {
+                                        foreach (var item in ViewBag.DanTocs)
+                                        {
 
-                                                <option value="@item.Id">@item.Name</option>
-
-                                            }
+                                            <option value="@item.Id">@item.Name</option>
 
                                         }
+
+                                    }
 
 
                                 </select>
@@ -103,14 +103,14 @@
                                 <label for="formControlsSelect" class="control-label">5.Tôn giáo</label>
                                 <select name="tongiao" id="tongiao" class="form-control">
                                     @{
-                                            foreach (var item in ViewBag.TonGiaos)
-                                            {
+                                        foreach (var item in ViewBag.TonGiaos)
+                                        {
 
-                                                <option value="@item.Id">@item.Name</option>
-
-                                            }
+                                            <option value="@item.Id">@item.Name</option>
 
                                         }
+
+                                    }
 
 
                                 </select>
@@ -135,14 +135,14 @@
                                 <label for="formControlsSelect" class="control-label">8.Nơi cấp</label>
                                 <select name="noicap" id="noicap" class="form-control">
                                     @{
-                                            foreach (var item in Model.Provinces)
-                                            {
+                                        foreach (var item in Model.Provinces)
+                                        {
 
-                                                <option value="@item.Id">@item.Type @item.Name</option>
-
-                                            }
+                                            <option value="@item.Id">@item.Type @item.Name</option>
 
                                         }
+
+                                    }
 
                                 </select>
                             </div>
@@ -169,15 +169,15 @@
                                 <label for="formControlsSelect" class="control-label">11.Quê quán</label>
                                 <select name="quequan" id="quequan" class="form-control">
                                     @{
-                                            foreach (var item in Model.Provinces)
-                                            {
+                                        foreach (var item in Model.Provinces)
+                                        {
 
 
-                                                <option value="@item.Id">@item.Type @item.Name</option>
+                                            <option value="@item.Id">@item.Type @item.Name</option>
 
 
-                                            }
                                         }
+                                    }
                                 </select>
                             </div>
                         </div>
@@ -193,14 +193,14 @@
                                     <select name="hktttinhthanhpho" id="hktttinhthanhpho" class="form-control">
 
                                         @{
-                                                foreach (var item in Model.Provinces)
-                                                {
+                                            foreach (var item in Model.Provinces)
+                                            {
 
-                                                    <option value="@item.Id">@item.Type @item.Name</option>
+                                                <option value="@item.Id">@item.Type @item.Name</option>
 
 
-                                                }
                                             }
+                                        }
 
 
 
@@ -212,13 +212,13 @@
                                     <label for="formControlsSelect" class="control-label">Quận/Huyện</label>
                                     <select name="hkttquanhuyen" id="hkttquanhuyen" class="form-control">
                                         @{
-                                                foreach (var item in Model.HkttQuanHuyen)
-                                                {
+                                            foreach (var item in Model.HkttQuanHuyen)
+                                            {
 
-                                                    <option value="@item.Id">@item.Type @item.Name</option>
+                                                <option value="@item.Id">@item.Type @item.Name</option>
 
-                                                }
                                             }
+                                        }
 
 
                                     </select>
@@ -229,14 +229,14 @@
                                     <label for="formControlsSelect" class="control-label">Phường/Xã</label>
                                     <select name="hkttphuongxa" id="hkttphuongxa" class="form-control">
                                         @{
-                                                foreach (var item in Model.HkttPhuongXa)
-                                                {
+                                            foreach (var item in Model.HkttPhuongXa)
+                                            {
 
-                                                    <option value="@item.Id">@item.Type @item.Name</option>
-
-                                                }
+                                                <option value="@item.Id">@item.Type @item.Name</option>
 
                                             }
+
+                                        }
 
                                     </select>
                                 </div>
@@ -263,15 +263,15 @@
                                     <label for="formControlsSelect" class="control-label">Tỉnh/Thành phố</label>
                                     <select name="nohntinhthanhpho" id="nohntinhthanhpho" class="form-control">
                                         @{
-                                                foreach (var item in Model.Provinces)
-                                                {
+                                            foreach (var item in Model.Provinces)
+                                            {
 
 
-                                                    <option value="@item.Id">@item.Type @item.Name</option>
+                                                <option value="@item.Id">@item.Type @item.Name</option>
 
 
-                                                }
                                             }
+                                        }
                                     </select>
                                 </div>
                             </div>
@@ -280,13 +280,13 @@
                                     <label for="formControlsSelect" class="control-label">Quận/Huyện</label>
                                     <select name="nohnquanhuyen" id="nohnquanhuyen" class="form-control">
                                         @{
-                                                foreach (var item in Model.NohnQuanHuyen)
-                                                {
+                                            foreach (var item in Model.NohnQuanHuyen)
+                                            {
 
-                                                    <option value="@item.Id">@item.Type @item.Name</option>
+                                                <option value="@item.Id">@item.Type @item.Name</option>
 
-                                                }
                                             }
+                                        }
                                     </select>
                                 </div>
                             </div>
@@ -295,14 +295,14 @@
                                     <label for="formControlsSelect" class="control-label">Phường</label>
                                     <select name="nohnphuongxa" id="nohnphuongxa" class="form-control">
                                         @{
-                                                foreach (var item in Model.NohnPhuongXa)
-                                                {
+                                            foreach (var item in Model.NohnPhuongXa)
+                                            {
 
-                                                    <option value="@item.Id">@item.Type @item.Name</option>
-
-                                                }
+                                                <option value="@item.Id">@item.Type @item.Name</option>
 
                                             }
+
+                                        }
 
                                     </select>
                                 </div>
@@ -364,41 +364,69 @@
                                 <label for="formControlsSelect" class="control-label">17.Thành phần bản thân hiện tại</label>
                                 <select name="thanphanbanthanhientai" id="thanphanbanthanhientai" class="form-control">
                                     @{
-                                            foreach (var item in ViewBag.ThanhPhanBanThanHienTais)
-                                            {
+                                        foreach (var item in ViewBag.ThanhPhanBanThanHienTais)
+                                        {
 
-                                                <option value="@item.Id">@item.Name</option>
-
-                                            }
+                                            <option value="@item.Id">@item.Name</option>
 
                                         }
+
+                                    }
 
                                 </select>
                             </div>
                         </div>
                     </div>
                     @*<div class="row">
-                            <div class="col-sm-4">
-                                <div class="form-group has-feedback">
-                                    <label for="formControlsSelect" class="control-label">18.Trình độ văn hóa </label>
-                                    <input name="trinhdovanhoa" type="text" id="trinhdovanhoa" class="form-control" value="@Model.RegistrationInterview.TrinhDoVanHoa">
-                                </div>
+                <div class="col-sm-4">
+                    <div class="form-group has-feedback">
+                        <label for="formControlsSelect" class="control-label">18.Trình độ văn hóa </label>
+                        <input name="trinhdovanhoa" type="text" id="trinhdovanhoa" class="form-control" value="@Model.RegistrationInterview.TrinhDoVanHoa">
+                    </div>
+                </div>
+            </div>*@
+                    <h4 class="text-primary"><b>II THÔNG TIN CƠ BẢN VỀ GIA ĐÌNH</b></h4>
+                    <div>
+                        <div class="panel panel-default">
+                            <div class="panel-body">
+                                <table class="table table-bordered" id="excelDataTable">
+                                    <thead>
+                                        <tr>
+                                            <th>Mối quan hệ</th>
+                                            <th>Họ và tên</th>
+                                            <th>Ngày/tháng/năm sinh</th>
+                                            <th>Quê quán, nghề nghiệp, chức danh, chức vụ, đơn vị công tác, học tập, nơi ở</th>
+                                            <th>Thao tác</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td contenteditable="true">item.HoTen</td>
+                                            <td contenteditable="true">item.NamSinh</td>
+                                            <td contenteditable="true">item.HoTen</td>
+                                            <td contenteditable="true">item.NamSinh</td>
+                                            <td contenteditable="true">item.HoTen</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+
                             </div>
-                        </div>*@
-                    <h4 class="text-primary"><b>II. THÔNG TIN ĐÀO TẠO</b></h4>
+                        </div>
+                    </div>
+                    <h4 class="text-primary"><b>III. THÔNG TIN ĐÀO TẠO</b></h4>
                     <div class="row">
                         <div class="col-sm-5">
                             <div class="form-group">
                                 <label for="formControlsSelect" class="control-label">18.Bằng tốt nghiệp</label>
                                 <select name="bangtotnghiep" id="bangtotnghiep" class="form-control">
                                     @{
-                                            foreach (var item in Model.BangTotNghieps)
-                                            {
+                                        foreach (var item in Model.BangTotNghieps)
+                                        {
 
-                                                <option value="@item.Id">@item.Name</option>
+                                            <option value="@item.Id">@item.Name</option>
 
-                                            }
                                         }
+                                    }
 
                                 </select>
                             </div>
@@ -407,13 +435,13 @@
                                 <label for="formControlsSelect" class="control-label">19.Hệ</label>
                                 <select name="hinhthucdaotao" id="hinhthucdaotao" class="form-control">
                                     @{
-                                            foreach (var item in Model.HinhThucDaoTaos)
-                                            {
+                                        foreach (var item in Model.HinhThucDaoTaos)
+                                        {
 
-                                                <option value="@item.Id">@item.Name</option>
+                                            <option value="@item.Id">@item.Name</option>
 
-                                            }
                                         }
+                                    }
                                 </select>
                             </div>
                         </div><div class="col-sm-4">
@@ -421,16 +449,16 @@
                                 <label for="formControlsSelect" class="control-label">20.Chuyên ngành đào tạo</label>
                                 <select name="chuyennganhdaotao" id="chuyennganhdaotao" class="form-control">
                                     @{
-                                            foreach (var item in Model.ChuyenNganhDaoTaos)
-                                            {
+                                        foreach (var item in Model.ChuyenNganhDaoTaos)
+                                        {
 
-                                                <option value="@item.Id">
-                                                    @item.Name
+                                            <option value="@item.Id">
+                                                @item.Name
 
-                                                </option>
+                                            </option>
 
-                                            }
                                         }
+                                    }
 
 
                                 </select>
@@ -450,13 +478,13 @@
                                 <label class="control-label">22.Trường này ở</label>
                                 <select name="diadiemdaihoc" class="form-control" id="diadiemdaihoc">
                                     @{
-                                            foreach (var item in Model.Provinces)
-                                            {
+                                        foreach (var item in Model.Provinces)
+                                        {
 
-                                                    <option value="@item.Id">@item.Type @item.Name</option>
+                                            <option value="@item.Id">@item.Type @item.Name</option>
 
-                                            }
                                         }
+                                    }
 
                                 </select><span class="text-warning">Vị trí trường đại học</span>
                             </div>
@@ -504,26 +532,26 @@
                                 <label for="formControlsSelect" class="control-label">26.Năm tốt nghiệp</label>
                                 <select name="namtotnghiep" id="namtotnghiep" class="form-control">
                                     @{
-                                            for (int i = DateTime.Now.Year - 50; i <= DateTime.Now.Year; i++)
-                                            {
+                                        for (int i = DateTime.Now.Year - 50; i <= DateTime.Now.Year; i++)
+                                        {
 
-                                                    <option value="@i">@i</option>
-                                                }
-
+                                            <option value="@i">@i</option>
                                         }
+
+                                    }
                                 </select>
                             </div>
                         </div><div class="col-sm-3">
                             <div class="form-group">
                                 <label for="formControlsSelect" class="control-label">27.Xếp loại</label>
                                 <select name="xeploaihocluc" id="xeploaihocluc" class="form-control">
-                                   @{
+                                    @{
                                         foreach (var item in Model.XepLoaiHocLucs)
-                                            {
+                                        {
 
-                                                    <option value="@item.Id">@item.Name</option>
+                                            <option value="@item.Id">@item.Name</option>
 
-                                            }
+                                        }
                                     }
 
                                 </select>
@@ -537,14 +565,14 @@
                                 <label class="control-label">28.Chứng chỉ nghiệp vụ</label>
                                 <select name="ishadnghiepvusupham" class="form-control" id="ishadnghiepvusupham">
                                     @{
-                                            foreach (var item in ViewBag.ChungChiNghiepVuSuPhams)
-                                            {
+                                        foreach (var item in ViewBag.ChungChiNghiepVuSuPhams)
+                                        {
 
-                                                    <option value="@item.Id">@item.Name</option>
-
-                                            }
+                                            <option value="@item.Id">@item.Name</option>
 
                                         }
+
+                                    }
 
 
                                 </select>
@@ -552,16 +580,16 @@
 
                             </div>
                         </div>
-                        
 
-                            <div class="col-sm-5" id="isShowsohieuvanbangchungchinghepvusupham" hidden>
-                                <div class="form-group has-feedback">
-                                    <label for="formControlsSelect" class="control-label">28.1.Số hiệu của văn bằng, chứng chỉ</label>
-                                    <input name="sohieuvanbangchungchinghepvusupham" type="text" id="sohieuvanbangchungchinghepvusupham" class="form-control" value="">
-                                </div>
+
+                        <div class="col-sm-5" id="isShowsohieuvanbangchungchinghepvusupham" hidden>
+                            <div class="form-group has-feedback">
+                                <label for="formControlsSelect" class="control-label">28.1.Số hiệu của văn bằng, chứng chỉ</label>
+                                <input name="sohieuvanbangchungchinghepvusupham" type="text" id="sohieuvanbangchungchinghepvusupham" class="form-control" value="">
                             </div>
+                        </div>
 
-                        
+
 
                     </div>
                     <div class="row">
@@ -663,28 +691,55 @@
                         }
 
                     </div>
-                    <h4 class="text-primary"><b>III. THÔNG TIN KHÁC</b></h4>
-                    <div>
-                        <div class="form-group">
-                            <label class="control-label">35.Đối tượng ưu tiên</label>
-                        </div>
-                        <div style="padding-left: 15px;">
-                            @{
-                                foreach (var item in ViewBag.DoiTuongUuTiens)
-                                {
-
-                                    <div class="radio">
-                                        <label>
-                                            <input type="radio" name="doituonguutien" id="doituonguutien" value="@item.Id">
-                                            @item.Name
-                                        </label>
-                                    </div>
-
-                                }
-                            }
+                </div>
+                <h4 class="text-primary"><b>II THÔNG TIN VỀ QUÁ TRÌNH CÔNG TÁC</b></h4>
+                <div>
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                            <table class="table table-bordered" id="excelDataTable">
+                                <thead>
+                                    <tr>
+                                        <th style="width: 20%">Từ ngày, tháng, năm đến ngày tháng năm</th>
+                                        <th>Cơ quan, tố chức, đơn vị công tác</th>
+                                        <th>Thao tác</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td contenteditable="true">item.HoTen</td>
+                                        <td contenteditable="true">item.NamSinh</td>
+                                        <td contenteditable="true">item.HoTen</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <p>
+                                <button class="btn btn-primary" onclick="addRow();"><i class="glyphicon glyphicon-plus"></i>Thêm dòng</button>
+                            </p>
                         </div>
                     </div>
                 </div>
+                <h4 class="text-primary"><b>III. THÔNG TIN KHÁC</b></h4>
+                <div>
+                    <div class="form-group">
+                        <label class="control-label">35.Đối tượng ưu tiên</label>
+                    </div>
+                    <div style="padding-left: 15px;">
+                        @{
+                            foreach (var item in ViewBag.DoiTuongUuTiens)
+                            {
+
+                                <div class="radio">
+                                    <label>
+                                        <input type="radio" name="doituonguutien" id="doituonguutien" value="@item.Id">
+                                        @item.Name
+                                    </label>
+                                </div>
+
+                            }
+                        }
+                    </div>
+                </div>
+</div>
                 <div class="col-sm-12"><button type="submit" id="submit" class="btn btn-success btn-block">CẬP NHẬT</button></div>
             </form>
         </div>

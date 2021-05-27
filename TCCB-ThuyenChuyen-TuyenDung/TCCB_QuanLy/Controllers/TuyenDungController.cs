@@ -37,8 +37,9 @@ namespace TCCB_QuanLy.Controllers
         IChungChiNghiepVuSuPhamRepository chungChiNghiepVuSuPhamRepository;
         IDiemThiTuyenRepository diemThiTuyenRepository;
         ITruongMonDuTuyenRepository truongMonDuTuyenRepository;
+        ITuyenDungNguyenVongRepository tuyenDungNguyenVongRepository;
 
-        public TuyenDungController(IRegistrationInterviewRepository registrationInterviewRepository, IProvinceRepository provinceRepository, IDistrictRepository districtRepository, IWardRepository wardRepository, IHinhThucDaoTaoRepository hinhThucDaoTaoRepository, IBangTotNghiepRepository bangTotNghiepRepository, IChuyenNganhDaoTaoRepository chuyenNganhDaoTaoRepository, ITrinhDoCaoNhatRepository trinhDoCaoNhatRepository, ILamViecTrongNganhRepository lamViecTrongNganhRepository, ITrinhDoTinHocRepository trinhDoTinHocRepository, ITrinhDoNgoaiNguRepository trinhDoNgoaiNguRepository, IMonDuTuyenRepository monDuTuyenRepository, IXepLoaiHocLucRepository xepLoaiHocLucRepository, ICapTruongRepository capTruongRepository, ITonGiaoRepository tonGiaoRepository, IDanTocRepository danTocRepository, IDoiTuongUuTienRepository doiTuongUuTienRepository, IThanhPhanBanThanHienTaiRepository thanhPhanBanThanHienTaiRepository, ITruongHopDacBietRepository truongHopDacBietRepository, ITrinhDoNgoaiNguKhacReposittory trinhDoNgoaiNguKhacReposittory, IChungChiNghiepVuSuPhamRepository chungChiNghiepVuSuPhamRepository, IDiemThiTuyenRepository diemThiTuyenRepository, ITruongMonDuTuyenRepository truongMonDuTuyenRepository)
+        public TuyenDungController(IRegistrationInterviewRepository registrationInterviewRepository, IProvinceRepository provinceRepository, IDistrictRepository districtRepository, IWardRepository wardRepository, IHinhThucDaoTaoRepository hinhThucDaoTaoRepository, IBangTotNghiepRepository bangTotNghiepRepository, IChuyenNganhDaoTaoRepository chuyenNganhDaoTaoRepository, ITrinhDoCaoNhatRepository trinhDoCaoNhatRepository, ILamViecTrongNganhRepository lamViecTrongNganhRepository, ITrinhDoTinHocRepository trinhDoTinHocRepository, ITrinhDoNgoaiNguRepository trinhDoNgoaiNguRepository, IMonDuTuyenRepository monDuTuyenRepository, IXepLoaiHocLucRepository xepLoaiHocLucRepository, ICapTruongRepository capTruongRepository, ITonGiaoRepository tonGiaoRepository, IDanTocRepository danTocRepository, IDoiTuongUuTienRepository doiTuongUuTienRepository, IThanhPhanBanThanHienTaiRepository thanhPhanBanThanHienTaiRepository, ITruongHopDacBietRepository truongHopDacBietRepository, ITrinhDoNgoaiNguKhacReposittory trinhDoNgoaiNguKhacReposittory, IChungChiNghiepVuSuPhamRepository chungChiNghiepVuSuPhamRepository, IDiemThiTuyenRepository diemThiTuyenRepository, ITruongMonDuTuyenRepository truongMonDuTuyenRepository, ITuyenDungNguyenVongRepository tuyenDungNguyenVongRepository)
         {
             this.registrationInterviewRepository = registrationInterviewRepository;
             this.provinceRepository = provinceRepository;
@@ -63,6 +64,7 @@ namespace TCCB_QuanLy.Controllers
             this.chungChiNghiepVuSuPhamRepository = chungChiNghiepVuSuPhamRepository;
             this.diemThiTuyenRepository = diemThiTuyenRepository;
             this.truongMonDuTuyenRepository = truongMonDuTuyenRepository;
+            this.tuyenDungNguyenVongRepository = tuyenDungNguyenVongRepository;
         }
 
         [Route("kiemtracmnd", Name = "kiemtracmnd")]
@@ -77,7 +79,7 @@ namespace TCCB_QuanLy.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult PostKiemTraCMND(string cmnd)
         {
-            TuyenDung2020 tuyenDung = registrationInterviewRepository.GetTuyenDungByCMND(cmnd);
+            TuyenDung2021 tuyenDung = registrationInterviewRepository.GetTuyenDungByCMND(cmnd);
             if (tuyenDung != null)
             {
                 return Json(new ReturnResult(200, "success", tuyenDung.IdentifyCard));
@@ -94,7 +96,7 @@ namespace TCCB_QuanLy.Controllers
         [HttpGet]
         public ActionResult KiemTraMaDangKi(string cmnd)
         {
-            TuyenDung2020 tuyenDung = registrationInterviewRepository.GetTuyenDungByCMND(cmnd.Trim());
+            TuyenDung2021 tuyenDung = registrationInterviewRepository.GetTuyenDungByCMND(cmnd.Trim());
             if (tuyenDung == null)
             {
                 return RedirectToRoute("kiemtracmnd");
@@ -107,7 +109,7 @@ namespace TCCB_QuanLy.Controllers
         [HttpGet]
         public ActionResult KiemTraMaDangKi(string madangki, string cmnd)
         {
-            TuyenDung2020 registrationInterview = registrationInterviewRepository.GetTuyenDungByIdAndIdentifyCard(madangki.ToUpper(), cmnd.Trim());
+            TuyenDung2021 registrationInterview = registrationInterviewRepository.GetTuyenDungByIdAndIdentifyCard(madangki.ToUpper(), cmnd.Trim());
 
             if (registrationInterview == null)
             {
@@ -120,13 +122,15 @@ namespace TCCB_QuanLy.Controllers
             //{
             //    ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
             //});
+            
             return Json(new ReturnResult(200, "success", null), JsonRequestBehavior.AllowGet);
         }
+
         [Route("taomoihosoungtuyen/{cmnd}")]
         [HttpGet]
         public ActionResult TaoMoiHoSoUngTuyen(string cmnd)
         {
-            TuyenDung2020 tuyenDung = registrationInterviewRepository.GetTuyenDungByCMND(cmnd.Trim());
+            TuyenDung2021 tuyenDung = registrationInterviewRepository.GetTuyenDungByCMND(cmnd.Trim());
             if (tuyenDung != null)
             {
                 return RedirectToRoute("kiemtracmnd");
@@ -166,7 +170,7 @@ namespace TCCB_QuanLy.Controllers
         {
             if (ModelState.IsValid)
             {
-                TuyenDung2020 registrationInterview = new TuyenDung2020();
+                TuyenDung2021 registrationInterview = new TuyenDung2021();
                 
                 registrationInterview.CreatedAt = DateTime.Now;
                 Mapper.Map(registrationInterviewDTO, registrationInterview);
@@ -175,7 +179,7 @@ namespace TCCB_QuanLy.Controllers
                     registrationInterview.DiemLuanVan = null;
                 }
                 registrationInterview.TienTo = "TD";
-                TuyenDung2020 registrationInterviewAfterUpdated = registrationInterviewRepository.TaoMoiUngVien(registrationInterview);
+                TuyenDung2021 registrationInterviewAfterUpdated = registrationInterviewRepository.TaoMoiUngVien(registrationInterview);
                 if (registrationInterviewAfterUpdated == null)
                 {
                     return Json(new ReturnResult(400, "failed", null));
@@ -184,11 +188,12 @@ namespace TCCB_QuanLy.Controllers
             }
             return Json(new ReturnResult(400, "failed", null));
         }
+
         [Route("capnhathosoungtuyen/{madangki}/{cmnd}")]
         [HttpGet]
         public ActionResult CapNhatHoSoUngTuyen(string madangki, string cmnd)
         {
-            TuyenDung2020 registrationInterview = registrationInterviewRepository.GetTuyenDungByIdAndIdentifyCard(madangki.ToUpper(), cmnd.Trim());
+            TuyenDung2021 registrationInterview = registrationInterviewRepository.GetTuyenDungByIdAndIdentifyCard(madangki.ToUpper(), cmnd.Trim());
             if (registrationInterview == null)
             {
                 return RedirectToRoute("kiemtracmnd");
@@ -227,7 +232,7 @@ namespace TCCB_QuanLy.Controllers
         {
             if (ModelState.IsValid)
             {
-                TuyenDung2020 registrationInterview = registrationInterviewRepository.GetTuyenDungById(Id);
+                TuyenDung2021 registrationInterview = registrationInterviewRepository.GetTuyenDungById(Id);
                 
                 registrationInterview.UpdatedAt = DateTime.Now;
                 Mapper.Map(registrationInterviewDTO, registrationInterview);
@@ -235,7 +240,7 @@ namespace TCCB_QuanLy.Controllers
                 {
                     registrationInterview.DiemLuanVan = null;
                 }
-                TuyenDung2020 registrationInterviewAfterUpdated = registrationInterviewRepository.CapNhatTuyenDung(registrationInterview);
+                TuyenDung2021 registrationInterviewAfterUpdated = registrationInterviewRepository.CapNhatTuyenDung(registrationInterview);
                 if (registrationInterviewAfterUpdated == null)
                 {
                     return Json(new ReturnResult(400, "failed", null));
@@ -248,7 +253,7 @@ namespace TCCB_QuanLy.Controllers
         [HttpGet]
         public ActionResult InHoSoUngTuyen(int madangki)
         {
-            TuyenDung2020 registrationInterview = registrationInterviewRepository.GetTuyenDungByIdWithDetail(madangki);
+            TuyenDung2021 registrationInterview = registrationInterviewRepository.GetTuyenDungByIdWithDetail(madangki);
             return View(registrationInterview);
         }
 

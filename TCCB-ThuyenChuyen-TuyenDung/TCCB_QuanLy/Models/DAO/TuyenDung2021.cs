@@ -8,6 +8,12 @@ namespace TCCB_QuanLy.Models.DAO
 
     public partial class TuyenDung2021
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public TuyenDung2021()
+        {
+            TuyenDungNguyenVongs = new HashSet<TuyenDungNguyenVong>();
+        }
+
         public int Id { get; set; }
 
         [StringLength(50)]
@@ -219,5 +225,8 @@ namespace TCCB_QuanLy.Models.DAO
         public virtual Ward Ward { get; set; }
 
         public virtual Ward Ward1 { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<TuyenDungNguyenVong> TuyenDungNguyenVongs { get; set; }
     }
 }

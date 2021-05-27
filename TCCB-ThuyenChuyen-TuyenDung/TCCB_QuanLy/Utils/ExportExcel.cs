@@ -261,7 +261,7 @@ namespace TCCB_QuanLy.Utils
                 }
             });
         }
-        public static Task GenerateXLSRegistrationCompleted(List<TuyenDung2020> registrationInterviews, string filePath)
+        public static Task GenerateXLSRegistrationCompleted(List<TuyenDung2021> registrationInterviews, string filePath)
         {
             return Task.Run(() =>
             {

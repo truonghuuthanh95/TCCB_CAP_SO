@@ -11,7 +11,7 @@ namespace TCCB_QuanLy.Models.DTO
         public List<District> HkttQuanHuyen { get; set; }
         public List<Ward> HkttPhuongXa { get; set; }
 
-        public TuyenDung2020 RegistrationInterview { get; set; }
+        public TuyenDung2021 RegistrationInterview { get; set; }
        
         public List<HinhThucDaoTao> HinhThucDaoTaos { get; set; }
        
@@ -32,7 +32,7 @@ namespace TCCB_QuanLy.Models.DTO
         public List<XepLoaiHocLuc> XepLoaiHocLucs { get; set; }
         public List<District> HCMDistrict { get; set; }
 
-        public CandidateModelInOneView(List<Province> provinces, List<District> nohnQuanHuyen, List<Ward> nohnPhuongXa, List<District> hkttQuanHuyen, List<Ward> hkttPhuongXa, TuyenDung2020 registrationInterview, List<HinhThucDaoTao> hinhThucDaoTaos, List<BangTotNghiep> bangTotNghieps, List<TrinhDoCaoNhat> trinhDoCaoNhats, List<ChuyenNganhDaoTao> chuyenNganhDaoTaos, List<LamViecTrongNganh> lamViecTrongNganhs, List<TrinhDoTinHoc> trinhDoTinHocs, List<TrinhDoNgoaiNgu> trinhDoNgoaiNgus, List<MonDuTuyen> monDuTuyens, List<XepLoaiHocLuc> xepLoaiHocLucs, List<District> hCMDistrict)
+        public CandidateModelInOneView(List<Province> provinces, List<District> nohnQuanHuyen, List<Ward> nohnPhuongXa, List<District> hkttQuanHuyen, List<Ward> hkttPhuongXa, TuyenDung2021 registrationInterview, List<HinhThucDaoTao> hinhThucDaoTaos, List<BangTotNghiep> bangTotNghieps, List<TrinhDoCaoNhat> trinhDoCaoNhats, List<ChuyenNganhDaoTao> chuyenNganhDaoTaos, List<LamViecTrongNganh> lamViecTrongNganhs, List<TrinhDoTinHoc> trinhDoTinHocs, List<TrinhDoNgoaiNgu> trinhDoNgoaiNgus, List<MonDuTuyen> monDuTuyens, List<XepLoaiHocLuc> xepLoaiHocLucs, List<District> hCMDistrict)
         {
             Provinces = provinces;
             NohnQuanHuyen = nohnQuanHuyen;
