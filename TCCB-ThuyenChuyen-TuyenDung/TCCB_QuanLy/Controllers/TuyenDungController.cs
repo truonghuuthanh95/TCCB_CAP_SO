@@ -38,8 +38,10 @@ namespace TCCB_QuanLy.Controllers
         IDiemThiTuyenRepository diemThiTuyenRepository;
         ITruongMonDuTuyenRepository truongMonDuTuyenRepository;
         ITuyenDungNguyenVongRepository tuyenDungNguyenVongRepository;
+        IThongTinCoBanVeGiaDinhRepository thongTinCoBanVeGiaDinhRepository;
+        IThongTinQuaTrinhCongTacRepository thongTinQuaTrinhCongTacRepository;
 
-        public TuyenDungController(IRegistrationInterviewRepository registrationInterviewRepository, IProvinceRepository provinceRepository, IDistrictRepository districtRepository, IWardRepository wardRepository, IHinhThucDaoTaoRepository hinhThucDaoTaoRepository, IBangTotNghiepRepository bangTotNghiepRepository, IChuyenNganhDaoTaoRepository chuyenNganhDaoTaoRepository, ITrinhDoCaoNhatRepository trinhDoCaoNhatRepository, ILamViecTrongNganhRepository lamViecTrongNganhRepository, ITrinhDoTinHocRepository trinhDoTinHocRepository, ITrinhDoNgoaiNguRepository trinhDoNgoaiNguRepository, IMonDuTuyenRepository monDuTuyenRepository, IXepLoaiHocLucRepository xepLoaiHocLucRepository, ICapTruongRepository capTruongRepository, ITonGiaoRepository tonGiaoRepository, IDanTocRepository danTocRepository, IDoiTuongUuTienRepository doiTuongUuTienRepository, IThanhPhanBanThanHienTaiRepository thanhPhanBanThanHienTaiRepository, ITruongHopDacBietRepository truongHopDacBietRepository, ITrinhDoNgoaiNguKhacReposittory trinhDoNgoaiNguKhacReposittory, IChungChiNghiepVuSuPhamRepository chungChiNghiepVuSuPhamRepository, IDiemThiTuyenRepository diemThiTuyenRepository, ITruongMonDuTuyenRepository truongMonDuTuyenRepository, ITuyenDungNguyenVongRepository tuyenDungNguyenVongRepository)
+        public TuyenDungController(IRegistrationInterviewRepository registrationInterviewRepository, IProvinceRepository provinceRepository, IDistrictRepository districtRepository, IWardRepository wardRepository, IHinhThucDaoTaoRepository hinhThucDaoTaoRepository, IBangTotNghiepRepository bangTotNghiepRepository, IChuyenNganhDaoTaoRepository chuyenNganhDaoTaoRepository, ITrinhDoCaoNhatRepository trinhDoCaoNhatRepository, ILamViecTrongNganhRepository lamViecTrongNganhRepository, ITrinhDoTinHocRepository trinhDoTinHocRepository, ITrinhDoNgoaiNguRepository trinhDoNgoaiNguRepository, IMonDuTuyenRepository monDuTuyenRepository, IXepLoaiHocLucRepository xepLoaiHocLucRepository, ICapTruongRepository capTruongRepository, ITonGiaoRepository tonGiaoRepository, IDanTocRepository danTocRepository, IDoiTuongUuTienRepository doiTuongUuTienRepository, IThanhPhanBanThanHienTaiRepository thanhPhanBanThanHienTaiRepository, ITruongHopDacBietRepository truongHopDacBietRepository, ITrinhDoNgoaiNguKhacReposittory trinhDoNgoaiNguKhacReposittory, IChungChiNghiepVuSuPhamRepository chungChiNghiepVuSuPhamRepository, IDiemThiTuyenRepository diemThiTuyenRepository, ITruongMonDuTuyenRepository truongMonDuTuyenRepository, ITuyenDungNguyenVongRepository tuyenDungNguyenVongRepository, IThongTinCoBanVeGiaDinhRepository thongTinCoBanVeGiaDinhRepository, IThongTinQuaTrinhCongTacRepository thongTinQuaTrinhCongTacRepository)
         {
             this.registrationInterviewRepository = registrationInterviewRepository;
             this.provinceRepository = provinceRepository;
@@ -65,6 +67,8 @@ namespace TCCB_QuanLy.Controllers
             this.diemThiTuyenRepository = diemThiTuyenRepository;
             this.truongMonDuTuyenRepository = truongMonDuTuyenRepository;
             this.tuyenDungNguyenVongRepository = tuyenDungNguyenVongRepository;
+            this.thongTinCoBanVeGiaDinhRepository = thongTinCoBanVeGiaDinhRepository;
+            this.thongTinQuaTrinhCongTacRepository = thongTinQuaTrinhCongTacRepository;
         }
 
         [Route("kiemtracmnd", Name = "kiemtracmnd")]
@@ -187,6 +191,36 @@ namespace TCCB_QuanLy.Controllers
                 return Json(new ReturnResult(200, "success", registrationInterviewAfterUpdated.Id));
             }
             return Json(new ReturnResult(400, "failed", null));
+        }
+
+        [Route("capnhatthongtinbanthan")]
+        [HttpPost]
+        public ActionResult CapNhatThongTinBanThan(string thongTinBanThan, int tuyenDungId)
+        {
+            if (tuyenDungId < 1)
+            {
+                thongTinCoBanVeGiaDinhRepository.DeleteThongTinCoBanVeGiaDinhsByTuyenDungId(tuyenDungId);
+            }
+            
+            List<ThongTinCoBanVeGiaDinh> thongTinCoBanVeGiaDinhs = JsonConvert.DeserializeObject<List<ThongTinCoBanVeGiaDinh>>(thongTinBanThan);
+            thongTinCoBanVeGiaDinhRepository.CreateThongTinCoBanVeGiaDinh(thongTinCoBanVeGiaDinhs);
+            return Json(new ReturnResult(200, "success", null));
+
+        }
+
+        [Route("capnhatthongtinbanthan")]
+        [HttpPost]
+        public ActionResult CapNhatThongTinQuaTrinhCongTac(string thongtinqcongtac, int tuyenDungId)
+        {
+            if (tuyenDungId < 1)
+            {
+                thongTinCoBanVeGiaDinhRepository.DeleteThongTinCoBanVeGiaDinhsByTuyenDungId(tuyenDungId);
+            }
+            
+            List<ThongTinQuaTrinhCongTac> thongTinQuaTrinhCongTacs = JsonConvert.DeserializeObject<List<ThongTinQuaTrinhCongTac>>(thongtinqcongtac);
+            thongTinQuaTrinhCongTacRepository.CreateThongTinQuaTrinhCongTac(thongTinQuaTrinhCongTacs);
+            return Json(new ReturnResult(200, "success", null));
+
         }
 
         [Route("capnhathosoungtuyen/{madangki}/{cmnd}")]

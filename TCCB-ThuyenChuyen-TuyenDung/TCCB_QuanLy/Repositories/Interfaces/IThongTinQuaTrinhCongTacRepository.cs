@@ -11,5 +11,6 @@ namespace TCCB_QuanLy.Repositories.Interfaces
     {
         List<ThongTinQuaTrinhCongTac> GetThongTinQuaTrinhCongTacsByTuyenDungId(int tuyendungId);
         List<ThongTinQuaTrinhCongTac> CreateThongTinQuaTrinhCongTac(List<ThongTinQuaTrinhCongTac> thongTinQuaTrinhCongTacs);
+        bool DeleteThongTinQuaTrinhCongTacsByTuyenDungId(int id);
     }
 }

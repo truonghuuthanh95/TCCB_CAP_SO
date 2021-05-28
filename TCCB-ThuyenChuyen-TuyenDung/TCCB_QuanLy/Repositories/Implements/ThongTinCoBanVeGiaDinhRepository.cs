@@ -23,6 +23,12 @@ namespace TCCB_QuanLy.Repositories.Implements
             return thongTinCoBanVeGiaDinhs;
         }
 
+        public bool DeleteThongTinCoBanVeGiaDinhsByTuyenDungId(int id)
+        {
+            _db.ThongTinCoBanVeGiaDinhs.RemoveRange(_db.ThongTinCoBanVeGiaDinhs.Where(s => s.TuyenDungId == id));
+            return true;
+        }
+
         public List<ThongTinCoBanVeGiaDinh> GetThongTinCoBanVeGiaDinhsByTuyenDungId(int id)
         {
             var result = _db.ThongTinCoBanVeGiaDinhs.Where(s => s.TuyenDungId == id).ToList();
