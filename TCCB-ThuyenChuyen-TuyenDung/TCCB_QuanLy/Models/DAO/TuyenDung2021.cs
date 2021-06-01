@@ -162,7 +162,7 @@ namespace TCCB_QuanLy.Models.DAO
 
         public string LyDoTuChoi { get; set; }
 
-        public int? TruongDuTuyenId { get; set; }
+        public int? NguyenVong3 { get; set; }
 
         public int? NhanNhiemSo { get; set; }
 
@@ -171,6 +171,10 @@ namespace TCCB_QuanLy.Models.DAO
         public int? ThongTinQuaTrinhCongTacId { get; set; }
 
         public int? ThongTinVeGiaDinhId { get; set; }
+
+        public int? NguyenVong1 { get; set; }
+
+        public int? NguyenVong2 { get; set; }
 
         public virtual Account Account { get; set; }
 

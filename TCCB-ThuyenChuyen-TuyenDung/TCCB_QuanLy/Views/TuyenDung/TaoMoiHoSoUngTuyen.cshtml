@@ -28,10 +28,41 @@
                                 </select>
                             </div>
                         </div>
-                        <div class="col-sm-5">
+                        
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-4">
                             <div class="form-group">
-                                <label for="formControlsSelect" class="control-label">Trường dự tuyển</label>
-                                <select name="truongdutuyen" id="truongdutuyen" class="form-control">
+                                <label for="formControlsSelect" class="control-label">Nguyện vọng 1</label>
+                                <select name="nguyenvong1" id="nguyenvong1" class="form-control">
+                                    @{
+                                        foreach (var item in ViewBag.TruongMonDuTuyens)
+                                        {
+
+                                            <option value="@item.Id">@item.TenTruong</option>
+                                        }
+                                    }
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="form-group">
+                                <label for="formControlsSelect" class="control-label">Nguyện vọng 2</label>
+                                <select name="nguyenvong2" id="nguyenvong2" class="form-control">
+                                    @{
+                                        foreach (var item in ViewBag.TruongMonDuTuyens)
+                                        {
+
+                                            <option value="@item.Id">@item.TenTruong</option>
+                                        }
+                                    }
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="form-group">
+                                <label for="formControlsSelect" class="control-label">Nguyện vọng 3</label>
+                                <select name="nguyenvong3" id="nguyenvong3" class="form-control">
                                     @{
                                         foreach (var item in ViewBag.TruongMonDuTuyens)
                                         {
@@ -389,7 +420,7 @@
                     <div>
                         <div class="panel panel-default">
                             <div class="panel-body">
-                                <table class="table table-bordered" id="excelDataTable">
+                                <table class="table table-bordered" id="thongtinquanhegiadinh">
                                     <thead>
                                         <tr>
                                             <th>Mối quan hệ</th>
@@ -401,15 +432,17 @@
                                     </thead>
                                     <tbody>
                                         <tr>
-                                            <td contenteditable="true">item.HoTen</td>
-                                            <td contenteditable="true">item.NamSinh</td>
-                                            <td contenteditable="true">item.HoTen</td>
-                                            <td contenteditable="true">item.NamSinh</td>
-                                            <td contenteditable="true">item.HoTen</td>
+                                            <td contenteditable="true"></td>
+                                            <td contenteditable="true"></td>
+                                            <td contenteditable="true"></td>
+                                            <td contenteditable="true"></td>
+                                            <td class="text-danger" onClick="removeRow(this)">Xóa</td>
                                         </tr>
                                     </tbody>
                                 </table>
-
+                                <p>
+                                    <button class="btn btn-primary" onclick="addRow(event, 1);"><i class="glyphicon glyphicon-plus"> </i>Thêm dòng</button>
+                                </p>
                             </div>
                         </div>
                     </div>
@@ -696,7 +729,7 @@
                 <div>
                     <div class="panel panel-default">
                         <div class="panel-body">
-                            <table class="table table-bordered" id="excelDataTable">
+                            <table class="table table-bordered" id="quatrinhcontac">
                                 <thead>
                                     <tr>
                                         <th style="width: 20%">Từ ngày, tháng, năm đến ngày tháng năm</th>
@@ -706,14 +739,14 @@
                                 </thead>
                                 <tbody>
                                     <tr>
-                                        <td contenteditable="true">item.HoTen</td>
-                                        <td contenteditable="true">item.NamSinh</td>
-                                        <td contenteditable="true">item.HoTen</td>
+                                        <td contenteditable="true"></td>
+                                        <td contenteditable="true"></td>
+                                        <td class="text-danger" onClick="removeRow(this)">Xóa</td>
                                     </tr>
                                 </tbody>
                             </table>
                             <p>
-                                <button class="btn btn-primary" onclick="addRow();"><i class="glyphicon glyphicon-plus"></i>Thêm dòng</button>
+                                <button class="btn btn-primary" id="quatrinhcongtac" onclick="addRow(event, 2);"><i class="glyphicon glyphicon-plus"></i>Thêm dòng</button>
                             </p>
                         </div>
                     </div>
@@ -750,10 +783,20 @@
     $('#mondutuyen').change(function () {
         $.get('/getschoolbymondutuyen/' + $(this).val(), function (data, status) {
             var schools = JSON.parse(data.Results);
-            $('#truongdutuyen').children().remove().end();
+            $('#nguyenvong1').children().remove().end();
             for (var i = 0; i < schools.length; i++) {
 
-                $('#truongdutuyen').append('<option value=' + schools[i].Id + '>' + schools[i].TenTruong + '</option>')
+                $('#nguyenvong1').append('<option value=' + schools[i].Id + '>' + schools[i].TenTruong + '</option>')
+            }
+            $('#nguyenvong2').children().remove().end();
+            for (var i = 0; i < schools.length; i++) {
+
+                $('#nguyenvong2').append('<option value=' + schools[i].Id + '>' + schools[i].TenTruong + '</option>')
+            }
+            $('#nguyenvong3').children().remove().end();
+            for (var i = 0; i < schools.length; i++) {
+
+                $('#nguyenvong3').append('<option value=' + schools[i].Id + '>' + schools[i].TenTruong + '</option>')
             }
 
         })
@@ -843,6 +886,22 @@
             $('#isShowChungChiNgoaiNguSoVanBang').hide();
         }
     });
+
+
+    function removeRow(e) {
+        $(e).closest("tr").remove()
+    }
+        function addRow(event, id) {
+            console.log(id);
+        event.preventDefault();
+        if (id == 1) {
+            $("#thongtinquanhegiadinh tbody").append("<tr><td contenteditable='true'></td><td contenteditable='true'></td><td contenteditable='true'></td><td contenteditable ='true'></td><td class='text-danger' onClick='removeRow(this)'>Xóa</td></tr>");
+        }
+        else {
+            $("#quatrinhcontac tbody").append("<tr><td contenteditable='true'></td><td contenteditable ='true'></td><td class='text-danger' onClick='removeRow(this)'>Xóa</td></tr>");
+
+        }
+    }
 
     $(document).ready(function () {
         $('#IsNienChe').val() == 'true' ? $('#isshowdiemluanvan').show() : $('#isshowdiemluanvan').hide();
@@ -1022,7 +1081,8 @@
                     $('#errorIsHadNghiepVuSupham').removeClass('has-error');
                     $('#errorIsHadNghiepVuSuphamMessage').text('');
                     $('#submit').hide();
-                    $('#loader').show();                                       
+                    $('#loader').show();
+                    $.post();
                     $.post('/tuyendung/submittaomoi', {       
                         IdentifyCard: "@ViewBag.CMND.ToString()",
                         FirstName: $('#ten').val(),
@@ -1073,7 +1133,10 @@
                         TrinhDoNgoaiNguKhacId: $('#trinhdongoaingukhac').val(),
                         SoVanBangChungChiNgoaiNguKhac: $('#trinhdongoaingukhac').val() == 1 ? 'Không' : $('#sohieuvanbangchungchingoaingukhac').val(),
                         ChungChiNghiepVuSuPhamSoVanBang: $('#ishadnghiepvusupham').val() == 1 ? 'Không' : $('#sohieuvanbangchungchinghepvusupham').val(),
-                        TruongDuTuyenId: $('#truongdutuyen').val(),
+                        NguyenVong1: $('#nguyenvong1').val(),
+                        NguyenVong2: $('#nguyenvong2').val(),
+                        NguyenVong3: $('#nguyenvong3').val(),
+
                         __RequestVerificationToken: $("input[name=__RequestVerificationToken]").val(),
                     }, function (data, status) {
                         debugger;

@@ -17,16 +17,16 @@ namespace TCCB_QuanLy.Controllers
         IRegistrationInterviewRepository registrationInterviewRepository;
         IProvinceRepository provinceRepository;
         IDistrictRepository districtRepository;
-        IWardRepository wardRepository;       
-        IHinhThucDaoTaoRepository hinhThucDaoTaoRepository;       
-        IBangTotNghiepRepository bangTotNghiepRepository;       
-        IChuyenNganhDaoTaoRepository chuyenNganhDaoTaoRepository;       
-        ITrinhDoCaoNhatRepository trinhDoCaoNhatRepository;      
+        IWardRepository wardRepository;
+        IHinhThucDaoTaoRepository hinhThucDaoTaoRepository;
+        IBangTotNghiepRepository bangTotNghiepRepository;
+        IChuyenNganhDaoTaoRepository chuyenNganhDaoTaoRepository;
+        ITrinhDoCaoNhatRepository trinhDoCaoNhatRepository;
         ILamViecTrongNganhRepository lamViecTrongNganhRepository;
-        ITrinhDoTinHocRepository trinhDoTinHocRepository;        
-        ITrinhDoNgoaiNguRepository trinhDoNgoaiNguRepository;      
-        IMonDuTuyenRepository monDuTuyenRepository;      
-        IXepLoaiHocLucRepository xepLoaiHocLucRepository;     
+        ITrinhDoTinHocRepository trinhDoTinHocRepository;
+        ITrinhDoNgoaiNguRepository trinhDoNgoaiNguRepository;
+        IMonDuTuyenRepository monDuTuyenRepository;
+        IXepLoaiHocLucRepository xepLoaiHocLucRepository;
         ICapTruongRepository capTruongRepository;
         ITonGiaoRepository tonGiaoRepository;
         IDanTocRepository danTocRepository;
@@ -89,9 +89,9 @@ namespace TCCB_QuanLy.Controllers
                 return Json(new ReturnResult(200, "success", tuyenDung.IdentifyCard));
             }
             else
-            {              
+            {
                 return Json(new ReturnResult(404, "not found", cmnd));
-                }          
+            }
         }
 
 
@@ -119,14 +119,14 @@ namespace TCCB_QuanLy.Controllers
             {
                 return Json(new ReturnResult(404, "Sai mã đăng kí", null), JsonRequestBehavior.AllowGet);
             }
-            
+
             //var registrationInterviewJson = JsonConvert.SerializeObject(registrationInterview,
             //Formatting.None,
             //new JsonSerializerSettings()
             //{
             //    ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
             //});
-            
+
             return Json(new ReturnResult(200, "success", null), JsonRequestBehavior.AllowGet);
         }
 
@@ -175,7 +175,7 @@ namespace TCCB_QuanLy.Controllers
             if (ModelState.IsValid)
             {
                 TuyenDung2021 registrationInterview = new TuyenDung2021();
-                
+
                 registrationInterview.CreatedAt = DateTime.Now;
                 Mapper.Map(registrationInterviewDTO, registrationInterview);
                 if (registrationInterviewDTO.IsNienChe == false)
@@ -201,7 +201,7 @@ namespace TCCB_QuanLy.Controllers
             {
                 thongTinCoBanVeGiaDinhRepository.DeleteThongTinCoBanVeGiaDinhsByTuyenDungId(tuyenDungId);
             }
-            
+
             List<ThongTinCoBanVeGiaDinh> thongTinCoBanVeGiaDinhs = JsonConvert.DeserializeObject<List<ThongTinCoBanVeGiaDinh>>(thongTinBanThan);
             thongTinCoBanVeGiaDinhRepository.CreateThongTinCoBanVeGiaDinh(thongTinCoBanVeGiaDinhs);
             return Json(new ReturnResult(200, "success", null));
