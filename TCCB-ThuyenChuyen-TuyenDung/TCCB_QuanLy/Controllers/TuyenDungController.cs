@@ -193,35 +193,43 @@ namespace TCCB_QuanLy.Controllers
             return Json(new ReturnResult(400, "failed", null));
         }
 
-        [Route("capnhatthongtinbanthan")]
+        [Route("capnhatthongtinbanthanvaquatrinhcontac")]
         [HttpPost]
-        public ActionResult CapNhatThongTinBanThan(string thongTinBanThan, int tuyenDungId)
+        public ActionResult CapNhatThongTinBanThan(string thongTinBanThan, string thongtinqcongtac, int tuyenDungId)
         {
             if (tuyenDungId < 1)
             {
                 thongTinCoBanVeGiaDinhRepository.DeleteThongTinCoBanVeGiaDinhsByTuyenDungId(tuyenDungId);
+                thongTinCoBanVeGiaDinhRepository.DeleteThongTinCoBanVeGiaDinhsByTuyenDungId(tuyenDungId);
             }
-
-            List<ThongTinCoBanVeGiaDinh> thongTinCoBanVeGiaDinhs = JsonConvert.DeserializeObject<List<ThongTinCoBanVeGiaDinh>>(thongTinBanThan);
+            List<ThongTinCoBanVeGiaDinhDTO> thongTinCoBanVeGiaDinhDTOs = JsonConvert.DeserializeObject<List<ThongTinCoBanVeGiaDinhDTO>>(thongTinBanThan);
+            thongTinCoBanVeGiaDinhDTOs.ForEach(s => s.TuyenDungId = tuyenDungId);
+            List<ThongTinCoBanVeGiaDinh> thongTinCoBanVeGiaDinhs = new List<ThongTinCoBanVeGiaDinh>();
+            Mapper.Map(thongTinCoBanVeGiaDinhDTOs, thongTinCoBanVeGiaDinhs);
             thongTinCoBanVeGiaDinhRepository.CreateThongTinCoBanVeGiaDinh(thongTinCoBanVeGiaDinhs);
-            return Json(new ReturnResult(200, "success", null));
-
-        }
-
-        [Route("capnhatthongtinbanthan")]
-        [HttpPost]
-        public ActionResult CapNhatThongTinQuaTrinhCongTac(string thongtinqcongtac, int tuyenDungId)
-        {
-            if (tuyenDungId < 1)
-            {
-                thongTinCoBanVeGiaDinhRepository.DeleteThongTinCoBanVeGiaDinhsByTuyenDungId(tuyenDungId);
-            }
-            
-            List<ThongTinQuaTrinhCongTac> thongTinQuaTrinhCongTacs = JsonConvert.DeserializeObject<List<ThongTinQuaTrinhCongTac>>(thongtinqcongtac);
+            List<ThongTinQuaTrinhCongTacDTO> thongTinQuaTrinhCongTacDTOs = JsonConvert.DeserializeObject<List<ThongTinQuaTrinhCongTacDTO>>(thongtinqcongtac);
+            thongTinQuaTrinhCongTacDTOs.ForEach(s => s.TuyenDungId = tuyenDungId);
+            List<ThongTinQuaTrinhCongTac> thongTinQuaTrinhCongTacs = new List<ThongTinQuaTrinhCongTac>();
+            Mapper.Map(thongTinQuaTrinhCongTacDTOs, thongTinQuaTrinhCongTacs);
             thongTinQuaTrinhCongTacRepository.CreateThongTinQuaTrinhCongTac(thongTinQuaTrinhCongTacs);
             return Json(new ReturnResult(200, "success", null));
-
         }
+
+        //[Route("capnhatquatrinhcongtac")]
+        //[HttpPost]
+        //public ActionResult CapNhatThongTinQuaTrinhCongTac(string thongtinqcongtac, int tuyenDungId)
+        //{
+        //    if (tuyenDungId < 1)
+        //    {
+        //        thongTinCoBanVeGiaDinhRepository.DeleteThongTinCoBanVeGiaDinhsByTuyenDungId(tuyenDungId);
+        //    }            
+        //    List<ThongTinQuaTrinhCongTacDTO> thongTinQuaTrinhCongTacDTOs = JsonConvert.DeserializeObject<List<ThongTinQuaTrinhCongTacDTO>>(thongtinqcongtac);
+        //    thongTinQuaTrinhCongTacDTOs.ForEach(s => s.TuyenDungId = tuyenDungId);
+        //    List<ThongTinQuaTrinhCongTac> thongTinQuaTrinhCongTacs = new List<ThongTinQuaTrinhCongTac>();
+        //    Mapper.Map(thongTinQuaTrinhCongTacDTOs, thongTinQuaTrinhCongTacs);
+        //    thongTinQuaTrinhCongTacRepository.CreateThongTinQuaTrinhCongTac(thongTinQuaTrinhCongTacs);
+        //    return Json(new ReturnResult(200, "success", null));
+        //}
 
         [Route("capnhathosoungtuyen/{madangki}/{cmnd}")]
         [HttpGet]
@@ -288,6 +296,10 @@ namespace TCCB_QuanLy.Controllers
         public ActionResult InHoSoUngTuyen(int madangki)
         {
             TuyenDung2021 registrationInterview = registrationInterviewRepository.GetTuyenDungByIdWithDetail(madangki);
+            List<ThongTinCoBanVeGiaDinh> thongTinCoBanVeGiaDinhs = thongTinCoBanVeGiaDinhRepository.GetThongTinCoBanVeGiaDinhsByTuyenDungId(madangki);
+            List<ThongTinQuaTrinhCongTac> thongTinQuaTrinhCongTacs = thongTinQuaTrinhCongTacRepository.GetThongTinQuaTrinhCongTacsByTuyenDungId(madangki);
+            ViewBag.ThongTinCoBanVeGiaDinhs = thongTinCoBanVeGiaDinhs;
+            ViewBag.ThongTinQuaTrinhCongtacs = thongTinQuaTrinhCongTacs;
             return View(registrationInterview);
         }
 

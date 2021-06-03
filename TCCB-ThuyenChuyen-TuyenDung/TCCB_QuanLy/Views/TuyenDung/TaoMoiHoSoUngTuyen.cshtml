@@ -98,17 +98,11 @@
                             <div class="form-group">
                                 <label for="formControlsSelect" class="control-label">3.Giới tính</label>
                                 <select name="IsMale" id="IsMale" class="form-control">
-
-
                                     <option value="true">Nam</option>
                                     <option value="false" selected="">Nữ</option>
-
-
                                 </select>
                             </div>
                         </div>
-
-
                     </div>
                     <div class="row">
                         <div class="col-sm-3">
@@ -118,14 +112,9 @@
                                     @{
                                         foreach (var item in ViewBag.DanTocs)
                                         {
-
                                             <option value="@item.Id">@item.Name</option>
-
                                         }
-
                                     }
-
-
                                 </select>
                             </div>
                         </div>
@@ -136,14 +125,9 @@
                                     @{
                                         foreach (var item in ViewBag.TonGiaos)
                                         {
-
                                             <option value="@item.Id">@item.Name</option>
-
                                         }
-
                                     }
-
-
                                 </select>
                             </div>
                         </div>
@@ -909,6 +893,8 @@
             format: 'dd-mm-yyyy',
             autoclose: true,
         });
+        jQuery.fn.pop = [].pop;
+        jQuery.fn.shift = [].shift;       
 
         $('#hosoungtuyen').validate({
             rules: {
@@ -1080,7 +1066,7 @@
                 else {
                     $('#errorIsHadNghiepVuSupham').removeClass('has-error');
                     $('#errorIsHadNghiepVuSuphamMessage').text('');
-                    $('#submit').hide();
+                    //$('#submit').hide();
                     $('#loader').show();
                     $.post();
                     $.post('/tuyendung/submittaomoi', {       
@@ -1140,8 +1126,48 @@
                         __RequestVerificationToken: $("input[name=__RequestVerificationToken]").val(),
                     }, function (data, status) {
                         debugger;
-                        if (data.StatusCode == 200) {
-                            window.location.href = '/tuyendung/inhosoungtuyen/' + data.Results
+                            if (data.StatusCode == 200) {
+
+                                var $rowsquatrinhcontac = $('table#quatrinhcontac').find('tr:not(:hidden)');
+                                var headers = ["TuNgayDenNgay", "CoQuanToChuc"];
+                                var dataquatrinhcontac = [];
+                                $rowsquatrinhcontac.shift()
+
+                                $rowsquatrinhcontac.each(function () {
+                                    var $td = $(this).find('td:not([data-attr-ignore])');
+                                    var h = {};
+                                    headers.forEach(function (header, i) {
+                                        h[header] = $td.eq(i).text();
+                                    });
+                                    dataquatrinhcontac.push(h);
+                                });                               
+
+                                var $rowsthongtinquanhegiadinh = $('table#thongtinquanhegiadinh').find('tr:not(:hidden)');
+                                var headers = ["MoiQuanHe", "HoTen", "NgaySinh", "NoiDung"];
+                                var datathongtinquanhegiadinh = [];
+                                $rowsthongtinquanhegiadinh.shift()
+
+                                $rowsthongtinquanhegiadinh.each(function () {
+                                    var $td = $(this).find('td:not([data-attr-ignore])');
+                                    var h = {};
+                                    headers.forEach(function (header, i) {
+                                        h[header] = $td.eq(i).text();
+                                    });
+                                    datathongtinquanhegiadinh.push(h);
+                                });
+                                if (datathongtinquanhegiadinh[0].MoiQuanHe !== '' && dataquatrinhcontac[0].TuNgayDenNgay) {
+                                    console.log(datathongtinquanhegiadinh, dataquatrinhcontac);
+                                    $.post('/tuyendung/capnhatthongtinbanthanvaquatrinhcontac', {
+                                        thongtinqcongtac: JSON.stringify(dataquatrinhcontac),
+                                        thongTinBanThan: JSON.stringify(datathongtinquanhegiadinh),
+                                        tuyenDungId: data.Results
+                                    }, function (data, status) {
+                                            if (data.StatusCode == 200) {
+                                            window.location.href = '/tuyendung/inhosoungtuyen/' + data.Results
+                                            }                                          
+                                    })
+                                }                             
+
                         }
                         else {
                             $.confirm({

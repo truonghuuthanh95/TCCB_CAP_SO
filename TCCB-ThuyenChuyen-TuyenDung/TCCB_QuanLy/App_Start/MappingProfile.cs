@@ -14,6 +14,8 @@ namespace TCCB_QuanLy.App_Start
         {
             CreateMap<TuyenDung2020, RegistrationInterviewDTO>();
             CreateMap<RegistrationInterviewDTO, TuyenDung2020>();
+            CreateMap<TuyenDung2021, RegistrationInterviewDTO>();
+            CreateMap<RegistrationInterviewDTO, TuyenDung2021>();
             //CreateMap<ThuyenChuyen, ThuyenChuyenDTO>();
             //CreateMap<ThuyenChuyenDTO, ThuyenChuyen>();
             CreateMap<ThuyenChuyenNgoaiTinh, ThuyenChuyenNgoaiTinhDTO>();
@@ -22,6 +24,12 @@ namespace TCCB_QuanLy.App_Start
             CreateMap<ThuyenChuyen2020, ThuyenChuyenDTO2020>();
             CreateMap<CanBoThamGiaHoiDongDTO, TruongNhiemVuThamGiaHDTD>();
             CreateMap<TruongNhiemVuThamGiaHDTD, CanBoThamGiaHoiDongDTO>();
+            CreateMap<ThongTinCoBanVeGiaDinh, ThongTinCoBanVeGiaDinhDTO>();
+            CreateMap<ThongTinCoBanVeGiaDinhDTO, ThongTinCoBanVeGiaDinh>();
+            CreateMap<ThongTinQuaTrinhCongTac, ThongTinQuaTrinhCongTacDTO>();
+            CreateMap<ThongTinQuaTrinhCongTacDTO, ThongTinQuaTrinhCongTac>();
+
+
         }
     }
 }

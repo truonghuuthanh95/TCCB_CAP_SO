@@ -38,10 +38,10 @@
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
-    <DebugType>pdbonly</DebugType>
-    <Optimize>true</Optimize>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
     <OutputPath>bin\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
@@ -275,6 +275,8 @@
     <Compile Include="Models\DTO\SoLuongDangKi.cs" />
     <Compile Include="Models\DTO\SSOResult.cs" />
     <Compile Include="Models\DTO\SSOSessionReturn.cs" />
+    <Compile Include="Models\DTO\ThongTinCoBanVeGiaDinhDTO.cs" />
+    <Compile Include="Models\DTO\ThongTinQuaTrinhCongTacDTO.cs" />
     <Compile Include="Models\DTO\ThuyenChuyenContainNgoaiTinhDTO.cs" />
     <Compile Include="Models\DTO\thuyenChuyenDTO.cs" />
     <Compile Include="Models\DTO\ThuyenChuyenDTO2020.cs" />

@@ -113,9 +113,9 @@ namespace TCCB_QuanLy.Controllers
             ViewBag.TruongNhiemVuThamGiaHDTDs = truongNhiemVuThamGiaHDTDRepository.GetNhiemVuThamGiaHDTDsBySchoolId(accountSchool.Id);
             return View();
         }
+
         [Route("capnhatcanbothamgiahoidong", Name = "capnhatcanbothamgiahoidong")]
-        [HttpPost]
-        
+        [HttpPost]      
         public ActionResult CapNhatCanBoThamGiaHoiDong(string canBoThamGiaHoiDongDTO)
         {
             School accountSchool = (School)Session[Utils.Constants.USER_SCHOOL_SESSION];
@@ -140,6 +140,7 @@ namespace TCCB_QuanLy.Controllers
             }
             return Json(new ReturnResult(400, "failed", null), JsonRequestBehavior.AllowGet);
         }
+
         [Route("indanhsachthamgiahoidongtuyendung")]
         public ActionResult InDanhSachThamGiaHDTD()
         {

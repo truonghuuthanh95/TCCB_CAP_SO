@@ -120,7 +120,6 @@ C:\Users\thanhthse61493\Desktop\ASP.NET MVC\Git\TCCB_CAP_SO\TCCB-ThuyenChuyen-Tu
 C:\Users\thanhthse61493\Desktop\ASP.NET MVC\Git\TCCB_CAP_SO\TCCB-ThuyenChuyen-TuyenDung\TCCB_QuanLy\bin\Remotion.Linq.dll
 C:\Users\thanhthse61493\Desktop\ASP.NET MVC\Git\TCCB_CAP_SO\TCCB-ThuyenChuyen-TuyenDung\TCCB_QuanLy\bin\LinqToExcel.pdb
 C:\Users\thanhthse61493\Desktop\ASP.NET MVC\Git\TCCB_CAP_SO\TCCB-ThuyenChuyen-TuyenDung\TCCB_QuanLy\bin\Remotion.Linq.xml
-C:\Users\truon\Desktop\GIT\TCCB_CAP_SO\TCCB-ThuyenChuyen-TuyenDung\TCCB_QuanLy\obj\Release\TCCB_QuanLy.csprojAssemblyReference.cache
 C:\Users\truon\Desktop\GIT\TCCB_CAP_SO\TCCB-ThuyenChuyen-TuyenDung\TCCB_QuanLy\obj\Release\TCCB_QuanLy.csproj.CoreCompileInputs.cache
 C:\Users\truon\Desktop\GIT\TCCB_CAP_SO\TCCB-ThuyenChuyen-TuyenDung\TCCB_QuanLy\obj\Release\TCCB_QuanLy.dll
 C:\Users\truon\Desktop\GIT\TCCB_CAP_SO\TCCB-ThuyenChuyen-TuyenDung\TCCB_QuanLy\obj\Release\TCCB_QuanLy.pdb
@@ -242,3 +241,4 @@ C:\Users\truon\Desktop\GIT\TCCB_CAP_SO\TCCB-ThuyenChuyen-TuyenDung\TCCB_QuanLy\b
 C:\Users\truon\Desktop\GIT\TCCB_CAP_SO\TCCB-ThuyenChuyen-TuyenDung\TCCB_QuanLy\bin\Microsoft.AI.WindowsServer.xml
 C:\Users\truon\Desktop\GIT\TCCB_CAP_SO\TCCB-ThuyenChuyen-TuyenDung\TCCB_QuanLy\bin\Microsoft.AI.Web.xml
 C:\Users\truon\Desktop\GIT\TCCB_CAP_SO\TCCB-ThuyenChuyen-TuyenDung\TCCB_QuanLy\obj\Release\TCCB_QuanLy.csproj.CopyComplete
+C:\Users\truon\Desktop\GIT\TCCB_CAP_SO\TCCB-ThuyenChuyen-TuyenDung\TCCB_QuanLy\obj\Release\TCCB_QuanLy.csprojAssemblyReference.cache

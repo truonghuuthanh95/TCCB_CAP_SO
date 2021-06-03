@@ -1,4 +1,4 @@
-﻿@model TCCB_QuanLy.Models.DAO.TuyenDung2020
+﻿@model TCCB_QuanLy.Models.DAO.TuyenDung2021
 @{
     ViewBag.Title = "In hồ sơ ứng tuyển";
     Layout = "~/Views/Shared/_Home_Layout.cshtml";
@@ -24,7 +24,7 @@
                     <b>
                         Mã: @Model.TienTo@Model.Id
                     </b><br />
-                    
+
                 </h4>
                 <h4 class="text-uppercase text-center"><b>cộng hòa xã hội chủ nghĩa việt nam</b></h4>
                 <h4 class="text-center"><b>Độc lập - Tự do - Hạnh phúc</b></h4>
@@ -41,7 +41,11 @@
                         <p style="padding-left: 28%; margin-top: -15px;">_________</p>
 
                         <p>Vị trí dự tuyển: <b>@Model.MonDuTuyen.ViTriUngTuyen.Name @Model.MonDuTuyen.Name</b></p>
-                        <p>Đơn vị dự tuyển: <b>@Model.School.TenTruong</b></p>
+                        <p>Đơn vị dự tuyển:</p>
+                        <p>- Nguyện bọng 1: <b>@Model.School.TenTruong</b></p>
+                        <p>- Nguyện bọng 2: <b>@Model.School.TenTruong</b></p>
+                        <p>- Nguyện bọng 3: <b>@Model.School.TenTruong</b></p>
+
                     </div>
                 </div>
                 <h4 class="text-uppercase" style="padding-left: 20px"><b>I. thông tin cá nhân</b></h4>
@@ -66,14 +70,14 @@
 
                         <p>
                             Giới tính: @{
-                    if (Model.IsMale == true)
-                    {
-                        <b>Nam</b>
-        }
-        else
-        {
-            <b>Nữ</b>
-}
+                                if (Model.IsMale == true)
+                                {
+                                    <b>Nam</b>
+                                }
+                                else
+                                {
+                                    <b>Nữ</b>
+                                }
                             }
                         </p>
                     </div>
@@ -162,6 +166,45 @@
                         Loại hình đào tạo: <b>@Model.HinhThucDaoTao.Name</b>
                     </div>
                 </div>
+
+                <h4 class="text-uppercase" style="padding-left: 20px"><b>II. thông cơ bản về gia đình</b></h4>
+                <table border="1">
+                    <thead>
+                        @*<tr>
+                    <th>
+                    Ngày thàng năm cấp văn bàng chứng chỉ</th>
+                <th>Tên trường, cơ sở đào tạo</th>
+                <th>Trình độ văn bằng chứng chỉ</th>
+                <th>Số hiệu văn bằng chừng chỉ</th>
+                <th>Chuyên ngành đào tạo (ghi theo bảng điểm)</th>
+                <th>Ngành đào tạo</th>
+                <th>Hình thức đào tạo</th>
+                <th>Xếp loại bằng, chứng chỉ</th>
+                </tr>*@
+                        <tr>
+                            <th>Mối quan hệ</th>
+                            <th>Họ và tên</th>
+                            <th>Ngày, tháng, năm sinh</th>
+                            <th>Quê quán, nghề nghiệp, chức danh, chức vụ, đơn vị công tác, học tập, nơi ở</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @{
+                            foreach (var item in ViewBag.ThongTinCoBanVeGiaDinhs)
+                            {
+                                <tr>
+                                    <td>@item.MoiQuanHe</td>
+                                    <td>@item.HoTen</td>
+                                    <td>@item.NgaySinh</td>
+                                    <td>@item.NoiDung</td>
+
+                                </tr>
+                            }
+                        }
+
+                    </tbody>
+                </table>
+
                 <h4 class="text-uppercase" style="padding-left: 20px"><b>II. thông tin đào tạo</b></h4>
                 <div style="border: solid; border-width: 1px;">
                     <div class="row">
@@ -206,14 +249,14 @@
                             <p>
                                 Phương thức đào tạo:
                                 @{
-                        if (Model.IsNienChe == true)
-                        {
-                            <b> Niên chế</b>
-            }
-            else
-            {
-                <b> Tín chỉ</b>
-}
+                                    if (Model.IsNienChe == true)
+                                    {
+                                        <b> Niên chế</b>
+                                    }
+                                    else
+                                    {
+                                        <b> Tín chỉ</b>
+                                    }
 
                                 }
 
@@ -233,19 +276,19 @@
                             </p>
                         </div>
                         @{
-                if (Model.IsNienChe == true)
-                {
-                    <div class="col-xs-6 col-sm-6">
-                        <p>
-                            Điểm TB luận văn:
-                            <b>
-                                @Model.DiemLuanVan
-                            </b>
-                        </p>
+                            if (Model.IsNienChe == true)
+                            {
+                                <div class="col-xs-6 col-sm-6">
+                                    <p>
+                                        Điểm TB luận văn:
+                                        <b>
+                                            @Model.DiemLuanVan
+                                        </b>
+                                    </p>
 
 
-                    </div>
-    }
+                                </div>
+                            }
                         }
 
                     </div>
@@ -255,7 +298,7 @@
                     <b>@Model.TrinhDoCaoNhat.Name</b>
                 </p>
 
-                
+
                 <div style="border: solid; border-width: 1px;">
                     <div class="row">
 
@@ -335,11 +378,47 @@
                         </div>
                     </div>
                 </div>
+                <h4 class="text-uppercase" style="padding-left: 20px"><b>II. thông tin về quá trình công tác</b></h4>
+                <table border="1">
+                    <thead>
+                        @*<tr>
+                    <th>
+                    Ngày thàng năm cấp văn bàng chứng chỉ</th>
+                <th>Tên trường, cơ sở đào tạo</th>
+                <th>Trình độ văn bằng chứng chỉ</th>
+                <th>Số hiệu văn bằng chừng chỉ</th>
+                <th>Chuyên ngành đào tạo (ghi theo bảng điểm)</th>
+                <th>Ngành đào tạo</th>
+                <th>Hình thức đào tạo</th>
+                <th>Xếp loại bằng, chứng chỉ</th>
+                </tr>*@
+                        <tr>
+                            <th width="30%">Từ ngày, tháng, năm dên ngày, tháng, năm</th>
+                            <th width="70%">Cơ quan, tổ chức, đơn vị công tác</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @{
+                            foreach (var item in ViewBag.ThongTinQuaTrinhCongtacs)
+                            {
+                                <tr>
+                                    <td>@item.TuNgayDenNgay</td>
+                                    <td>@item.CoQuanToChuc</td>
+
+
+                                </tr>
+                            }
+                        }
+
+                    </tbody>
+                </table>
+                <h4 class="text-uppercase" style="padding-left: 20px"><b>ĐĂNG KÝ DỰ THI MÔN NGOẠI NGỮ</b></h4>
+                <p>Đăng ký dự thi ngoại ngữ: <b>Tiếng Anh</b></p>
                 <h4 class="text-uppercase" style="padding-left: 20px"><b>III. thông tin khác</b></h4>
                 <p>1/ Đối tượng ưu tiên: <b>@Model.DoiTuongUuTien1.Name</b></p>
                 @*<p>2/ Trường hợp đặc biệt trong tuyển dụng viên chức: <b>@Model.TruongHopDacBiet.Name</b></p>*@
 
-              
+
                 @*<p>
             <i>
                 Thông tin lương (dành cho ứng viên có công tác và tham gia Bảo hiểm
@@ -377,10 +456,10 @@
                         </p>
                     </div>
                     @*<div class="col-xs-3 col-sm-3">
-                        <p>
-                            Bậc: <b>THPT</b>
-                        </p>
-                    </div>*@
+                <p>
+                    Bậc: <b>THPT</b>
+                </p>
+            </div>*@
                 </div>
 
 
@@ -440,3 +519,101 @@
         </div>
     </div>
 </div>
+
+
+<form>
+    <div class="text-center"><button class="btn btn-warning" type="button" onclick="printContract()">IN BÁO CÁO  <span class="fa fa-print fa-large"></span></button></div>
+
+    <div class="contract col-12" id="contract-to-print" style="padding-top:-30px;font-family:'Times New Roman';font-size:17px">
+
+        <div class="row">
+            <div class="col-12 text-center">
+                <b>CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM</b><br />
+                <b>Độc lập - Tự do - Hạnh phúc</b><br />
+                <p style="margin-top:-15px">___________</p>
+            </div>
+            <div class="col-12 text-center">
+                ................................, ngày ........ tháng ....... năm ............
+                <br />
+                <br />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-2">
+
+            </div>
+            <div class="col-sm-2">
+                <img class="logo" src="~/Content/img/Anh.png">
+            </div>
+            <div class="col-sm-5">
+                <div class="text-center">
+                    <h4 style="text-align:center"><b>PHIẾU ĐĂNG KÝ DỰ TUYỂN</b></h4><br />
+                </div>
+                <b> Vị trí dự tuyển: ...................................................</b><br /><br />
+                <b> Đơn vị dự tuyển: </b><br />
+                - Nguyện vọng 1: ...............................<br />
+                - Nguyện vọng 2: ................................<br />
+                - Nguyện vọng 3: ...................................<br />
+            </div>
+        </div>
+        <div class="row">
+            <b> I.THÔNG TIN CÁ NHÂN</b><br />
+            Họ và tên: .................................
+            Ngày, tháng, năm sinh: ....................... Giới tính: .........<br />
+            Dân tộc: .................. Tôn giáo: .........................<br />
+            Số CMND hoặc thẻ căn cước công dân: ......................... Ngày cấp: ............ Nơi cấp: .......................<br />
+            Số điện thoại đi động để báo tin: .................... Email: .......................<br />
+            Quê quán: ................................<br />
+            Hộ khẩu thường trú: ...........................................<br />
+            Chỗ ở hiện nay (để báo tin): ...........................................<br />
+            Tình trạng sức khỏe: ........................., Chiều cao:..........., Cân nặng:..............kg <br />
+            Thành phần bản thân hiện nay: ...........................................<br />
+            Trình độ văn hóa: ...........................................<br />
+            Trình độ chuyên môn: ......................................<br />
+            Điễm TN: ........ Xếp loại: ..........<br />
+            Chứng chỉ nghiệp vụ sư phạm (nếu có): .....................<br />
+        </div>
+        <div class="row">
+            <b> II.THÔNG TIN CƠ BẢN VỀ GIA ĐÌNH</b><br />
+
+        </div>
+        <div class="row">
+            <b> III.THÔNG TIN VỀ QUÁ TRRÌNH ĐÀO TẠO</b><br />
+
+        </div>
+        <div class="row">
+            <b> IV.THÔNG TIN VỀ QUÁ TRÌNH CÔNG TÁC (nếu có)</b><br />
+
+        </div>
+        <div class="row">
+            <b> V.MIỄN THI NGOẠI NGỮ, TIN HỌC</b><br />
+            (Thí sinh thuộc diện miễn thi ngoại ngữ, tin học cần ghi rõ lý do miễn thi ở mục này)<br />
+            Miễn thi ngoại ngữ do: ..................................................<br />
+            Miễn thi tin học do: ..................................................<br />
+        </div>
+        <div class="row">
+            <b> VI.ĐĂNG KÝ DỰ THI MÔN NGOẠI NGỮ</b><br />
+            Đăng ký dự thi ngoại ngữ: ..................................................<br />
+        </div>
+        <div class="row">
+            <b> VII.ĐỐI TƯỢNG ƯU TIÊN (nếu có)</b><br />
+            ............................................................................<br />
+            ............................................................................<br />
+        </div>
+        <div class="row">
+            Tôi xin cam đoan những lời khai trên của tôi là đúng sự thật. Sau khi nhận được thông báo trúng tuyển tôi sẽ hoàn thiện hồ sơ theo quy định.
+            Nếu sai sự thật thì kết quả tuyển dụng của tôi sẽ bị cơ quan, đơn vị có thẩm quyền tuyển dụng hủy bỏ, tôi sẽ chịu trách nhiệm trước pháp luật và cam kết không đăng ký tham gia
+            kỳ tuyển dụng kế tiếp tại cơ quan tuyển dụng./.
+        </div>
+        <div class="row">
+            <div class="col-sm-8">
+
+            </div>
+            <div class="col-sm-4 text-center">
+                <b>NGƯỜI VIẾT PHIẾU </b><br />
+                <i>(Ký, ghi rõ họ tên)</i>
+            </div>
+        </div>
+    </div>
+    <div class="text-center"><button class="btn btn-warning" type="button" onclick="printContract()">IN BÁO CÁO  <span class="fa fa-print fa-large"></span></button></div>
+</form>

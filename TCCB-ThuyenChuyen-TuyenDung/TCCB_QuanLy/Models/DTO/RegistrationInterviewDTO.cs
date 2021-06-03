@@ -115,7 +115,6 @@ namespace TCCB_QuanLy.Models.DTO
 
         [StringLength(50)]
         public string ChungChiNghiepVuSuPhamSoVanBang { get; set; }
-        [Required]
         public int NguyenVong1 { get; set; }
 
         public int? NguyenVong2 { get; set; }
