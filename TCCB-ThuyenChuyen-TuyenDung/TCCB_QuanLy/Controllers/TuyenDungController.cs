@@ -197,11 +197,9 @@ namespace TCCB_QuanLy.Controllers
         [HttpPost]
         public ActionResult CapNhatThongTinBanThan(string thongTinBanThan, string thongtinqcongtac, int tuyenDungId)
         {
-            if (tuyenDungId < 1)
-            {
-                thongTinCoBanVeGiaDinhRepository.DeleteThongTinCoBanVeGiaDinhsByTuyenDungId(tuyenDungId);
-                thongTinCoBanVeGiaDinhRepository.DeleteThongTinCoBanVeGiaDinhsByTuyenDungId(tuyenDungId);
-            }
+
+            thongTinCoBanVeGiaDinhRepository.DeleteThongTinCoBanVeGiaDinhsByTuyenDungId(tuyenDungId);
+            thongTinQuaTrinhCongTacRepository.DeleteThongTinQuaTrinhCongTacsByTuyenDungId(tuyenDungId);            
             List<ThongTinCoBanVeGiaDinhDTO> thongTinCoBanVeGiaDinhDTOs = JsonConvert.DeserializeObject<List<ThongTinCoBanVeGiaDinhDTO>>(thongTinBanThan);
             thongTinCoBanVeGiaDinhDTOs.ForEach(s => s.TuyenDungId = tuyenDungId);
             List<ThongTinCoBanVeGiaDinh> thongTinCoBanVeGiaDinhs = new List<ThongTinCoBanVeGiaDinh>();
@@ -212,7 +210,8 @@ namespace TCCB_QuanLy.Controllers
             List<ThongTinQuaTrinhCongTac> thongTinQuaTrinhCongTacs = new List<ThongTinQuaTrinhCongTac>();
             Mapper.Map(thongTinQuaTrinhCongTacDTOs, thongTinQuaTrinhCongTacs);
             thongTinQuaTrinhCongTacRepository.CreateThongTinQuaTrinhCongTac(thongTinQuaTrinhCongTacs);
-            return Json(new ReturnResult(200, "success", null));
+            return Json(new ReturnResult(200, "success", tuyenDungId));
+
         }
 
         //[Route("capnhatquatrinhcongtac")]
@@ -264,6 +263,8 @@ namespace TCCB_QuanLy.Controllers
             ViewBag.TrinhDoNgoaiNguKhas = trinhDoNgoaiNguKhacReposittory.GetTrinhDoNgoaiNguKhacs();
             ViewBag.ChungChiNghiepVuSuPhams = chungChiNghiepVuSuPhamRepository.GetChungChiNghiepVuSuPhams();
             ViewBag.TruongMonDuTuyens = truongMonDuTuyenRepository.GetTruongByMonDuTuyen(registrationInterview.MonDuTuyenId);
+            ViewBag.ThongTinCoBanVeGiaDinhs = thongTinCoBanVeGiaDinhRepository.GetThongTinCoBanVeGiaDinhsByTuyenDungId(registrationInterview.Id);
+            ViewBag.ThongTinQuaTrinhCongtacs = thongTinQuaTrinhCongTacRepository.GetThongTinQuaTrinhCongTacsByTuyenDungId(registrationInterview.Id);
             return View(candidateModelInOneView);
         }
 
@@ -287,7 +288,7 @@ namespace TCCB_QuanLy.Controllers
                 {
                     return Json(new ReturnResult(400, "failed", null));
                 }
-                return Json(new ReturnResult(200, "success", registrationInterviewAfterUpdated.Id));
+                return Json(new ReturnResult(200, "success", Id));
             }
             return Json(new ReturnResult(400, "failed", null));
         }

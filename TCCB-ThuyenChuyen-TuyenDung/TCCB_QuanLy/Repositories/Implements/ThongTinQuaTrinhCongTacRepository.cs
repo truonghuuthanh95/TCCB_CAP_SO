@@ -25,7 +25,9 @@ namespace TCCB_QuanLy.Repositories.Implements
 
         public bool DeleteThongTinQuaTrinhCongTacsByTuyenDungId(int id)
         {
-            _db.ThongTinQuaTrinhCongTacs.RemoveRange(_db.ThongTinQuaTrinhCongTacs.Where(s => s.TuyenDungId == id));
+            var remove = _db.ThongTinQuaTrinhCongTacs.Where(s => s.TuyenDungId == id).ToList();
+            _db.ThongTinQuaTrinhCongTacs.RemoveRange(remove);
+            _db.SaveChanges();
             return true;
         }
 

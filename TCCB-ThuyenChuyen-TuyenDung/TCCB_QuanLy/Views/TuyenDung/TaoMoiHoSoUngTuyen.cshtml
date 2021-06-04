@@ -757,7 +757,7 @@
                     </div>
                 </div>
 </div>
-                <div class="col-sm-12"><button type="submit" id="submit" class="btn btn-success btn-block">CẬP NHẬT</button></div>
+                <div class="col-sm-12"><p id="error" class="text-danger"></p><button type="submit" id="submit" class="btn btn-success btn-block">CẬP NHẬT</button></div>
             </form>
         </div>
     </div>
@@ -1129,32 +1129,33 @@
                             if (data.StatusCode == 200) {
 
                                 var $rowsquatrinhcontac = $('table#quatrinhcontac').find('tr:not(:hidden)');
-                                var headers = ["TuNgayDenNgay", "CoQuanToChuc"];
+                                var headersquatrinhcontac = ["TuNgayDenNgay", "CoQuanToChuc"];
                                 var dataquatrinhcontac = [];
                                 $rowsquatrinhcontac.shift()
 
                                 $rowsquatrinhcontac.each(function () {
-                                    var $td = $(this).find('td:not([data-attr-ignore])');
-                                    var h = {};
-                                    headers.forEach(function (header, i) {
-                                        h[header] = $td.eq(i).text();
+                                    var $tdquatrinhcontac = $(this).find('td:not([data-attr-ignore])');
+                                    var hquatrinhcontac = {};
+                                    headersquatrinhcontac.forEach(function (header, i) {
+                                        hquatrinhcontac[header] = $tdquatrinhcontac.eq(i).text().trim();
                                     });
-                                    dataquatrinhcontac.push(h);
-                                });                               
+                                    dataquatrinhcontac.push(hquatrinhcontac);
+                                });
 
                                 var $rowsthongtinquanhegiadinh = $('table#thongtinquanhegiadinh').find('tr:not(:hidden)');
-                                var headers = ["MoiQuanHe", "HoTen", "NgaySinh", "NoiDung"];
+                                var headersthongtinquanhegiadinh = ["MoiQuanHe", "HoTen", "NgaySinh", "NoiDung"];
                                 var datathongtinquanhegiadinh = [];
                                 $rowsthongtinquanhegiadinh.shift()
 
                                 $rowsthongtinquanhegiadinh.each(function () {
-                                    var $td = $(this).find('td:not([data-attr-ignore])');
-                                    var h = {};
-                                    headers.forEach(function (header, i) {
-                                        h[header] = $td.eq(i).text();
+                                    var $thongtinquanhegiadinh = $(this).find('td:not([data-attr-ignore])');
+                                    var hthongtinquanhegiadinh = {};
+                                    headersthongtinquanhegiadinh.forEach(function (header, i) {
+                                        hthongtinquanhegiadinh[header] = $thongtinquanhegiadinh.eq(i).text().trim();
                                     });
-                                    datathongtinquanhegiadinh.push(h);
+                                    datathongtinquanhegiadinh.push(hthongtinquanhegiadinh);
                                 });
+
                                 if (datathongtinquanhegiadinh[0].MoiQuanHe !== '' && dataquatrinhcontac[0].TuNgayDenNgay) {
                                     console.log(datathongtinquanhegiadinh, dataquatrinhcontac);
                                     $.post('/tuyendung/capnhatthongtinbanthanvaquatrinhcontac', {
@@ -1162,14 +1163,31 @@
                                         thongTinBanThan: JSON.stringify(datathongtinquanhegiadinh),
                                         tuyenDungId: data.Results
                                     }, function (data, status) {
-                                            if (data.StatusCode == 200) {
+                                        if (data.StatusCode == 200) {
+                                            debugger
                                             window.location.href = '/tuyendung/inhosoungtuyen/' + data.Results
-                                            }                                          
+                                        }
                                     })
-                                }                             
+                                }
+                                else {
+                                    $('#loader').hide();
+                                    $.confirm({
+
+                                        title: 'Lỗi',
+                                        content: 'Vui lòng nhập thông tin quá trình công tác và thông tin quan hệ gia đinh',
+                                        type: 'red',
+                                        typeAnimated: true,
+                                        buttons: {
+                                            OK: function () {
+
+                                            }
+                                        }
+                                    });
+                                }
 
                         }
-                        else {
+                            else {
+                                
                             $.confirm({
                                 title: 'Thất bại',
                                 content: 'Có lỗi sảy ra!',

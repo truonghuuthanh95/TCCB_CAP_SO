@@ -18,6 +18,7 @@ namespace TCCB_QuanLy.Repositories.Implements
 
         public List<ThongTinCoBanVeGiaDinh> CreateThongTinCoBanVeGiaDinh(List<ThongTinCoBanVeGiaDinh> thongTinCoBanVeGiaDinhs)
         {
+            thongTinCoBanVeGiaDinhs.ForEach(s => { s.NgaySinh.Trim(); s.MoiQuanHe.Trim(); s.NoiDung.Trim(); });
             _db.ThongTinCoBanVeGiaDinhs.AddRange(thongTinCoBanVeGiaDinhs);
             _db.SaveChanges();
             return thongTinCoBanVeGiaDinhs;
@@ -25,7 +26,9 @@ namespace TCCB_QuanLy.Repositories.Implements
 
         public bool DeleteThongTinCoBanVeGiaDinhsByTuyenDungId(int id)
         {
-            _db.ThongTinCoBanVeGiaDinhs.RemoveRange(_db.ThongTinCoBanVeGiaDinhs.Where(s => s.TuyenDungId == id));
+            var remove = _db.ThongTinCoBanVeGiaDinhs.Where(s => s.TuyenDungId == id).ToList();
+            _db.ThongTinCoBanVeGiaDinhs.RemoveRange(remove);
+            _db.SaveChanges();
             return true;
         }
 

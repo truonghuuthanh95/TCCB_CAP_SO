@@ -204,6 +204,10 @@ namespace TCCB_QuanLy.Models.DAO
 
         public virtual School School { get; set; }
 
+        public virtual School School1 { get; set; }
+
+        public virtual School School2 { get; set; }
+
         public virtual ThanhPhanBanThanHienTai ThanhPhanBanThanHienTai { get; set; }
 
         public virtual ThongTinCoBanVeGiaDinh ThongTinCoBanVeGiaDinh { get; set; }
