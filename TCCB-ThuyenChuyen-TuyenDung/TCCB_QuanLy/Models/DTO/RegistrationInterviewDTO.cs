@@ -32,7 +32,7 @@ namespace TCCB_QuanLy.Models.DTO
         [Required]
         public int XepLoaiHocLucId { get; set; }
         [Required]
-        public short NamTotNghiep { get; set; }
+        public string NamTotNghiep { get; set; }
         [Required]
         public int ChuyenNganhDaoTaoId { get; set; }
         [Required]
@@ -117,9 +117,31 @@ namespace TCCB_QuanLy.Models.DTO
         public string ChungChiNghiepVuSuPhamSoVanBang { get; set; }
         public int NguyenVong1 { get; set; }
 
-        public int? NguyenVong2 { get; set; }
-        public int? NguyenVong3 { get; set; }
+        public int NguyenVong2 { get; set; }
+        public int NguyenVong3 { get; set; }
 
+        [StringLength(50)]
+        public string NgayCapTinHoc { get; set; }
 
+        [StringLength(50)]
+        public string NgayCapNgoaiNgu { get; set; }
+
+        [StringLength(50)]
+        public string NgayCapNgoaiNguKhac { get; set; }
+
+        [StringLength(500)]
+        public string TinHocTruongDaoTao { get; set; }
+
+        [StringLength(500)]
+        public string NgoaiNguTruongDaoTao { get; set; }
+
+        [StringLength(500)]
+        public string NgoaiNguKhacTruongDaoTao { get; set; }
+
+        //public int TinHocXepLoai { get; set; }
+
+        //public int NgoaiNguXepLoai { get; set; }
+
+        //public int NgoaiNguKhacXepLoai { get; set; }
     }
 }

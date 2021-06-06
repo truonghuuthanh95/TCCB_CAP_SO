@@ -1,0 +1,111 @@
+﻿
+@{
+    ViewBag.Title = "DangKiThanhCong";
+    Layout = "~/Views/Shared/_Home_Layout.cshtml";
+}
+
+<div class="col-sm-8 col-sm-offset-2" style="margin-top: 60px">
+    <div class="panel panel-default">
+        <div class="panel-body">
+            <p style="font-size: 70px" class="text-center text-success"><span class="glyphicon glyphicon-ok-circle"></span></p>
+            <h3 class="text-success text-center">Thành công với mã đăng kí: <b>@ViewBag.ThuyenChuyen.TienTo@ViewBag.ThuyenChuyen.Id</b></h3>
+            <p class="text-center text-warning"><i>(Mã đăng kí dùng để xác định hồ sơ đăng kí, kiểm tra tiến độ hồ sơ)</i></p>
+            <p><span class="text-danger">*Lưu ý:</span> Thành phần hồ sơ, quy trình giải quyết thuyên chuyển xem chi tiết tại mục <a href="/thuyenchuyen/mauquytrinhgiaiquyet" target="_blank">Mẩu hồ sơ và qui trình giải quyết </a>của thuyên chuyển</p>
+        </div>
+    </div>
+
+</div>
+<div class="col-sm-10 col-sm-offset-1">
+    <div class="panel panel-default">
+        <p class="text-center"><button class="btn btn-warning" onclick="printDoc()"><span class="glyphicon glyphicon-print"></span> In phiếu</button></p>
+        <div class="panel-body" style="font-family: 'Times New Roman'">
+            <div id="printContent" class="transfer-print">
+                <h3 class="text-center" style="padding-bottom: 60px;">PHIẾU THÔNG TIN ĐĂNG KÝ THUYÊN CHUYỂN CÔNG TÁC</h3>
+                <div class="row">
+                    <div class="col-sm-6 col-xs-6">
+                        <p class="text-center"><b>Đơn vị đang công tác</b></p>
+                        <p style="padding-left: 20px;"><b>Từ:</b> @ViewBag.ThuyenChuyen.Province.Type @ViewBag.ThuyenChuyen.Province.Name</p>
+                        <p style="padding-left: 20px;"><b>Từ:</b> @ViewBag.ThuyenChuyen.Province.Type @ViewBag.ThuyenChuyen.Province.Name</p>
+                        <p style="padding-left: 20px;"><b>Tên trường:</b> @ViewBag.ThuyenChuyen.DVDCTTenTruong</p>
+                        <p style="padding-left: 20px;"><b>Cấp trường:</b> @ViewBag.ThuyenChuyen.CapDayDVDCT</p>
+                        <p style="padding-left: 20px;"><b>Môn dạy:</b> @ViewBag.ThuyenChuyen.MonDuTuyen.Name</p>
+                    </div>
+                    <div class="col-sm-6 col-xs-6">
+                        <p class="text-center"><b>Đơn vị chuyển đến</b></p>
+                        <p><b>Tên trường:</b> @ViewBag.ThuyenChuyen.School.TenTruong</p>
+                        <p><b>Cấp trường:</b> @ViewBag.ThuyenChuyen.CapDayDVCD</p>
+                    </div>
+                </div>
+                <div>
+                    <p><b>A. Thông tin cá nhân</b></p>
+                    <div class="row" style="padding-left: 20px;">
+                        <div class="col-sm-6 col-xs-6"><p><b>Họ và tên:</b> @ViewBag.ThuyenChuyen.HoTen</p></div>
+                        <div class="col-sm-6 col-xs-6"><p><b>Ngày sinh:</b> @ViewBag.ThuyenChuyen.NamSinh.ToString("dd-MM-yyyy")</p></div>
+
+                    </div>
+                    <div class="row" style="padding-left: 20px;">
+                        <div class="col-sm-6 col-xs-6"><p><b>CMND:</b> @ViewBag.ThuyenChuyen.CMND</p></div>
+                        @{
+                            if (@ViewBag.ThuyenChuyen.IsMale == true)
+                            {
+                                <div class="col-sm-6 col-xs-6"><p><b>Giới tính:</b> Nam</p></div>
+                            }
+                            else
+                            {
+                                <div class="col-sm-6 col-xs-6"><p><b>Giới tính: </b>Nữ</p></div>
+                            }
+                        }
+                    </div>
+                    <div style="padding-left: 20px;">
+                        <p><b>Nơi sinh: </b>@ViewBag.ThuyenChuyen.Ward.Type @ViewBag.ThuyenChuyen.Ward.Name, @ViewBag.ThuyenChuyen.Ward.District.Type @ViewBag.ThuyenChuyen.Ward.District.Name, @ViewBag.ThuyenChuyen.Ward.District.Province.Type @ViewBag.ThuyenChuyen.Ward.District.Province.Name</p>
+                        <p><b>Hộ khẩu thường trú:</b> @ViewBag.ThuyenChuyen.SoNhaTenDuong, @ViewBag.ThuyenChuyen.Ward1.Type @ViewBag.ThuyenChuyen.Ward1.Name, @ViewBag.ThuyenChuyen.Ward1.District.Type @ViewBag.ThuyenChuyen.Ward1.District.Name, @ViewBag.ThuyenChuyen.Ward1.District.Province.Type @ViewBag.ThuyenChuyen.Ward1.District.Province.Name</p>
+                    </div>
+                </div>
+                <div>
+                    <p><b>B. Thông tin trình độ chuyên môn</b></p>
+                    <div class="row" style="padding-left: 20px;">
+                        <div class="col-sm-6 col-xs-6">
+                            <p><b>Hệ đào tạo:</b> @ViewBag.ThuyenChuyen.BangTotNghiep.Name </p>
+                            <p><b>Xếp loại tốt nghiệp:</b> @ViewBag.ThuyenChuyen.XepLoaiHocLuc.Name</p>
+                            <p><b>Trình độ cao nhất: </b>@ViewBag.ThuyenChuyen.TrinhDoCaoNhat.Name</p>
+                        </div>
+                        <div class="col-sm-6 col-xs-6">
+                            <p><b>Hình thức đào tạo: </b>@ViewBag.ThuyenChuyen.HinhThucDaoTao.Name</p>
+                            <p><b>Ngành đào tạo:</b> @ViewBag.ThuyenChuyen.ChuyenNganhDaoTao.Name</p>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <p><b>E. Thông tin về lương (Căn cứ vào Quyết định lương hiện hưởng)</b></p>
+                    <div class="row" style="padding-left: 20px;">
+                        <div class="col-sm-6 col-xs-6">
+                            <p><b>Mã ngạch:</b> @ViewBag.ThuyenChuyen.MaNghach</p>
+                            <p><b>Mốc nâng lương:</b>  @ViewBag.ThuyenChuyen.MocNangLuong.ToString("dd-MM-yyyy")</p>
+                        </div>
+                        <div class="col-sm-6 col-xs-6">
+                            <p><b>Hệ số:</b> @ViewBag.ThuyenChuyen.HeSo</p>
+                            <p><b>Bậc lương:</b> @ViewBag.ThuyenChuyen.BacLuong</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="row" style="padding-top: 40px;">
+                    <p class="text-center"><i>Tôi hoàn toàn chịu trách nhiệm về những thông tin đã đăng ký</i></p>
+                    <div class="col-sm-6 col-xs-6">
+                        <p>Ngày đăng kí: @ViewBag.ThuyenChuyen.CreatedAt.ToString("dd-MM-yyyy")</p>
+                        <p>Mã đăng kí: <b style="font-size: 35px;">@ViewBag.ThuyenChuyen.TienTo@ViewBag.ThuyenChuyen.Id</b></p>
+                    </div>
+                    <div class="col-sm-6 col-xs-6">
+
+                        <p class="text-center"><b>Người đăng ký</b></p>
+                        <p class="text-center"><i>(Ký tên và ghi rõ họ tên)</i></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    function printDoc() {
+        $('#printContent').printThis();
+    }
+</script>

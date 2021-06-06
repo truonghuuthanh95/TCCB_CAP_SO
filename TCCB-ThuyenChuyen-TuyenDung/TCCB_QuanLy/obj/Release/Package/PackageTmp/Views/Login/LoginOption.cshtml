@@ -1,0 +1,195 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>LoginOption</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+    <div class="container">
+        <div class="row" style="padding-top: 60px">
+            <div class="col-sm-6">
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <h3 class="text-center"><b>CẤP TRƯỜNG</b></h3>
+                        <div class="form-group">
+                            <label for="schoolid">Cấp học</label>
+                            <select class="form-control" id="captruong">
+                                @{
+                                    foreach (var item in ViewBag.CapTruongs)
+                                    {
+                                        <option value="@item.Id">@item.Name</option>
+                                    }
+                                }
+
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="schoolid">Quận/huyện</label>
+                            <select class="form-control" id="quanhuyen">
+                                @{
+                                    foreach (var item in ViewBag.Districts)
+                                    {
+                                        <option value="@item.Id">@item.Type @item.Name</option>
+                                    }
+                                }
+
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="schoolid">Trường</label>
+                            <select class="form-control" id="schoolid">
+                                @{
+                                    foreach (var item in ViewBag.Schools)
+                                    {
+                                        <option value="@item.MaTruong">@item.TenTruong</option>
+                                    }
+                                }
+
+
+                            </select>
+                        </div>
+                        <p id="errorloginsso"></p>
+                        <p class="text-center"><button onclick="loginSchool();" class="btn btn-primary">TIẾP TỤC</button></p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <h3 class="text-center"><b>CẤP SỞ</b></h3>
+                        <form role="form" id="login">
+                            @Html.AntiForgeryToken()
+                            <fieldset>
+                                <div class="form-group has-feedback">
+                                    <input class="form-control" placeholder="Tên đăng nhập" id="username" name="username" type="text" autofocus="">
+                                </div>
+                                <div class="form-group has-feedback">
+                                    <input class="form-control" placeholder="Mật khẩu" id="password" name="password" type="password" value="">
+                                </div>
+                                <p class="text-center text-danger" id="error"></p>
+                                <button type="submit" id="submit" class="btn btn-primary btn-block">ĐĂNG NHẬP</button>
+                            </fieldset>
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/jqueryval")
+    <script>
+        function loginSchool() {            
+            $.post('https://wapi.hcm.edu.vn/ChuyenTruongMoRong/wapiquanly/loginsso', {
+                SysUserName: "TCTD",
+                SysPassword: "%8hKj909*nm",
+                Param1: $('#schoolid').val(),
+                Param2: "param2",
+                Param3: "param3",
+                Returnuri: "http://localhost:49222/Login/LoginSSOSchool"
+
+            }, function (data, status) {
+
+                if (status == 'success' && data.StatusCode == 200) {
+                    window.location.href = data.Result;
+                }
+                else {
+                    
+                    $("#errorloginsso").text("Trường chưa khai báo tài khoản Hiệu trưởng trên trang quanly.hcm.edu.vn");
+                }
+            })
+        };
+        $(document).ready(function () {
+            $("#login").validate({
+                rules: {
+                    username: 'required',
+                    password: 'required',
+                },
+                messages: {
+                    username: 'Vui lòng nhập',
+                    password: 'Vui lòng nhập',
+                },
+                errorElement: "em",
+                errorPlacement: function (error, element) {
+                    // Add the `help-block` class to the error element
+                    error.addClass("help-block");
+
+                    // Add `has-feedback` class to the parent div.form-group
+                    // in order to add icons to inputs
+                    element.parent().addClass("has-error");
+
+                    if (element.prop("type") === "checkbox") {
+                        error.insertAfter(element.parent("label"));
+                    } else {
+                        error.insertAfter(element);
+                    }
+
+                    // Add the span element, if doesn't exists, and apply the icon classes to it.
+                },
+                highlight: function (element, errorClass, validClass) {
+                    $(element).parent().addClass("has-error");
+                },
+                unhighlight: function (element, errorClass, validClass) {
+                    $(element).parent().removeClass("has-error");
+                },
+                submitHandler: function (form) {
+                    $('#submit').addClass('disabled');
+                    $('#preloader').show();
+                    $.post('/requestLogin', {
+                        username: $('#username').val(),
+                        password: $('#password').val(),
+                        __RequestVerificationToken: $("input[name=__RequestVerificationToken]").val()
+
+                    }, function (data, status) {
+                        $('#submit').removeClass('disabled');
+                        $('#preloader').hide();
+                        if (status == 'success' && data.StatusCode == 200) {
+                            window.location.replace('/quanly');
+                        }
+                        else if (status == 'success' && data.StatusCode != 200) {
+                            $('#error').text(data.Message);
+                        }
+                    })
+                }
+            })
+            
+
+
+            $('#captruong').change(function () {
+                $.get('/getschoolbydistrictandcaphoc/' + $('#quanhuyen').val() + '/' + $(this).val(), function (data, status) {
+                    var schools = JSON.parse(data.Results);
+                    $('#schoolid').children().remove().end();
+                    for (var i = 0; i < schools.length; i++) {
+                        $('#schoolid').append('<option value=' + schools[i].MaTruong + '>' + schools[i].TenTruong + '</option>')
+                    }
+                })
+            });
+            //get truong theo quan huyen
+            $('#quanhuyen').change(function () {
+                $.get('/getschoolbydistrictandcaphoc/' + $(this).val() + '/' + $('#captruong').val(), function (data, status) {
+                    var schools = JSON.parse(data.Results);
+                    $('#schoolid').children().remove().end();
+                    for (var i = 0; i < schools.length; i++) {
+                        $('#schoolid').append('<option value=' + schools[i].MaTruong + '>' + schools[i].TenTruong + '</option>')
+                    }
+                })
+            });
+
+        }
+
+
+        )
+
+    </script>
+</body>
+</html>

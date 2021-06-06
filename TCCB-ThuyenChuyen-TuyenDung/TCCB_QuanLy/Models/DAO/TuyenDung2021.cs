@@ -52,7 +52,8 @@ namespace TCCB_QuanLy.Models.DAO
 
         public int? XepLoaiHocLucId { get; set; }
 
-        public short? NamTotNghiep { get; set; }
+        [StringLength(50)]
+        public string NamTotNghiep { get; set; }
 
         public int? NguoiTaoHoaDon { get; set; }
 
@@ -176,6 +177,30 @@ namespace TCCB_QuanLy.Models.DAO
 
         public int? NguyenVong2 { get; set; }
 
+        [StringLength(50)]
+        public string NgayCapTinHoc { get; set; }
+
+        [StringLength(50)]
+        public string NgayCapNgoaiNgu { get; set; }
+
+        [StringLength(50)]
+        public string NgayCapNgoaiNguKhac { get; set; }
+
+        [StringLength(500)]
+        public string TinHocTruongDaoTao { get; set; }
+
+        [StringLength(500)]
+        public string NgoaiNguTruongDaoTao { get; set; }
+
+        [StringLength(500)]
+        public string NgoaiNguKhacTruongDaoTao { get; set; }
+
+        public int? TinHocXepLoai { get; set; }
+
+        public int? NgoaiNguXepLoai { get; set; }
+
+        public int? NgoaiNguKhacXepLoai { get; set; }
+
         public virtual Account Account { get; set; }
 
         public virtual Account Account1 { get; set; }
@@ -233,6 +258,12 @@ namespace TCCB_QuanLy.Models.DAO
         public virtual Ward Ward { get; set; }
 
         public virtual Ward Ward1 { get; set; }
+
+        public virtual XepLoaiHocLuc XepLoaiHocLuc1 { get; set; }
+
+        public virtual XepLoaiHocLuc XepLoaiHocLuc2 { get; set; }
+
+        public virtual XepLoaiHocLuc XepLoaiHocLuc3 { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<TuyenDungNguyenVong> TuyenDungNguyenVongs { get; set; }

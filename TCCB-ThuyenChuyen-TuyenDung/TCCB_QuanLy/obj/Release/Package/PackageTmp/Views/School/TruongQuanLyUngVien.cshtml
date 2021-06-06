@@ -1,0 +1,161 @@
+﻿
+@{
+    ViewBag.Title = "TruongQuanLyUngVien";
+    //Layout = "~/Views/Shared/_Home_Layout.cshtml";
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>LoginOption</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+    <div class="container">
+
+        <h2 class="text-primary text-center">@ViewBag.School.TenTruong</h2>
+        <a class="btn btn-primary btn-lg" href="/canbothamgiahoidongthi" role="button">Cập nhật danh sách cán bô tham gia hội dồng tuyển dụng</a>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                Danh sách đăng kí
+            </div>
+            <div class="panel-body">
+                <table class="table">
+                    <thead>
+                        <tr>
+
+                            <th>Mã</th>
+                            <th>Ho và tên</th>
+                            <th>Vị trí đăng ký</th>
+                            <th>Giới tính</th>
+                            <th>Ngày sinh</th>
+                            <th>CMND</th>
+                            <th>Trang thái</th>
+                            <th>Thao tác</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @{
+
+
+                            foreach (var item in ViewBag.CandidateSchools)
+                            {
+                                <tr>
+
+                                    <td>@item.TienTo@item.Id</td>
+                                    <td>@item.LastName @item.FirstName</td>
+
+                                    <td>@item.MonDuTuyen.ViTriUngTuyen.Name @item.MonDuTuyen.Name</td>
+                                    @{
+                                        if (item.IsMale)
+                                        {
+                                            <td>Nam</td>
+                                        }
+                                        else
+                                        {
+                                            <td>Nữ</td>
+                                        }
+                                    }
+
+                                    <td>@item.DOB.ToString("dd/MM/yyyy")</td>
+                                    <td>@item.IdentifyCard</td>
+                                    @{
+                                        if (item.TrangThaiHosoTuyenDungId != null)
+                                        {
+                                            <td>@item.TrangThaiHoSoTuyenDung.Name</td>
+                                        }
+                                        else
+                                        {
+                                            <td style="color: red;">Chưa tiếp nhận</td>
+                                        }
+                                    }
+
+                                    <td>
+                                        @{
+                                            if (item.TrangThaiHosoTuyenDungId != null)
+                                            {
+                                                <button type="button" onclick="updateCandidateStatus(@item.Id, 4)" class="btn btn-primary">
+                                                    <i class="fa fa-edit"></i> Nhận hồ sơ
+                                                </button>
+                                            }
+                                            else
+                                            {
+                                                <button type="button" onclick="updateCandidateStatus(@item.Id, 99)" class="btn btn-danger">
+                                                    <i class="fa fa-trash"></i> Hủy tiếp nhận
+                                                </button>
+                                            }
+                                        }
+
+
+                                    </td>
+                                </tr>
+
+                            }
+                        }
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/jqueryval")
+    <script>
+        var candidateSchoolTmp;
+        function setCandidateIdTmp(candidateSchoolId, ghiChu) {
+            candidateSchoolTmp = candidateSchoolId;
+            $('#ghiChu').val(ghiChu);
+
+        }
+        function setTranThai(trangThaiId) {
+            if (trangThaiId) {
+                $('#statusTiepNhan').val(trangThaiId);
+            }
+            else {
+                $('#statusTiepNhan').val(1);
+            }
+        }
+
+        function updateCandidateStatus(tuyenDungId, statusTiepNhan) {
+            $.get("/capnhattiepnhantuyendung/" + tuyenDungId + "/" + statusTiepNhan, function (data, status) {
+                if (status == 'success' && data.StatusCode == 200) {
+                    $.confirm({
+                        title: 'Thành công',
+                        content: 'Cập nhật thành công',
+                        type: 'green',
+                        typeAnimated: true,
+                        buttons: {
+                            OK: function () {
+                                window.location.reload();
+                            }
+                        }
+                    });
+                    $('#myModal').modal('hide')
+                }
+                else if (status == 'success' && data.StatusCode == 403) {
+                    window.location.replace('/schoollogin');
+                }
+                else {
+                    $.confirm({
+                        title: 'Thất bại',
+                        content: 'Có lỗi sảy ra!',
+                        type: 'red',
+                        typeAnimated: true,
+                        buttons: {
+                            OK: function () {
+
+                            }
+                        }
+                    });
+                }
+            });
+        }
+    </script>
+</body>
+</html>

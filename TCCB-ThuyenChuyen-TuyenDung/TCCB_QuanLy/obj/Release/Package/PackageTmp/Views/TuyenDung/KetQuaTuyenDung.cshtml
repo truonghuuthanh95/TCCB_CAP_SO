@@ -1,0 +1,92 @@
+﻿
+@{
+    ViewBag.Title = "Kết quả tuyển dụng";
+    Layout = "~/Views/Shared/_Home_Layout.cshtml";
+}
+
+<div class="col-sm-8 col-sm-offset-2 text-center">
+    <div class="panel panel-default">
+        <div class="panel-body">
+            <h3 class="text-uppercase text-center text-info">kết quả tuyển dụng</h3>
+            <form class="form-inline">
+                <div class="form-group">
+                    <label for="exampleInputName2">CMND/CCCD</label>
+                    <input type="text" class="form-control" id="cmnd">
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputName2">Mã vòng 2</label>
+                    <input type="text" class="form-control" id="mavong2">
+                </div>
+                <button type="submit" class="btn btn-success" onclick="xemdiem(event);"><span class="glyphicon glyphicon-search"></span> XEM ĐIỂM</button>
+            </form>
+            <p class="text-center text-danger" style="padding-top: 15px;" id="error"></p>
+        </div>
+    </div>
+    
+</div>
+<div class="col-sm-12" id="xemdiem" hidden="">
+    <div class="panel panel-default">
+        <div class="panel-body table-responsive">
+            <table class="table" id="diem">
+                <thead>
+                    <tr>
+                        <th>Mã vòng 2</th>
+                        <th>Vị trí đăng ký</th>
+                        <th>Họ và tên</th>
+                        <th>Ngày/tháng/năm sinh</th>
+                        <th>Số CMND/TCC</th>
+                        <th>Đối tượng ưu tiên</th>
+                        <th>Trường hợp đặc biệt</th>
+                        <th>Điểm chuyên môn và nghiệp vụ</th>
+                        <th>Điểm ưu tiên</th>
+                        <th>TỔNG ĐIỂM</th>
+                        <th>Kết quả dự kiến</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr></tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<script>
+    function xemdiem(event) {
+        event.preventDefault();
+        if ($('#cmnd').val() == '' || $('#mavong2').val() == '') {
+            $('#error').text('Vui lòng nhập');
+            $('#xemdiem').hide();
+        }
+        else {
+            $('#error').text('');
+            $.get("/tuyendung/getdiemtuyendung/" + $('#cmnd').val().trim() + "/" + $('#mavong2').val().trim(), function (data, status) {
+                if (status == 'success' && data.StatusCode == 200) {
+                    var dataJson = JSON.parse(data.Results);
+                    debugger;
+                    $("#diem > tbody").html("");
+                    $('#diem').append('<tr><td>'
+                        + dataJson.MaVong2 + '</td><td>'
+                        + dataJson.ViTriDangKy + '</td><td>'
+                        + dataJson.HoVaTen + '</td><td>'
+                        + dataJson.DOB + '</td><td>'
+                        + dataJson.CMND + '</td><td>'
+                        + dataJson.DoiTuongUuTien + '</td><td>'
+                        + dataJson.TruongHopDacBiet + '</td><td>'
+                        + dataJson.DiemChuyenMonVaNgiepVu + '</td><td>'
+                        + dataJson.DiemUuTien + '</td><td>'  
+                        + dataJson.TongDiem + '</td><td>'    
+                        + dataJson.KetQua + '</td ></tr>');
+                    $('#xemdiem').show();
+                }
+                else {
+                    $("#diem > tbody").html("");
+                    $('#xemdiem').hide();
+                    $('#error').text(data.Message);
+
+                }
+            });
+        }
+    }
+
+</script>

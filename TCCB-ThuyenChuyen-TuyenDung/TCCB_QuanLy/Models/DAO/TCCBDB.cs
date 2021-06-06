@@ -8,7 +8,7 @@ namespace TCCB_QuanLy.Models.DAO
     public partial class TCCBDB : DbContext
     {
         public TCCBDB()
-            : base("name=TCCBDB9")
+            : base("name=TCCBDB10")
         {
             this.Configuration.LazyLoadingEnabled = false;
             this.Configuration.ProxyCreationEnabled = false;
@@ -450,6 +450,26 @@ namespace TCCB_QuanLy.Models.DAO
                 .HasMany(e => e.ThuyenChuyenNgoaiTinhs1)
                 .WithOptional(e => e.Ward1)
                 .HasForeignKey(e => e.HKTTWardId);
+
+            modelBuilder.Entity<XepLoaiHocLuc>()
+                .HasMany(e => e.TuyenDung2021)
+                .WithOptional(e => e.XepLoaiHocLuc)
+                .HasForeignKey(e => e.XepLoaiHocLucId);
+
+            modelBuilder.Entity<XepLoaiHocLuc>()
+                .HasMany(e => e.TuyenDung20211)
+                .WithOptional(e => e.XepLoaiHocLuc1)
+                .HasForeignKey(e => e.TinHocXepLoai);
+
+            modelBuilder.Entity<XepLoaiHocLuc>()
+                .HasMany(e => e.TuyenDung20212)
+                .WithOptional(e => e.XepLoaiHocLuc2)
+                .HasForeignKey(e => e.NgoaiNguXepLoai);
+
+            modelBuilder.Entity<XepLoaiHocLuc>()
+                .HasMany(e => e.TuyenDung20213)
+                .WithOptional(e => e.XepLoaiHocLuc3)
+                .HasForeignKey(e => e.NgoaiNguKhacXepLoai);
         }
     }
 }

@@ -1,0 +1,62 @@
+﻿@{
+    ViewBag.Title = "Quản Lý Chung Tuyển Dụng";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+    <ol class="breadcrumb">
+        <li>
+            <a href="#">
+                <em class="fa fa-home"></em>
+            </a>
+        </li>
+        <li>
+            <a href="/tuyendung/quanlychung">
+                Quản Lý Chung Tuyển Dụng
+            </a>
+        </li>
+        <li class="active">Danh Sách Hoàn Thành</li>
+    </ol>
+</div><!--/.row-->
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        Danh sách hoàn thành
+        <a href="/tuyendung/downloadexceltuyendung/hoanthanh"><span class="pull-right panel-toggle panel-button-tab-left"><em class="fa fa-download fa-xl color-orange"></em></span></a>
+    </div>
+    <div class="panel-body table-responsive">
+        <table class="table table-condensed" id="danhsachhoanthanh">
+            <thead>
+                <tr>
+                    <th>Mã Đăng Kí</th>
+                    <th>Họ Và Tên</th>                  
+                    <th>Số CMND</th>
+                    <th>Thao tác</th>
+                </tr>
+            </thead>
+            <tbody>
+                @{
+                    foreach (var item in ViewBag.DanhSachHoanThanhs)
+                    {
+                        <tr>
+
+                            <td>@item.TienTo@item.Id</td>
+                            <td>@item.LastName @item.FirstName</td>
+                            <td>@item.IdentifyCard</td>                          
+                            <td>
+                                <button class="btn btn-primary btn-sm"><span class="fa fa-edit"> Chi tiết</span></button>
+                            </td>
+                        </tr>
+                    }
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+<script>
+    $(document).ready(function () {
+        $('#danhsachhoanthanh').DataTable();
+    });
+</script>
+
+
