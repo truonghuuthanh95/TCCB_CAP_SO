@@ -988,6 +988,27 @@
                                 }
                             }
                         </div>
+                        <div class="col-sm-3">
+                            <div class="form-group">
+                                <label for="formControlsSelect" class="control-label">36.Thi ngoại ngữ</label>
+                                <select name="thingoaingu" id="thingoaingu" class="form-control">
+                                    @{
+                                        foreach (var item in ViewBag.ThiNgoaiNgus)
+                                        {
+                                            if (item.Id == Model.RegistrationInterview.ThiNgoaiNguId)
+                                            {
+                                                <option value="@item.Id" selected>@item.Name</option>
+                                            }
+                                            else
+                                            {
+                                                <option value="@item.Id">@item.Name</option>
+                                            }
+
+                                        }
+                                    }
+                                </select>
+                            </div>
+                        </div>
                     </div>
                     @*<div>
             <div class="form-group">
@@ -1417,6 +1438,7 @@
                         TinHocTruongDaoTao: $('#truongdaotaochungchingoaingu').val(),
                         NgoaiNguTruongDaoTao: $('#truongdaotaochungchingoaingu').val(),
                         NgoaiNguKhacTruongDaoTao: $('#trinhdongoaingukhac').val() == 1 ? 'Không' : $('#truongdaotaochungchingoaingukhac').val(),
+                        ThiNgoaiNguId: $('#thingoaingu').val(),
                         __RequestVerificationToken: $("input[name=__RequestVerificationToken]").val(),
                     }, function (data, status) {
                         debugger;

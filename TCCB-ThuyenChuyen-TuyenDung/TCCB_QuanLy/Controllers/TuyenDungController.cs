@@ -40,8 +40,9 @@ namespace TCCB_QuanLy.Controllers
         ITuyenDungNguyenVongRepository tuyenDungNguyenVongRepository;
         IThongTinCoBanVeGiaDinhRepository thongTinCoBanVeGiaDinhRepository;
         IThongTinQuaTrinhCongTacRepository thongTinQuaTrinhCongTacRepository;
+        IThiNgoaiNguRepository thiNgoaiNguRepository;
 
-        public TuyenDungController(IRegistrationInterviewRepository registrationInterviewRepository, IProvinceRepository provinceRepository, IDistrictRepository districtRepository, IWardRepository wardRepository, IHinhThucDaoTaoRepository hinhThucDaoTaoRepository, IBangTotNghiepRepository bangTotNghiepRepository, IChuyenNganhDaoTaoRepository chuyenNganhDaoTaoRepository, ITrinhDoCaoNhatRepository trinhDoCaoNhatRepository, ILamViecTrongNganhRepository lamViecTrongNganhRepository, ITrinhDoTinHocRepository trinhDoTinHocRepository, ITrinhDoNgoaiNguRepository trinhDoNgoaiNguRepository, IMonDuTuyenRepository monDuTuyenRepository, IXepLoaiHocLucRepository xepLoaiHocLucRepository, ICapTruongRepository capTruongRepository, ITonGiaoRepository tonGiaoRepository, IDanTocRepository danTocRepository, IDoiTuongUuTienRepository doiTuongUuTienRepository, IThanhPhanBanThanHienTaiRepository thanhPhanBanThanHienTaiRepository, ITruongHopDacBietRepository truongHopDacBietRepository, ITrinhDoNgoaiNguKhacReposittory trinhDoNgoaiNguKhacReposittory, IChungChiNghiepVuSuPhamRepository chungChiNghiepVuSuPhamRepository, IDiemThiTuyenRepository diemThiTuyenRepository, ITruongMonDuTuyenRepository truongMonDuTuyenRepository, ITuyenDungNguyenVongRepository tuyenDungNguyenVongRepository, IThongTinCoBanVeGiaDinhRepository thongTinCoBanVeGiaDinhRepository, IThongTinQuaTrinhCongTacRepository thongTinQuaTrinhCongTacRepository)
+        public TuyenDungController(IRegistrationInterviewRepository registrationInterviewRepository, IProvinceRepository provinceRepository, IDistrictRepository districtRepository, IWardRepository wardRepository, IHinhThucDaoTaoRepository hinhThucDaoTaoRepository, IBangTotNghiepRepository bangTotNghiepRepository, IChuyenNganhDaoTaoRepository chuyenNganhDaoTaoRepository, ITrinhDoCaoNhatRepository trinhDoCaoNhatRepository, ILamViecTrongNganhRepository lamViecTrongNganhRepository, ITrinhDoTinHocRepository trinhDoTinHocRepository, ITrinhDoNgoaiNguRepository trinhDoNgoaiNguRepository, IMonDuTuyenRepository monDuTuyenRepository, IXepLoaiHocLucRepository xepLoaiHocLucRepository, ICapTruongRepository capTruongRepository, ITonGiaoRepository tonGiaoRepository, IDanTocRepository danTocRepository, IDoiTuongUuTienRepository doiTuongUuTienRepository, IThanhPhanBanThanHienTaiRepository thanhPhanBanThanHienTaiRepository, ITruongHopDacBietRepository truongHopDacBietRepository, ITrinhDoNgoaiNguKhacReposittory trinhDoNgoaiNguKhacReposittory, IChungChiNghiepVuSuPhamRepository chungChiNghiepVuSuPhamRepository, IDiemThiTuyenRepository diemThiTuyenRepository, ITruongMonDuTuyenRepository truongMonDuTuyenRepository, ITuyenDungNguyenVongRepository tuyenDungNguyenVongRepository, IThongTinCoBanVeGiaDinhRepository thongTinCoBanVeGiaDinhRepository, IThongTinQuaTrinhCongTacRepository thongTinQuaTrinhCongTacRepository, IThiNgoaiNguRepository thiNgoaiNguRepository)
         {
             this.registrationInterviewRepository = registrationInterviewRepository;
             this.provinceRepository = provinceRepository;
@@ -69,6 +70,7 @@ namespace TCCB_QuanLy.Controllers
             this.tuyenDungNguyenVongRepository = tuyenDungNguyenVongRepository;
             this.thongTinCoBanVeGiaDinhRepository = thongTinCoBanVeGiaDinhRepository;
             this.thongTinQuaTrinhCongTacRepository = thongTinQuaTrinhCongTacRepository;
+            this.thiNgoaiNguRepository = thiNgoaiNguRepository;
         }
 
         [Route("kiemtracmnd", Name = "kiemtracmnd")]
@@ -93,7 +95,6 @@ namespace TCCB_QuanLy.Controllers
                 return Json(new ReturnResult(404, "not found", cmnd));
             }
         }
-
 
         // GET: TuyenDung
         [Route("kiemtramadangki/{cmnd}", Name = "kiemtramadangki")]
@@ -162,6 +163,7 @@ namespace TCCB_QuanLy.Controllers
             ViewBag.ThanhPhanBanThanHienTais = thanhPhanBanThanHienTaiRepository.GetThanhPhanBanThanHienTais();
             ViewBag.TruongHopDacBiets = truongHopDacBietRepository.GetTruongHopDacBiets();
             ViewBag.TrinhDoNgoaiNguKhas = trinhDoNgoaiNguKhacReposittory.GetTrinhDoNgoaiNguKhacs();
+            ViewBag.ThiNgoaiNgus = thiNgoaiNguRepository.GetThiNgoaiNgus();
             ViewBag.CMND = cmnd;
             ViewBag.TruongMonDuTuyens = truongMonDuTuyenRepository.GetTruongByMonDuTuyen(monDuTuyens[0].Id);
             return View(candidateModelInOneView);

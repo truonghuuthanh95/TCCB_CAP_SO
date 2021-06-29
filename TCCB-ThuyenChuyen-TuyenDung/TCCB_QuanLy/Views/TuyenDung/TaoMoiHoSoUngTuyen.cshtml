@@ -396,7 +396,7 @@
                             <div class="col-sm-4">
                                 <div class="form-group has-feedback">
                                     <label for="formControlsSelect" class="control-label">18.Trình độ văn hóa </label>
-                                    <input name="trinhdovanhoa" type="text" id="trinhdovanhoa" class="form-control" value="@Model.RegistrationInterview.TrinhDoVanHoa">
+                                    <input name="trinhdovanhoa" type="text" id="trinhdovanhoa" class="form-control">
                                 </div>
                             </div>
                         </div>
@@ -781,7 +781,21 @@
                             }
                         }
                     </div>
+                    <div class="col-sm-3">
+                        <div class="form-group">
+                            <label for="formControlsSelect" class="control-label">36.Thi ngoại ngữ</label>
+                            <select name="thingoaingu" id="thingoaingu" class="form-control">
+                                @{
+                                    foreach (var item in ViewBag.ThiNgoaiNgus)
+                                    {
+                                        <option value="@item.Id">@item.Name</option>
+                                    }
+                                }
+                            </select>
+                        </div>
+                    </div>
                 </div>
+               
         </div>
         <div class="col-sm-12"><p id="error" class="text-danger"></p><button type="submit" id="submit" class="btn btn-success btn-block">CẬP NHẬT</button></div>
         </form>
@@ -1185,6 +1199,7 @@
                         TinHocTruongDaoTao: $('#truongdaotaochungchingoaingu').val(),
                         NgoaiNguTruongDaoTao: $('#truongdaotaochungchingoaingu').val(),
                         NgoaiNguKhacTruongDaoTao: $('#trinhdongoaingukhac').val() == 1 ? 'Không' : $('#truongdaotaochungchingoaingukhac').val(),
+                        ThiNgoaiNguId: $('#thingoaingu').val(),
                         __RequestVerificationToken: $("input[name=__RequestVerificationToken]").val(),
                     }, function (data, status) {
                         debugger;

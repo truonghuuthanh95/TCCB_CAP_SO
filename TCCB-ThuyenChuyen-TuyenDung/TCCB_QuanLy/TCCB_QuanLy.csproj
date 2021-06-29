@@ -246,6 +246,7 @@
     <Compile Include="Models\DAO\sysdiagram.cs" />
     <Compile Include="Models\DAO\TCCBDB.cs" />
     <Compile Include="Models\DAO\ThanhPhanBanThanHienTai.cs" />
+    <Compile Include="Models\DAO\ThiNgoaiNgu.cs" />
     <Compile Include="Models\DAO\ThongTinCoBanVeGiaDinh.cs" />
     <Compile Include="Models\DAO\ThongTinQuaTrinhCongTac.cs" />
     <Compile Include="Models\DAO\ThuyenChuyen.cs" />
@@ -307,6 +308,7 @@
     <Compile Include="Repositories\Implements\RegistrationInterviewRepository.cs" />
     <Compile Include="Repositories\Implements\SchoolRepository.cs" />
     <Compile Include="Repositories\Implements\ThanhPhanBanThanHienTaiRepository.cs" />
+    <Compile Include="Repositories\Implements\ThiNgoaiNguRepository.cs" />
     <Compile Include="Repositories\Implements\ThongTinCoBanVeGiaDinhRepository.cs" />
     <Compile Include="Repositories\Implements\ThongTinQuaTrinhCongTacRepository.cs" />
     <Compile Include="Repositories\Implements\ThuyenChuyenRepository.cs" />
@@ -328,6 +330,7 @@
     <Compile Include="Repositories\Interfaces\IDiemThiTuyenRepository.cs" />
     <Compile Include="Repositories\Interfaces\IHoSoHopLeRepository.cs" />
     <Compile Include="Repositories\Interfaces\IStatusTiepNhanRepository.cs" />
+    <Compile Include="Repositories\Interfaces\IThiNgoaiNguRepository.cs" />
     <Compile Include="Repositories\Interfaces\IThongTinCoBanVeGiaDinhRepository.cs" />
     <Compile Include="Repositories\Interfaces\IThongTinQuaTrinhCongTacRepository.cs" />
     <Compile Include="Repositories\Interfaces\ITrinhDoNgoaiNguKhacReposittory.cs" />

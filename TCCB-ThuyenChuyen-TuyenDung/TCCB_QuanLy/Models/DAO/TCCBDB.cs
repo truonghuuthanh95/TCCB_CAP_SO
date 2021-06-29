@@ -8,10 +8,10 @@ namespace TCCB_QuanLy.Models.DAO
     public partial class TCCBDB : DbContext
     {
         public TCCBDB()
-            : base("name=TCCBDB10")
+            : base("name=TCCBDB11")
         {
-            this.Configuration.LazyLoadingEnabled = false;
             this.Configuration.ProxyCreationEnabled = false;
+            this.Configuration.LazyLoadingEnabled = false;
         }
 
         public virtual DbSet<Account> Accounts { get; set; }
@@ -47,6 +47,7 @@ namespace TCCB_QuanLy.Models.DAO
         public virtual DbSet<StatusTiepNhan> StatusTiepNhans { get; set; }
         public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<ThanhPhanBanThanHienTai> ThanhPhanBanThanHienTais { get; set; }
+        public virtual DbSet<ThiNgoaiNgu> ThiNgoaiNgus { get; set; }
         public virtual DbSet<ThongTinCoBanVeGiaDinh> ThongTinCoBanVeGiaDinhs { get; set; }
         public virtual DbSet<ThongTinQuaTrinhCongTac> ThongTinQuaTrinhCongTacs { get; set; }
         public virtual DbSet<ThuyenChuyen> ThuyenChuyens { get; set; }

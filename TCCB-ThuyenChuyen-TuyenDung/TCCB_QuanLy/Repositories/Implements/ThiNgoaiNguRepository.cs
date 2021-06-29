@@ -18,8 +18,8 @@ namespace TCCB_QuanLy.Repositories.Implements
 
         public List<ThiNgoaiNgu> GetThiNgoaiNgus()
         {
-            List<ThiNgoaiNgu> thiNgoaiNgus = _db.ThiNgoaiNgus.Where(s => s.IsActive == true).ToList();
-            return thiNgoaiNgus;
+            var result = _db.ThiNgoaiNgus.Where(s => s.IsActive == true).ToList();
+            return result;
         }
     }
 }

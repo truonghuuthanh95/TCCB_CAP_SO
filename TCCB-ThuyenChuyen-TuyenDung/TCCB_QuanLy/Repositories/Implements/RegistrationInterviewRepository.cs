@@ -67,9 +67,9 @@ namespace TCCB_QuanLy.Repositories.Implements
 				.Include("Province1")
 				.Include("Province2")
 				.Include("School")
-								.Include("School1")
+				.Include("School1")
 				.Include("School2")
-
+				.Include("ThiNgoaiNgu")
 				.SingleOrDefault(s => s.Id == id);
 			return TuyenDung;
 		}

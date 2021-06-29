@@ -201,6 +201,8 @@ namespace TCCB_QuanLy.Models.DAO
 
         public int? NgoaiNguKhacXepLoai { get; set; }
 
+        public int? ThiNgoaiNguId { get; set; }
+
         public virtual Account Account { get; set; }
 
         public virtual Account Account1 { get; set; }
@@ -234,6 +236,8 @@ namespace TCCB_QuanLy.Models.DAO
         public virtual School School2 { get; set; }
 
         public virtual ThanhPhanBanThanHienTai ThanhPhanBanThanHienTai { get; set; }
+
+        public virtual ThiNgoaiNgu ThiNgoaiNgu { get; set; }
 
         public virtual ThongTinCoBanVeGiaDinh ThongTinCoBanVeGiaDinh { get; set; }
 

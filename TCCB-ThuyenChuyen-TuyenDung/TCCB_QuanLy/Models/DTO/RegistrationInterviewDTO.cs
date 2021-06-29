@@ -137,6 +137,7 @@ namespace TCCB_QuanLy.Models.DTO
 
         [StringLength(500)]
         public string NgoaiNguKhacTruongDaoTao { get; set; }
+        public int ThiNgoaiNguId { get; set; }
 
         //public int TinHocXepLoai { get; set; }
 
