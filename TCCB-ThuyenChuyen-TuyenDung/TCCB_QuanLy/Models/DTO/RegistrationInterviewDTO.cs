@@ -91,9 +91,9 @@ namespace TCCB_QuanLy.Models.DTO
         public double CanNang { get; set; }
         [Required]
         public int ThanhPhanBanThanHienTaiId { get; set; }
-        //[Required]
-        //[StringLength(50)]
-        //public string TrinhDoVanHoa { get; set; }
+        [Required]
+        [StringLength(50)]
+        public string TrinhDoVanHoa { get; set; }
         [Required]
         [StringLength(50)]
         public string SoVanBangChungChiDaiHoc { get; set; }
