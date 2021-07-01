@@ -160,7 +160,7 @@
                     </div>
                 </div>
                 <p>Thành phần bản thân hiên nay: <b>@Model.ThanhPhanBanThanHienTai.Name</b></p>
-                <p>Trình độ văn hóa: <b>Tốt nghiệp THPT</b></p>
+                <p>Trình độ văn hóa: <b>@Model.TrinhDoVanHoa</b></p>
                 <div class="row">
                     <div class="col-sm-8 col-xs-8">
                         Trình độ chuyên môn: <b>@Model.ChuyenNganhDaoTao.Name</b>
@@ -260,191 +260,191 @@
                     </tbody>
                 </table>
                 @*<div style="border: solid; border-width: 1px;">
-                    <div class="row">
-                        <div class="col-sm-6 col-xs-6">
-                            <p>
-                                Trường Đào tạo: <b>@Model.TenTruongDaiHoc</b>
-                            </p>
-                        </div>
-                        <div class="col-sm-6 col-xs-6">
-                            <p>
-                                Trường này ở: <b>@Model.Province.Type @Model.Province.Name</b>
-                            </p>
-                        </div>
-                    </div>
+            <div class="row">
+                <div class="col-sm-6 col-xs-6">
+                    <p>
+                        Trường Đào tạo: <b>@Model.TenTruongDaiHoc</b>
+                    </p>
+                </div>
+                <div class="col-sm-6 col-xs-6">
+                    <p>
+                        Trường này ở: <b>@Model.Province.Type @Model.Province.Name</b>
+                    </p>
+                </div>
+            </div>
 
-                    <div class="row">
-                        <div class="col-xs-6 col-sm-6">
-                            <p>
-                                Tốt nghiệp:
-                                <b>@Model.BangTotNghiep.Name</b>
-                            </p>
-                        </div>
-                        <div class="col-xs-6 col-sm-6">
-                            <p>
-                                Hệ đào tạo: <b>@Model.HinhThucDaoTao.Name</b>
-                            </p>
-                        </div>
+            <div class="row">
+                <div class="col-xs-6 col-sm-6">
+                    <p>
+                        Tốt nghiệp:
+                        <b>@Model.BangTotNghiep.Name</b>
+                    </p>
+                </div>
+                <div class="col-xs-6 col-sm-6">
+                    <p>
+                        Hệ đào tạo: <b>@Model.HinhThucDaoTao.Name</b>
+                    </p>
+                </div>
 
-                    </div>
-                    <div class="row">
-                        <div class="col-xs-6 col-sm-6">
-                            <p>
-                                Năm tốt nghiệp: <b>@Model.NamTotNghiep</b>
-                            </p>
-                        </div>
-                        <div class="col-xs-6 col-sm-6">
-                            <p>Số hiệu văn bằng, chứng chỉ: <b>@Model.SoVanBangChungChiDaiHoc</b></p>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-xs-6 col-sm-6">
-                            <p>
-                                Phương thức đào tạo:
-                                @{
-                                    if (Model.IsNienChe == true)
-                                    {
-                                        <b> Niên chế</b>
-                                    }
-                                    else
-                                    {
-                                        <b> Tín chỉ</b>
-                                    }
-
-                                }
-
-                            </p>
-                        </div>
-                        <div class="col-xs-6 col-sm-6">
-                            <p>
-                                Xếp loại tốt nghiệp:
-                                <b>@Model.XepLoaiHocLuc.Name</b>
-                            </p>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-xs-6 col-sm-6">
-                            <p>
-                                Điểm TB các môn học: <b>@Model.GPA</b>
-                            </p>
-                        </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-6 col-sm-6">
+                    <p>
+                        Năm tốt nghiệp: <b>@Model.NamTotNghiep</b>
+                    </p>
+                </div>
+                <div class="col-xs-6 col-sm-6">
+                    <p>Số hiệu văn bằng, chứng chỉ: <b>@Model.SoVanBangChungChiDaiHoc</b></p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-6 col-sm-6">
+                    <p>
+                        Phương thức đào tạo:
                         @{
                             if (Model.IsNienChe == true)
                             {
-                                <div class="col-xs-6 col-sm-6">
-                                    <p>
-                                        Điểm TB luận văn:
-                                        <b>
-                                            @Model.DiemLuanVan
-                                        </b>
-                                    </p>
-
-
-                                </div>
+                                <b> Niên chế</b>
                             }
+                            else
+                            {
+                                <b> Tín chỉ</b>
+                            }
+
                         }
 
-                    </div>
-                </div>*@
+                    </p>
+                </div>
+                <div class="col-xs-6 col-sm-6">
+                    <p>
+                        Xếp loại tốt nghiệp:
+                        <b>@Model.XepLoaiHocLuc.Name</b>
+                    </p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-6 col-sm-6">
+                    <p>
+                        Điểm TB các môn học: <b>@Model.GPA</b>
+                    </p>
+                </div>
+                @{
+                    if (Model.IsNienChe == true)
+                    {
+                        <div class="col-xs-6 col-sm-6">
+                            <p>
+                                Điểm TB luận văn:
+                                <b>
+                                    @Model.DiemLuanVan
+                                </b>
+                            </p>
+
+
+                        </div>
+                    }
+                }
+
+            </div>
+        </div>*@
                 @*<p>
-                    Trình độ cao nhất:
-                    <b>@Model.TrinhDoCaoNhat.Name</b>
-                </p>*@
+            Trình độ cao nhất:
+            <b>@Model.TrinhDoCaoNhat.Name</b>
+        </p>*@
 
 
                 @*<div style="border: solid; border-width: 1px;">
-                    <div class="row">
+            <div class="row">
 
-                        <div class="col-xs-7 col-sm-7">
-                            <p>
-                                Chứng chỉ :
-                                <b>@Model.ChungChiNghiepVuSuPham.Name</b>
+                <div class="col-xs-7 col-sm-7">
+                    <p>
+                        Chứng chỉ :
+                        <b>@Model.ChungChiNghiepVuSuPham.Name</b>
 
 
-                            </p>
-                        </div>
-                        <div class="col-xs-5 col-sm-5">
-                            <p>
-                                Số hiệu văn bằng, chứng chỉ:<b>
-                                    @Model.ChungChiNghiepVuSuPhamSoVanBang
-                                </b>
-                            </p>
-                        </div>
-                    </div>
-
+                    </p>
                 </div>
-                <div style="border: solid; border-width: 1px;">
-                    <div class="row">
-
-                        <div class="col-xs-7 col-sm-7">
-                            <p>
-                                Chứng chỉ Tin học:<b>
-                                    @Model.TrinhDoTinHoc.Name
-                                </b>
-                            </p>
-                        </div>
-                        <div class="col-xs-5 col-sm-5">
-                            <p>
-                                Số hiệu văn bằng, chứng chỉ:<b>
-                                    @Model.SoVanBangChungChiTinHoc
-                                </b>
-                            </p>
-                        </div>
-                    </div>
-
+                <div class="col-xs-5 col-sm-5">
+                    <p>
+                        Số hiệu văn bằng, chứng chỉ:<b>
+                            @Model.ChungChiNghiepVuSuPhamSoVanBang
+                        </b>
+                    </p>
                 </div>
-                <div style="border: solid; border-width: 1px;">
-                    <div class="row">
+            </div>
 
-                        <div class="col-xs-7 col-sm-7">
-                            <p>
-                                Chứng chỉ Ngoại ngữ:<b>
-                                    @Model.TrinhDoNgoaiNgu.Name
-                                </b>
-                            </p>
-                        </div>
-                        <div class="col-xs-5 col-sm-5">
-                            <p>
-                                Số hiệu văn bằng, chứng chỉ:<b>
-                                    @Model.SoVanBangChungChiNgoaiNgu
-                                </b>
-                            </p>
-                        </div>
-                    </div>
+        </div>
+        <div style="border: solid; border-width: 1px;">
+            <div class="row">
+
+                <div class="col-xs-7 col-sm-7">
+                    <p>
+                        Chứng chỉ Tin học:<b>
+                            @Model.TrinhDoTinHoc.Name
+                        </b>
+                    </p>
                 </div>
-                <div style="border: solid; border-width: 1px;">
-                    <div class="row">
+                <div class="col-xs-5 col-sm-5">
+                    <p>
+                        Số hiệu văn bằng, chứng chỉ:<b>
+                            @Model.SoVanBangChungChiTinHoc
+                        </b>
+                    </p>
+                </div>
+            </div>
 
-                        <div class="col-xs-7 col-sm-7">
-                            <p>
-                                Chứng chỉ Ngoại ngữ khác:<b>
-                                    @Model.TrinhDoNgoaiNguKhac.Name
-                                </b>
-                            </p>
-                        </div>
-                        <div class="col-xs-5 col-sm-5">
-                            <p>
-                                Số hiệu văn bằng, chứng chỉ:<b>
-                                    @Model.SoVanBangChungChiNgoaiNguKhac
-                                </b>
-                            </p>
-                        </div>
-                    </div>
-                </div>*@
+        </div>
+        <div style="border: solid; border-width: 1px;">
+            <div class="row">
+
+                <div class="col-xs-7 col-sm-7">
+                    <p>
+                        Chứng chỉ Ngoại ngữ:<b>
+                            @Model.TrinhDoNgoaiNgu.Name
+                        </b>
+                    </p>
+                </div>
+                <div class="col-xs-5 col-sm-5">
+                    <p>
+                        Số hiệu văn bằng, chứng chỉ:<b>
+                            @Model.SoVanBangChungChiNgoaiNgu
+                        </b>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div style="border: solid; border-width: 1px;">
+            <div class="row">
+
+                <div class="col-xs-7 col-sm-7">
+                    <p>
+                        Chứng chỉ Ngoại ngữ khác:<b>
+                            @Model.TrinhDoNgoaiNguKhac.Name
+                        </b>
+                    </p>
+                </div>
+                <div class="col-xs-5 col-sm-5">
+                    <p>
+                        Số hiệu văn bằng, chứng chỉ:<b>
+                            @Model.SoVanBangChungChiNgoaiNguKhac
+                        </b>
+                    </p>
+                </div>
+            </div>
+        </div>*@
                 <h4 class="text-uppercase" style="padding-left: 20px"><b>IV. thông tin về quá trình công tác</b></h4>
                 <table border="1" width="100%">
                     <thead>
                         @*<tr>
-                                <th>
-                                Ngày thàng năm cấp văn bàng chứng chỉ</th>
-                            <th>Tên trường, cơ sở đào tạo</th>
-                            <th>Trình độ văn bằng chứng chỉ</th>
-                            <th>Số hiệu văn bằng chừng chỉ</th>
-                            <th>Chuyên ngành đào tạo (ghi theo bảng điểm)</th>
-                            <th>Ngành đào tạo</th>
-                            <th>Hình thức đào tạo</th>
-                            <th>Xếp loại bằng, chứng chỉ</th>
-                            </tr>*@
+                    <th>
+                    Ngày thàng năm cấp văn bàng chứng chỉ</th>
+                <th>Tên trường, cơ sở đào tạo</th>
+                <th>Trình độ văn bằng chứng chỉ</th>
+                <th>Số hiệu văn bằng chừng chỉ</th>
+                <th>Chuyên ngành đào tạo (ghi theo bảng điểm)</th>
+                <th>Ngành đào tạo</th>
+                <th>Hình thức đào tạo</th>
+                <th>Xếp loại bằng, chứng chỉ</th>
+                </tr>*@
                         <tr>
                             <th width="30%" style="text-align: center">Từ ngày, tháng, năm dên ngày, tháng, năm</th>
                             <th width="70%" style="text-align: center">Cơ quan, tổ chức, đơn vị công tác</th>
@@ -466,39 +466,49 @@
                     </tbody>
                 </table>
                 <h4 class="text-uppercase" style="padding-left: 20px"><b>V. ĐĂNG KÝ DỰ THI MÔN NGOẠI NGỮ</b></h4>
-                <p>Đăng ký dự thi ngoại ngữ: <b>Tiếng Anh</b></p>
+                @{
+                    if (Model.ThiNgoaiNgu.Id != 1)
+                    {
+                        <p>Đăng ký dự thi ngoại ngữ: <b>@Model.ThiNgoaiNgu.Name</b></p>
+                    }
+                    else
+            {
+                        <p>Thí sinh thuộc miễn thi ngoại ngữ</p>
+            }
+                }
+
                 <h4 class="text-uppercase" style="padding-left: 20px"><b>VI. thông tin khác</b></h4>
                 <p>1/ Đối tượng ưu tiên: <b>@Model.DoiTuongUuTien1.Name</b></p>
                 @*<p>2/ Trường hợp đặc biệt trong tuyển dụng viên chức: <b>@Model.TruongHopDacBiet.Name</b></p>*@
 
 
                 @*<p>
-                        <i>
-                            Thông tin lương (dành cho ứng viên có công tác và tham gia Bảo hiểm
-                            XH)
-                        </i>
-                    </p>*@
+            <i>
+                Thông tin lương (dành cho ứng viên có công tác và tham gia Bảo hiểm
+                XH)
+            </i>
+        </p>*@
                 @*<div class="row">
-                        <div class="col-xs-4 col-sm-4">
-                            <p>
-                                Năm vào ngành: <b>@Model.NamVaoNghanh</b>
-                            </p>
-                        </div>
-                        <div class="col-xs-4 col-sm-4">
-                            <p>
-                                Mã ngạch: <b>@Model.MaNgach</b>
-                            </p>
-                        </div>
-                        <div class="col-xs-4 col-sm-4">
-                            <p>
-                                Hệ số lương: <b>@Model.HeSoLuong</b>
-                            </p>
-                        </div>
-                    </div>*@
+            <div class="col-xs-4 col-sm-4">
+                <p>
+                    Năm vào ngành: <b>@Model.NamVaoNghanh</b>
+                </p>
+            </div>
+            <div class="col-xs-4 col-sm-4">
+                <p>
+                    Mã ngạch: <b>@Model.MaNgach</b>
+                </p>
+            </div>
+            <div class="col-xs-4 col-sm-4">
+                <p>
+                    Hệ số lương: <b>@Model.HeSoLuong</b>
+                </p>
+            </div>
+        </div>*@
                 @*<p>
-                        Mốc nâng lương lần sau:
-                        <b>@Model.MocNangLuongLansau</b>
-                    </p>*@
+            Mốc nâng lương lần sau:
+            <b>@Model.MocNangLuongLansau</b>
+        </p>*@
 
                 <div class="row">
                     <div class="col-sm-9 col-xs-9">
@@ -509,10 +519,10 @@
                         </p>
                     </div>
                     @*<div class="col-xs-3 col-sm-3">
-                            <p>
-                                Bậc: <b>THPT</b>
-                            </p>
-                        </div>*@
+                <p>
+                    Bậc: <b>THPT</b>
+                </p>
+            </div>*@
                 </div>
 
 
