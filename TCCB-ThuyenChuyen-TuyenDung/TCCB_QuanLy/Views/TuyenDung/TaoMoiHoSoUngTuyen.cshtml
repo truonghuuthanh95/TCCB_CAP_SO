@@ -887,7 +887,11 @@
     });
     $('#trinhdongoaingukhac').change(function () {
         if ($('#trinhdongoaingukhac').val() != '1') {
-            $('#isShowsohieuvanbangchungchingoaingukhac').show();
+            if ($('#trinhdongoaingukhac').val() != '49') {
+                $('#isShowsohieuvanbangchungchingoaingukhac').show();
+            }
+            else
+                $('#isShowsohieuvanbangchungchingoaingukhac').hide();
         }
         else {
             $('#isShowsohieuvanbangchungchingoaingukhac').hide();
@@ -901,13 +905,27 @@
             $('#isShowsohieuvanbangchungchinghepvusupham').hide();
         }
     });
+
     $('#trinhdongoaingu').change(function () {
         if ($('#trinhdongoaingu').val() != '1') {
-            $('#isShowChungChiNgoaiNguSoVanBang').show();
+            if ($('#trinhdongoaingu').val() != '82') {
+                $('#isShowChungChiNgoaiNguSoVanBang').show();
+            }
+            else
+                $('#isShowChungChiNgoaiNguSoVanBang').hide();
+        }
+        else
+            $('#isShowChungChiNgoaiNguSoVanBang').hide();
+    });
+
+    $('#trinhdotinhoc').change(function () {
+        if ($('#trinhdotinhoc').val() != '21') {
+            $('#isShowChungChiTinHoc').show();
         }
         else {
-            $('#isShowChungChiNgoaiNguSoVanBang').hide();
+            $('#isShowChungChiTinHoc').hide();
         }
+            
     });
 
 

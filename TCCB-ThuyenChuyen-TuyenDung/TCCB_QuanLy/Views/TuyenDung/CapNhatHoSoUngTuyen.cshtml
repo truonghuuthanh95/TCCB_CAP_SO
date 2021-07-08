@@ -904,24 +904,55 @@
                                 </select>
                             </div>
                         </div>
+                        </div>
+                    <div class="row">
+
                         @{
-                            if (Model.RegistrationInterview.TrinhDoNgoaiNguKhacId != 1)
+                            if (Model.RegistrationInterview.TrinhDoNgoaiNguKhacId != 1 && Model.RegistrationInterview.TrinhDoNgoaiNguKhacId != 49)
                             {
-                                <div class="col-sm-5" id="isShowsohieuvanbangchungchingoaingukhac">
-                                    <div class="form-group has-feedback" id="errorsohieuvanbangchungchingoaingukhac">
-                                        <label for="formControlsSelect" class="control-label">35.1.Số hiệu của văn bằng, chứng chỉ ngoại ngữ khác</label>
-                                        <input name="sohieuvanbangchungchingoaingukhac" type="text" id="sohieuvanbangchungchingoaingukhac" class="form-control" value="@Model.RegistrationInterview.SoVanBangChungChiNgoaiNguKhac">
-                                    </div>
-                                </div>
+                                                <div class="row" id="isShowsohieuvanbangchungchingoaingukhac">
+                                                    <div class="col-sm-4">
+                                                        <div class="form-group has-feedback" id="errorsohieuvanbangchungchingoaingukhac">
+                                                            <label for="formControlsSelect" class="control-label">35.Số hiệu của văn bằng, chứng chỉ ngoại ngữ khác</label>
+                                                            <input name="sohieuvanbangchungchingoaingukhac" type="text" id="sohieuvanbangchungchingoaingukhac" class="form-control" value="@Model.RegistrationInterview.SoVanBangChungChiNgoaiNgu">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-4">
+                                                        <div class="form-group has-feedback" id="errorsohieuvanbangchungchingoaingukhac">
+                                                            <label for="formControlsSelect" class="control-label">35.Trường đào tạo văn bằng, chứng chỉ ngoại ngữ khác</label>
+                                                            <input name="truongdaotaochungchingoaingukhac" type="text" id="truongdaotaochungchingoaingukhac" class="form-control" value="@Model.RegistrationInterview.NgoaiNguKhacTruongDaoTao">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-4">
+                                                        <div class="form-group has-feedback" id="errorsohieuvanbangchungchingoaingukhac">
+                                                            <label for="formControlsSelect" class="control-label">35.Ngày cấp văn bằng, chứng chỉ ngoại ngữ khác</label>
+                                                            <input name="ngaycapchungchingoaingukhac" type="text" id="ngaycapchungchingoaingukhac" class="form-control" value="@Model.RegistrationInterview.NgayCapNgoaiNguKhac">
+                                                        </div>
+                                                    </div>
+                                                </div>
                             }
                             else
                             {
-                                <div class="col-sm-5" id="isShowsohieuvanbangchungchingoaingukhac" hidden>
-                                    <div class="form-group has-feedback" id="errorsohieuvanbangchungchingoaingukhac">
-                                        <label for="formControlsSelect" class="control-label">35.1.Số hiệu của văn bằng, chứng chỉ ngoại ngữ khác</label>
-                                        <input name="sohieuvanbangchungchingoaingukhac" type="text" id="sohieuvanbangchungchingoaingukhac" class="form-control" value="@Model.RegistrationInterview.SoVanBangChungChiNgoaiNguKhac">
-                                    </div>
-                                </div>
+                    <div class="row" id="isShowsohieuvanbangchungchingoaingukhac" hidden>
+                        <div class="col-sm-4">
+                            <div class="form-group has-feedback" id="errorsohieuvanbangchungchingoaingukhac">
+                                <label for="formControlsSelect" class="control-label">35.Số hiệu của văn bằng, chứng chỉ ngoại ngữ khác</label>
+                                <input name="sohieuvanbangchungchingoaingukhac" type="text" id="sohieuvanbangchungchingoaingukhac" class="form-control" value="">
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="form-group has-feedback" id="errorsohieuvanbangchungchingoaingukhac">
+                                <label for="formControlsSelect" class="control-label">35.Trường đào tạo văn bằng, chứng chỉ ngoại ngữ khác</label>
+                                <input name="truongdaotaochungchingoaingukhac" type="text" id="truongdaotaochungchingoaingukhac" class="form-control" value="">
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="form-group has-feedback" id="errorsohieuvanbangchungchingoaingukhac">
+                                <label for="formControlsSelect" class="control-label">35.Ngày cấp văn bằng, chứng chỉ ngoại ngữ khác</label>
+                                <input name="ngaycapchungchingoaingukhac" type="text" id="ngaycapchungchingoaingukhac" class="form-control" value="">
+                            </div>
+                        </div>
+                    </div>
                             }
                         }
                     </div>
@@ -1121,7 +1152,7 @@
         }
     });
     $('#trinhdongoaingukhac').change(function () {
-        if ($('#trinhdongoaingukhac').val() != '1') {
+        if ($('#trinhdongoaingukhac').val() != '1' && $('#trinhdongoaingukhac').val() != '49') {
             $('#isShowsohieuvanbangchungchingoaingukhac').show();
         }
         else {
@@ -1136,15 +1167,28 @@
             $('#isShowsohieuvanbangchungchinghepvusupham').hide();
         }
     });
+
     $('#trinhdongoaingu').change(function () {
         if ($('#trinhdongoaingu').val() != '1') {
-            $('#isShowChungChiNgoaiNguSoVanBang').show();
+            if ($('#trinhdongoaingu').val() != '82') {
+                $('#isShowChungChiNgoaiNguSoVanBang').show();
+            }
+            else
+                $('#isShowChungChiNgoaiNguSoVanBang').hide();
         }
-        else {
+        else
             $('#isShowChungChiNgoaiNguSoVanBang').hide();
-        }
     });
 
+    $('#trinhdotinhoc').change(function () {
+        if ($('#trinhdotinhoc').val() != '21') {
+            $('#isShowChungChiTinHoc').show();
+        }
+        else {
+            $('#isShowChungChiTinHoc').hide();
+        }
+
+    });
 
     function removeRow(e) {
         $(e).closest("tr").remove()

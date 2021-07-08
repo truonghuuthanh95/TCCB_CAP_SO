@@ -227,28 +227,34 @@
                         <tr>
                             <td>@Model.NgayCapTinHoc</td>
                             <td>@Model.TinHocTruongDaoTao</td>
-                            <td>@Model.TrinhDoTinHoc.Name</td>
+                            <td>@Model.TrinhDoTinHoc.Name (Tin học)</td>
                             <td>@Model.SoVanBangChungChiTinHoc</td>
                             <td></td>
                             <td></td>
                             <td></td>
                         </tr>
-                        <tr>
-                            <td>@Model.NgayCapNgoaiNgu</td>
-                            <td>@Model.NgoaiNguTruongDaoTao</td>
-                            <td>@Model.TrinhDoNgoaiNgu.Name</td>
-                            <td>@Model.SoVanBangChungChiNgoaiNgu</td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                        </tr>
+                        @{ if (Model.TrinhDoNgoaiNguId != 82 && Model.TrinhDoNgoaiNguId != 1)
+                            {
+                                <tr>
+                                    <td>@Model.NgayCapNgoaiNgu</td>
+                                    <td>@Model.NgoaiNguTruongDaoTao</td>
+                                    <td>@Model.TrinhDoNgoaiNgu.Name (Ngoại ngữ)</td>
+                                    <td>@Model.SoVanBangChungChiNgoaiNgu</td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                            }
+
+                        }}
+
                         @{
-                            if (Model.TrinhDoNgoaiNguKhacId != 1)
+                            if (Model.TrinhDoNgoaiNguKhacId != 1 && Model.TrinhDoNgoaiNguKhacId != 49)
                             {
                                 <tr>
                                     <td>@Model.NgayCapNgoaiNguKhac</td>
                                     <td>@Model.NgoaiNguKhacTruongDaoTao</td>
-                                    <td>@Model.TrinhDoNgoaiNguKhac.Id</td>
+                                    <td>@Model.TrinhDoNgoaiNguKhac.Name (Ngoại ngữ khác)</td>
                                     <td>@Model.SoVanBangChungChiNgoaiNguKhac</td>
                                     <td></td>
                                     <td></td>
@@ -467,13 +473,13 @@
                 </table>
                 <h4 class="text-uppercase" style="padding-left: 20px"><b>V. ĐĂNG KÝ DỰ THI MÔN NGOẠI NGỮ</b></h4>
                 @{
-                    if (Model.ThiNgoaiNgu.Id != 1)
+                    if (Model.ThiNgoaiNgu.Id != 1 && Model.ThiNgoaiNgu.Id != 5 && Model.ThiNgoaiNgu.Id != 6)
                     {
                         <p>Đăng ký dự thi ngoại ngữ: <b>@Model.ThiNgoaiNgu.Name</b></p>
                     }
                     else
             {
-                        <p>Thí sinh thuộc miễn thi ngoại ngữ</p>
+                        <p>Miễn thi ngoại ngữ lý do: @Model.ThiNgoaiNgu.Name</p>
             }
                 }
 
@@ -533,21 +539,22 @@
                 <div class="row signature">
 
                     <div class="col-xs-6 col-sm-6">
-
-                        <p>.</p>
+                        @*<p>.</p>
                         <p class="text-center">
-                            <b class="text-uppercase">Người viết phiếu</b><br />
+                            <b class="text-uppercase">NGƯỞI VIẾT PHIẾU</b><br />
                             <i>(Ký và ghi rõ họ tên)</i>
                         </p>
-                        <p style="padding-top: 40px" class="text-center"><b>@Model.FirstName @Model.LastName</b></p>
+                        <p style="padding-top: 40px" class="text-center"><b>@Model.LastName @Model.FirstName </b></p>*@
                     </div>
                     <div class="col-xs-6 col-sm-6">
                         <p class="text-center"><i>Ngày&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;tháng&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;năm <b>@DateTime.Now.Year</b></i></p>
                         <p class="text-center">
-                            <b class="text-uppercase">NGƯỜI KIỂM TRA</b><br />
+                            <b class="text-uppercase">NGƯỞI VIẾT PHIẾU</b><br />
                             <i>(Ký và ghi rõ họ tên)</i>
                         </p>
-
+                        <br />
+                        <br />
+                        <p style="padding-top: 40px" class="text-center"><b>@Model.LastName @Model.FirstName </b></p>
                     </div>
                 </div>
                 <p>

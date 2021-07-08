@@ -267,6 +267,7 @@ namespace TCCB_QuanLy.Controllers
             ViewBag.TruongMonDuTuyens = truongMonDuTuyenRepository.GetTruongByMonDuTuyen(registrationInterview.MonDuTuyenId);
             ViewBag.ThongTinCoBanVeGiaDinhs = thongTinCoBanVeGiaDinhRepository.GetThongTinCoBanVeGiaDinhsByTuyenDungId(registrationInterview.Id);
             ViewBag.ThongTinQuaTrinhCongtacs = thongTinQuaTrinhCongTacRepository.GetThongTinQuaTrinhCongTacsByTuyenDungId(registrationInterview.Id);
+            ViewBag.ThiNgoaiNgus = thiNgoaiNguRepository.GetThiNgoaiNgus();
             return View(candidateModelInOneView);
         }
 
